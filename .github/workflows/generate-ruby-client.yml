@@ -1,0 +1,28 @@
+name: Generate the ruby openapi client
+on:
+  push:
+    branches: [ main ]
+jobs:
+  generate-angular-client:
+    runs-on: ubuntu-latest
+    name: Example
+    steps:
+
+      # Checkout your code
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Ruby Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: ruby
+          config-file: src/openapi/templates/ruby/ruby-generator-config.json
+          template-dir: src/openapi/templates/ruby
+          openapi-file: eMASSRestOpenAPI.yaml
+
+      # Do something with the generated client (likely publishing it somewhere)
+      - name: Do something with the client
+        run: |
+          cd ruby_client

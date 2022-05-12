@@ -1,0 +1,6 @@
+{
+  "npmName": "emass_client",
+  "npmVersion": "1.0.4",
+  "npmLicense": "Apache-2.0",
+  "enumUnknownDefaultCase": true
+}
