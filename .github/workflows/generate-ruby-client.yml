@@ -5,7 +5,7 @@ on:
 jobs:
   generate-angular-client:
     runs-on: ubuntu-latest
-    name: Example
+    name: Generate OpenAPI ruby client
     steps:
 
       # Checkout your code
@@ -20,9 +20,9 @@ jobs:
           generator: ruby
           config-file: src/openapi/templates/ruby/ruby-generator-config.json
           template-dir: src/openapi/templates/ruby
-          openapi-file: eMASSRestOpenAPI.yaml
+          openapi-file: eMASSRestOpenApi.yaml
 
       # Do something with the generated client (likely publishing it somewhere)
       - name: Do something with the client
         run: |
-          cd ruby_client
+          echo "Generated ruby API client successfully."
