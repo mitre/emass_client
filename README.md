@@ -9,4 +9,12 @@ The API clients are generated utilizing the [OpenAPI Generator](https://github.c
 
 ## Repository Architecture
 ![Repository Architecture](images/emass_client_architecture.jpg)
-!
+
+## Documentation
+### eMASS Client API Documentation
+
+[**eMASS API Documentation**](https://mitre.github.io/emass_client/docs/redoc/) | [**eMASS Swagger UI**](https://mitre.github.io/emasse_client/docs/swagger/)
+
+### Developers
+[**Developers Instructions**](https://mitre.github.io/emass_client/docs/developers.md)
+
