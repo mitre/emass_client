@@ -1,6 +1,8 @@
-[![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
+[![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
 
-![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) ![Docs Generation](https://github.com/mitre/emasser/actions/workflows/generate_docs.yml/badge.svg)
+
+![Docs Generation](https://github.com/mitre/emasser/actions/workflows/generate_docs.yml/badge.svg) ![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg)
+
 
 # eMASS Client
 The eMASS client repository maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) documentation and executables. The executables packages currently provided are: RubyGem and TypeScript Node.
@@ -9,7 +11,7 @@ The eMASS client repository maintains the Enterprise Mission Assurance Support S
 The eMASS API is documented in YAML and can be viewed utilizing a multitude of visualization tools. Included is a dependency-free (and nice looking) automated action that generates documentation in HTML using the [redoc-cli](https://www.npmjs.com/package/redoc-cli) command line tool.
 
 
-## [Interactive eMASS API Documentation](https://mitre.github.io/emasse_client/docs/renderer/)
+## [Interactive eMASS API Documentation](https://mitre.github.io/emass_client/docs/renderer/)
 This repository provides interactive eMASS API documentation and lets users tryout the API calls directly in a browser via hosted or local mock servers. Please references [Developers Instruction](docs/developers.md) on how to setup a local mock server
 
 ## eMASS API Clients Generation Process
