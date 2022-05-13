@@ -29,6 +29,7 @@ jobs:
         run: |
           # bundle install
           # bundle info emass_client
+          gem install rspec
           rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
           # echo "need to fix path to libcurl.dll"
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
@@ -36,4 +37,5 @@ jobs:
         run: |
           # bundle install
           # bundle info emass_client
+          gem install rspec
           rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
