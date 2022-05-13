@@ -1,11 +1,11 @@
-name: Generate the ruby openapi client
+name: Generate OpenAPI Ruby Client
 on:
   push:
     branches: [ main ]
 jobs:
   generate-angular-client:
     runs-on: ubuntu-latest
-    name: Generate OpenAPI ruby client
+    name: Generate OpenAPI Ruby Client
     steps:
 
       # Checkout your code
