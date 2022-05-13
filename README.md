@@ -11,7 +11,7 @@ The eMASS client repository maintains the Enterprise Mission Assurance Support S
 The eMASS API is documented in YAML and can be viewed utilizing a multitude of visualization tools. Included is a dependency-free (and nice looking) automated action that generates documentation in HTML using the [redoc-cli](https://www.npmjs.com/package/redoc-cli) command line tool.
 
 
-## [Interactive eMASS API Documentation](https://mitre.github.io/emass_client/docs/renderer/)
+## [Interactive eMASS API Documentation](https://mitre.github.io/emass_client/docs/swagger/)
 This repository provides interactive eMASS API documentation and lets users tryout the API calls directly in a browser via hosted or local mock servers. Please references [Developers Instruction](docs/developers.md) on how to setup a local mock server
 
 ## eMASS API Clients Generation Process
