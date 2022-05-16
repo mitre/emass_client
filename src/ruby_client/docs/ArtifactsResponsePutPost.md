@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **meta** | [**Model200**](Model200.md) |  | [optional] |
-| **data** | [**Array&lt;ArtifactsResponsePutPostData&gt;**](ArtifactsResponsePutPostData.md) |  | [optional] |
+| **meta** | [**Response200**](Response200.md) |  | [optional] |
+| **data** | [**Array&lt;ArtifactsResponsePutPostDataInner&gt;**](ArtifactsResponsePutPostDataInner.md) |  | [optional] |
 
 ## Example
 

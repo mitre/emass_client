@@ -1,4 +1,4 @@
-# EmassClient::SystemRolesResponseData
+# EmassClient::SystemRolesResponseDataInner
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::SystemRolesResponseData.new(
+instance = EmassClient::SystemRolesResponseDataInner.new(
   role_category: null,
   role: null
 )

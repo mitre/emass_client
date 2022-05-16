@@ -135,7 +135,7 @@ end
 api_instance = EmassClient::ArtifactsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
-  inline_object2: [EmassClient::InlineObject2.new] # Array<InlineObject2> | Delete artifact files for the given System Id
+  delete_artifacts_inner: [EmassClient::DeleteArtifactsInner.new] # Array<DeleteArtifactsInner> | Delete artifact files for the given System Id
 }
 
 begin
@@ -170,7 +170,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **inline_object2** | [**Array&lt;InlineObject2&gt;**](InlineObject2.md) | Delete artifact files for the given System Id | [optional] |
+| **delete_artifacts_inner** | [**Array&lt;DeleteArtifactsInner&gt;**](DeleteArtifactsInner.md) | Delete artifact files for the given System Id | [optional] |
 
 ### Return type
 
