@@ -26,22 +26,24 @@ jobs:
         run: |
           echo "::add-path::${env:GITHUB_WORKSPACE}"
           echo "Added GITHUB_WORKSPACE to path"
-      - uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install curl -y
-        if: matrix.platform == 'windows-latest'
-      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
-        if: matrix.platform == 'windows-latest'
-        run: |
-          # echo "need to fix path to libcurl.dll"
-          cd src/ruby_client
-          bundle install
-          bundle info emass_client
-          rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
+      # - uses: crazy-max/ghaction-chocolatey@v1
+      #   with:
+      #     args: install curl -y
+      #   if: matrix.platform == 'windows-latest'
       # - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
-      #   if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
+      #   if: matrix.platform == 'windows-latest'
       #   run: |
-      #     cd .src/ruby_client
+      #     # echo "need to fix path to libcurl.dll"
+      #     cd src/ruby_client
       #     bundle install
       #     bundle info emass_client
       #     rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
+      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
+        if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
+        run: |
+          pwd
+          ls
+          cd .src/ruby_client
+          bundle install
+          bundle info emass_client
+          rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
