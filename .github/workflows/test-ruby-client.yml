@@ -41,6 +41,9 @@ jobs:
       #     rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
         if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
+        env: 
+          CI_LIB_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/lib
+          CI_SPEC_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/spec
         run: |
           echo "PWD IS:"
           pwd
@@ -49,6 +52,6 @@ jobs:
           cd /home/runner/work/emass_client/emass_client/src/ruby_client
           echo "LS IS  NOW"
           ls
-          # bundle install
-          # bundle info emass_client
-          # rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
+          bundle install
+          bundle info emass_client
+          rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
