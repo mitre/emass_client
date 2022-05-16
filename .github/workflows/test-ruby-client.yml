@@ -42,10 +42,12 @@ jobs:
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
         if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
         run: |
+          echo "PWD IS:"
           pwd
+          echo "LS IS"
           ls
-          cd src/ruby_client
-          ls
-          bundle install
-          bundle info emass_client
-          rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
+          # cd src/ruby_client
+          # ls
+          # bundle install
+          # bundle info emass_client
+          # rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
