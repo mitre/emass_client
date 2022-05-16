@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-       platform: [ ubuntu-latest, macos-latest, windows-latest ]
+       platform: [ ubuntu-latest, macos-latest ]
+       # platform: [ ubuntu-latest, macos-latest, windows-latest ]
        # platform: [ windows-latest ]
        ruby-version: ['2.6', '2.7']
     runs-on: ${{ matrix.platform }}
@@ -43,7 +44,8 @@ jobs:
         run: |
           pwd
           ls
-          cd .src/ruby_client
+          cd src/ruby_client
+          ls
           bundle install
           bundle info emass_client
           rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
