@@ -27,5 +27,5 @@ jobs:
         run: |
           echo "Generated ruby API client successfully."
           echo "Copying to repository..."
-          sudo cp -R ./github/workspace/ruby-client src/ruby_client
+          sudo cp -R ./ruby-client src/ruby_client
           echo "All done now."

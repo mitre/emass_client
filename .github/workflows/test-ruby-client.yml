@@ -20,6 +20,11 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - uses: actions/checkout@v2
+      - name: Add GITHUB_WORKSPACE to the path
+        if: matrix.platform == 'windows-latest'
+        run: |
+          echo "::add-path::${env:GITHUB_WORKSPACE}"
+          echo "Added GITHUB_WORKSPACE to path"
       - uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install curl -y
@@ -28,7 +33,6 @@ jobs:
         if: matrix.platform == 'windows-latest'
         run: |
           # echo "need to fix path to libcurl.dll"
-          set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
           cd src/ruby_client
           bundle install
           bundle info emass_client
