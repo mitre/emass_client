@@ -46,8 +46,9 @@ jobs:
           pwd
           echo "LS IS"
           ls
-          # cd src/ruby_client
-          # ls
+          cd /home/runner/work/emass_client/emass_client/src/ruby_client
+          echo "LS IS  NOW"
+          ls
           # bundle install
           # bundle info emass_client
           # rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
