@@ -23,10 +23,16 @@ jobs:
           openapi-file: eMASSRestOpenApi.yaml
 
       # Do something with the generated client (publish to main)
+      # Current loaction is /home/runner/work/emass_client/emass_client
       - name: Publish Ruby Client (src/ruby_client)
         run: |
           echo "Generated ruby API client successfully."
           echo "Copying to repository..."
+          pwd
+          echo "Renaming directory from ruby-client to ruby_client..."
+          mv ruby-client ruby_client
+          echo "Changing directory to ruby-client..."
+          cd ruby_client
           pwd
           ls -la
           # sudo cp -R ./ruby-client src/ruby_client
