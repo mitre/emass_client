@@ -45,13 +45,7 @@ jobs:
           CI_LIB_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/lib
           CI_SPEC_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/spec
         run: |
-          echo "PWD IS:"
-          pwd
-          echo "LS IS"
-          ls
-          cd /home/runner/work/emass_client/emass_client/src/ruby_client
-          echo "LS IS  NOW"
-          ls
+          cd src/ruby_client
           bundle install
           bundle info emass_client
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
@@ -61,13 +55,7 @@ jobs:
           CI_LIB_PATH: /Users/runner/work/emass_client/emass_client/src/ruby_client/lib
           CI_SPEC_PATH: /Users/runner/work/emass_client/emass_client/src/ruby_client/spec
         run: |
-          echo "PWD IS:"
-          pwd
-          echo "LS IS"
-          ls
-          cd /Users/runner/work/emass_client/emass_client/src/ruby_client
-          echo "LS IS  NOW"
-          ls
+          cd src/ruby_client
           bundle install
           bundle info emass_client
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
