@@ -1,4 +1,4 @@
-# EmassClient::InlineObject
+# EmassClient::DeletePoamsInner
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::InlineObject.new(
+instance = EmassClient::DeletePoamsInner.new(
   poam_id: 45
 )
 ```

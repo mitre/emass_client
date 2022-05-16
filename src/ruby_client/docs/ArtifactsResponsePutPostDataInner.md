@@ -1,4 +1,4 @@
-# EmassClient::ArtifactsResponsePutPostData
+# EmassClient::ArtifactsResponsePutPostDataInner
 
 ## Properties
 
@@ -14,7 +14,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::ArtifactsResponsePutPostData.new(
+instance = EmassClient::ArtifactsResponsePutPostDataInner.new(
   filename: AutorizationGuidance.pdf,
   success: true,
   system_id: 35,

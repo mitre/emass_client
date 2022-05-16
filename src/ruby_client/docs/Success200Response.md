@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **meta** | [**Model200**](Model200.md) |  | [optional] |
-| **data** | [**Array&lt;Success200ResponseData&gt;**](Success200ResponseData.md) |  | [optional] |
+| **meta** | [**Response200**](Response200.md) |  | [optional] |
+| **data** | [**Array&lt;Success200ResponseDataInner&gt;**](Success200ResponseDataInner.md) |  | [optional] |
 
 ## Example
 

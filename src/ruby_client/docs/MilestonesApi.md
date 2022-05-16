@@ -98,7 +98,7 @@ end
 
 ## delete_milestone
 
-> <MilestonesPutPostDelete> delete_milestone(system_id, poam_id, inline_object1)
+> <MilestonesPutPostDelete> delete_milestone(system_id, poam_id, delete_poams_inner1)
 
 Remove milestones in a system for one or many POA&M items
 
@@ -130,11 +130,11 @@ end
 api_instance = EmassClient::MilestonesApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 poam_id = 45 # Integer | **POA&M Id**: The unique POA&M record identifier.
-inline_object1 = [EmassClient::InlineObject1.new] # Array<InlineObject1> | Delete the given Milestone Id
+delete_poams_inner1 = [EmassClient::DeletePoamsInner1.new] # Array<DeletePoamsInner1> | Delete the given Milestone Id
 
 begin
   # Remove milestones in a system for one or many POA&M items
-  result = api_instance.delete_milestone(system_id, poam_id, inline_object1)
+  result = api_instance.delete_milestone(system_id, poam_id, delete_poams_inner1)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling MilestonesApi->delete_milestone: #{e}"
@@ -145,12 +145,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MilestonesPutPostDelete>, Integer, Hash)> delete_milestone_with_http_info(system_id, poam_id, inline_object1)
+> <Array(<MilestonesPutPostDelete>, Integer, Hash)> delete_milestone_with_http_info(system_id, poam_id, delete_poams_inner1)
 
 ```ruby
 begin
   # Remove milestones in a system for one or many POA&M items
-  data, status_code, headers = api_instance.delete_milestone_with_http_info(system_id, poam_id, inline_object1)
+  data, status_code, headers = api_instance.delete_milestone_with_http_info(system_id, poam_id, delete_poams_inner1)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MilestonesPutPostDelete>
@@ -165,7 +165,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
 | **poam_id** | **Integer** | **POA&amp;M Id**: The unique POA&amp;M record identifier. |  |
-| **inline_object1** | [**Array&lt;InlineObject1&gt;**](InlineObject1.md) | Delete the given Milestone Id |  |
+| **delete_poams_inner1** | [**Array&lt;DeletePoamsInner1&gt;**](DeletePoamsInner1.md) | Delete the given Milestone Id |  |
 
 ### Return type
 

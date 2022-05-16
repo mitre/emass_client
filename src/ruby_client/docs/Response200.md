@@ -1,4 +1,4 @@
-# EmassClient::Model200
+# EmassClient::Response200
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::Model200.new(
+instance = EmassClient::Response200.new(
   code: null
 )
 ```
