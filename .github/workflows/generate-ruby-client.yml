@@ -33,13 +33,13 @@ jobs:
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
           echo "Renaming generated directory from ruby-client to ruby_client..."
-          pwd
-          ls -la src
+          # pwd
+          # ls -la src
           rm -R src/ruby_client
-          ls -la src
+          # ls -la src
           mv ruby-client src/ruby_client
-          ls -la src
-          ls -la src/ruby_client
+          # ls -la src
+          # ls -la src/ruby_client
 
           # echo "Changing directory to ruby-client..."
           # cd ruby_client
@@ -54,11 +54,11 @@ jobs:
           # git config user.name "$(git log -n 1 --pretty=format:%an)"
           # git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
-          # git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          # git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          # git add src/ruby_client
-          # git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          # git push          
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          git add src/ruby_client
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push          
           
           
           echo "All done now."
