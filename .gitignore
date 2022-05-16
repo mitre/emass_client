@@ -80,7 +80,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+.src/typescript_client/dist
 
 # Gatsby files
 .cache/

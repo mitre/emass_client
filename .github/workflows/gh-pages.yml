@@ -22,7 +22,7 @@ jobs:
           sudo cp _config.yml /publish/_config.yml
           sudo cp -R ./images /publish          
           sudo cp -R ./docs/redoc /publish/docs/redoc
-          sudo cp -R ./docs/renderer /publish/docs/swagger
+          sudo cp -R ./docs/renderer /publish/docs/renderer
           sudo cp ./docs/developers.md /publish/docs/developers.md 
              
       - name: Deploy Markdown Files 🚀
