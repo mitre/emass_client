@@ -34,10 +34,9 @@ jobs:
         run: |
           echo "Renaming generated directory from ruby-client to ruby_client..."
           pwd
-          ls
-          mkdir src
+          ls -la src/ruby_client
           mv ruby-client src/ruby_client
-          ls
+          ls -la src/ruby_client
 
           # echo "Changing directory to ruby-client..."
           # cd ruby_client
