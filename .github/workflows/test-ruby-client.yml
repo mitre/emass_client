@@ -58,7 +58,7 @@ jobs:
           echo "pwd is"
           pwd
           echo "LIB_PATH IS:"
-          ${{pwd}}/src/ruby_client/lib
+          ${pwd}/src/ruby_client/lib
           cd src/ruby_client
           bundle install
           bundle info emass_client
