@@ -55,8 +55,10 @@ jobs:
           CI_LIB_PATH: /Users/runner/work/emass_client/emass_client/src/ruby_client/lib
           CI_SPEC_PATH: /Users/runner/work/emass_client/emass_client/src/ruby_client/spec
         run: |
-          echo "pwd is ${{PWD}}"
-          echo "LIB_PATH IS: ${{PWD}}/src/ruby_client/lib"
+          echo "pwd is"
+          pwd
+          echo "LIB_PATH IS:"
+          pwd/src/ruby_client/lib
           cd src/ruby_client
           bundle install
           bundle info emass_client
