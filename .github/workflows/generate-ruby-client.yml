@@ -28,6 +28,8 @@ jobs:
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (ruby_client)
           CI_COMMIT_AUTHOR: Continuous Integration
+          # Use previous user who made the last commit (from logs)
+          # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
           echo "Renaming generated directory from ruby-client to ruby_client..."
@@ -38,18 +40,17 @@ jobs:
           # ls -la
           # # sudo cp -R ./ruby-client src/ruby_client
           echo "GIT commit and push ruby_client..."
-          echo "User Name: ${{ env.CI_COMMIT_AUTHOR }}"
-          echo "User email: ${{ env.CI_COMMIT_EMAIL }}"
+          $ echo "User Name: ${{ env.CI_COMMIT_AUTHOR }}"
+          # echo "User email: ${{ env.CI_COMMIT_EMAIL }}"
 
           # git config user.name "$(git log -n 1 --pretty=format:%an)"
           # git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
-          # git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          # git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-
-          # git add ruby_client
-          # git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          # git push          
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          git add ruby_client
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push          
           
           
           echo "All done now."
