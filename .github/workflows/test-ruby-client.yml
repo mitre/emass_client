@@ -37,7 +37,9 @@ jobs:
           pwd
           echo "dir is"
           dir
-          # cd src/ruby_client
+          cd src/ruby_client
+          echo "dir is now"
+          dir
           # bundle install
           # bundle info emass_client
           # rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
