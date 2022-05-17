@@ -1,4 +1,4 @@
-name: Generate OpenAPI Ruby Client
+name: Generate OpenAPI Typescript Client
 on:
   push:
     branches: [ main ]
