@@ -42,7 +42,7 @@ jobs:
           # pwd
           bundle install
           bundle info emass_client
-          rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
+          rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
         if: matrix.platform == 'ubuntu-latest'
         env: 
