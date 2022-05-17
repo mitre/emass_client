@@ -11,9 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-       # platform: [ ubuntu-latest, macos-latest ]
+       platform: [ ubuntu-latest, macos-latest ]
        # platform: [ ubuntu-latest, macos-latest, windows-latest ]
-       platform: [ windows-latest ]
        ruby-version: ['2.6', '2.7']
     runs-on: ${{ matrix.platform }}
     steps:
@@ -35,14 +34,7 @@ jobs:
           # Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\curl\tools"
           # set PATH=C:\ProgramData\chocolatey\lib\curl\tools;%PATH%
           echo "C:\ProgramData\chocolatey\lib\curl\tools" >> $GITHUB_PATH
-
-          # echo "pwd is"
-          # pwd
-          # echo "dir is"
-          # dir
           cd src/ruby_client
-          # echo "pwd is now"
-          # pwd
           bundle install
           bundle info emass_client
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress

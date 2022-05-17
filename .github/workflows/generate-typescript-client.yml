@@ -1,0 +1,46 @@
+name: Generate OpenAPI Ruby Client
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]    
+jobs:
+  generate-angular-client:
+    runs-on: ubuntu-latest
+    name: Generate OpenAPI Ruby Client
+    steps:
+
+      # Checkout your code
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Typescript Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: typescript-axios
+          config-file: src/openapi/templates/typescript/typescript-generator-config.json
+          template-dir: src/openapi/templates/typescript
+          openapi-file: eMASSRestOpenApi.yaml
+
+      # Do something with the generated client (publish to main)
+      # Current loaction is /home/runner/work/emass_client/emass_client
+      - name: Publish Typescript Client (src/typescript_client)
+        env: 
+          CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (typescript_client)
+          CI_COMMIT_AUTHOR: Continuous Integration
+          # Use previous user who made the last commit (from logs)
+          # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
+          CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
+        run: |
+          echo "Renaming generated directory from ruby-client to typescript_client..."
+          rm -R src/typescript_client
+          mv ruby-client src/typescript_client
+          echo "GIT commit and push typescript_client..."
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          git add src/typescript_client
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push          
+          echo "All done now."
