@@ -32,7 +32,9 @@ jobs:
           CI_LIB_PATH: D:\a\emass_client\emass_client/src/ruby_client/lib
           CI_SPEC_PATH: D:\a\emass_client\emass_client/src/ruby_client/spec        
         run: |
-          Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\curl\tools"
+          # Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\curl\tools"
+          set PATH=C:\ProgramData\chocolatey\lib\curl\tools;%PATH%
+
           # echo "pwd is"
           # pwd
           # echo "dir is"
