@@ -7,7 +7,7 @@ on:
 jobs:
   generate-angular-client:
     runs-on: ubuntu-latest
-    name: Generate OpenAPI Ruby Client
+    name: Generate OpenAPI Typescript Client
     steps:
 
       # Checkout your code
@@ -36,6 +36,10 @@ jobs:
         run: |
           echo "Renaming generated directory from typescript-client to typescript_client..."
           rm -R src/typescript_client
+          echo "pwd"
+          pwd
+          echo "ls"
+          ls
           mv typescript-client src/typescript_client
           echo "GIT commit and push typescript_client..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
