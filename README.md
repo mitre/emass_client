@@ -1,6 +1,6 @@
 [![Generate OpenAPI Ruby Client](https://github.com/mitre/emass_client/actions/workflows/generate-ruby-client.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate-ruby-client.yml) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client)
 
-  [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
+[![Generate OpenAPI Typescript Client](https://github.com/mitre/emass_client/actions/workflows/generate-typescript-client.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate-typescript-client.yml) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
 
 
 ![Docs Generation](https://github.com/mitre/emasser/actions/workflows/generate_docs.yml/badge.svg) ![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg)

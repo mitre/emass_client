@@ -34,9 +34,9 @@ jobs:
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
-          echo "Renaming generated directory from ruby-client to typescript_client..."
+          echo "Renaming generated directory from typescript-client to typescript_client..."
           rm -R src/typescript_client
-          mv ruby-client src/typescript_client
+          mv typescript-client src/typescript_client
           echo "GIT commit and push typescript_client..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
