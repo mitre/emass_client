@@ -33,8 +33,10 @@ jobs:
           CI_SPEC_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/spec        
         run: |
           # echo "need to fix path to libcurl.dll"
+          echo "pwd is"
           pwd
-          ls
+          echo "dir is"
+          dir
           # cd src/ruby_client
           # bundle install
           # bundle info emass_client
