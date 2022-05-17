@@ -40,7 +40,7 @@ jobs:
           pwd
           echo "ls"
           ls
-          mv typescript-client src/typescript_client
+          mv typescript-axios-client src/typescript_client
           echo "GIT commit and push typescript_client..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
