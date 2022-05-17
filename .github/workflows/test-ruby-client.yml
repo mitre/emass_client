@@ -32,14 +32,14 @@ jobs:
           CI_LIB_PATH: D:\a\emass_client\emass_client/src/ruby_client/lib
           CI_SPEC_PATH: D:\a\emass_client\emass_client/src/ruby_client/spec        
         run: |
-          # echo "need to fix path to libcurl.dll"
-          echo "pwd is"
-          pwd
-          echo "dir is"
-          dir
-          cd src/ruby_client
-          echo "pwd is now"
-          pwd
+          echo "##[add-path]C:\ProgramData\chocolatey\lib\curl\tools"
+          # echo "pwd is"
+          # pwd
+          # echo "dir is"
+          # dir
+          # cd src/ruby_client
+          # echo "pwd is now"
+          # pwd
           bundle install
           bundle info emass_client
           rspec -I src/ruby_client/lib -I src/ruby_client/spec .\src\ruby_client\spec --format progress
@@ -51,7 +51,7 @@ jobs:
         run: |
           cd src/ruby_client
           bundle install
-          bundle info emass_client
+          bundle info emass_client 
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
         if: matrix.platform == 'macos-latest'
