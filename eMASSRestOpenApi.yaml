@@ -1043,17 +1043,7 @@ paths:
         content:
           application/json:
             schema:
-              title: DeletePoams
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  poamId:
-                    type: integer
-                    format: int64
-                    description: "[Required] Unique item identifier"
-                    example: 45         
+              "$ref": "#/components/schemas/PoamRequestDeleteBody"
         required: true             
       responses:
         '200':
@@ -1375,17 +1365,7 @@ paths:
         content:
           application/json:
             schema:
-              title: DeletePoams
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  milestoneId:
-                    type: integer
-                    format: int64
-                    description: "[Required] Unique item identifier"
-                    example: 19            
+              "$ref": "#/components/schemas/MilestonesRequestDeleteBody"
         required: true 
       responses:
         '200':
@@ -1760,17 +1740,8 @@ paths:
         content:
           application/json:
             schema:
-              title: DeleteArtifacts
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  filename:
-                    type: string
-                    description: "[Required] File name should match exactly one file within the provided zip file. 1000 Characters."
-                    x-faker: system.commonFileName
-                    example: "AutorizationGuidance.pdf"
+              "$ref": "#/components/schemas/ArtifactsRequestDeleteBody"
+        required: true 
       responses:
         '200':
           description: Successful operation
@@ -1830,10 +1801,10 @@ paths:
         '200':
           description: "Successful retrieved Artifacts file"
           content:
-            text/plain:
-              schema:
-                type: string
-                example: "The requested file contents"
+            # text/plain:
+            #   schema:
+            #     type: string
+            #     example: "The requested file contents"
             application/octet-stream:
               schema:
                 description: "Artifacts file ready for download"
@@ -3775,6 +3746,45 @@ components:
           description: "[Optional] When used by itself, can clear out all application findings for a single application/version pairing."
           x-faker: random.boolean
           example: false          
+    #----------------------------------------------------------------------------
+    # Request Body examples fields for (DELETE)
+    #----------------------------------------------------------------------------    
+    PoamRequestDeleteBody:
+      title: DeletePoams
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          poamId:
+            type: integer
+            format: int64
+            description: "[Required] Unique item identifier"
+            example: 45
+    MilestonesRequestDeleteBody:
+      title: DeletePoams
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          milestoneId:
+            type: integer
+            format: int64
+            description: "[Required] Unique item identifier"
+            example: 19
+    ArtifactsRequestDeleteBody:
+      title: DeleteArtifacts
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          filename:
+            type: string
+            description: "[Required] File name should match exactly one file within the provided zip file. 1000 Characters."
+            x-faker: system.commonFileName
+            example: "AutorizationGuidance.pdf"
     #----------------------------------------------------------------------------
     # 200 Responses
     #----------------------------------------------------------------------------

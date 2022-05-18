@@ -31,6 +31,7 @@ jobs:
           template-dir: src/openapi/templates/typescript
           openapi-file: eMASSRestOpenApi.yaml
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Typescript Client (src/typescript_client)
         if: steps.verify-changed-files.outputs.files_changed == 'true'
