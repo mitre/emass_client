@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Enterprise Mission Assurance Support Service (eMASS)
- * The Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) enables users to perform assessments and complete actions associated with system records.   <strong>Register External Application (that use the eMASS API)</strong></br> New users will need to [register](https://nisp.emass.apps.mil/Content/Help/jobaids/eMASS_OT_NewUser_Job_Aid.pdf) an API key with the eMASS development team prior to accessing the site for the first time. The eMASS REST API requires a client certificate (SSL/TLS, DoD PKI only). Use the `Registration` endpoint to register the client certificate.</br></br>  Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key. The API key must be provided in the request header for all endpoint calls (api-key). If the service receives an untrusted certificate or API key, a 401 error response code will be returned along with an error message.</br></br>  <strong>Available Request Headers</strong></br> <table>   <tr>     <th align=left>key</th>     <th align=left>Example Value</th>     <th align=left>Description</th>   </tr>   <tr>     <td>`api-key`</td>     <td>api-key-provided-by-emass</td>     <td>This API key must be provided in the request header for all endpoint calls</td>   </tr>   <tr>     <td>`user-uid`</td>     <td>USER.UID.KEY</td>     <td>This User unique identifier key must be provided in the request header for all PUT, POST, and DELETE endpoint calls</td>   </tr>   <tr>     <td></td><td></td>     <td>       Note: For DoD users this is the DoD ID Number (EIDIPI) on their DoD CAC     </td>   </tr> </table>  </br><strong>Approve API Client for Actionable Requests</strong></br> Users are required to log-in to eMASS and grant permissions for a client to update data within eMASS on their behalf. This is only required for actionable requests (PUT, POST, DELETE). The Registration Endpoint and all GET requests can be accessed without completing this process with the correct permissions. Please note that leaving a field parameter blank (for PUT/POST requests) has the potential to clear information in the active eMASS records.  To establish an account with eMASS and/or acquire an api-key/user-uid, contact one of the listed POC: 
+ * The Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) enables users to perform assessments and complete actions associated with system records.   <strong>Register External Application (that use the eMASS API)</strong></br> New users will need to [register](https://nisp.emass.apps.mil/Content/Help/jobaids/eMASS_OT_NewUser_Job_Aid.pdf) an API key with the eMASS development team prior to accessing the site for the first time. The eMASS REST API  requires a client certificate (SSL/TLS, DoD PKI only). Use the `Registration` endpoint to register the client certificate.</br></br>  Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key.  The API key must be provided in the request header for all endpoint calls (api-key). If the service receives an untrusted certificate or API key, a 401 error response code will be returned along with an error message.</br></br>  <strong>Available Request Headers</strong></br> <table>   <tr>     <th align=left>key</th>     <th align=left>Example Value</th>     <th align=left>Description</th>   </tr>   <tr>     <td>`api-key`</td>     <td>api-key-provided-by-emass</td>     <td>This API key must be provided in the request header for all endpoint calls</td>   </tr>   <tr>     <td>`user-uid`</td>     <td>USER.UID.KEY</td>     <td>This User unique identifier key must be provided in the request header for all PUT, POST, and DELETE endpoint calls</td>   </tr>   <tr>     <td></td><td></td>     <td>       Note: For DoD users this is the DoD ID Number (EIDIPI) on their DoD CAC     </td>   </tr> </table>  </br><strong>Approve API Client for Actionable Requests</strong></br> Users are required to log-in to eMASS and grant permissions for a client to update data within eMASS on their behalf. This is only required for actionable requests (PUT, POST, DELETE). The Registration Endpoint and all GET requests can be accessed without completing this process with the correct permissions. Please note that leaving a field parameter blank (for PUT/POST requests) has the potential to clear information in the active eMASS records.  To establish an account with eMASS and/or acquire an api-key/user-uid, contact one of the listed POC: 
  *
  * The version of the OpenAPI document: v3.3
  * Contact: disa.meade.id.mbx.emass-tier-iii-support@mail.mil
@@ -135,6 +135,19 @@ export const ArtifactsGetCategoryEnum = {
 
 export type ArtifactsGetCategoryEnum = typeof ArtifactsGetCategoryEnum[keyof typeof ArtifactsGetCategoryEnum];
 
+/**
+ * 
+ * @export
+ * @interface ArtifactsRequestDeleteBodyInner
+ */
+export interface ArtifactsRequestDeleteBodyInner {
+    /**
+     * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
+     * @type {string}
+     * @memberof ArtifactsRequestDeleteBodyInner
+     */
+    'filename'?: string;
+}
 /**
  * 
  * @export
@@ -1005,45 +1018,6 @@ export interface DefinitionTransitions {
 /**
  * 
  * @export
- * @interface DeleteArtifactsInner
- */
-export interface DeleteArtifactsInner {
-    /**
-     * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
-     * @type {string}
-     * @memberof DeleteArtifactsInner
-     */
-    'filename'?: string;
-}
-/**
- * 
- * @export
- * @interface DeletePoamsInner
- */
-export interface DeletePoamsInner {
-    /**
-     * [Required] Unique item identifier
-     * @type {number}
-     * @memberof DeletePoamsInner
-     */
-    'poamId'?: number;
-}
-/**
- * 
- * @export
- * @interface DeletePoamsInner1
- */
-export interface DeletePoamsInner1 {
-    /**
-     * [Required] Unique item identifier
-     * @type {number}
-     * @memberof DeletePoamsInner1
-     */
-    'milestoneId'?: number;
-}
-/**
- * 
- * @export
  * @interface InstancesTransitions
  */
 export interface InstancesTransitions {
@@ -1255,6 +1229,19 @@ export interface MilestonesPutPostDelete {
      * @memberof MilestonesPutPostDelete
      */
     'errors'?: Array<any> | null;
+}
+/**
+ * 
+ * @export
+ * @interface MilestonesRequestDeleteBodyInner
+ */
+export interface MilestonesRequestDeleteBodyInner {
+    /**
+     * [Required] Unique item identifier
+     * @type {number}
+     * @memberof MilestonesRequestDeleteBodyInner
+     */
+    'milestoneId'?: number;
 }
 /**
  * 
@@ -1763,6 +1750,19 @@ export interface PoamPostPutDel {
      * @memberof PoamPostPutDel
      */
     'errors'?: Array<any> | null;
+}
+/**
+ * 
+ * @export
+ * @interface PoamRequestDeleteBodyInner
+ */
+export interface PoamRequestDeleteBodyInner {
+    /**
+     * [Required] Unique item identifier
+     * @type {number}
+     * @memberof PoamRequestDeleteBodyInner
+     */
+    'poamId'?: number;
 }
 /**
  * 
@@ -3687,13 +3687,15 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
+         * @param {Array<ArtifactsRequestDeleteBodyInner>} artifactsRequestDeleteBodyInner Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifact: async (systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteArtifact: async (systemId: number, artifactsRequestDeleteBodyInner: Array<ArtifactsRequestDeleteBodyInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deleteArtifact', 'systemId', systemId)
+            // verify required parameter 'artifactsRequestDeleteBodyInner' is not null or undefined
+            assertParamExists('deleteArtifact', 'artifactsRequestDeleteBodyInner', artifactsRequestDeleteBodyInner)
             const localVarPath = `/api/systems/{systemId}/artifacts`
                 .replace(`{${"systemId"}}`, encodeURIComponent(String(systemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3723,7 +3725,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deleteArtifactsInner, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(artifactsRequestDeleteBodyInner, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3871,12 +3873,12 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
+         * @param {Array<ArtifactsRequestDeleteBodyInner>} artifactsRequestDeleteBodyInner Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponseDel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifact(systemId, deleteArtifactsInner, options);
+        async deleteArtifact(systemId: number, artifactsRequestDeleteBodyInner: Array<ArtifactsRequestDeleteBodyInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponseDel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifact(systemId, artifactsRequestDeleteBodyInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3934,12 +3936,12 @@ export const ArtifactsApiFactory = function (configuration?: Configuration, base
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
+         * @param {Array<ArtifactsRequestDeleteBodyInner>} artifactsRequestDeleteBodyInner Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: any): AxiosPromise<ArtifactsResponseDel> {
-            return localVarFp.deleteArtifact(systemId, deleteArtifactsInner, options).then((request) => request(axios, basePath));
+        deleteArtifact(systemId: number, artifactsRequestDeleteBodyInner: Array<ArtifactsRequestDeleteBodyInner>, options?: any): AxiosPromise<ArtifactsResponseDel> {
+            return localVarFp.deleteArtifact(systemId, artifactsRequestDeleteBodyInner, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns selected artifacts matching parameters to include the file name containing the artifacts.
@@ -3996,13 +3998,13 @@ export class ArtifactsApi extends BaseAPI {
      * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
      * @summary Remove one or many artifacts in a system
      * @param {number} systemId **System Id**: The unique system record identifier.
-     * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
+     * @param {Array<ArtifactsRequestDeleteBodyInner>} artifactsRequestDeleteBodyInner Delete artifact files for the given System Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: AxiosRequestConfig) {
-        return ArtifactsApiFp(this.configuration).deleteArtifact(systemId, deleteArtifactsInner, options).then((request) => request(this.axios, this.basePath));
+    public deleteArtifact(systemId: number, artifactsRequestDeleteBodyInner: Array<ArtifactsRequestDeleteBodyInner>, options?: AxiosRequestConfig) {
+        return ArtifactsApiFp(this.configuration).deleteArtifact(systemId, artifactsRequestDeleteBodyInner, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4116,7 +4118,7 @@ export const ArtifactsExportApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystemArtifactsExport(systemId: number, filename: string, compress?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async getSystemArtifactsExport(systemId: number, filename: string, compress?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystemArtifactsExport(systemId, filename, compress, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4139,7 +4141,7 @@ export const ArtifactsExportApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemArtifactsExport(systemId: number, filename: string, compress?: boolean, options?: any): AxiosPromise<string> {
+        getSystemArtifactsExport(systemId: number, filename: string, compress?: boolean, options?: any): AxiosPromise<any> {
             return localVarFp.getSystemArtifactsExport(systemId, filename, compress, options).then((request) => request(axios, basePath));
         },
     };
@@ -5009,17 +5011,17 @@ export const MilestonesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
+         * @param {Array<MilestonesRequestDeleteBodyInner>} milestonesRequestDeleteBodyInner Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMilestone: async (systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteMilestone: async (systemId: number, poamId: number, milestonesRequestDeleteBodyInner: Array<MilestonesRequestDeleteBodyInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deleteMilestone', 'systemId', systemId)
             // verify required parameter 'poamId' is not null or undefined
             assertParamExists('deleteMilestone', 'poamId', poamId)
-            // verify required parameter 'deletePoamsInner1' is not null or undefined
-            assertParamExists('deleteMilestone', 'deletePoamsInner1', deletePoamsInner1)
+            // verify required parameter 'milestonesRequestDeleteBodyInner' is not null or undefined
+            assertParamExists('deleteMilestone', 'milestonesRequestDeleteBodyInner', milestonesRequestDeleteBodyInner)
             const localVarPath = `/api/systems/{systemId}/poams/{poamId}/milestones`
                 .replace(`{${"systemId"}}`, encodeURIComponent(String(systemId)))
                 .replace(`{${"poamId"}}`, encodeURIComponent(String(poamId)));
@@ -5050,7 +5052,7 @@ export const MilestonesApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deletePoamsInner1, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(milestonesRequestDeleteBodyInner, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5246,12 +5248,12 @@ export const MilestonesApiFp = function(configuration?: Configuration) {
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
+         * @param {Array<MilestonesRequestDeleteBodyInner>} milestonesRequestDeleteBodyInner Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MilestonesPutPostDelete>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMilestone(systemId, poamId, deletePoamsInner1, options);
+        async deleteMilestone(systemId: number, poamId: number, milestonesRequestDeleteBodyInner: Array<MilestonesRequestDeleteBodyInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MilestonesPutPostDelete>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMilestone(systemId, poamId, milestonesRequestDeleteBodyInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -5321,12 +5323,12 @@ export const MilestonesApiFactory = function (configuration?: Configuration, bas
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
+         * @param {Array<MilestonesRequestDeleteBodyInner>} milestonesRequestDeleteBodyInner Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: any): AxiosPromise<MilestonesPutPostDelete> {
-            return localVarFp.deleteMilestone(systemId, poamId, deletePoamsInner1, options).then((request) => request(axios, basePath));
+        deleteMilestone(systemId: number, poamId: number, milestonesRequestDeleteBodyInner: Array<MilestonesRequestDeleteBodyInner>, options?: any): AxiosPromise<MilestonesPutPostDelete> {
+            return localVarFp.deleteMilestone(systemId, poamId, milestonesRequestDeleteBodyInner, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns system containing milestones for matching parameters.
@@ -5394,13 +5396,13 @@ export class MilestonesApi extends BaseAPI {
      * @summary Remove milestones in a system for one or many POA&M items
      * @param {number} systemId **System Id**: The unique system record identifier.
      * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-     * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
+     * @param {Array<MilestonesRequestDeleteBodyInner>} milestonesRequestDeleteBodyInner Delete the given Milestone Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MilestonesApi
      */
-    public deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: AxiosRequestConfig) {
-        return MilestonesApiFp(this.configuration).deleteMilestone(systemId, poamId, deletePoamsInner1, options).then((request) => request(this.axios, this.basePath));
+    public deleteMilestone(systemId: number, poamId: number, milestonesRequestDeleteBodyInner: Array<MilestonesRequestDeleteBodyInner>, options?: AxiosRequestConfig) {
+        return MilestonesApiFp(this.configuration).deleteMilestone(systemId, poamId, milestonesRequestDeleteBodyInner, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5706,15 +5708,15 @@ export const POAMApiAxiosParamCreator = function (configuration?: Configuration)
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
+         * @param {Array<PoamRequestDeleteBodyInner>} poamRequestDeleteBodyInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePoam: async (systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deletePoam: async (systemId: number, poamRequestDeleteBodyInner: Array<PoamRequestDeleteBodyInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deletePoam', 'systemId', systemId)
-            // verify required parameter 'deletePoamsInner' is not null or undefined
-            assertParamExists('deletePoam', 'deletePoamsInner', deletePoamsInner)
+            // verify required parameter 'poamRequestDeleteBodyInner' is not null or undefined
+            assertParamExists('deletePoam', 'poamRequestDeleteBodyInner', poamRequestDeleteBodyInner)
             const localVarPath = `/api/systems/{systemId}/poams`
                 .replace(`{${"systemId"}}`, encodeURIComponent(String(systemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5744,7 +5746,7 @@ export const POAMApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deletePoamsInner, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(poamRequestDeleteBodyInner, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5941,12 +5943,12 @@ export const POAMApiFp = function(configuration?: Configuration) {
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
+         * @param {Array<PoamRequestDeleteBodyInner>} poamRequestDeleteBodyInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoamResponseDelete>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePoam(systemId, deletePoamsInner, options);
+        async deletePoam(systemId: number, poamRequestDeleteBodyInner: Array<PoamRequestDeleteBodyInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoamResponseDelete>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePoam(systemId, poamRequestDeleteBodyInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -6014,12 +6016,12 @@ export const POAMApiFactory = function (configuration?: Configuration, basePath?
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
+         * @param {Array<PoamRequestDeleteBodyInner>} poamRequestDeleteBodyInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: any): AxiosPromise<PoamResponseDelete> {
-            return localVarFp.deletePoam(systemId, deletePoamsInner, options).then((request) => request(axios, basePath));
+        deletePoam(systemId: number, poamRequestDeleteBodyInner: Array<PoamRequestDeleteBodyInner>, options?: any): AxiosPromise<PoamResponseDelete> {
+            return localVarFp.deletePoam(systemId, poamRequestDeleteBodyInner, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns system(s) containing POA&M items for matching parameters.
@@ -6085,13 +6087,13 @@ export class POAMApi extends BaseAPI {
      * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
      * @summary Remove one or many POA&M items in a system
      * @param {number} systemId **System Id**: The unique system record identifier.
-     * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
+     * @param {Array<PoamRequestDeleteBodyInner>} poamRequestDeleteBodyInner Delete the given POA&amp;M Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof POAMApi
      */
-    public deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: AxiosRequestConfig) {
-        return POAMApiFp(this.configuration).deletePoam(systemId, deletePoamsInner, options).then((request) => request(this.axios, this.basePath));
+    public deletePoam(systemId: number, poamRequestDeleteBodyInner: Array<PoamRequestDeleteBodyInner>, options?: AxiosRequestConfig) {
+        return POAMApiFp(this.configuration).deletePoam(systemId, poamRequestDeleteBodyInner, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

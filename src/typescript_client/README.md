@@ -44,6 +44,13 @@ npm publish
 
 After the publish is done without any error, visit the account used to published in the NPM registry, and verify that the package is there.
 
+### Unpublish NPM
+For detailed information on unpublishing an NPM packages visit the [npm-unpuplish docs](https://docs.npmjs.com/cli/v8/commands/npm-unpublish)
+
+```
+npm unpublish [<@scope>/]<pkg>[@<version>]
+```
+References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for details information and restriction related to unpublishing npm pakages.
 
 ### Consuming
 
@@ -62,7 +69,7 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 ```
 
 ## Getting Started
-Before accessing any of the endpoints provided by the emass_client, we need configure common axios settings.
+Before accessing any of the endpoints provided by the emass_client, we need to configure common axios settings.
 
 ### Axios Configuration
 All calls utilizing the emass_client@1.0.4 need to initialize axios as follows:
@@ -106,7 +113,7 @@ axiosInstances.defaults.headers.common = {
 // Load the TestApi module
 import { TestApi } from 'emass_client/dist/api';
 
-// Create and initialize a TestApi instances Axios Configuration for proper parameters configurations)
+// Create and initialize a TestApi instances (references Axios Configuration for proper parameters configurations)
 const testApi = new TestApi(configuration, configuration.basePath, axiosInstances);
 
 // Invoke the endpoint 
