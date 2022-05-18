@@ -14,6 +14,13 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
+      - name: Verify eMASSRestOpenApi.yaml has changed
+        uses: tj-actions/verify-changed-files@v9
+        id: verify-changed-files
+        with:
+          files: |
+            eMASSRestOpenApi.yaml
+
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
       - name: Generate Typescript Client
@@ -23,10 +30,10 @@ jobs:
           config-file: src/openapi/templates/typescript/typescript-generator-config.json
           template-dir: src/openapi/templates/typescript
           openapi-file: eMASSRestOpenApi.yaml
-
-      # Do something with the generated client (publish to main)
-      # Current loaction is /home/runner/work/emass_client/emass_client
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+      # Publish the newly generated eMASS client to the current repo
       - name: Publish Typescript Client (src/typescript_client)
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (typescript_client)
           CI_COMMIT_AUTHOR: Continuous Integration
@@ -34,12 +41,8 @@ jobs:
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
-          echo "Renaming generated directory from typescript-client to typescript_client..."
+          echo "Renaming generated directory from typescript-axios-client to typescript_client..."
           rm -R src/typescript_client
-          echo "pwd"
-          pwd
-          echo "ls"
-          ls
           mv typescript-axios-client src/typescript_client
           echo "GIT commit and push typescript_client..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"

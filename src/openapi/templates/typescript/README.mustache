@@ -1,4 +1,4 @@
-## emass_client@1.0.4
+## {{npmName}}@{{npmVersion}}
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -44,6 +44,13 @@ npm publish
 
 After the publish is done without any error, visit the account used to published in the NPM registry, and verify that the package is there.
 
+### Unpublish NPM
+For detailed information on unpublishing an NPM packages visit the [npm-unpuplish docs](https://docs.npmjs.com/cli/v8/commands/npm-unpublish)
+
+```
+npm unpublish [<@scope>/]<pkg>[@<version>]
+```
+References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for details information and restriction related to unpublishing npm pakages.
 
 ### Consuming
 
@@ -52,7 +59,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install emass_client@1.0.4 --save
+npm install {{npmName}}@{{npmVersion}} --save
 ```
 
 _unPublished (not recommended):_
@@ -62,17 +69,17 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 ```
 
 ## Getting Started
-Before accessing any of the endpoints provided by the emass_client, we need configure common axios settings.
+Before accessing any of the endpoints provided by the {{npmName}}, we need to configure common axios settings.
 
 ### Axios Configuration
-All calls utilizing the emass_client@1.0.4 need to initialize axios as follows:
+All calls utilizing the {{npmName}}@{{npmVersion}} need to initialize axios as follows:
 
 ```typescript
 // Load the necessary modules
 import * as fs from 'fs';
 import * as https from 'https';
-import { Configuration } from "emass_client/dist/configuration"
-import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'emass_client/node_modules/axios';
+import { Configuration } from "{{npmName}}/dist/configuration"
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from '{{npmName}}/node_modules/axios';
 
 // Initialize the configuration interface. The apikey is initialized via axios default headers.
 const configuration = new Configuration({
@@ -104,9 +111,9 @@ axiosInstances.defaults.headers.common = {
 ### Test Connection endpoint
 ```typescript
 // Load the TestApi module
-import { TestApi } from 'emass_client/dist/api';
+import { TestApi } from '{{npmName}}/dist/api';
 
-// Create and initialize a TestApi instances Axios Configuration for proper parameters configurations)
+// Create and initialize a TestApi instances (references Axios Configuration for proper parameters configurations)
 const testApi = new TestApi(configuration, configuration.basePath, axiosInstances);
 
 // Invoke the endpoint 
@@ -119,7 +126,7 @@ testApi.testConnection().then((response:any) => {
 This example uses the colorize module to color format the output to the command line.
 ```typescript
 // Load the TestApi module
-import { ArtifactsExportApi } from 'emass_client/dist/api';
+import { ArtifactsExportApi } from '{{npmName}}/dist/api';
 import colorize from 'json-colorizer';
 
 // Create and initialize a ArtifactsExportApi instances (references Axios Configuration for proper parameters configurations)

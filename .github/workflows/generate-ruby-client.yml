@@ -24,8 +24,7 @@ jobs:
           template-dir: src/openapi/templates/ruby
           openapi-file: eMASSRestOpenApi.yaml
 
-      # Do something with the generated client (publish to main)
-      # Current loaction is /home/runner/work/emass_client/emass_client
+      # Publish the newly generated eMASS client to the current repo
       - name: Publish Ruby Client (src/ruby_client)
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (ruby_client)
