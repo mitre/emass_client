@@ -1,25 +1,26 @@
 name: Generate OpenAPI Typescript Client
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   pull_request:
     branches: [ main ]    
 jobs:
-  generate-angular-client:
+  generate-typescript-client:
     runs-on: ubuntu-latest
     name: Generate OpenAPI Typescript Client
     steps:
 
       # Checkout your code
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
-
-      - name: Verify eMASSRestOpenApi.yaml has changed
-        uses: tj-actions/verify-changed-files@v9
-        id: verify-changed-files
+        # uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          files: |
-            eMASSRestOpenApi.yaml
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v20
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
@@ -30,11 +31,11 @@ jobs:
           config-file: src/openapi/templates/typescript/typescript-generator-config.json
           template-dir: src/openapi/templates/typescript
           openapi-file: eMASSRestOpenApi.yaml
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Typescript Client (src/typescript_client)
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (typescript_client)
           CI_COMMIT_AUTHOR: Continuous Integration

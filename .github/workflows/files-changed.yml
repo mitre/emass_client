@@ -22,6 +22,7 @@ jobs:
         uses: tj-actions/changed-files@v20
 
       - name: List all changed files
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"

@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]    
 jobs:
-  generate-angular-client:
+  generate-ruby-client:
     runs-on: ubuntu-latest
     name: Generate OpenAPI Ruby Client
     steps:
