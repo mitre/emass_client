@@ -113,29 +113,27 @@ export interface ArtifactsGet {
     'lastReviewedDate'?: number | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ArtifactsGetTypeEnum {
-    Procedure = 'Procedure',
-    Diagram = 'Diagram',
-    Policy = 'Policy',
-    Labor = 'Labor',
-    Document = 'Document',
-    Image = 'Image',
-    Other = 'Other',
-    ScanResult = 'Scan Result',
-    AuditorReport = 'Auditor Report'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ArtifactsGetCategoryEnum {
-    ImplementationGuidance = 'Implementation Guidance',
-    Evidence = 'Evidence'
-}
+export const ArtifactsGetTypeEnum = {
+    Procedure: 'Procedure',
+    Diagram: 'Diagram',
+    Policy: 'Policy',
+    Labor: 'Labor',
+    Document: 'Document',
+    Image: 'Image',
+    Other: 'Other',
+    ScanResult: 'Scan Result',
+    AuditorReport: 'Auditor Report',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ArtifactsGetTypeEnum = typeof ArtifactsGetTypeEnum[keyof typeof ArtifactsGetTypeEnum];
+export const ArtifactsGetCategoryEnum = {
+    ImplementationGuidance: 'Implementation Guidance',
+    Evidence: 'Evidence',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ArtifactsGetCategoryEnum = typeof ArtifactsGetCategoryEnum[keyof typeof ArtifactsGetCategoryEnum];
 
 /**
  * 
@@ -145,39 +143,39 @@ export enum ArtifactsGetCategoryEnum {
 export interface ArtifactsResponseDel {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ArtifactsResponseDel
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
-     * @type {Array<ArtifactsResponseDelData>}
+     * @type {Array<ArtifactsResponseDelDataInner>}
      * @memberof ArtifactsResponseDel
      */
-    'data'?: Array<ArtifactsResponseDelData>;
+    'data'?: Array<ArtifactsResponseDelDataInner>;
 }
 /**
  * 
  * @export
- * @interface ArtifactsResponseDelData
+ * @interface ArtifactsResponseDelDataInner
  */
-export interface ArtifactsResponseDelData {
+export interface ArtifactsResponseDelDataInner {
     /**
      * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
      * @type {string}
-     * @memberof ArtifactsResponseDelData
+     * @memberof ArtifactsResponseDelDataInner
      */
     'filename'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof ArtifactsResponseDelData
+     * @memberof ArtifactsResponseDelDataInner
      */
     'success'?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof ArtifactsResponseDelData
+     * @memberof ArtifactsResponseDelDataInner
      */
     'systemId'?: number;
 }
@@ -189,10 +187,10 @@ export interface ArtifactsResponseDelData {
 export interface ArtifactsResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ArtifactsResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<ArtifactsGet>}
@@ -208,45 +206,45 @@ export interface ArtifactsResponseGet {
 export interface ArtifactsResponsePutPost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ArtifactsResponsePutPost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
-     * @type {Array<ArtifactsResponsePutPostData>}
+     * @type {Array<ArtifactsResponsePutPostDataInner>}
      * @memberof ArtifactsResponsePutPost
      */
-    'data'?: Array<ArtifactsResponsePutPostData>;
+    'data'?: Array<ArtifactsResponsePutPostDataInner>;
 }
 /**
  * 
  * @export
- * @interface ArtifactsResponsePutPostData
+ * @interface ArtifactsResponsePutPostDataInner
  */
-export interface ArtifactsResponsePutPostData {
+export interface ArtifactsResponsePutPostDataInner {
     /**
      * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
      * @type {string}
-     * @memberof ArtifactsResponsePutPostData
+     * @memberof ArtifactsResponsePutPostDataInner
      */
     'filename'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof ArtifactsResponsePutPostData
+     * @memberof ArtifactsResponsePutPostDataInner
      */
     'success'?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof ArtifactsResponsePutPostData
+     * @memberof ArtifactsResponsePutPostDataInner
      */
     'systemId'?: number;
     /**
      * 
      * @type {Array<any>}
-     * @memberof ArtifactsResponsePutPostData
+     * @memberof ArtifactsResponsePutPostDataInner
      */
     'errors'?: Array<any> | null;
 }
@@ -307,10 +305,10 @@ export interface CacGet {
 export interface CacResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof CacResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<CacGet>}
@@ -326,45 +324,45 @@ export interface CacResponseGet {
 export interface CacResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof CacResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
-     * @type {Array<CacResponsePostData>}
+     * @type {Array<CacResponsePostDataInner>}
      * @memberof CacResponsePost
      */
-    'data'?: Array<CacResponsePostData>;
+    'data'?: Array<CacResponsePostDataInner>;
 }
 /**
  * 
  * @export
- * @interface CacResponsePostData
+ * @interface CacResponsePostDataInner
  */
-export interface CacResponsePostData {
+export interface CacResponsePostDataInner {
     /**
      * [Required] System acronym name.
      * @type {string}
-     * @memberof CacResponsePostData
+     * @memberof CacResponsePostDataInner
      */
     'controlAcronym'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof CacResponsePostData
+     * @memberof CacResponsePostDataInner
      */
     'success'?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof CacResponsePostData
+     * @memberof CacResponsePostDataInner
      */
     'systemId'?: number;
     /**
      * 
      * @type {Array<any>}
-     * @memberof CacResponsePostData
+     * @memberof CacResponsePostDataInner
      */
     'errors'?: Array<any> | null;
 }
@@ -407,10 +405,10 @@ export interface CloudResourcesPost {
 export interface CloudResourcesResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof CloudResourcesResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<CloudResourcesPost>}
@@ -504,15 +502,14 @@ export interface CmmcGet {
     'ssps'?: Array<Ssps> | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CmmcGetOperationEnum {
-    Added = 'ADDED',
-    Updated = 'UPDATED',
-    Deleted = 'DELETED'
-}
+export const CmmcGetOperationEnum = {
+    Added: 'ADDED',
+    Updated: 'UPDATED',
+    Deleted: 'DELETED',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type CmmcGetOperationEnum = typeof CmmcGetOperationEnum[keyof typeof CmmcGetOperationEnum];
 
 /**
  * 
@@ -522,10 +519,10 @@ export enum CmmcGetOperationEnum {
 export interface CmmcResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof CmmcResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<CmmcGet>}
@@ -591,10 +588,10 @@ export interface ContainersResourcesPost {
 export interface ContainersResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ContainersResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<ContainersResourcesPost>}
@@ -790,138 +787,126 @@ export interface ControlsGet {
     'testMethod'?: ControlsGetTestMethodEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetModifiedByOverlaysEnum {
-    Privacy = 'Privacy',
-    Requirements = 'Requirements',
-    Concurrency = 'Concurrency'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetImplementationStatusEnum {
-    Planned = 'Planned',
-    Implemented = 'Implemented',
-    Inherited = 'Inherited',
-    NotApplicable = 'Not Applicable',
-    ManuallyInherited = 'Manually Inherited'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetCommonControlProviderEnum {
-    DoD = 'DoD',
-    Component = 'Component',
-    Enclave = 'Enclave'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetControlDesignationEnum {
-    Common = 'Common',
-    SystemSpecific = 'System-Specific',
-    Hybrid = 'Hybrid'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetSlcmFrequencyEnum {
-    Constantly = 'Constantly',
-    Daily = 'Daily',
-    Weekly = 'Weekly',
-    Monthly = 'Monthly',
-    Quarterly = 'Quarterly',
-    SemiAnnually = 'Semi-Annually',
-    Annually = 'Annually',
-    EveryTwoYears = 'Every Two Years',
-    EveryThreeYears = 'Every Three Years',
-    Undetermined = 'Undetermined'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetSlcmMethodEnum {
-    Automated = 'Automated',
-    SemiAutomated = 'Semi-Automated',
-    Manual = 'Manual',
-    Undetermined = 'Undetermined'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetSeverityEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetRelevanceOfThreatEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetLikelihoodEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetImpactEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetResidualRiskLevelEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ControlsGetTestMethodEnum {
-    Test = 'Test',
-    Interview = 'Interview',
-    Examine = 'Examine',
-    TestInterview = 'Test, Interview',
-    TestExamine = 'Test, Examine',
-    InterviewExamine = 'Interview, Examine',
-    TestInterviewExamine = 'Test, Interview, Examine'
-}
+export const ControlsGetModifiedByOverlaysEnum = {
+    Privacy: 'Privacy',
+    Requirements: 'Requirements',
+    Concurrency: 'Concurrency',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetModifiedByOverlaysEnum = typeof ControlsGetModifiedByOverlaysEnum[keyof typeof ControlsGetModifiedByOverlaysEnum];
+export const ControlsGetImplementationStatusEnum = {
+    Planned: 'Planned',
+    Implemented: 'Implemented',
+    Inherited: 'Inherited',
+    NotApplicable: 'Not Applicable',
+    ManuallyInherited: 'Manually Inherited',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetImplementationStatusEnum = typeof ControlsGetImplementationStatusEnum[keyof typeof ControlsGetImplementationStatusEnum];
+export const ControlsGetCommonControlProviderEnum = {
+    DoD: 'DoD',
+    Component: 'Component',
+    Enclave: 'Enclave',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetCommonControlProviderEnum = typeof ControlsGetCommonControlProviderEnum[keyof typeof ControlsGetCommonControlProviderEnum];
+export const ControlsGetControlDesignationEnum = {
+    Common: 'Common',
+    SystemSpecific: 'System-Specific',
+    Hybrid: 'Hybrid',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetControlDesignationEnum = typeof ControlsGetControlDesignationEnum[keyof typeof ControlsGetControlDesignationEnum];
+export const ControlsGetSlcmFrequencyEnum = {
+    Constantly: 'Constantly',
+    Daily: 'Daily',
+    Weekly: 'Weekly',
+    Monthly: 'Monthly',
+    Quarterly: 'Quarterly',
+    SemiAnnually: 'Semi-Annually',
+    Annually: 'Annually',
+    EveryTwoYears: 'Every Two Years',
+    EveryThreeYears: 'Every Three Years',
+    Undetermined: 'Undetermined',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetSlcmFrequencyEnum = typeof ControlsGetSlcmFrequencyEnum[keyof typeof ControlsGetSlcmFrequencyEnum];
+export const ControlsGetSlcmMethodEnum = {
+    Automated: 'Automated',
+    SemiAutomated: 'Semi-Automated',
+    Manual: 'Manual',
+    Undetermined: 'Undetermined',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetSlcmMethodEnum = typeof ControlsGetSlcmMethodEnum[keyof typeof ControlsGetSlcmMethodEnum];
+export const ControlsGetSeverityEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetSeverityEnum = typeof ControlsGetSeverityEnum[keyof typeof ControlsGetSeverityEnum];
+export const ControlsGetRelevanceOfThreatEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetRelevanceOfThreatEnum = typeof ControlsGetRelevanceOfThreatEnum[keyof typeof ControlsGetRelevanceOfThreatEnum];
+export const ControlsGetLikelihoodEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetLikelihoodEnum = typeof ControlsGetLikelihoodEnum[keyof typeof ControlsGetLikelihoodEnum];
+export const ControlsGetImpactEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetImpactEnum = typeof ControlsGetImpactEnum[keyof typeof ControlsGetImpactEnum];
+export const ControlsGetResidualRiskLevelEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetResidualRiskLevelEnum = typeof ControlsGetResidualRiskLevelEnum[keyof typeof ControlsGetResidualRiskLevelEnum];
+export const ControlsGetTestMethodEnum = {
+    Test: 'Test',
+    Interview: 'Interview',
+    Examine: 'Examine',
+    TestInterview: 'Test, Interview',
+    TestExamine: 'Test, Examine',
+    InterviewExamine: 'Interview, Examine',
+    TestInterviewExamine: 'Test, Interview, Examine',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ControlsGetTestMethodEnum = typeof ControlsGetTestMethodEnum[keyof typeof ControlsGetTestMethodEnum];
 
 /**
  * 
@@ -962,10 +947,10 @@ export interface ControlsPut {
 export interface ControlsResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ControlsResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<ControlsGet>}
@@ -981,10 +966,10 @@ export interface ControlsResponseGet {
 export interface ControlsResponsePut {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof ControlsResponsePut
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<ControlsPut>}
@@ -1020,41 +1005,41 @@ export interface DefinitionTransitions {
 /**
  * 
  * @export
- * @interface InlineObject
+ * @interface DeleteArtifactsInner
  */
-export interface InlineObject {
+export interface DeleteArtifactsInner {
+    /**
+     * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
+     * @type {string}
+     * @memberof DeleteArtifactsInner
+     */
+    'filename'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface DeletePoamsInner
+ */
+export interface DeletePoamsInner {
     /**
      * [Required] Unique item identifier
      * @type {number}
-     * @memberof InlineObject
+     * @memberof DeletePoamsInner
      */
     'poamId'?: number;
 }
 /**
  * 
  * @export
- * @interface InlineObject1
+ * @interface DeletePoamsInner1
  */
-export interface InlineObject1 {
+export interface DeletePoamsInner1 {
     /**
      * [Required] Unique item identifier
      * @type {number}
-     * @memberof InlineObject1
+     * @memberof DeletePoamsInner1
      */
     'milestoneId'?: number;
-}
-/**
- * 
- * @export
- * @interface InlineObject2
- */
-export interface InlineObject2 {
-    /**
-     * [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
-     * @type {string}
-     * @memberof InlineObject2
-     */
-    'filename'?: string;
 }
 /**
  * 
@@ -1107,10 +1092,10 @@ export interface InstancesTransitions {
 export interface MilestoneResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof MilestoneResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<MilestonesGet>}
@@ -1126,10 +1111,10 @@ export interface MilestoneResponseGet {
 export interface MilestoneResponseGetMilestone {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof MilestoneResponseGetMilestone
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {MilestonesGet}
@@ -1145,10 +1130,10 @@ export interface MilestoneResponseGetMilestone {
 export interface MilestoneResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof MilestoneResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<MilestonesPutPostDelete>}
@@ -1164,10 +1149,10 @@ export interface MilestoneResponsePost {
 export interface MilestoneResponsePut {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof MilestoneResponsePut
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<MilestonesPutPostDelete>}
@@ -1219,15 +1204,14 @@ export interface MilestonesGet {
     'reviewStatus'?: MilestonesGetReviewStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum MilestonesGetReviewStatusEnum {
-    NotApproved = 'Not Approved',
-    UnderReview = 'Under Review',
-    Approved = 'Approved'
-}
+export const MilestonesGetReviewStatusEnum = {
+    NotApproved: 'Not Approved',
+    UnderReview: 'Under Review',
+    Approved: 'Approved',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type MilestonesGetReviewStatusEnum = typeof MilestonesGetReviewStatusEnum[keyof typeof MilestonesGetReviewStatusEnum];
 
 /**
  * 
@@ -1319,19 +1303,6 @@ export interface MilestonesRequiredPut {
 /**
  * 
  * @export
- * @interface Model200
- */
-export interface Model200 {
-    /**
-     * 
-     * @type {number}
-     * @memberof Model200
-     */
-    'code'?: number;
-}
-/**
- * 
- * @export
  * @interface PacGet
  */
 export interface PacGet {
@@ -1385,15 +1356,14 @@ export interface PacGet {
     'comments'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PacGetWorkflowEnum {
-    AssessAndAuthorize = 'Assess and Authorize',
-    AssessOnly = 'Assess Only',
-    SecurityPlanApproval = 'Security Plan Approval'
-}
+export const PacGetWorkflowEnum = {
+    AssessAndAuthorize: 'Assess and Authorize',
+    AssessOnly: 'Assess Only',
+    SecurityPlanApproval: 'Security Plan Approval',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PacGetWorkflowEnum = typeof PacGetWorkflowEnum[keyof typeof PacGetWorkflowEnum];
 
 /**
  * 
@@ -1427,15 +1397,14 @@ export interface PacPost {
     'errors'?: Array<any> | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PacPostWorkflowEnum {
-    AssessAndAuthorize = 'Assess and Authorize',
-    AssessOnly = 'Assess Only',
-    SecurityPlanApproval = 'Security Plan Approval'
-}
+export const PacPostWorkflowEnum = {
+    AssessAndAuthorize: 'Assess and Authorize',
+    AssessOnly: 'Assess Only',
+    SecurityPlanApproval: 'Security Plan Approval',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PacPostWorkflowEnum = typeof PacPostWorkflowEnum[keyof typeof PacPostWorkflowEnum];
 
 /**
  * 
@@ -1445,10 +1414,10 @@ export enum PacPostWorkflowEnum {
 export interface PacResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PacResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PacGet>}
@@ -1464,10 +1433,10 @@ export interface PacResponseGet {
 export interface PacResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PacResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PacPost>}
@@ -1681,90 +1650,82 @@ export interface PoamGet {
     'isActive'?: boolean | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetStatusEnum {
-    Ongoing = 'Ongoing',
-    RiskAccepted = 'Risk Accepted',
-    Completed = 'Completed',
-    NotApplicable = 'Not Applicable',
-    Archived = 'Archived'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetReviewStatusEnum {
-    NotApproved = 'Not Approved',
-    UnderReview = 'Under Review',
-    Approved = 'Approved'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetSeverityEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetRawSeverityEnum {
-    I = 'I',
-    Ii = 'II',
-    Iii = 'III'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetRelevanceOfThreatEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetLikelihoodEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetImpactEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PoamGetResidualRiskLevelEnum {
-    VeryLow = 'Very Low',
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High',
-    VeryHigh = 'Very High'
-}
+export const PoamGetStatusEnum = {
+    Ongoing: 'Ongoing',
+    RiskAccepted: 'Risk Accepted',
+    Completed: 'Completed',
+    NotApplicable: 'Not Applicable',
+    Archived: 'Archived',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetStatusEnum = typeof PoamGetStatusEnum[keyof typeof PoamGetStatusEnum];
+export const PoamGetReviewStatusEnum = {
+    NotApproved: 'Not Approved',
+    UnderReview: 'Under Review',
+    Approved: 'Approved',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetReviewStatusEnum = typeof PoamGetReviewStatusEnum[keyof typeof PoamGetReviewStatusEnum];
+export const PoamGetSeverityEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetSeverityEnum = typeof PoamGetSeverityEnum[keyof typeof PoamGetSeverityEnum];
+export const PoamGetRawSeverityEnum = {
+    I: 'I',
+    Ii: 'II',
+    Iii: 'III',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetRawSeverityEnum = typeof PoamGetRawSeverityEnum[keyof typeof PoamGetRawSeverityEnum];
+export const PoamGetRelevanceOfThreatEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetRelevanceOfThreatEnum = typeof PoamGetRelevanceOfThreatEnum[keyof typeof PoamGetRelevanceOfThreatEnum];
+export const PoamGetLikelihoodEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetLikelihoodEnum = typeof PoamGetLikelihoodEnum[keyof typeof PoamGetLikelihoodEnum];
+export const PoamGetImpactEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetImpactEnum = typeof PoamGetImpactEnum[keyof typeof PoamGetImpactEnum];
+export const PoamGetResidualRiskLevelEnum = {
+    VeryLow: 'Very Low',
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    VeryHigh: 'Very High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PoamGetResidualRiskLevelEnum = typeof PoamGetResidualRiskLevelEnum[keyof typeof PoamGetResidualRiskLevelEnum];
 
 /**
  * 
@@ -1811,10 +1772,10 @@ export interface PoamPostPutDel {
 export interface PoamResponseDelete {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PoamResponseDelete
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PoamPostPutDel>}
@@ -1830,10 +1791,10 @@ export interface PoamResponseDelete {
 export interface PoamResponseGetPoams {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PoamResponseGetPoams
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {PoamGet}
@@ -1849,10 +1810,10 @@ export interface PoamResponseGetPoams {
 export interface PoamResponseGetSystems {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PoamResponseGetSystems
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PoamGet>}
@@ -1868,10 +1829,10 @@ export interface PoamResponseGetSystems {
 export interface PoamResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PoamResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PoamPostPutDel>}
@@ -1887,10 +1848,10 @@ export interface PoamResponsePost {
 export interface PoamResponsePut {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof PoamResponsePut
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<PoamPostPutDel>}
@@ -1906,10 +1867,10 @@ export interface PoamResponsePut {
 export interface Register {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof Register
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {RegisterData}
@@ -1942,6 +1903,19 @@ export interface RegisterUserRequestPostBody {
      * @memberof RegisterUserRequestPostBody
      */
     'user-uid': string;
+}
+/**
+ * 
+ * @export
+ * @interface Response200
+ */
+export interface Response200 {
+    /**
+     * 
+     * @type {number}
+     * @memberof Response200
+     */
+    'code'?: number;
 }
 /**
  * 
@@ -2362,17 +2336,16 @@ export interface StaticCodeApplication {
     'clearFindings'?: boolean;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StaticCodeApplicationRawSeverityEnum {
-    Low = 'Low',
-    Medium = 'Medium',
-    Moderate = 'Moderate',
-    High = 'High',
-    Critical = 'Critical'
-}
+export const StaticCodeApplicationRawSeverityEnum = {
+    Low: 'Low',
+    Medium: 'Medium',
+    Moderate: 'Moderate',
+    High: 'High',
+    Critical: 'Critical',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type StaticCodeApplicationRawSeverityEnum = typeof StaticCodeApplicationRawSeverityEnum[keyof typeof StaticCodeApplicationRawSeverityEnum];
 
 /**
  * 
@@ -2457,10 +2430,10 @@ export interface StaticCodeRequestPostBodyApplication {
 export interface StaticCodeResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof StaticCodeResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<StaticCodePost>}
@@ -2476,33 +2449,33 @@ export interface StaticCodeResponsePost {
 export interface Success200Response {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof Success200Response
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
-     * @type {Array<Success200ResponseData>}
+     * @type {Array<Success200ResponseDataInner>}
      * @memberof Success200Response
      */
-    'data'?: Array<Success200ResponseData>;
+    'data'?: Array<Success200ResponseDataInner>;
 }
 /**
  * 
  * @export
- * @interface Success200ResponseData
+ * @interface Success200ResponseDataInner
  */
-export interface Success200ResponseData {
+export interface Success200ResponseDataInner {
     /**
      * 
      * @type {boolean}
-     * @memberof Success200ResponseData
+     * @memberof Success200ResponseDataInner
      */
     'success'?: boolean;
     /**
      * 
      * @type {Array<any>}
-     * @memberof Success200ResponseData
+     * @memberof Success200ResponseDataInner
      */
     'errors'?: Array<any> | null;
 }
@@ -2514,10 +2487,10 @@ export interface Success200ResponseData {
 export interface SystemResponse {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof SystemResponse
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Systems}
@@ -2533,10 +2506,10 @@ export interface SystemResponse {
 export interface SystemRolesCategoryResponse {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof SystemRolesCategoryResponse
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<RoleCategory>}
@@ -2552,33 +2525,33 @@ export interface SystemRolesCategoryResponse {
 export interface SystemRolesResponse {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof SystemRolesResponse
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
-     * @type {Array<SystemRolesResponseData>}
+     * @type {Array<SystemRolesResponseDataInner>}
      * @memberof SystemRolesResponse
      */
-    'data'?: Array<SystemRolesResponseData>;
+    'data'?: Array<SystemRolesResponseDataInner>;
 }
 /**
  * 
  * @export
- * @interface SystemRolesResponseData
+ * @interface SystemRolesResponseDataInner
  */
-export interface SystemRolesResponseData {
+export interface SystemRolesResponseDataInner {
     /**
      * 
      * @type {string}
-     * @memberof SystemRolesResponseData
+     * @memberof SystemRolesResponseDataInner
      */
     'roleCategory'?: string;
     /**
      * 
      * @type {string}
-     * @memberof SystemRolesResponseData
+     * @memberof SystemRolesResponseDataInner
      */
     'role'?: string;
 }
@@ -2974,177 +2947,160 @@ export interface Systems {
     'connectivityCcsd'?: Array<ConnectivityCcsd> | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsPolicyEnum {
-    Rmf = 'RMF',
-    Diacap = 'DIACAP'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsRegistrationTypeEnum {
-    AssessAndAuthorize = 'Assess and Authorize',
-    AssessOnly = 'Assess Only',
-    Guest = 'Guest',
-    Regular = 'Regular',
-    Functional = 'Functional',
-    CloudServiceProvider = 'Cloud Service Provider',
-    CommonControlProvider = 'Common Control Provider'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsSystemTypeEnum {
-    IsMajorApplication = 'IS Major Application',
-    IsEnclave = 'IS Enclave',
-    PlatformIt = 'Platform IT',
-    PlatformItSystem = 'Platform IT System',
-    PlatformItInterconnection = 'Platform IT Interconnection',
-    AisApplication = 'AIS Application',
-    OutsourcedItBasedProcessDoDControlled = 'Outsourced IT-Based Process (DoD-controlled)',
-    Enclave = 'Enclave',
-    OutsourcedItBasedProcessServiceProviderShared = 'Outsourced IT-Based Process (service provider shared)'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsAuthorizationStatusEnum {
-    AuthorityToOperateAto = 'Authority to Operate (ATO)',
-    AuthorizationToOperateAto = 'Authorization to Operate (ATO)',
-    AuthorityToOperateWithConditionsAtoWConditions = 'Authority to Operate with Conditions (ATO w/Conditions)',
-    InterimAuthorityToTestIatt = 'Interim Authority to Test (IATT)',
-    InterimAuthorityToOperateIato = 'Interim Authority to Operate (IATO)',
-    DeniedAuthorityToOperateDato = 'Denied Authority to Operate (DATO)',
-    DenialOfAuthorizationToOperateDato = 'Denial of Authorization to Operate (DATO)',
-    NotYetAuthorized = 'Not Yet Authorized',
-    Decommissioned = 'Decommissioned',
-    Unaccredited = 'Unaccredited'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsSecurityPlanApprovalStatusEnum {
-    Approved = 'Approved',
-    NotYetApproved = 'Not Yet Approved',
-    Denied = 'Denied'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsMissionCriticalityEnum {
-    CriticalMc = 'Mission Critical (MC)',
-    EssentialMe = 'Mission Essential (ME)',
-    SupportMs = 'Mission Support (MS)'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsGeographicalAssociationEnum {
-    VaOperatedIs = 'VA Operated IS',
-    NonVaOperatedIs = 'non-VA Operated IS'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsGoverningMissionAreaEnum {
-    BusinessMaBma = 'Business MA (BMA)',
-    DoDPortionOfTheIntelligenceMaDima = 'DoD portion of the Intelligence MA (DIMA)',
-    EnterpriseInformationEnvironmentMaEiema = 'Enterprise Information Environment MA (EIEMA)',
-    WarfightingMaWma = 'Warfighting MA (WMA)'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsPrimaryControlSetEnum {
-    NistSp80053Revision4 = 'NIST SP 800-53 Revision 4',
-    DoDi85002 = 'DoDI 8500.2'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsConfidentialityEnum {
-    High = 'High',
-    Moderate = 'Moderate',
-    Low = 'Low'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsIntegrityEnum {
-    High = 'High',
-    Moderate = 'Moderate',
-    Low = 'Low'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsAvailabilityEnum {
-    High = 'High',
-    Moderate = 'Moderate',
-    Low = 'Low'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsMacEnum {
-    I = 'I',
-    Ii = 'II',
-    Iii = 'III'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsDodConfidentialityEnum {
-    Public = 'Public',
-    Sensitive = 'Sensitive',
-    Classified = 'Classified'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsImpactEnum {
-    Low = 'Low',
-    Moderate = 'Moderate',
-    High = 'High'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsPiaStatusEnum {
-    NotStarted = 'Not Started',
-    InProgress = 'In Progress',
-    Completed = 'Completed'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SystemsCurrentRmfLifecycleStepEnum {
-    _1Categorize = '1 - Categorize',
-    _2Select = '2 - Select',
-    _3Implement = '3 - Implement',
-    _4Assess = '4 - Assess',
-    _5Authorize = '5 - Authorize',
-    _6Monitor = '6 - Monitor'
-}
+export const SystemsPolicyEnum = {
+    Rmf: 'RMF',
+    Diacap: 'DIACAP',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsPolicyEnum = typeof SystemsPolicyEnum[keyof typeof SystemsPolicyEnum];
+export const SystemsRegistrationTypeEnum = {
+    AssessAndAuthorize: 'Assess and Authorize',
+    AssessOnly: 'Assess Only',
+    Guest: 'Guest',
+    Regular: 'Regular',
+    Functional: 'Functional',
+    CloudServiceProvider: 'Cloud Service Provider',
+    CommonControlProvider: 'Common Control Provider',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsRegistrationTypeEnum = typeof SystemsRegistrationTypeEnum[keyof typeof SystemsRegistrationTypeEnum];
+export const SystemsSystemTypeEnum = {
+    IsMajorApplication: 'IS Major Application',
+    IsEnclave: 'IS Enclave',
+    PlatformIt: 'Platform IT',
+    PlatformItSystem: 'Platform IT System',
+    PlatformItInterconnection: 'Platform IT Interconnection',
+    AisApplication: 'AIS Application',
+    OutsourcedItBasedProcessDoDControlled: 'Outsourced IT-Based Process (DoD-controlled)',
+    Enclave: 'Enclave',
+    OutsourcedItBasedProcessServiceProviderShared: 'Outsourced IT-Based Process (service provider shared)',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsSystemTypeEnum = typeof SystemsSystemTypeEnum[keyof typeof SystemsSystemTypeEnum];
+export const SystemsAuthorizationStatusEnum = {
+    AuthorityToOperateAto: 'Authority to Operate (ATO)',
+    AuthorizationToOperateAto: 'Authorization to Operate (ATO)',
+    AuthorityToOperateWithConditionsAtoWConditions: 'Authority to Operate with Conditions (ATO w/Conditions)',
+    InterimAuthorityToTestIatt: 'Interim Authority to Test (IATT)',
+    InterimAuthorityToOperateIato: 'Interim Authority to Operate (IATO)',
+    DeniedAuthorityToOperateDato: 'Denied Authority to Operate (DATO)',
+    DenialOfAuthorizationToOperateDato: 'Denial of Authorization to Operate (DATO)',
+    NotYetAuthorized: 'Not Yet Authorized',
+    Decommissioned: 'Decommissioned',
+    Unaccredited: 'Unaccredited',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsAuthorizationStatusEnum = typeof SystemsAuthorizationStatusEnum[keyof typeof SystemsAuthorizationStatusEnum];
+export const SystemsSecurityPlanApprovalStatusEnum = {
+    Approved: 'Approved',
+    NotYetApproved: 'Not Yet Approved',
+    Denied: 'Denied',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsSecurityPlanApprovalStatusEnum = typeof SystemsSecurityPlanApprovalStatusEnum[keyof typeof SystemsSecurityPlanApprovalStatusEnum];
+export const SystemsMissionCriticalityEnum = {
+    CriticalMc: 'Mission Critical (MC)',
+    EssentialMe: 'Mission Essential (ME)',
+    SupportMs: 'Mission Support (MS)',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsMissionCriticalityEnum = typeof SystemsMissionCriticalityEnum[keyof typeof SystemsMissionCriticalityEnum];
+export const SystemsGeographicalAssociationEnum = {
+    VaOperatedIs: 'VA Operated IS',
+    NonVaOperatedIs: 'non-VA Operated IS',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsGeographicalAssociationEnum = typeof SystemsGeographicalAssociationEnum[keyof typeof SystemsGeographicalAssociationEnum];
+export const SystemsGoverningMissionAreaEnum = {
+    BusinessMaBma: 'Business MA (BMA)',
+    DoDPortionOfTheIntelligenceMaDima: 'DoD portion of the Intelligence MA (DIMA)',
+    EnterpriseInformationEnvironmentMaEiema: 'Enterprise Information Environment MA (EIEMA)',
+    WarfightingMaWma: 'Warfighting MA (WMA)',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsGoverningMissionAreaEnum = typeof SystemsGoverningMissionAreaEnum[keyof typeof SystemsGoverningMissionAreaEnum];
+export const SystemsPrimaryControlSetEnum = {
+    NistSp80053Revision4: 'NIST SP 800-53 Revision 4',
+    DoDi85002: 'DoDI 8500.2',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsPrimaryControlSetEnum = typeof SystemsPrimaryControlSetEnum[keyof typeof SystemsPrimaryControlSetEnum];
+export const SystemsConfidentialityEnum = {
+    High: 'High',
+    Moderate: 'Moderate',
+    Low: 'Low',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsConfidentialityEnum = typeof SystemsConfidentialityEnum[keyof typeof SystemsConfidentialityEnum];
+export const SystemsIntegrityEnum = {
+    High: 'High',
+    Moderate: 'Moderate',
+    Low: 'Low',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsIntegrityEnum = typeof SystemsIntegrityEnum[keyof typeof SystemsIntegrityEnum];
+export const SystemsAvailabilityEnum = {
+    High: 'High',
+    Moderate: 'Moderate',
+    Low: 'Low',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsAvailabilityEnum = typeof SystemsAvailabilityEnum[keyof typeof SystemsAvailabilityEnum];
+export const SystemsMacEnum = {
+    I: 'I',
+    Ii: 'II',
+    Iii: 'III',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsMacEnum = typeof SystemsMacEnum[keyof typeof SystemsMacEnum];
+export const SystemsDodConfidentialityEnum = {
+    Public: 'Public',
+    Sensitive: 'Sensitive',
+    Classified: 'Classified',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsDodConfidentialityEnum = typeof SystemsDodConfidentialityEnum[keyof typeof SystemsDodConfidentialityEnum];
+export const SystemsImpactEnum = {
+    Low: 'Low',
+    Moderate: 'Moderate',
+    High: 'High',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsImpactEnum = typeof SystemsImpactEnum[keyof typeof SystemsImpactEnum];
+export const SystemsPiaStatusEnum = {
+    NotStarted: 'Not Started',
+    InProgress: 'In Progress',
+    Completed: 'Completed',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsPiaStatusEnum = typeof SystemsPiaStatusEnum[keyof typeof SystemsPiaStatusEnum];
+export const SystemsCurrentRmfLifecycleStepEnum = {
+    _1Categorize: '1 - Categorize',
+    _2Select: '2 - Select',
+    _3Implement: '3 - Implement',
+    _4Assess: '4 - Assess',
+    _5Authorize: '5 - Authorize',
+    _6Monitor: '6 - Monitor',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type SystemsCurrentRmfLifecycleStepEnum = typeof SystemsCurrentRmfLifecycleStepEnum[keyof typeof SystemsCurrentRmfLifecycleStepEnum];
 
 /**
  * 
@@ -3154,10 +3110,10 @@ export enum SystemsCurrentRmfLifecycleStepEnum {
 export interface SystemsResponse {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof SystemsResponse
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<Systems>}
@@ -3173,10 +3129,10 @@ export interface SystemsResponse {
 export interface Test {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof Test
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {TestData}
@@ -3259,15 +3215,14 @@ export interface TestResultsGet {
     'complianceStatus'?: TestResultsGetComplianceStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TestResultsGetComplianceStatusEnum {
-    Compliant = 'Compliant',
-    NonCompliant = 'Non-Compliant',
-    NotApplicable = 'Not Applicable'
-}
+export const TestResultsGetComplianceStatusEnum = {
+    Compliant: 'Compliant',
+    NonCompliant: 'Non-Compliant',
+    NotApplicable: 'Not Applicable',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type TestResultsGetComplianceStatusEnum = typeof TestResultsGetComplianceStatusEnum[keyof typeof TestResultsGetComplianceStatusEnum];
 
 /**
  * 
@@ -3308,10 +3263,10 @@ export interface TestResultsPost {
 export interface TestResultsResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof TestResultsResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<TestResultsGet>}
@@ -3327,10 +3282,10 @@ export interface TestResultsResponseGet {
 export interface TestResultsResponsePost {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof TestResultsResponsePost
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<TestResultsPost>}
@@ -3414,10 +3369,10 @@ export interface WorkflowDefinitionGet {
 export interface WorkflowDefinitionResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof WorkflowDefinitionResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<WorkflowDefinitionGet>}
@@ -3506,10 +3461,10 @@ export interface WorkflowInstanceGet {
 export interface WorkflowInstanceResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof WorkflowInstanceResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<WorkflowInstanceGet>}
@@ -3604,10 +3559,10 @@ export interface WorkflowInstancesGet {
 export interface WorkflowInstancesResponseGet {
     /**
      * 
-     * @type {Model200}
+     * @type {Response200}
      * @memberof WorkflowInstancesResponseGet
      */
-    'meta'?: Model200;
+    'meta'?: Response200;
     /**
      * 
      * @type {Array<WorkflowInstancesGet>}
@@ -3732,11 +3687,11 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject2>} [inlineObject2] Delete artifact files for the given System Id
+         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifact: async (systemId: number, inlineObject2?: Array<InlineObject2>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteArtifact: async (systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deleteArtifact', 'systemId', systemId)
             const localVarPath = `/api/systems/{systemId}/artifacts`
@@ -3768,7 +3723,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject2, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteArtifactsInner, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3916,12 +3871,12 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject2>} [inlineObject2] Delete artifact files for the given System Id
+         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifact(systemId: number, inlineObject2?: Array<InlineObject2>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponseDel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifact(systemId, inlineObject2, options);
+        async deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponseDel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifact(systemId, deleteArtifactsInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3979,12 +3934,12 @@ export const ArtifactsApiFactory = function (configuration?: Configuration, base
          * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
          * @summary Remove one or many artifacts in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject2>} [inlineObject2] Delete artifact files for the given System Id
+         * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifact(systemId: number, inlineObject2?: Array<InlineObject2>, options?: any): AxiosPromise<ArtifactsResponseDel> {
-            return localVarFp.deleteArtifact(systemId, inlineObject2, options).then((request) => request(axios, basePath));
+        deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: any): AxiosPromise<ArtifactsResponseDel> {
+            return localVarFp.deleteArtifact(systemId, deleteArtifactsInner, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns selected artifacts matching parameters to include the file name containing the artifacts.
@@ -4041,13 +3996,13 @@ export class ArtifactsApi extends BaseAPI {
      * Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt
      * @summary Remove one or many artifacts in a system
      * @param {number} systemId **System Id**: The unique system record identifier.
-     * @param {Array<InlineObject2>} [inlineObject2] Delete artifact files for the given System Id
+     * @param {Array<DeleteArtifactsInner>} [deleteArtifactsInner] Delete artifact files for the given System Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public deleteArtifact(systemId: number, inlineObject2?: Array<InlineObject2>, options?: AxiosRequestConfig) {
-        return ArtifactsApiFp(this.configuration).deleteArtifact(systemId, inlineObject2, options).then((request) => request(this.axios, this.basePath));
+    public deleteArtifact(systemId: number, deleteArtifactsInner?: Array<DeleteArtifactsInner>, options?: AxiosRequestConfig) {
+        return ArtifactsApiFp(this.configuration).deleteArtifact(systemId, deleteArtifactsInner, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5054,17 +5009,17 @@ export const MilestonesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<InlineObject1>} inlineObject1 Delete the given Milestone Id
+         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMilestone: async (systemId: number, poamId: number, inlineObject1: Array<InlineObject1>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteMilestone: async (systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deleteMilestone', 'systemId', systemId)
             // verify required parameter 'poamId' is not null or undefined
             assertParamExists('deleteMilestone', 'poamId', poamId)
-            // verify required parameter 'inlineObject1' is not null or undefined
-            assertParamExists('deleteMilestone', 'inlineObject1', inlineObject1)
+            // verify required parameter 'deletePoamsInner1' is not null or undefined
+            assertParamExists('deleteMilestone', 'deletePoamsInner1', deletePoamsInner1)
             const localVarPath = `/api/systems/{systemId}/poams/{poamId}/milestones`
                 .replace(`{${"systemId"}}`, encodeURIComponent(String(systemId)))
                 .replace(`{${"poamId"}}`, encodeURIComponent(String(poamId)));
@@ -5095,7 +5050,7 @@ export const MilestonesApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject1, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(deletePoamsInner1, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5291,12 +5246,12 @@ export const MilestonesApiFp = function(configuration?: Configuration) {
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<InlineObject1>} inlineObject1 Delete the given Milestone Id
+         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteMilestone(systemId: number, poamId: number, inlineObject1: Array<InlineObject1>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MilestonesPutPostDelete>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMilestone(systemId, poamId, inlineObject1, options);
+        async deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MilestonesPutPostDelete>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMilestone(systemId, poamId, deletePoamsInner1, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -5366,12 +5321,12 @@ export const MilestonesApiFactory = function (configuration?: Configuration, bas
          * @summary Remove milestones in a system for one or many POA&M items
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-         * @param {Array<InlineObject1>} inlineObject1 Delete the given Milestone Id
+         * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMilestone(systemId: number, poamId: number, inlineObject1: Array<InlineObject1>, options?: any): AxiosPromise<MilestonesPutPostDelete> {
-            return localVarFp.deleteMilestone(systemId, poamId, inlineObject1, options).then((request) => request(axios, basePath));
+        deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: any): AxiosPromise<MilestonesPutPostDelete> {
+            return localVarFp.deleteMilestone(systemId, poamId, deletePoamsInner1, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns system containing milestones for matching parameters.
@@ -5439,13 +5394,13 @@ export class MilestonesApi extends BaseAPI {
      * @summary Remove milestones in a system for one or many POA&M items
      * @param {number} systemId **System Id**: The unique system record identifier.
      * @param {number} poamId **POA&amp;M Id**: The unique POA&amp;M record identifier.
-     * @param {Array<InlineObject1>} inlineObject1 Delete the given Milestone Id
+     * @param {Array<DeletePoamsInner1>} deletePoamsInner1 Delete the given Milestone Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MilestonesApi
      */
-    public deleteMilestone(systemId: number, poamId: number, inlineObject1: Array<InlineObject1>, options?: AxiosRequestConfig) {
-        return MilestonesApiFp(this.configuration).deleteMilestone(systemId, poamId, inlineObject1, options).then((request) => request(this.axios, this.basePath));
+    public deleteMilestone(systemId: number, poamId: number, deletePoamsInner1: Array<DeletePoamsInner1>, options?: AxiosRequestConfig) {
+        return MilestonesApiFp(this.configuration).deleteMilestone(systemId, poamId, deletePoamsInner1, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5751,15 +5706,15 @@ export const POAMApiAxiosParamCreator = function (configuration?: Configuration)
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject>} inlineObject Delete the given POA&amp;M Id
+         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePoam: async (systemId: number, inlineObject: Array<InlineObject>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deletePoam: async (systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('deletePoam', 'systemId', systemId)
-            // verify required parameter 'inlineObject' is not null or undefined
-            assertParamExists('deletePoam', 'inlineObject', inlineObject)
+            // verify required parameter 'deletePoamsInner' is not null or undefined
+            assertParamExists('deletePoam', 'deletePoamsInner', deletePoamsInner)
             const localVarPath = `/api/systems/{systemId}/poams`
                 .replace(`{${"systemId"}}`, encodeURIComponent(String(systemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5789,7 +5744,7 @@ export const POAMApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(deletePoamsInner, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5986,12 +5941,12 @@ export const POAMApiFp = function(configuration?: Configuration) {
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject>} inlineObject Delete the given POA&amp;M Id
+         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deletePoam(systemId: number, inlineObject: Array<InlineObject>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoamResponseDelete>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePoam(systemId, inlineObject, options);
+        async deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoamResponseDelete>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePoam(systemId, deletePoamsInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -6059,12 +6014,12 @@ export const POAMApiFactory = function (configuration?: Configuration, basePath?
          * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
          * @summary Remove one or many POA&M items in a system
          * @param {number} systemId **System Id**: The unique system record identifier.
-         * @param {Array<InlineObject>} inlineObject Delete the given POA&amp;M Id
+         * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePoam(systemId: number, inlineObject: Array<InlineObject>, options?: any): AxiosPromise<PoamResponseDelete> {
-            return localVarFp.deletePoam(systemId, inlineObject, options).then((request) => request(axios, basePath));
+        deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: any): AxiosPromise<PoamResponseDelete> {
+            return localVarFp.deletePoam(systemId, deletePoamsInner, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns system(s) containing POA&M items for matching parameters.
@@ -6130,13 +6085,13 @@ export class POAMApi extends BaseAPI {
      * Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>
      * @summary Remove one or many POA&M items in a system
      * @param {number} systemId **System Id**: The unique system record identifier.
-     * @param {Array<InlineObject>} inlineObject Delete the given POA&amp;M Id
+     * @param {Array<DeletePoamsInner>} deletePoamsInner Delete the given POA&amp;M Id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof POAMApi
      */
-    public deletePoam(systemId: number, inlineObject: Array<InlineObject>, options?: AxiosRequestConfig) {
-        return POAMApiFp(this.configuration).deletePoam(systemId, inlineObject, options).then((request) => request(this.axios, this.basePath));
+    public deletePoam(systemId: number, deletePoamsInner: Array<DeletePoamsInner>, options?: AxiosRequestConfig) {
+        return POAMApiFp(this.configuration).deletePoam(systemId, deletePoamsInner, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
