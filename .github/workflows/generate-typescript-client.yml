@@ -51,5 +51,5 @@ jobs:
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
           git add src/typescript_client
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push          
+          git push -f origin master         
           echo "All done now."

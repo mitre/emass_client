@@ -88,7 +88,8 @@ tags:
       The Systems endpoints provide the ability to view system information.
 
       **Notes**
-        - If a system is dual-policy enabled, the returned system details default to the RMF policy information unless otherwise specified for an individual system.
+        - If a system is dual-policy enabled, the returned system details default
+         to the RMF policy information unless otherwise specified for an individual system.
         - Certain fields are instance specific and may not be returned in GET request.
   - name: System Roles
     description: |
@@ -96,7 +97,8 @@ tags:
 
       **Notes:**
       - The endpoint can access three different role categories: PAC, CAC, and Other.
-      - If a system is dual-policy enabled, the returned system role information will default to the RMF policy information unless otherwise specified.
+      - If a system is dual-policy enabled, the returned system role information will default
+       to the RMF policy information unless otherwise specified.
   - name: Controls
     description: "The Controls endpoints provide the ability to view, add, and update
       Security Control information to a system for both the Implementation Plan and
