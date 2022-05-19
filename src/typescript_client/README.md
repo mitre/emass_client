@@ -50,7 +50,7 @@ For detailed information on unpublishing an NPM packages visit the [npm-unpuplis
 ```
 npm unpublish [<@scope>/]<pkg>[@<version>]
 ```
-References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for details information and restriction related to unpublishing npm pakages.
+References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for detail information and restrictions related to unpublishing npm pakages.
 
 ### Consuming
 
