@@ -162,7 +162,7 @@ tags:
   - name: Containers
     description: >
       The Containers endpoint provides the ability to add, update, and remove
-      containers and their scan results in the assets module for a system. WHAT
+      containers and their scan results in the assets module for a system.
 
 #-------------------------------------------------------------------------------
 # P A T H S - The available paths and operations for the API endpoints
