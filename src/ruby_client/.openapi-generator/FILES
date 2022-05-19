@@ -9,6 +9,7 @@ Rakefile
 docs/ArtifactsApi.md
 docs/ArtifactsExportApi.md
 docs/ArtifactsGet.md
+docs/ArtifactsRequestDeleteBodyInner.md
 docs/ArtifactsResponseDel.md
 docs/ArtifactsResponseDelDataInner.md
 docs/ArtifactsResponseGet.md
@@ -35,9 +36,6 @@ docs/ControlsPut.md
 docs/ControlsResponseGet.md
 docs/ControlsResponsePut.md
 docs/DefinitionTransitions.md
-docs/DeleteArtifactsInner.md
-docs/DeletePoamsInner.md
-docs/DeletePoamsInner1.md
 docs/InstancesTransitions.md
 docs/MilestoneResponseGet.md
 docs/MilestoneResponseGetMilestone.md
@@ -46,6 +44,7 @@ docs/MilestoneResponsePut.md
 docs/MilestonesApi.md
 docs/MilestonesGet.md
 docs/MilestonesPutPostDelete.md
+docs/MilestonesRequestDeleteBodyInner.md
 docs/MilestonesRequiredPost.md
 docs/MilestonesRequiredPut.md
 docs/PACApi.md
@@ -56,6 +55,7 @@ docs/PacResponseGet.md
 docs/PacResponsePost.md
 docs/PoamGet.md
 docs/PoamPostPutDel.md
+docs/PoamRequestDeleteBodyInner.md
 docs/PoamResponseDelete.md
 docs/PoamResponseGetPoams.md
 docs/PoamResponseGetSystems.md
@@ -146,6 +146,7 @@ lib/emass_client/api_client.rb
 lib/emass_client/api_error.rb
 lib/emass_client/configuration.rb
 lib/emass_client/models/artifacts_get.rb
+lib/emass_client/models/artifacts_request_delete_body_inner.rb
 lib/emass_client/models/artifacts_response_del.rb
 lib/emass_client/models/artifacts_response_del_data_inner.rb
 lib/emass_client/models/artifacts_response_get.rb
@@ -167,9 +168,6 @@ lib/emass_client/models/controls_put.rb
 lib/emass_client/models/controls_response_get.rb
 lib/emass_client/models/controls_response_put.rb
 lib/emass_client/models/definition_transitions.rb
-lib/emass_client/models/delete_artifacts_inner.rb
-lib/emass_client/models/delete_poams_inner.rb
-lib/emass_client/models/delete_poams_inner1.rb
 lib/emass_client/models/instances_transitions.rb
 lib/emass_client/models/milestone_response_get.rb
 lib/emass_client/models/milestone_response_get_milestone.rb
@@ -177,6 +175,7 @@ lib/emass_client/models/milestone_response_post.rb
 lib/emass_client/models/milestone_response_put.rb
 lib/emass_client/models/milestones_get.rb
 lib/emass_client/models/milestones_put_post_delete.rb
+lib/emass_client/models/milestones_request_delete_body_inner.rb
 lib/emass_client/models/milestones_required_post.rb
 lib/emass_client/models/milestones_required_put.rb
 lib/emass_client/models/pac_get.rb
@@ -185,6 +184,7 @@ lib/emass_client/models/pac_response_get.rb
 lib/emass_client/models/pac_response_post.rb
 lib/emass_client/models/poam_get.rb
 lib/emass_client/models/poam_post_put_del.rb
+lib/emass_client/models/poam_request_delete_body_inner.rb
 lib/emass_client/models/poam_response_delete.rb
 lib/emass_client/models/poam_response_get_poams.rb
 lib/emass_client/models/poam_response_get_systems.rb
@@ -264,6 +264,7 @@ spec/api/workflow_instances_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
 spec/models/artifacts_get_spec.rb
+spec/models/artifacts_request_delete_body_inner_spec.rb
 spec/models/artifacts_response_del_data_inner_spec.rb
 spec/models/artifacts_response_del_spec.rb
 spec/models/artifacts_response_get_spec.rb
@@ -285,9 +286,6 @@ spec/models/controls_put_spec.rb
 spec/models/controls_response_get_spec.rb
 spec/models/controls_response_put_spec.rb
 spec/models/definition_transitions_spec.rb
-spec/models/delete_artifacts_inner_spec.rb
-spec/models/delete_poams_inner1_spec.rb
-spec/models/delete_poams_inner_spec.rb
 spec/models/instances_transitions_spec.rb
 spec/models/milestone_response_get_milestone_spec.rb
 spec/models/milestone_response_get_spec.rb
@@ -295,6 +293,7 @@ spec/models/milestone_response_post_spec.rb
 spec/models/milestone_response_put_spec.rb
 spec/models/milestones_get_spec.rb
 spec/models/milestones_put_post_delete_spec.rb
+spec/models/milestones_request_delete_body_inner_spec.rb
 spec/models/milestones_required_post_spec.rb
 spec/models/milestones_required_put_spec.rb
 spec/models/pac_get_spec.rb
@@ -303,6 +302,7 @@ spec/models/pac_response_get_spec.rb
 spec/models/pac_response_post_spec.rb
 spec/models/poam_get_spec.rb
 spec/models/poam_post_put_del_spec.rb
+spec/models/poam_request_delete_body_inner_spec.rb
 spec/models/poam_response_delete_spec.rb
 spec/models/poam_response_get_poams_spec.rb
 spec/models/poam_response_get_systems_spec.rb

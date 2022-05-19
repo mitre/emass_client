@@ -1,4 +1,4 @@
-# EmassClient::DeleteArtifactsInner
+# EmassClient::ArtifactsRequestDeleteBodyInner
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::DeleteArtifactsInner.new(
+instance = EmassClient::ArtifactsRequestDeleteBodyInner.new(
   filename: AutorizationGuidance.pdf
 )
 ```

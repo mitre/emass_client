@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:4010*
 
 ## get_system_artifacts_export
 
-> String get_system_artifacts_export(system_id, filename, opts)
+> File get_system_artifacts_export(system_id, filename, opts)
 
 Get the file of an artifact in a system
 
@@ -58,7 +58,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(String, Integer, Hash)> get_system_artifacts_export_with_http_info(system_id, filename, opts)
+> <Array(File, Integer, Hash)> get_system_artifacts_export_with_http_info(system_id, filename, opts)
 
 ```ruby
 begin
@@ -66,7 +66,7 @@ begin
   data, status_code, headers = api_instance.get_system_artifacts_export_with_http_info(system_id, filename, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => String
+  p data # => File
 rescue EmassClient::ApiError => e
   puts "Error when calling ArtifactsExportApi->get_system_artifacts_export_with_http_info: #{e}"
 end
@@ -82,7 +82,7 @@ end
 
 ### Return type
 
-**String**
+**File**
 
 ### Authorization
 
@@ -91,5 +91,5 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/octet-stream, application/json
+- **Accept**: application/octet-stream, application/json
 

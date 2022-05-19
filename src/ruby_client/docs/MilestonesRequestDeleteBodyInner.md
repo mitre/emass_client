@@ -1,4 +1,4 @@
-# EmassClient::DeletePoamsInner1
+# EmassClient::MilestonesRequestDeleteBodyInner
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'emass_client'
 
-instance = EmassClient::DeletePoamsInner1.new(
+instance = EmassClient::MilestonesRequestDeleteBodyInner.new(
   milestone_id: 19
 )
 ```

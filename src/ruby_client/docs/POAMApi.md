@@ -96,7 +96,7 @@ end
 
 ## delete_poam
 
-> <PoamResponseDelete> delete_poam(system_id, delete_poams_inner)
+> <PoamResponseDelete> delete_poam(system_id, poam_request_delete_body_inner)
 
 Remove one or many POA&M items in a system
 
@@ -127,11 +127,11 @@ end
 
 api_instance = EmassClient::POAMApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-delete_poams_inner = [EmassClient::DeletePoamsInner.new] # Array<DeletePoamsInner> | Delete the given POA&M Id
+poam_request_delete_body_inner = [EmassClient::PoamRequestDeleteBodyInner.new] # Array<PoamRequestDeleteBodyInner> | Delete the given POA&M Id
 
 begin
   # Remove one or many POA&M items in a system
-  result = api_instance.delete_poam(system_id, delete_poams_inner)
+  result = api_instance.delete_poam(system_id, poam_request_delete_body_inner)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->delete_poam: #{e}"
@@ -142,12 +142,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PoamResponseDelete>, Integer, Hash)> delete_poam_with_http_info(system_id, delete_poams_inner)
+> <Array(<PoamResponseDelete>, Integer, Hash)> delete_poam_with_http_info(system_id, poam_request_delete_body_inner)
 
 ```ruby
 begin
   # Remove one or many POA&M items in a system
-  data, status_code, headers = api_instance.delete_poam_with_http_info(system_id, delete_poams_inner)
+  data, status_code, headers = api_instance.delete_poam_with_http_info(system_id, poam_request_delete_body_inner)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PoamResponseDelete>
@@ -161,7 +161,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **delete_poams_inner** | [**Array&lt;DeletePoamsInner&gt;**](DeletePoamsInner.md) | Delete the given POA&amp;M Id |  |
+| **poam_request_delete_body_inner** | [**Array&lt;PoamRequestDeleteBodyInner&gt;**](PoamRequestDeleteBodyInner.md) | Delete the given POA&amp;M Id |  |
 
 ### Return type
 

@@ -103,7 +103,7 @@ end
 
 ## delete_artifact
 
-> <ArtifactsResponseDel> delete_artifact(system_id, opts)
+> <ArtifactsResponseDel> delete_artifact(system_id, artifacts_request_delete_body_inner)
 
 Remove one or many artifacts in a system
 
@@ -134,13 +134,11 @@ end
 
 api_instance = EmassClient::ArtifactsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-opts = {
-  delete_artifacts_inner: [EmassClient::DeleteArtifactsInner.new] # Array<DeleteArtifactsInner> | Delete artifact files for the given System Id
-}
+artifacts_request_delete_body_inner = [EmassClient::ArtifactsRequestDeleteBodyInner.new] # Array<ArtifactsRequestDeleteBodyInner> | Delete artifact files for the given System Id
 
 begin
   # Remove one or many artifacts in a system
-  result = api_instance.delete_artifact(system_id, opts)
+  result = api_instance.delete_artifact(system_id, artifacts_request_delete_body_inner)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling ArtifactsApi->delete_artifact: #{e}"
@@ -151,12 +149,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ArtifactsResponseDel>, Integer, Hash)> delete_artifact_with_http_info(system_id, opts)
+> <Array(<ArtifactsResponseDel>, Integer, Hash)> delete_artifact_with_http_info(system_id, artifacts_request_delete_body_inner)
 
 ```ruby
 begin
   # Remove one or many artifacts in a system
-  data, status_code, headers = api_instance.delete_artifact_with_http_info(system_id, opts)
+  data, status_code, headers = api_instance.delete_artifact_with_http_info(system_id, artifacts_request_delete_body_inner)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ArtifactsResponseDel>
@@ -170,7 +168,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **delete_artifacts_inner** | [**Array&lt;DeleteArtifactsInner&gt;**](DeleteArtifactsInner.md) | Delete artifact files for the given System Id | [optional] |
+| **artifacts_request_delete_body_inner** | [**Array&lt;ArtifactsRequestDeleteBodyInner&gt;**](ArtifactsRequestDeleteBodyInner.md) | Delete artifact files for the given System Id |  |
 
 ### Return type
 
