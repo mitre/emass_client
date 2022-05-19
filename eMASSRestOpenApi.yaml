@@ -49,10 +49,9 @@ info:
       </br><strong>Approve API Client for Actionable Requests</strong></br>
       Users are required to log-in to eMASS and grant permissions for a client to update data
       within eMASS on their behalf. This is only required for actionable requests (PUT, POST,
-      DELETE). The Registration Endpoint and all GET requests can be accessed without
-      completing this process with the correct permissions. Please note that leaving a field
-      parameter blank (for PUT/POST requests) has the potential to clear information in the
-      active eMASS records.
+      DELETE). The Registration Endpoint and all GET requests can be accessed without completing
+      this process with the correct permissions. Please note that leaving a field parameter blank
+      (for PUT/POST requests) has the potential to clear information in the active eMASS records.
 
       To establish an account with eMASS and/or acquire an api-key/user-uid, contact one of the listed POC:
   contact:

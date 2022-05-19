@@ -1,7 +1,7 @@
 name: Generate OpenAPI Ruby Client
 on:
-  # push:
-  #   branches: [ main ]
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]    
 jobs:
@@ -12,7 +12,15 @@ jobs:
 
       # Checkout your code
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        #uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v20        
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
@@ -23,9 +31,11 @@ jobs:
           config-file: src/openapi/templates/ruby/ruby-generator-config.json
           template-dir: src/openapi/templates/ruby
           openapi-file: eMASSRestOpenApi.yaml
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Ruby Client (src/ruby_client)
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (ruby_client)
           CI_COMMIT_AUTHOR: Continuous Integration
