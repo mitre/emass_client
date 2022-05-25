@@ -1,17 +1,18 @@
 # Developers Instructions
 
-The documentation provided here is an OpenAPI (v3.0.3) Specification compliant describing, producing, consuming, and visualizing the eMASS RESTful API web services (endpoints) as described by the eMASS REST API (v3.3) document, dated March 26, 2022.
+The documentation provided in this repository describes the eMASS REST API (v3.3) structure. It is an OpenAPI (v3.0.3) specification compliant describing and visualizing the eMASS RESTful API web services (endpoints).
 
 The API is documented in YAML and can be viewed utilizing Swagger Editor or Visual Studio Code (VSC) with swagger and yaml extensions.
 
+## Visualizing 
 ### Viewing the API via Swagger
 
 There are online tool options for viewing and editing OpenAPI compliant RESTfull APIs like the eMASS API documentations. Some of these tools are Swagger Editor or SwaggerHub. <strong>We discourage the utilization of any online capability for editing a controlled unclassified API document</strong>.
 
-To install the Swagger Editor offline from its repository follow these [instructions](https://github.com/swagger-api/swagger-editor).
+***Note***: We recommend utilizing the instruction provided here to for viewing or editing the eMASS API.
 
-### Generate the API documentation (to view in a web browser-html)
-eMASS API documentation can be found [here](https://mitre.github.io/emass_client/docs/redoc/)
+### Generate the API documentation (html)
+The generated eMASS API documentation can be found [here](https://mitre.github.io/emass_client/docs/redoc/)
 
 To generate the API documentation, viewable on a dependency-free (and nice looking) HTML use the `redoc-cli` command line tool.
 
@@ -27,6 +28,7 @@ redoc-cli bundle -o ./output/eMASS.html eMASSRestOpenApi.yaml
 
 The command above places the generated HTML file (eMASS.html) in a subfolder called output. The command assumes that the eMASSRestApi.yaml is in the current working directory. The generated file can be viewed in any web browser.
 
+## Development Environment
 ### Setting up Visual Studio Code
 Install these Extensions (Ctrl+Shift+X):
 * YAML ([link](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml))
@@ -64,11 +66,66 @@ curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: applicat
 ```
 Note: The API expects the api-key and user-uid headers.
 
-### Build the Client SDK
+## Build eMASS Client SDK
 The API clients are generated utilizing the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI.
 
-**Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing the GitHub action implemented within this repository. The are generated when a push to main occurs and the API specification files has been modified.
+**Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing the GitHub action implemented within this repository. They are generated when a push to main occurs and the API specification files has been modified.
 
+### Generate an eMASS Client
+Follow these steps to generate an eMASS client for any supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
+- Step 1
+  
+  Install the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator#1---installation) 
+
+  You can [download the executable jar](https://github.com/OpenAPITools/openapi-generator#13---download-jar) file and set up a launcher script that will on invocation of the ```openapi-generator-cli```, query the GitHub repository for the most recently released version
+
+- Step 2
+  
+  Determine if the client desired language is supported by the OpenAPI CLI, invoke the following command to list all current supported client languages:
+
+  ```script
+  java -jar openapi-generator-cli list
+  ```
+- Step 3
+  
+  To generate the client use the following command:
+  ```script
+  java -jar openapi-generator-cli generate -i eMASSRestOpenApi.yaml -g [language] -t templates\directory -c templates\config.json -o output\directory
+  ```
+  Where:
+
+    -i -> \<spec file\>, --input-spec \<spec file\> location of the OpenAPI spec, as URL or file (required if not loaded via config using -c)
+
+    -g ->  \<generator name\>, --generator-name \<generator name\> generator to use (see list command for list)
+
+    -t -> \<template directory\>, --template-dir \<template directory\> folder containing the template files
+
+    -c \<configuration file\>, --config \<configuration file\> Path to configuration file. It can be JSON or YAML.
+    
+    If file is JSON, the content should have the format
+
+      {"optionKey":"optionValue", "optionKey1":"optionValue1"...}
+     
+    If file is YAML, the content should have the format
+    
+      optionKey: optionValue. 
+    
+    Supported options can be different for each language. 
+    Run config-help -g {generator name} command for language-specific config options.
+
+    -o \<output directory\>, --output \<output directory\> where to write the generated files (current dir by default)
+
+  For a complete list of available parameters use:
+  ```script
+  java -jar openapi-generator-cli help generate
+  ```
+
+- Step 4
+  
+  To automate the generation process use this CI action:
+  ```
+  openapi-generators/openapitools-generator-action@v1
+  ```
 ---
 
 NOTICE
