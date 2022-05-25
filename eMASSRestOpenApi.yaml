@@ -176,7 +176,7 @@ paths:
       tags:
         - Test
       summary: "Test connection to the API"
-      description: "Returns endpoint call status"
+      description: "Tests the endpoint connection"
       operationId: testConnection
       responses:
         '200':

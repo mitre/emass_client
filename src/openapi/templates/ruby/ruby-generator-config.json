@@ -1,6 +1,6 @@
 {
   "gemName": "emass_client",
-  "gemVersion": "1.0.5",
+  "gemVersion": "1.0.6",
   "gemLicense": "Apache-2.0",
   "enumUnknownDefaultCase": true
 }
