@@ -5,15 +5,15 @@ on:
   pull_request:
     branches: [ main ]    
 jobs:
-  generate-ruby-client:
+  generate-eMASS-clients:
     runs-on: ubuntu-latest
     name: Generate OpenAPI Clients
     steps:
 
       # Checkout your code
       - name: Checkout 🛎️
-        #uses: actions/checkout@v3
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        #uses: actions/checkout@v2
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
@@ -44,6 +44,9 @@ jobs:
 
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Generated Clients 🚀
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
           CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (eMASS Clients)
