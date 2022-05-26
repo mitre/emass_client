@@ -57,8 +57,10 @@ jobs:
           echo "GET REPO BRANCH"
           git branch
           echo "THE GITHUB_WORKSPACE IS: $GITHUB_WORKSPACE"
-
-
+          echo "WHAT BRANCH NAME"
+          echo ${BRANCH_NAME}
+          echo "GITHUB_SHA IS: $GITHUB_SHA"
+          
           # echo "Renaming generated directory from ruby-client to ruby_client..."
           # rm -R src/ruby_client
           # mv ruby-client src/ruby_client
