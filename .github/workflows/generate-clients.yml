@@ -3,7 +3,8 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]    
+    types: [synchronize]
+    #branches: [ main ]    
 jobs:
   generate-eMASS-clients:
     runs-on: ubuntu-latest
@@ -16,7 +17,6 @@ jobs:
         #uses: actions/checkout@v2
         with:
           fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
-          ref: update_dev_documentation
 
       # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
       - name: Get changed files 🔧
