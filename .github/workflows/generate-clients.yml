@@ -2,9 +2,9 @@ name: Generate OpenAPI Clients
 on:
   push:
     branches: [ main ]
-  pull_request:
-    types: [synchronize]
-    #branches: [ main ]    
+  # pull_request:
+  #   types: [synchronize]
+  #   #branches: [ main ]    
 jobs:
   generate-eMASS-clients:
     runs-on: ubuntu-latest
@@ -53,14 +53,6 @@ jobs:
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
-          echo "GET REPO STATUS"
-          git status
-          echo "GET REPO BRANCH"
-          git branch
-          echo "THE GITHUB_WORKSPACE IS: $GITHUB_WORKSPACE"
-          echo "WHAT BRANCH NAME"
-          echo ${BRANCH_NAME}
-          echo "GITHUB_SHA IS: $GITHUB_SHA"
 
           # echo "Renaming generated directory from ruby-client to ruby_client..."
           rm -R src/ruby_client
