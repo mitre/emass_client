@@ -63,17 +63,17 @@ jobs:
           echo "GITHUB_SHA IS: $GITHUB_SHA"
 
           # echo "Renaming generated directory from ruby-client to ruby_client..."
-          # rm -R src/ruby_client
-          # mv ruby-client src/ruby_client
+          rm -R src/ruby_client
+          mv ruby-client src/ruby_client
 
           # echo "Renaming generated directory from typescript-axios-client to typescript_client..."
-          # rm -R src/typescript_client
-          # mv typescript-axios-client src/typescript_client
+          rm -R src/typescript_client
+          mv typescript-axios-client src/typescript_client
 
           # echo "GIT commit and push eMASS clients..."
-          # git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          # git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          # git add src/ruby_client src/typescript_client
-          # git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          # git push -f
-          # echo "All done now."
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          git add src/ruby_client src/typescript_client
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push -f
+          echo "All done now."
