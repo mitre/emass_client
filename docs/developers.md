@@ -93,6 +93,7 @@ Follow these steps to generate an eMASS client for any supported language provid
   java -jar openapi-generator-cli generate -i eMASSRestOpenApi.yaml -g [language] -t templates\directory -c templates\config.json -o output\directory
   ```
   Where:
+  
   | Option | Description                                                  |
   | :----: | ------------------------------------------------------------ |
   |   -i   | \<spec file\>, --input-spec \<spec file> location of the OpenAPI spec, as URL or file (required if not loaded via config using -c) |
