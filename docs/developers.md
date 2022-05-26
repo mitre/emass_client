@@ -93,50 +93,32 @@ Follow these steps to generate an eMASS client for any supported language provid
   java -jar openapi-generator-cli generate -i eMASSRestOpenApi.yaml -g [language] -t templates\directory -c templates\config.json -o output\directory
   ```
   Where:
-      <table>
-        <tr>
-          <th align=left>Option</th>
-          <th align=left>Description</th>
-        </tr>
-        <tr>
-          <td>`-i`</td>
-          <td>\<spec file\>, --input-spec \<spec file> location of the OpenAPI spec, as URL or file (required if not loaded via config using -c)</td>
-        </tr>
-        <tr>
-          <td>`-g`</td>
-          <td>\<generator name>, --generator-name \<generator name> generator to use (see list command for list)</td>
-        </tr>
-        <tr>
-          <td>`-t`</td>
-          <td>\<template directory>, --template-dir \<template directory> folder containing the template files</td>
-        </tr>
-        <tr>
-          <td>`-c`*</td>
-          <td>\<configuration file>, --config \<configuration file> Path to configuration file. It can be JSON or YAML.</td>
-        </tr>
-        <tr>
-          <td>`-o`</td>
-          <td>\<output directory>, --output \<output directory> where to write the generated files (current dir by default)</td>          
-        </tr>                
-      </table>
-
+  | Option | Description                                                  |
+  | :----: | ------------------------------------------------------------ |
+  |   -i   | \<spec file\>, --input-spec \<spec file> location of the OpenAPI spec, as URL or file (required if not loaded via config using -c) |
+  |   -g   | \<generator name>, --generator-name \<generator name> generator to use (see list command for list) |
+  |   -t   | \<template directory>, --template-dir \<template directory> folder containing the template files |
+  |  -c*   | \<configuration file>, --config \<configuration file> Path to configuration file. It can be JSON or YAML |
+  |   -o   | \<output directory>, --output \<output directory> where to write the generated files (current dir by default) |
+  
+  
   \* If file is JSON, the content should have the format
-
+  
       {"optionKey":"optionValue", "optionKey1":"optionValue1"...}
-
+  
     If file is YAML, the content should have the format
-
+  
       optionKey: optionValue. 
-
+  
     Supported options can be different for each language. 
-    
+  
     Run config-help -g {generator name} command for language-specific config options.  
-
+  
     For a complete list of available parameters use:
     ```script
     java -jar openapi-generator-cli help generate
     ```
-
+  
 - Step 4
   
   To automate the generation process use this CI action:
