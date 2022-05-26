@@ -16,6 +16,7 @@ jobs:
         #uses: actions/checkout@v2
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          ref: update_dev_documentation
 
       # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
       - name: Get changed files 🔧
@@ -60,7 +61,7 @@ jobs:
           echo "WHAT BRANCH NAME"
           echo ${BRANCH_NAME}
           echo "GITHUB_SHA IS: $GITHUB_SHA"
-          
+
           # echo "Renaming generated directory from ruby-client to ruby_client..."
           # rm -R src/ruby_client
           # mv ruby-client src/ruby_client
