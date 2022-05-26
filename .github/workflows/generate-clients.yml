@@ -52,9 +52,13 @@ jobs:
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
-          echo "WHAT REPO AM I ON"
+          echo "GET REPO STATUS"
           git status
+          echo "GET REPO BRANCH"
           git branch
+          echo "THE GITHUB_WORKSPACE IS: $GITHUB_WORKSPACE"
+
+
           # echo "Renaming generated directory from ruby-client to ruby_client..."
           # rm -R src/ruby_client
           # mv ruby-client src/ruby_client
