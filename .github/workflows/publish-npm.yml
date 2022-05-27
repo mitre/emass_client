@@ -1,0 +1,34 @@
+name: Build and Release to NPM
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Build the NPM Package
+        run: |
+          cd src/typescript_client
+          npm install
+          npm run build
+
+      - name: Pack all items that are published as packages
+        run: |
+          cd src/typescript_client
+          npm pack
+     
+      - name: Publish emass_client to NPM
+        run: |
+          cd src/typescript_client
+          npm publish --access public mitre-emass_client-*.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,12 +1,6 @@
-[![Generate OpenAPI Clients](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml) [![Generate eMASS Documentation](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml) 
+[![Generate OpenAPI Clients](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml) [![Generate eMASS Documentation](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml) [![Deploy to GitHub Pages](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml)
 
-[![Deploy to GitHub Pages](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml) ![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg)
-
- ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
-
-
- 
-
+![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
 
 # eMASS Client
 The eMASS client repository maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) documentation and executables. The executables packages currently provided are: RubyGem and TypeScript Node.

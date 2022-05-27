@@ -1,5 +1,4 @@
-name: Build and release gem
-
+name: Build and Release gem
 on:
   release:
     types: [published]
