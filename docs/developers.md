@@ -9,10 +9,10 @@ The API is documented in YAML and can be viewed utilizing Swagger Editor or Visu
 
 There are online tool options for viewing and editing OpenAPI compliant RESTfull APIs like the eMASS API documentations. Some of these tools are Swagger Editor or SwaggerHub. <strong>We discourage the utilization of any online capability for editing a controlled unclassified API document</strong>.
 
-***Note***: We recommend utilizing the instruction provided here to for viewing or editing the eMASS API.
+***Note***: We recommend utilizing the instruction provided here for viewing or editing the eMASS API.
 
 ### Generate the API documentation (html)
-The generated eMASS API documentation can be found [here](https://mitre.github.io/emass_client/docs/redoc/)
+The generated eMASS API documentation is available in the [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/) page
 
 To generate the API documentation, viewable on a dependency-free (and nice looking) HTML use the `redoc-cli` command line tool.
 
@@ -29,18 +29,14 @@ redoc-cli bundle -o ./output/eMASS.html eMASSRestOpenApi.yaml
 The command above places the generated HTML file (eMASS.html) in a subfolder called output. The command assumes that the eMASSRestApi.yaml is in the current working directory. The generated file can be viewed in any web browser.
 
 ## Development Environment
-### Setting up Visual Studio Code
+### Setting up Visual Studio Code (VSC)
 Install these Extensions (Ctrl+Shift+X):
 * YAML ([link](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml))
 * Swagger Viewer ([link](https://marketplace.visualstudio.com/items?itemName=Arjun.swagger-viewer))
 * OpenAPI Swagger Editor ([link](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi))
 * Swagger Snippets ([link](https://marketplace.visualstudio.com/items?itemName=adisreyaj.swagger-snippets), optional)
 
-Open the eMASS Rest API file by selecting File -> Open Folder and select the folder containing the eMASSRestApi.yaml file. Open the file into the editor and select the "OpenApi: show preview using default render" (Ctrl+K V)
-
-Once the mock server is running, we can utilize the "Try it Out" on each of the API endpoints to test the API documentation with mock data.
-
-### Using PRISM HTTP mock Server
+### Setting up PRISM HTTP mock Server
 Install prism (if not installed) via npm:
 ``` npm
 npm install -g @stoplight/prism-cli
@@ -64,12 +60,12 @@ Now you can access the fake API endpoints utilizing either CURL or the Swagger E
 ``` node
 curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: application/json" -H  "api-key: f32516cc-57d3-43f5-9e16-8f86780a4cce" -H  "user-uid: 1647389405"
 ```
-Note: The API expects the api-key and user-uid headers.
+**Note:** The API expects an api-key and user-uid in the request headers for all endpoint calls. For interacting with the mock server, simply use any arbitrary value for these keys..
 
-## Build eMASS Client SDK
+## Build an eMASS Client SDK
 The API clients are generated utilizing the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI.
 
-**Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing the GitHub action implemented within this repository. They are generated when a push to main occurs and the API specification files has been modified.
+**Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
 
 ### Generate an eMASS Client
 Follow these steps to generate an eMASS client for any supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
@@ -77,7 +73,7 @@ Follow these steps to generate an eMASS client for any supported language provid
   
   Install the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator#1---installation) 
 
-  You can [download the executable jar](https://github.com/OpenAPITools/openapi-generator#13---download-jar) file and set up a launcher script that will on invocation of the ```openapi-generator-cli```, query the GitHub repository for the most recently released version
+  [Download the executable jar](https://github.com/OpenAPITools/openapi-generator#13---download-jar) file and set up a launcher script that will on invocation of the ```openapi-generator-cli```, query the GitHub repository for the most recently released version
 
 - Step 2
   
@@ -88,7 +84,7 @@ Follow these steps to generate an eMASS client for any supported language provid
   ```
 - Step 3
   
-  To generate the client use the following command:
+  To generate the client use the following command ([more details](https://github.com/OpenAPITools/openapi-generator#3---usage)):
   ```script
   java -jar openapi-generator-cli generate -i eMASSRestOpenApi.yaml -g [language] -t templates\directory -c templates\config.json -o output\directory
   ```
@@ -122,7 +118,7 @@ Follow these steps to generate an eMASS client for any supported language provid
   
 - Step 4
   
-  To automate the generation process use this CI action:
+  To automate the generation process use this [CI action](https://github.com/openapi-generators/openapitools-generator-action):
   ```
   openapi-generators/openapitools-generator-action@v1
   ```
