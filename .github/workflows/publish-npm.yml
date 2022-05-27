@@ -26,12 +26,14 @@ jobs:
       - name: Build the NPM Package
         run: |
           cd src/typescript_client
+          echo "IN PACK PWD IS"
+          PWD
           npm install
           npm run build
 
       - name: Pack all items that are published as packages
         run: |
-          #cd src/typescript_client
+          cd src/typescript_client
           echo "IN PACK PWD IS"
           pwd
           npm pack
@@ -39,8 +41,8 @@ jobs:
           ls          
       - name: Publish emass_client to NPM
         run: |
-          # cd src/typescript_client
-          echo "IN PUBLISH LS IS"
+          cd src/typescript_client
+          echo "IN PUBLISH PWD LS IS"
           pwd
           ls
           #npm publish --access public emass_client-*.tgz
