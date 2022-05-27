@@ -1,9 +1,7 @@
 name: Build and Release to NPM
 on:
-  # release:
-  #   types: [published]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
   build-deploy:
@@ -17,34 +15,20 @@ jobs:
           node-version: "16.x"
           registry-url: 'https://registry.npmjs.org'
 
-      # - name: Install project dependencies
-      #   run: yarn install --frozen-lockfile
-
-      # - name: Remove testing resources
-      #   run: rm -rf test
-
       - name: Build the NPM Package
         run: |
           cd src/typescript_client
-          echo "IN PACK PWD IS"
-          pwd
           npm install
           npm run build
 
       - name: Pack all items that are published as packages
         run: |
           cd src/typescript_client
-          echo "IN PACK PWD IS"
-          pwd
           npm pack
-          echo "IN PACK LS IS"          
-          ls          
+     
       - name: Publish emass_client to NPM
         run: |
           cd src/typescript_client
-          echo "IN PUBLISH PWD LS IS"
-          pwd
-          ls
-          #npm publish --access public emass_client-*.tgz
+          npm publish --access public mitre-emass_client-*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
