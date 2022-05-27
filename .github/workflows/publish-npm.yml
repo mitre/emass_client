@@ -1,7 +1,9 @@
 name: Build and Release to NPM
 on:
-  release:
-    types: [published]
+  # release:
+  #   types: [published]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-deploy:
@@ -29,12 +31,18 @@ jobs:
 
       - name: Pack all items that are published as packages
         run: |
-          # cd src/typescript_client
+          #cd src/typescript_client
+          echo "IN PACK PWD IS"
+          pwd
           npm pack
-
+          echo "IN PACK LS IS"          
+          ls          
       - name: Publish emass_client to NPM
         run: |
           # cd src/typescript_client
-          npm publish --access public emass_client-*.tgz
+          echo "IN PUBLISH LS IS"
+          pwd
+          ls
+          #npm publish --access public emass_client-*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
