@@ -5,6 +5,7 @@ on:
   # pull_request:
   #   types: [synchronize]
   #   #branches: [ main ]    
+
 jobs:
   generate-eMASS-clients:
     runs-on: ubuntu-latest
