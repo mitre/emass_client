@@ -19,34 +19,30 @@ jobs:
         with:
           fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
 
-      - name: Current Branch
-        run: |
-          git branch
-          git status
-      # # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
-      # - name: Get changed files 🔧
-      #   id: changed-files
-      #   uses: tj-actions/changed-files@v21
+      # Check for changed files (looking for changes to the eMASSRestOpenApi.yaml file)
+      - name: Get changed files 🔧
+        id: changed-files
+        uses: tj-actions/changed-files@v21
 
-      # # Use the action to generate a client package
-      # # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
-      # - name: Generate Ruby Client 🔧
-      #   uses: openapi-generators/openapitools-generator-action@v1
-      #   with:
-      #     generator: ruby
-      #     config-file: src/openapi/templates/ruby/ruby-generator-config.json
-      #     template-dir: src/openapi/templates/ruby
-      #     openapi-file: eMASSRestOpenApi.yaml
-      #   if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Ruby Client 🔧
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: ruby
+          config-file: src/openapi/templates/ruby/ruby-generator-config.json
+          template-dir: src/openapi/templates/ruby
+          openapi-file: eMASSRestOpenApi.yaml
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
-      # - name: Generate Typescript Client 🔧
-      #   uses: openapi-generators/openapitools-generator-action@v1
-      #   with:
-      #     generator: typescript-axios
-      #     config-file: src/openapi/templates/typescript/typescript-generator-config.json
-      #     template-dir: src/openapi/templates/typescript
-      #     openapi-file: eMASSRestOpenApi.yaml
-      #   if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+      - name: Generate Typescript Client 🔧
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: typescript-axios
+          config-file: src/openapi/templates/typescript/typescript-generator-config.json
+          template-dir: src/openapi/templates/typescript
+          openapi-file: eMASSRestOpenApi.yaml
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       # # Publish the newly generated eMASS client to the current repo
       # - name: Publish Generated Clients 🚀

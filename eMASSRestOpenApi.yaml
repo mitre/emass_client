@@ -221,7 +221,7 @@ paths:
       description: "Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key)."
       operationId: registerUser
       requestBody:
-        description: "Register user certificate provided by eMASS."
+        description: "Register certificate provided by eMASS."
         content:
           application/json:
             schema:
