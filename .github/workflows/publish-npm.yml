@@ -27,7 +27,7 @@ jobs:
         run: |
           cd src/typescript_client
           echo "IN PACK PWD IS"
-          PWD
+          pwd
           npm install
           npm run build
 
