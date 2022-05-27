@@ -6150,7 +6150,7 @@ export const RegistrationApiAxiosParamCreator = function (configuration?: Config
         /**
          * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate previously provided by eMASS.
+         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6205,7 +6205,7 @@ export const RegistrationApiFp = function(configuration?: Configuration) {
         /**
          * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate previously provided by eMASS.
+         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6226,7 +6226,7 @@ export const RegistrationApiFactory = function (configuration?: Configuration, b
         /**
          * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate previously provided by eMASS.
+         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6246,7 +6246,7 @@ export class RegistrationApi extends BaseAPI {
     /**
      * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
      * @summary Register user certificate and obtain an API key
-     * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate previously provided by eMASS.
+     * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistrationApi
@@ -6859,7 +6859,7 @@ export class SystemsApi extends BaseAPI {
 export const TestApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns endpoint call status
+         * Tests the endpoint connection
          * @summary Test connection to the API
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6908,7 +6908,7 @@ export const TestApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TestApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns endpoint call status
+         * Tests the endpoint connection
          * @summary Test connection to the API
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6928,7 +6928,7 @@ export const TestApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = TestApiFp(configuration)
     return {
         /**
-         * Returns endpoint call status
+         * Tests the endpoint connection
          * @summary Test connection to the API
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6947,7 +6947,7 @@ export const TestApiFactory = function (configuration?: Configuration, basePath?
  */
 export class TestApi extends BaseAPI {
     /**
-     * Returns endpoint call status
+     * Tests the endpoint connection
      * @summary Test connection to the API
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

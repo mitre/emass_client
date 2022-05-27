@@ -39,7 +39,7 @@ EmassClient.configure do |config|
 end
 
 api_instance = EmassClient::RegistrationApi.new
-register_user_request_post_body = EmassClient::RegisterUserRequestPostBody.new({user_uid: 'MY.USERUUID.KEY'}) # RegisterUserRequestPostBody | Register certificate previously provided by eMASS.
+register_user_request_post_body = EmassClient::RegisterUserRequestPostBody.new({user_uid: 'MY.USERUUID.KEY'}) # RegisterUserRequestPostBody | Register certificate provided by eMASS.
 
 begin
   # Register user certificate and obtain an API key
@@ -72,7 +72,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **register_user_request_post_body** | [**RegisterUserRequestPostBody**](RegisterUserRequestPostBody.md) | Register certificate previously provided by eMASS. |  |
+| **register_user_request_post_body** | [**RegisterUserRequestPostBody**](RegisterUserRequestPostBody.md) | Register certificate provided by eMASS. |  |
 
 ### Return type
 

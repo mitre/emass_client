@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost:4010*
 
 Test connection to the API
 
-Returns endpoint call status
+Tests the endpoint connection
 
 ### Examples
 
