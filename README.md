@@ -1,6 +1,8 @@
 [![Generate OpenAPI Clients](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate-clients.yml) [![Generate eMASS Documentation](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/generate_docs.yml) [![Deploy to GitHub Pages](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/mitre/emass_client/actions/workflows/gh-pages.yml)
 
-![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
+![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) 
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emasse_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
 
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) specifications and executables. The executables packages currently provided are: RubyGem and TypeScript Node.
@@ -10,7 +12,7 @@ The eMASS API is documented in YAML and can be viewed utilizing a multitude of v
 
 
 ## [Visualize and Interact with eMASS API](https://mitre.github.io/emass_client/docs/renderer/)
-This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via a [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please references [Developers Instruction](docs/developers.md) on how to setup a local mock server
+This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please references [Developers Instruction](docs/developers.md) on how to setup a local mock server
 
 ## eMASS API Clients Generation Process
 The executable packages (APIs) generated are used to access eMASS data and functionality by external third-party developers, business partners, or internal departments.
