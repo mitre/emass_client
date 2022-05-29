@@ -2,7 +2,7 @@
 
 ![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) 
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emass_client) [![Node Version](https://badge.fury.io/js/emass_client.svg)](https://badge.fury.io/js/emass_client)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version) [![Gem Version](https://badge.fury.io/rb/emass_client.svg)](https://badge.fury.io/rb/emass_client) [![npm version](https://badge.fury.io/js/@mitre%2Femass_client.svg)](https://badge.fury.io/js/@mitre%2Femass_client)
 
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) specifications and executables. The executables packages currently provided are: RubyGem and TypeScript Node.
