@@ -26,9 +26,23 @@ jobs:
           cd src/typescript_client
           npm pack
      
+      # Publish to npm Registry
       - name: Publish emass_client to NPM
+        if: always()
         run: |
           cd src/typescript_client
           npm publish --access public mitre-emass_client-*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v1
+        if: always()
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Publish emass_client to GitHub Packages
+        if: always()
+        run: npm publish --access public mitre-emass_client-*.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
