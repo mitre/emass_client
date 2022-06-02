@@ -40,7 +40,7 @@ To make changes, or modifications to the eMASS clients described in this reposit
   [Update](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository) the repository with current changes
 
 
-***NOTE***: The generated clients version does not necessary has to be synchronized with the [GitHub Release](https://github.com/mitre/emass_client/releases)
+***NOTE***: The generated clients version does not necessary have to be synchronized with the [GitHub Release](https://github.com/mitre/emass_client/releases)
 
 
 ***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem.
