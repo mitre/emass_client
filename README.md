@@ -50,7 +50,7 @@ For detail information on how-to generating eMASS clients for other programming 
 
 
 ## Repository Architecture
-The process provided by this repository is depicted by the architecture diagram below. In a nutshell, it provides the capability of hosting the eMAASS API documentation, generate interactive visualization tools, static/dynamic testing, and generate API clients for ```ruby``` and ```typescript``` languages. 
+The process provided by this repository is depicted by the architecture diagram below. In a nutshell, it provides the capability of hosting the eMAASS API documentation, generating interactive visualization tools, static/dynamic testing, and generating API clients for ```ruby``` and ```typescript``` languages. 
 
 ![Repository Architecture](images/emass_client_architecture.jpg)
 
