@@ -7,6 +7,8 @@
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) specifications and executables. The executables packages currently provided are: RubyGem and TypeScript Node.
 
+***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem.
+
 ## [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/)
 The eMASS API is documented in YAML and can be viewed utilizing a multitude of visualization tools. Included is a dependency-free (and nice looking) rendering tool for viewing the API specification. The documentation is automatically generated using a Continuos Integration (CI) action [redoc-cli](https://www.npmjs.com/package/redoc-cli) command line tool.
 
@@ -61,8 +63,6 @@ The most appropriat way to propose modifications or make changes to the eMASS cl
 ***NOTE***: The generated clients version does not necessary have to be synchronized with the [GitHub Release](https://github.com/mitre/emass_client/releases)
 
 
-***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem.
-
 ### Other Programming Languages
 For detail information on how-to generating eMASS clients for other programming languages reference [**Developers Instructions**](docs/developers.md)
 
@@ -70,17 +70,13 @@ For detail information on how-to generating eMASS clients for other programming 
 ## Repository Architecture
 The process provided by this repository is depicted by the architecture diagram below. In a nutshell, it provides the capability of hosting the eMAASS API documentation, generating interactive visualization tools, static/dynamic testing, and generating API clients for ```ruby``` and ```typescript``` languages. 
 <div align="center">
-  
-![Repository Architecture](images/emass_client_architecture.jpg)
-
+  <img src="images/emass_client_architecture.jpg" alt="Alt text" title="Repository Architecture">
 </div>
 
 ### Client Application
 The ``emass_client`` executable packages can be included in other projects, or used to generate  CLI tools that have a need to access an eMASS instance. This is demonstrated by the diagram below.
 <div align="center">
-  
-![Client Architecture](images/emass_client_applications.jpg)
-
+  <img src="images/emass_client_applications.jpg" alt="Alt text" title="Client Architecture">
 </div>
 
 ### NOTICE
