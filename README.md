@@ -12,7 +12,7 @@ The eMASS API is documented in YAML and can be viewed utilizing a multitude of v
 
 
 ## [Visualize and Interact with eMASS API](https://mitre.github.io/emass_client/docs/renderer/)
-This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please references [Developers Instruction](docs/developers.md) on how to setup a local mock server
+This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please reference [Developers Instruction](docs/developers.md) on how to setup a local mock server
 
 ## eMASS API Clients Generation Process
 The executable packages (APIs) generated are used to access eMASS data and functionality by external third-party developers, business partners, or internal departments.
