@@ -31,7 +31,7 @@ To make changes, or modifications to the eMASS clients described in this reposit
 
   Make the necessary updates.
 
-  **Note**: Modifications or updates to the eMASS API specification file ```eMASSRestOpenApi.yaml``` triggers the clients generation actions, there is, both the ruby ```src/ruby_client```and typescript-axios ```src/typescript_client```clients are re-generated and committed to the repository when [merged](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request) with the main branch. 
+  **Note**: Modifications or updates to the eMASS API specification file ```eMASSRestOpenApi.yaml``` triggers the clients' generation actions; both the ruby ```src/ruby_client```and typescript-axios ```src/typescript_client```clients are re-generated and committed to the repository when [merged](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request) with the main branch. 
 - Step 3
 
   Ensure that the client(s) configuration file ```src/openapi/templates/[ruby or typescript]-generator-config.json``` reflect the correct version to be generated
