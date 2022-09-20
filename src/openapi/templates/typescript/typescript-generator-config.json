@@ -1,6 +1,6 @@
 {
   "npmName": "@mitre/emass_client",
-  "npmVersion": "1.0.7",
+  "npmVersion": "3.4.0",
   "npmLicense": "Apache-2.0",
   "enumUnknownDefaultCase": true
 }
