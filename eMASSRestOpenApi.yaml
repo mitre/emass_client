@@ -58,7 +58,7 @@ info:
     name: eMASS Tier III support
     url: 'https://www.dcsa.mil/is/emass/'
     email: disa.meade.id.mbx.emass-tier-iii-support@mail.mil
-  version: 'v3.3'
+  version: 'v3.4'
 
 externalDocs:
   description: eMASS New User Registration (requires CAC authentication)
@@ -163,6 +163,16 @@ tags:
     description: >
       The Containers endpoint provides the ability to add, update, and remove
       containers and their scan results in the assets module for a system.
+  - name: Dashboards
+    description: |
+      The Dashboards endpoints provide the ability to view data contained in dashboard exports.
+      In the eMASS front end, these dashboard exports are generated as Excel exports.
+      
+      Each dashboard dataset available from the API is automatically updated with the current
+      configuration of the dashboard and the instance of eMASS as the dashboard changes.
+      
+      Organization-specific fields may differ. Organization-specific Dashboards should only be
+      used by that organization (e.g., VA [dashboard name] should be used by VA).
 
 #-------------------------------------------------------------------------------
 # P A T H S - The available paths and operations for the API endpoints
@@ -2628,6 +2638,1001 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-status-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get systems status detail dashboard information.
+      operationId: getSystemStatusDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"    
+
+  /api/dashboards/system-control-compliance-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get systems control compliance summary dashboard information.
+      operationId: getSystemControlComplianceSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-security-controls-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get systems security control details dashboard information.
+      operationId: getSystemSecurityControlDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-assessment-procedures-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get systems assessement procdures details dashboard information.
+      operationId: getSystemAssessmentProceduresDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-poam-summary:
+   get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get systems POA&Ms summary dashboard information.
+      operationId: getSystemPoamSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-poam-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system POA&Ms details dashboard information.
+      operationId: getSystemPoamDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-hardware-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system hardware summary dashboard information.
+      operationId: getSystemHardwareSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-hardware-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system hardware details dashboard information.
+      operationId: getSystemHardwareDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-associations-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system associations details dashboard information.
+      operationId: getSystemAssociationsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/user-system-assignments-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get user system assignments details dashboard information.
+      operationId: getUserSystemAssignmentsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-privacy-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get user system privacy summary dashboard information.
+      operationId: getSystemPrivacySummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
+  /api/dashboards/va-omb-fisma-saop-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA OMB-FISMA SAOP summary dashboard information.
+      operationId: getVaOmbFsmaSaopSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+         
+  /api/dashboards/va-system-aa-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system A&A summary dashboard information.
+      operationId: getVaSystemAaSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
+  /api/dashboards/va-system-a2-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system A2.0 summary dashboard information.
+      operationId: getVaSystemA2Summary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-pl-109-reporting-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system P.L. 109 reporting summary dashboard information.
+      operationId: getVaSystemPl109ReportingSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-fisma-inventory-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system FISMA inventory summary dashboard information.
+      operationId: getVaSystemFismaInvetorySummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
 #-------------------------------------------------------------------------------
 # C O M P O N E N T S
 #-------------------------------------------------------------------------------
@@ -2684,6 +3689,7 @@ components:
         type: integer
         x-faker: random.number
         example: 123
+
     #--------------------------------------------------------------------------
     # Query - Required --------------------------------------------------------
     role:
@@ -2711,6 +3717,15 @@ components:
       schema:
         type: string
         example: "1638764040"
+    orgId:
+      name: orgId
+      in: query
+      description: "**Organization Id**: The unique organization identifier."
+      required: true
+      schema:
+        type: integer
+        x-faker: random.number
+        example: 1       
     #--------------------------------------------------------------------------
     # Query - Optional --------------------------------------------------------
     includePackage:
@@ -2879,7 +3894,10 @@ components:
     pageIndex:
       name: pageIndex
       in: query
-      description: "**Page Index**: If no value is specified, the default returns true to not include transition comments."
+      description: |
+        **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.
+
+        **Note:** Pages contain 1000 workflow instances.
       schema:
         type: integer
         default: 0
@@ -2910,7 +3928,22 @@ components:
         type: string
         enum: ["active", "inactive", "all"]
         default: "all"
-
+    dashboardPageIndex:
+      name: pageIndex
+      in: query
+      description: |
+        **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.
+      schema:
+        type: integer
+        default: 0
+    dashboardPageSize:
+      name: pageSize
+      in: query
+      description: |
+        **Page Size**: If no value is specified, the default returns 20000 per page.
+      schema:
+        type: integer
+        default: 20000        
   #----------------------------------------------------------------------------
   # Schemas
   #----------------------------------------------------------------------------
