@@ -3268,7 +3268,7 @@ paths:
       summary: "Get dashboard information"
       description: |-
         Get user system privacy summary dashboard information.
-      operationId: getUserSystemAssignmentsDetails
+      operationId: getSystemPrivacySummary
       parameters:
         - $ref: '#/components/parameters/orgId'
         - $ref: '#/components/parameters/dashboardPageIndex'
