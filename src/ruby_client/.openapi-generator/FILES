@@ -1,4 +1,5 @@
 .gitignore
+.gitlab-ci.yml
 .openapi-generator-ignore
 .rspec
 .rubocop.yml
@@ -35,6 +36,7 @@ docs/ControlsGet.md
 docs/ControlsPut.md
 docs/ControlsResponseGet.md
 docs/ControlsResponsePut.md
+docs/DashboardsApi.md
 docs/DefinitionTransitions.md
 docs/InstancesTransitions.md
 docs/MilestoneResponseGet.md
@@ -131,6 +133,7 @@ lib/emass_client/api/cloud_resources_api.rb
 lib/emass_client/api/cmmc_assessments_api.rb
 lib/emass_client/api/containers_api.rb
 lib/emass_client/api/controls_api.rb
+lib/emass_client/api/dashboards_api.rb
 lib/emass_client/api/milestones_api.rb
 lib/emass_client/api/pac_api.rb
 lib/emass_client/api/poam_api.rb
@@ -250,6 +253,7 @@ spec/api/cloud_resources_api_spec.rb
 spec/api/cmmc_assessments_api_spec.rb
 spec/api/containers_api_spec.rb
 spec/api/controls_api_spec.rb
+spec/api/dashboards_api_spec.rb
 spec/api/milestones_api_spec.rb
 spec/api/pac_api_spec.rb
 spec/api/poam_api_spec.rb

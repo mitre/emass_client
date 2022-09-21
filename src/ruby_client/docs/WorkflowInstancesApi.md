@@ -42,7 +42,7 @@ end
 api_instance = EmassClient::WorkflowInstancesApi.new
 opts = {
   include_comments: true, # Boolean | **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
-  page_index: 56, # Integer | **Page Index**: If no value is specified, the default returns true to not include transition comments.
+  page_index: 56, # Integer | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
   since_date: '1638764040', # String | **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
   status: 'active' # String | **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
 }
@@ -79,7 +79,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **include_comments** | **Boolean** | **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization.  | [optional][default to true] |
-| **page_index** | **Integer** | **Page Index**: If no value is specified, the default returns true to not include transition comments. | [optional][default to 0] |
+| **page_index** | **Integer** | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances.  | [optional][default to 0] |
 | **since_date** | **String** | **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made.  | [optional] |
 | **status** | **String** | **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active.  | [optional][default to &#39;all&#39;] |
 
