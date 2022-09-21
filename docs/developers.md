@@ -60,15 +60,15 @@ Now you can access the fake API endpoints utilizing either CURL or the Swagger E
 ``` node
 curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: application/json" -H  "api-key: f32516cc-57d3-43f5-9e16-8f86780a4cce" -H  "user-uid: 1647389405"
 ```
-**Note:** The API expects an api-key and user-uid in the request headers for all endpoint calls. For interacting with the mock server, simply use any arbitrary value for these keys..
+**Note:** The API expects an api-key and user-uid in the request headers for all endpoint calls. For interacting with the mock server, simply use any arbitrary value for these keys.
 
-## Build an eMASS Client SDK
+## Building an eMASS Client SDK
 The API clients are generated utilizing the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI.
 
 **Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
 
 ### Generate an eMASS Client
-Follow these steps to generate an eMASS client for any supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
+Follow these steps to generate an eMASS client for additional supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
 - Step 1
   
   Install the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator#1---installation) 
