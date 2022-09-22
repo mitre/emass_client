@@ -1,0 +1,42 @@
+name: Build and Release NPM to GPR
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+          registry-url: https://npm.pkg.github.com/
+          scope: '@mitre'
+
+      - name: Build the NPM Package
+        run: |
+          cd src/typescript_client
+          npm install
+          npm run build
+
+      - name: Pack all items that are published
+        run: |
+          cd src/typescript_client
+          npm pack
+
+      # Setup .npmrc file to publish to GitHub Package Registry
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@mitre'
+
+      # Publish emass_client to GitHub Package Registry
+      - name: Publish emass_client to GPR
+        run: |
+          cd src/typescript_client
+          npm publish mitre-emass_client-*.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
