@@ -12,7 +12,7 @@
 require 'emass_client'
 
 instance = EmassClient::RegisterData.new(
-  apikey: f32516cc-57d3-43f5-9e16-8f86780a4cce
+  apikey: f0126b6b-f232-45c9-a8de-01d5f003deda
 )
 ```
 

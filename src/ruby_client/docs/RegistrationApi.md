@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost:4010*
 
 ## register_user
 
-> <Register> register_user(register_user_request_post_body)
+> <Register> register_user
 
 Register user certificate and obtain an API key
 
-Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
+Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.
 
 ### Examples
 
@@ -39,11 +39,10 @@ EmassClient.configure do |config|
 end
 
 api_instance = EmassClient::RegistrationApi.new
-register_user_request_post_body = EmassClient::RegisterUserRequestPostBody.new({user_uid: 'MY.USERUUID.KEY'}) # RegisterUserRequestPostBody | Register certificate provided by eMASS.
 
 begin
   # Register user certificate and obtain an API key
-  result = api_instance.register_user(register_user_request_post_body)
+  result = api_instance.register_user
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling RegistrationApi->register_user: #{e}"
@@ -54,12 +53,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Register>, Integer, Hash)> register_user_with_http_info(register_user_request_post_body)
+> <Array(<Register>, Integer, Hash)> register_user_with_http_info
 
 ```ruby
 begin
   # Register user certificate and obtain an API key
-  data, status_code, headers = api_instance.register_user_with_http_info(register_user_request_post_body)
+  data, status_code, headers = api_instance.register_user_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Register>
@@ -70,9 +69,7 @@ end
 
 ### Parameters
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **register_user_request_post_body** | [**RegisterUserRequestPostBody**](RegisterUserRequestPostBody.md) | Register certificate provided by eMASS. |  |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -84,6 +81,6 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

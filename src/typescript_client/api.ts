@@ -7706,15 +7706,12 @@ export class POAMApi extends BaseAPI {
 export const RegistrationApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
+         * Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerUser: async (registerUserRequestPostBody: RegisterUserRequestPostBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'registerUserRequestPostBody' is not null or undefined
-            assertParamExists('registerUser', 'registerUserRequestPostBody', registerUserRequestPostBody)
+        registerUser: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/api-key`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7738,12 +7735,9 @@ export const RegistrationApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(registerUserRequestPostBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7761,14 +7755,13 @@ export const RegistrationApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RegistrationApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
+         * Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerUser(registerUserRequestPostBody: RegisterUserRequestPostBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Register>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.registerUser(registerUserRequestPostBody, options);
+        async registerUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Register>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.registerUser(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -7782,14 +7775,13 @@ export const RegistrationApiFactory = function (configuration?: Configuration, b
     const localVarFp = RegistrationApiFp(configuration)
     return {
         /**
-         * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
+         * Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.
          * @summary Register user certificate and obtain an API key
-         * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerUser(registerUserRequestPostBody: RegisterUserRequestPostBody, options?: any): AxiosPromise<Register> {
-            return localVarFp.registerUser(registerUserRequestPostBody, options).then((request) => request(axios, basePath));
+        registerUser(options?: any): AxiosPromise<Register> {
+            return localVarFp.registerUser(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7802,15 +7794,14 @@ export const RegistrationApiFactory = function (configuration?: Configuration, b
  */
 export class RegistrationApi extends BaseAPI {
     /**
-     * Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key).
+     * Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.
      * @summary Register user certificate and obtain an API key
-     * @param {RegisterUserRequestPostBody} registerUserRequestPostBody Register certificate provided by eMASS.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistrationApi
      */
-    public registerUser(registerUserRequestPostBody: RegisterUserRequestPostBody, options?: AxiosRequestConfig) {
-        return RegistrationApiFp(this.configuration).registerUser(registerUserRequestPostBody, options).then((request) => request(this.axios, this.basePath));
+    public registerUser(options?: AxiosRequestConfig) {
+        return RegistrationApiFp(this.configuration).registerUser(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
