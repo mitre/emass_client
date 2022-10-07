@@ -228,15 +228,15 @@ paths:
       tags:
         - Registration
       summary: "Register user certificate and obtain an API key"
-      description: "Returns the api-key - This API key must be provided in the request header for all endpoint calls (api-key)."
+      description: "Returns the API Key (api-key) that must be provided in the request header for all endpoint calls."
       operationId: registerUser
-      requestBody:
-        description: "Register certificate provided by eMASS."
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/RegisterUserRequestPostBody"
-        required: true
+      # requestBody:
+      #   description: "Register certificate provided by eMASS."
+      #   content:
+      #     application/json:
+      #       schema:
+      #         "$ref": "#/components/schemas/RegisterUserRequestPostBody"
+      #   required: true
       responses:
         '200':
           description: "Request has succeeded"
@@ -4780,7 +4780,7 @@ components:
           x-faker: random.boolean
           example: false          
     #----------------------------------------------------------------------------
-    # Request Body examples fields for (DELETE)
+    # Request Body example fields for (DELETE)
     #----------------------------------------------------------------------------    
     PoamRequestDeleteBody:
       title: DeletePoams
@@ -4848,7 +4848,7 @@ components:
             apikey:
               type: string
               x-faker: random.uuid
-              example: f32516cc-57d3-43f5-9e16-8f86780a4cce
+              example: f0126b6b-f232-45c9-a8de-01d5f003deda
     SystemResponse:
       title: "System GET response schema"
       type: object
