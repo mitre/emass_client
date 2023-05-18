@@ -4,22 +4,34 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **registration_completion_date** | **Integer** | [Read-Only] Date the system was registered into eMASS. | [optional] |
+| **system_life_cycle_acquisition_phase** | **String** | [Read-Only] Identifies the current System Acquisition Phase for programs of record. | [optional] |
+| **special_type** | **String** | [Read-Only] Lists applicable tracking indicator(s). | [optional] |
+| **special_type_description** | **String** | [Read-Only] Provides a brief reason for any tracking indicator(s) selected. | [optional] |
+| **mission_portfolio** | **String** | [Read-Only] Identifies the appropriate portfolio or capability area. Navy only. | [optional] |
+| **is_nnpi** | **Boolean** | [Read-Only] Indicates whether Naval Nuclear Propulsion Information (NNPI) is stored, disseminated, or processed through this system. Navy only. | [optional] |
+| **is_rbc** | **Boolean** | [Read-Only] Indicates whether the system is pursuing an RBC authorization. Navy only. | [optional] |
+| **is_waiver** | **Boolean** | [Read-Only] Indicates if the system has a waiver from OPNAV N2N6G (DDCIO(N)) to proceed with a DIACAP accreditation. Navy and DIACAP only. | [optional] |
+| **program_office** | **String** | [Read-Only] The system record&#39;s Program Office. Navy only. | [optional] |
+| **vram_id** | **String** | [Read-Only] Vulnerability Remediation Asset Manager (VRAM) identification number. \&quot;N/A\&quot; indicates the system record is not currently registered in VRAM.  Navy only. | [optional] |
 | **system_id** | **Integer** | [Read-only] Unique system record identifier. | [optional] |
 | **policy** | **String** | [Read-only] RMF/DIACAP Policy identifier for the system record. | [optional] |
 | **registration_type** | **String** | [Read-Only] Registration types parameters (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.) | [optional] |
 | **name** | **String** | [Read-only] Name of the system record. | [optional] |
 | **acronym** | **String** | [Read-only] Acronym of the system record. | [optional] |
 | **description** | **String** | [Read-only] Description of the system record. | [optional] |
-| **system_owner** | **String** | [Read-only] Owning organization of the system record. | [optional] |
-| **organization_name** | **String** | [Read-only] Name of the top-level component that owns the system (e.g. Navy, Air Force, Army, etc..). | [optional] |
+| **instance** | **String** | [Read-Only] Name of the top-level component that owns the system. | [optional] |
+| **owning_organization** | **String** | [Read-Only] Owning organization of the system record. Values match the eMASS instance Organizational Hierarchy. | [optional] |
 | **secondary_organization** | **String** | [Read-only] Secondary organization that owns the system record (i.e. Sub-Organization-level. | [optional] |
 | **version_release_no** | **String** | [Read-only] Version/Release Number of system record. | [optional] |
-| **system_type** | **String** | [Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT, Interconnection, AIS Application) | [optional] |
+| **system_type** | **String** | [Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT Interconnection, AIS Application, Outsourced IT-Based Process (DoD-controlled), Enclave, Outsourced IT-Based Process (service provider shared)) | [optional] |
 | **is_nss** | **Boolean** | [Read-only] Is the system record a National Security System? | [optional] |
 | **is_public_facing** | **Boolean** | [Read-only] Does the system record have a public facing component/presence. | [optional] |
 | **coams_id** | **Integer** | [Read-only] Corresponding Cyber Operational Attributes Management System (COAMS) identifier for the system record. | [optional] |
 | **is_type_authorization** | **Boolean** | [Read-only] Identifies if system is a Type Authorization. | [optional] |
 | **ditpr_id** | **String** | [Read-only] DITPR ID of the system record. | [optional] |
+| **apms_id** | **String** | [Read-Only] Same field as ditprId but displays as apmsId for Army only. | [optional] |
+| **vasi_id** | **String** | [Read-Only] Same field as ditprId but displays as vasiId for VA only. | [optional] |
 | **authorization_status** | **String** | [Read-only] Authorization Status of the system record. | [optional] |
 | **authorization_date** | **Integer** | [Read-only] Authorization Date of the system record. | [optional] |
 | **authorization_termination_date** | **Integer** | [Read-only] Authorization Termination Date of the system record. | [optional] |
@@ -27,9 +39,9 @@
 | **terms_for_auth** | **String** | [Read-only] Terms/Conditions for receiving and maintaining the system&#39;s Authorization. Assigned by the Authorizing Official. | [optional] |
 | **security_plan_approval_status** | **String** | [Read-only] Status of the approval of the system&#39;s RMF Security Plan. Values include the following options (Approved, Denied, Not Yet Approved). | [optional] |
 | **security_plan_approval_date** | **Integer** | [Read-only] Approval date of the system&#39;s RMF Security Plan. | [optional] |
-| **mission_criticality** | **String** | [Read-only] Mission Criticality of the system record. Values include the following options (Mission Critical (MC), Mission Essential (ME), Mission Support (MS). | [optional] |
-| **geographical_association** | **String** | [Read-only] Geographical Association of the system record (VA only). | [optional] |
-| **system_ownership** | **String** | [Read-only] Ownership of the system record (VA only). | [optional] |
+| **mission_criticality** | **String** | [Read-only] Mission Criticality of the system record. | [optional] |
+| **geographical_association** | **String** | [Read-only] Geographical Association of the system record. | [optional] |
+| **system_ownership** | **String** | [Read-only] Ownership of the system record. | [optional] |
 | **governing_mission_area** | **String** | [Read-only] Governing Mission Area of the system record. | [optional] |
 | **primary_functional_area** | **String** | [Read-only] Primary functional area of the system record. | [optional] |
 | **secondary_functional_area** | **String** | [Read-only] Secondary functional area of the system record. | [optional] |
@@ -66,6 +78,26 @@
 | **current_rmf_lifecycle_step** | **String** | [Read-only] Displays the system&#39;s current step within the RMF Lifecycle. | [optional] |
 | **other_information** | **String** | [Read-only] Include any additional information required by the organization. | [optional] |
 | **reports_for_scorecard** | **Boolean** | [Read-only] Indicates if the system reports to the DoD Cyber Hygiene Scorecard. | [optional] |
+| **highest_system_data_classification** | **String** | [Read-Only] The overall classification level of information that the System is approved to collect, process, store, and/or distribute. | [optional] |
+| **overall_classification** | **String** | [Read-Only] Same field as highestSystemDataClassification, but displays as overallClassification for NISP only. | [optional] |
+| **is_hva** | **Boolean** | [Read-Only] Indicates if the system contains High Value Assets. Does not display if value is null | [optional] |
+| **is_financial_management** | **Boolean** | [Read-Only] Per OMB Circular A-127, a financial management system includes the core financial systems and the financial portions  of mixed systems necessary to support financial management, including automated and manual processes, procedures, and  controls, data, hardware, software, and support personnel dedicated to the operation and maintenance of system functions. The following are examples of financial management systems: core financial systems, procurement systems, loan systems, grants systems, payroll systems, budget formulation systems, billing systems, and travel systems.  | [optional] |
+| **is_reciprocity** | **Boolean** | [Read-Only] A reciprocity system is any information system that is part of a mutual agreement among participating organizations to accept each other&#39;s security assessments in order to reuse information system resources and/or to accept each other&#39;s assessed security posture in order to share information.  | [optional] |
+| **reciprocity_exemption** | **String** | [Read-Only] The following justifications are acceptable for exemption from reciprocity: (a) the existence of the system is classified (not the data, but the existence of the system) or (b) the system&#39;s authorization to operate is in the process of being pulled (e.g. DATO, Decommission).  | [optional] |
+| **cloud_computing** | **Boolean** | [Read-Only] Is this a cloud-based IS? | [optional] |
+| **cloud_type** | **String** | [Read-Only] Values include the following: (Hybrid, Private, Public) | [optional] |
+| **atc_status** | **String** | [Read-Only] The Authority to Connect decision. Values include the following:  (Authority to Connect (ATC), Denial of Authority to Connect (DATC), Not Yet Connected, Decommissioned)  | [optional] |
+| **is_saa_s** | **Boolean** | [Read-Only] Software as a Service (SaaS) cloud service model. | [optional] |
+| **is_paa_s** | **Boolean** | [Read-Only] Platform as a Service (PaaS) cloud service model. | [optional] |
+| **is_iaa_s** | **Boolean** | [Read-Only] Infrastructure as a Service (IaaS) cloud service model. | [optional] |
+| **other_service_models** | **String** | [Read-Only] Free text field to include other cloud service models. | [optional] |
+| **need_date** | **Integer** | [Read-Only] Indicates the date by which the System needs to be deployed to a production environment. | [optional] |
+| **overall_risk_score** | **String** | [Read-Only] The overall risk score of the system | [optional] |
+| **is_hrr** | **Boolean** | [Read-Only] Identifies whether a System has been designated as High Risk Review. USCG and Navy only. | [optional] |
+| **atc_date** | **Integer** | [Read-Only] The Connectivity Authorization Date. | [optional] |
+| **atc_termination_date** | **Integer** | [Read-Only] The Connectivity Authorization Termination Date. | [optional] |
+| **system_development_life_cycle** | **String** | [Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only. | [optional] |
+| **is_fisma_reportable** | **Boolean** | [Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only | [optional] |
 | **package** | [**Array&lt;PacGet&gt;**](PacGet.md) |  | [optional] |
 | **connectivity_ccsd** | [**Array&lt;ConnectivityCcsd&gt;**](ConnectivityCcsd.md) |  | [optional] |
 
@@ -75,14 +107,24 @@
 require 'emass_client'
 
 instance = EmassClient::Systems.new(
+  registration_completion_date: 1638741770,
+  system_life_cycle_acquisition_phase: Pre-Milestone A,
+  special_type: Special Type 1,
+  special_type_description: Test Special Type Description,
+  mission_portfolio: Not Applicable,
+  is_nnpi: false,
+  is_rbc: false,
+  is_waiver: true,
+  program_office: Test Program Office,
+  vram_id: 12345,
   system_id: 33,
   policy: RMF,
   registration_type: Assess and Authorize,
   name: System XYZ,
   acronym: PM-6,
   description: This is a test system for the eMASS API documentation,
-  system_owner: DISA,
-  organization_name: Defense Information Systems Agency,
+  instance: Navy,
+  owning_organization: Defense Information Systems Agency,
   secondary_organization: ID31,
   version_release_no: V1,
   system_type: IS Major Application,
@@ -91,7 +133,9 @@ instance = EmassClient::Systems.new(
   coams_id: 93054,
   is_type_authorization: true,
   ditpr_id: 30498,
-  authorization_status: Authorization to Operate (ATO),
+  apms_id: 30498,
+  vasi_id: 30498,
+  authorization_status: null,
   authorization_date: 1638741660,
   authorization_termination_date: 1638741660,
   authorization_length: 365,
@@ -137,6 +181,26 @@ instance = EmassClient::Systems.new(
   current_rmf_lifecycle_step: 4 - Assess,
   other_information: Additional Comments,
   reports_for_scorecard: true,
+  highest_system_data_classification: Unclassified,
+  overall_classification: Unclassified,
+  is_hva: true,
+  is_financial_management: true,
+  is_reciprocity: true,
+  reciprocity_exemption: Decommission,
+  cloud_computing: false,
+  cloud_type: Public,
+  atc_status: Decommissioned,
+  is_saa_s: true,
+  is_paa_s: false,
+  is_iaa_s: true,
+  other_service_models: Test Other Service,
+  need_date: 1638741660,
+  overall_risk_score: Moderate,
+  is_hrr: false,
+  atc_date: 1638741660,
+  atc_termination_date: 1638741660,
+  system_development_life_cycle: Test Other Service,
+  is_fisma_reportable: false,
   package: null,
   connectivity_ccsd: null
 )

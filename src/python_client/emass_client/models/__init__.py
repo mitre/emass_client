@@ -1,0 +1,105 @@
+# coding: utf-8
+
+# flake8: noqa
+
+# import all models into this package
+# if you have many models here with many references from one model to another this may
+# raise a RecursionError
+# to avoid this, import only the models that you directly need like:
+# from emass_client.model.pet import Pet
+# or import this package, but before doing it, use:
+# import sys
+# sys.setrecursionlimit(n)
+
+from emass_client.model.artifacts_get import ArtifactsGet
+from emass_client.model.artifacts_request_delete_body import ArtifactsRequestDeleteBody
+from emass_client.model.artifacts_request_put_body import ArtifactsRequestPutBody
+from emass_client.model.artifacts_response_del import ArtifactsResponseDel
+from emass_client.model.artifacts_response_get import ArtifactsResponseGet
+from emass_client.model.artifacts_response_put_post import ArtifactsResponsePutPost
+from emass_client.model.cac_get import CacGet
+from emass_client.model.cac_request_post_body import CacRequestPostBody
+from emass_client.model.cac_response_get import CacResponseGet
+from emass_client.model.cac_response_post import CacResponsePost
+from emass_client.model.cloud_resources_post import CloudResourcesPost
+from emass_client.model.cloud_resources_request_post_body import CloudResourcesRequestPostBody
+from emass_client.model.cloud_resources_response_post import CloudResourcesResponsePost
+from emass_client.model.cmmc_get import CmmcGet
+from emass_client.model.cmmc_response_get import CmmcResponseGet
+from emass_client.model.connectivity_ccsd import ConnectivityCcsd
+from emass_client.model.containers_request_post_body import ContainersRequestPostBody
+from emass_client.model.containers_resources_post import ContainersResourcesPost
+from emass_client.model.containers_response_post import ContainersResponsePost
+from emass_client.model.controls_get import ControlsGet
+from emass_client.model.controls_put import ControlsPut
+from emass_client.model.controls_request_put_body import ControlsRequestPutBody
+from emass_client.model.controls_response_get import ControlsResponseGet
+from emass_client.model.controls_response_put import ControlsResponsePut
+from emass_client.model.definition_transitions import DefinitionTransitions
+from emass_client.model.errors import Errors
+from emass_client.model.instances_transitions import InstancesTransitions
+from emass_client.model.milestone_response_get import MilestoneResponseGet
+from emass_client.model.milestone_response_get_milestone import MilestoneResponseGetMilestone
+from emass_client.model.milestone_response_post import MilestoneResponsePost
+from emass_client.model.milestone_response_put import MilestoneResponsePut
+from emass_client.model.milestones_get import MilestonesGet
+from emass_client.model.milestones_put_post_delete import MilestonesPutPostDelete
+from emass_client.model.milestones_request_delete_body import MilestonesRequestDeleteBody
+from emass_client.model.milestones_request_post_body import MilestonesRequestPostBody
+from emass_client.model.milestones_request_put_body import MilestonesRequestPutBody
+from emass_client.model.milestones_required_post import MilestonesRequiredPost
+from emass_client.model.milestones_required_put import MilestonesRequiredPut
+from emass_client.model.pac_get import PacGet
+from emass_client.model.pac_post import PacPost
+from emass_client.model.pac_request_post_body import PacRequestPostBody
+from emass_client.model.pac_response_get import PacResponseGet
+from emass_client.model.pac_response_post import PacResponsePost
+from emass_client.model.poam_get import PoamGet
+from emass_client.model.poam_post_put_del import PoamPostPutDel
+from emass_client.model.poam_request_delete_body import PoamRequestDeleteBody
+from emass_client.model.poam_request_post_body import PoamRequestPostBody
+from emass_client.model.poam_request_put_body import PoamRequestPutBody
+from emass_client.model.poam_response_delete import PoamResponseDelete
+from emass_client.model.poam_response_get_poams import PoamResponseGetPoams
+from emass_client.model.poam_response_get_systems import PoamResponseGetSystems
+from emass_client.model.poam_response_post import PoamResponsePost
+from emass_client.model.poam_response_put import PoamResponsePut
+from emass_client.model.register import Register
+from emass_client.model.register_user_request_post_body import RegisterUserRequestPostBody
+from emass_client.model.response200 import Response200
+from emass_client.model.response201 import Response201
+from emass_client.model.response400 import Response400
+from emass_client.model.response401 import Response401
+from emass_client.model.response403 import Response403
+from emass_client.model.response404 import Response404
+from emass_client.model.response405 import Response405
+from emass_client.model.response411 import Response411
+from emass_client.model.response490 import Response490
+from emass_client.model.response500 import Response500
+from emass_client.model.role_category import RoleCategory
+from emass_client.model.roles import Roles
+from emass_client.model.ssps import Ssps
+from emass_client.model.stage import Stage
+from emass_client.model.static_code_application import StaticCodeApplication
+from emass_client.model.static_code_post import StaticCodePost
+from emass_client.model.static_code_request_post_body import StaticCodeRequestPostBody
+from emass_client.model.static_code_response_post import StaticCodeResponsePost
+from emass_client.model.success200_response import Success200Response
+from emass_client.model.system_response import SystemResponse
+from emass_client.model.system_roles_category_response import SystemRolesCategoryResponse
+from emass_client.model.system_roles_response import SystemRolesResponse
+from emass_client.model.systems import Systems
+from emass_client.model.systems_response import SystemsResponse
+from emass_client.model.test import Test
+from emass_client.model.test_results_get import TestResultsGet
+from emass_client.model.test_results_post import TestResultsPost
+from emass_client.model.test_results_request_post_body import TestResultsRequestPostBody
+from emass_client.model.test_results_response_get import TestResultsResponseGet
+from emass_client.model.test_results_response_post import TestResultsResponsePost
+from emass_client.model.users import Users
+from emass_client.model.workflow_definition_get import WorkflowDefinitionGet
+from emass_client.model.workflow_definition_response_get import WorkflowDefinitionResponseGet
+from emass_client.model.workflow_instance_get import WorkflowInstanceGet
+from emass_client.model.workflow_instance_response_get import WorkflowInstanceResponseGet
+from emass_client.model.workflow_instances_get import WorkflowInstancesGet
+from emass_client.model.workflow_instances_response_get import WorkflowInstancesResponseGet

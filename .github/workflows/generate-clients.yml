@@ -15,7 +15,6 @@ jobs:
       # Checkout your code
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-        #uses: actions/checkout@v2
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
@@ -62,6 +61,10 @@ jobs:
           # echo "Renaming generated directory from typescript-axios-client to typescript_client..."
           rm -R src/typescript_client
           mv typescript-axios-client src/typescript_client
+
+          # echo "Renaming generated directory from python-client to python_client..."
+          rm -R src/python_client
+          mv python-client src/python_client
 
           # echo "GIT commit and push eMASS clients..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
