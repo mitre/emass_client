@@ -43,6 +43,15 @@ jobs:
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
+      - name: Generate Python Client 🔧
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          config-file: src/openapi/templates/python/python-generator-config.json
+          template-dir: src/openapi/templates/python
+          openapi-file: eMASSRestOpenApi.yaml
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Generated Clients 🚀
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
