@@ -25,28 +25,31 @@ jobs:
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
-      - name: Generate Ruby Client 🔧
+      - name: Generate Ruby Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: ruby
+          generator-tag: 6.6.0
           config-file: src/openapi/templates/ruby/ruby-generator-config.json
           template-dir: src/openapi/templates/ruby
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
-      - name: Generate Typescript Client 🔧
+      - name: Generate Typescript Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: typescript-axios
+          generator-tag: 6.6.0
           config-file: src/openapi/templates/typescript/typescript-generator-config.json
           template-dir: src/openapi/templates/typescript
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
-      - name: Generate Python Client 🔧
+      - name: Generate Python Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: python
+          generator-tag: 6.6.0
           config-file: src/openapi/templates/python/python-generator-config.json
           template-dir: src/openapi/templates/python
           openapi-file: eMASSRestOpenApi.yaml
