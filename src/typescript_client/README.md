@@ -1,4 +1,4 @@
-## @mitre/emass_client@3.4.1
+## @mitre/emass_client@3.9.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -44,13 +44,6 @@ npm publish
 
 After the publish is done without any error, visit the account used to published in the NPM registry, and verify that the package is there.
 
-### Unpublish NPM
-For detailed information on unpublishing an NPM packages visit the [npm-unpuplish docs](https://docs.npmjs.com/cli/v8/commands/npm-unpublish)
-
-```
-npm unpublish [<@scope>/]<pkg>[@<version>]
-```
-References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for detail information and restrictions related to unpublishing npm pakages.
 
 ### Consuming
 
@@ -59,7 +52,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @mitre/emass_client@3.4.1 --save
+npm install @mitre/emass_client@3.9.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -72,7 +65,7 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 Before accessing any of the endpoints provided by the @mitre/emass_client, we need to configure common axios settings.
 
 ### Axios Configuration
-All calls utilizing the @mitre/emass_client@3.4.1 need to initialize axios as follows:
+All calls utilizing the @mitre/emass_client@3.9.0 need to initialize axios as follows:
 
 ```typescript
 // Load the necessary modules
@@ -107,34 +100,17 @@ axiosInstances.defaults.headers.common = {
 };
 
 ```
-## Documentation for API Endpoints Examples
-### Test Connection endpoint
+## Documentation for API Endpoints (Test Connection)
 ```typescript
 // Load the TestApi module
 import { TestApi } from '@mitre/emass_client/dist/api';
 
-// Create and initialize a TestApi instances (references Axios Configuration for proper parameters configurations)
+// Create and initialize a TestApi instances (references code snippet above for proper parameters configurations)
 const testApi = new TestApi(configuration, configuration.basePath, axiosInstances);
 
 // Invoke the endpoint 
-testApi.testConnection().then((response:any) => {
-  console.log("API called successfully. Returned data: " + JSON.stringify(response.data, null,2));
-}).catch((error:any) => console.error(JSON.stringify(error.response.data,null,2)));
-
-```
-### Artifacts Export endpoint
-This example uses the colorize module to color format the output to the command line.
-```typescript
-// Load the TestApi module
-import { ArtifactsExportApi } from '@mitre/emass_client/dist/api';
-import colorize from 'json-colorizer';
-
-// Create and initialize a ArtifactsExportApi instances (references Axios Configuration for proper parameters configurations)
-const exportArtifacts = new ArtifactsExportApi(configuration, configuration.basePath, axiosInstances);
-
-// Invoke the endpoint 
-exportArtifacts.getSystemArtifactsExport(34, "artifact.txt").then((response:any) => {
-  console.log(colorize(JSON.stringify(response.data, null,2)));
-}).catch((error:any) => console.error(colorize(JSON.stringify(error.response.data,null,2))));
+testApi.testConnection().then((data:any) => {
+  console.log("API called successfully. Returned data: " + JSON.stringify(data.data, null,2));
+}).catch((error:any) => console.error(error));
 
 ```

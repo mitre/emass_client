@@ -4,7 +4,7 @@
 # publish a python package to GitHub Packages registry
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
-# Push to TestPyPI unconditionally
+# Push to TestPyPI unconditionally (need to rev version or del/yank same ver)
 # Push to PyPI only if the current commit is tagged
 on: push
 

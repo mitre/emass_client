@@ -2,5 +2,5 @@
   "packageName": "emass_client",
   "packageVersion": "3.9.0",
   "projectName": "emass_client_api",
-  "projectLicense": "Apache-2.0"
+  "packageLicense": "Apache-2.0"
 }

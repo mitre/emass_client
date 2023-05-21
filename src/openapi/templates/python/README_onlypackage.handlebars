@@ -1,0 +1,38 @@
+## eMASS API {{appVersion}} Specification
+
+The {{{projectName}}} is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
+Representational State Transfer (REST) Application Programming Interface (API) specifications.
+
+
+This Python package was generated from the eMASS API specification:
+
+- API version: {{appVersion}}
+- Package version: {{packageVersion}}
+- Build date: {{generatedDate}}
+
+## Requirements.
+
+Python {{generatorLanguageVersion}}
+
+## Installation & Usage
+
+This python library package is generated without supporting files like setup.py or requirements files
+
+To be able to use it, you will need these dependencies in your own package that uses this library:
+
+* urllib3 >= 1.15
+* certifi
+* python-dateutil
+{{#if asyncio}}
+* aiohttp
+{{/if}}
+{{#if tornado}}
+* tornado>=4.2,<5
+{{/if}}
+
+## Getting Started
+
+In your own code, to use this library to connect and interact with {{{projectName}}},
+you can run the following:
+
+{{> README_common }}

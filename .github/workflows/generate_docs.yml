@@ -4,8 +4,8 @@ name: Generate eMASS Documentation
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   test_job:
     runs-on: ubuntu-latest
