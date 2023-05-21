@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "emass_client_api"
-VERSION = "3.8.0"
+VERSION = "3.8.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -30,19 +30,21 @@ REQUIRES = [
     "urllib3 ~= 1.26.7",
 ]
 
+README_MD = open(join(dirname(abspath(__file__)), "README.md")).read()
+
 setup(
     name=NAME,
     version=VERSION,
     description="Enterprise Mission Assurance Support Service (eMASS)",
     author="eMASS Tier III support",
     author_email="disa.meade.id.mbx.emass-tier-iii-support@mail.mil",
-    url="",
+    url="https://github.com/mitre/emass_client",
     keywords=["OpenAPI", "OpenAPI-Generator", "Enterprise Mission Assurance Support Service (eMASS)"],
     python_requires=">=3.7",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    long_description="""\
-    The Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) enables users to perform assessments and complete actions associated with system records.   &lt;strong&gt;Register External Application (that use the eMASS API)&lt;/strong&gt;&lt;/br&gt; New users will need to [register](https://nisp.emass.apps.mil/Content/Help/jobaids/eMASS_OT_NewUser_Job_Aid.pdf) an API key with the eMASS development team prior to accessing the site for the first time. The eMASS REST API  requires a client certificate (SSL/TLS, DoD PKI only). Use the &#x60;Registration&#x60; endpoint to register the client certificate.&lt;/br&gt;&lt;/br&gt;  Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key.  The API key must be provided in the request header for all endpoint calls (api-key). If the service receives an untrusted certificate or API key, a 401 error response code will be returned along with an error message.&lt;/br&gt;&lt;/br&gt;  &lt;strong&gt;Available Request Headers&lt;/strong&gt;&lt;/br&gt; &lt;table&gt;   &lt;tr&gt;     &lt;th align&#x3D;left&gt;key&lt;/th&gt;     &lt;th align&#x3D;left&gt;Example Value&lt;/th&gt;     &lt;th align&#x3D;left&gt;Description&lt;/th&gt;   &lt;/tr&gt;   &lt;tr&gt;     &lt;td&gt;&#x60;api-key&#x60;&lt;/td&gt;     &lt;td&gt;api-key-provided-by-emass&lt;/td&gt;     &lt;td&gt;This API key must be provided in the request header for all endpoint calls&lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;     &lt;td&gt;&#x60;user-uid&#x60;&lt;/td&gt;     &lt;td&gt;USER.UID.KEY&lt;/td&gt;     &lt;td&gt;This User unique identifier key must be provided in the request header for all PUT, POST, and DELETE endpoint calls&lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;     &lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;     &lt;td&gt;       Note: For DoD users this is the DoD ID Number (EIDIPI) on their DoD CAC     &lt;/td&gt;   &lt;/tr&gt; &lt;/table&gt;  &lt;/br&gt;&lt;strong&gt;Approve API Client for Actionable Requests&lt;/strong&gt;&lt;/br&gt; Users are required to log-in to eMASS and grant permissions for a client to update data within eMASS on their behalf. This is only required for actionable requests (PUT, POST, DELETE). The Registration Endpoint and all GET requests can be accessed without completing this process with the correct permissions. Please note that leaving a field parameter blank (for PUT/POST requests) has the potential to clear information in the active eMASS records.  To establish an account with eMASS and/or acquire an api-key/user-uid, contact one of the listed POC:   # noqa: E501
-    """
+    license="Apache-2.0",
+    long_description=README_MD,
+	long_description_content_type="text/markdown"
 )
