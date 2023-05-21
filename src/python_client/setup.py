@@ -11,9 +11,10 @@
 """
 
 from setuptools import setup, find_packages  # noqa: H301
+from os.path import abspath, dirname, join
 
 NAME = "emass_client_api"
-VERSION = "3.8.1"
+VERSION = "3.9.0"
 # To install the library, run the following
 #
 # python setup.py install
