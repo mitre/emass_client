@@ -105,8 +105,8 @@ tags:
       Risk Assessment."
   - name: Test Results
     description: >
-      The Test Results endpoints provide the ability to view and add test results for a system's
-      Assessment Procedures (CCIs) which determine Security Control compliance.
+      The Test Results endpoints provide the ability to view and add test results for a
+      system's Assessment Procedures (CCIs) which determine Security Control compliance.
   - name: POAM
     description: >
       The POA&Ms endpoints provide the ability to view, add, update, and remove Plan of Action
