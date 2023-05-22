@@ -1,7 +1,0 @@
-# do not import all endpoints into this module because that uses a lot of memory and stack frames
-# if you need the ability to import all endpoints from this module, import them with
-# from emass_client.paths.api_systems_system_id_poams_poam_id_milestones_milestone_id import Api
-
-from emass_client.paths import PathValues
-
-path = PathValues.API_SYSTEMS_SYSTEM_ID_POAMS_POAM_ID_MILESTONES_MILESTONE_ID

@@ -1,6 +1,6 @@
 {
   "name": "@mitre/emass_client",
-  "version": "3.9.0",
+  "version": "3.8.3",
   "description": "OpenAPI client for @mitre/emass_client",
   "repository": {
     "type": "git",

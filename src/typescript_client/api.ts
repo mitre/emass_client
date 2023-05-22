@@ -3824,12 +3824,12 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {File} zipper 
          * @param {boolean} [isBulk] **Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\&quot; 
          * @param {boolean} [isTemplate] 
-         * @param {string} [type] 
-         * @param {string} [category] 
+         * @param {AddArtifactsBySystemIdTypeEnum} [type] 
+         * @param {AddArtifactsBySystemIdCategoryEnum} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addArtifactsBySystemId: async (systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: string, category?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addArtifactsBySystemId: async (systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: AddArtifactsBySystemIdTypeEnum, category?: AddArtifactsBySystemIdCategoryEnum, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('addArtifactsBySystemId', 'systemId', systemId)
             // verify required parameter 'zipper' is not null or undefined
@@ -4069,12 +4069,12 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {File} zipper 
          * @param {boolean} [isBulk] **Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\&quot; 
          * @param {boolean} [isTemplate] 
-         * @param {string} [type] 
-         * @param {string} [category] 
+         * @param {AddArtifactsBySystemIdTypeEnum} [type] 
+         * @param {AddArtifactsBySystemIdCategoryEnum} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: string, category?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponsePutPost>> {
+        async addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: AddArtifactsBySystemIdTypeEnum, category?: AddArtifactsBySystemIdCategoryEnum, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactsResponsePutPost>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addArtifactsBySystemId(systemId, zipper, isBulk, isTemplate, type, category, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4134,12 +4134,12 @@ export const ArtifactsApiFactory = function (configuration?: Configuration, base
          * @param {File} zipper 
          * @param {boolean} [isBulk] **Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\&quot; 
          * @param {boolean} [isTemplate] 
-         * @param {string} [type] 
-         * @param {string} [category] 
+         * @param {AddArtifactsBySystemIdTypeEnum} [type] 
+         * @param {AddArtifactsBySystemIdCategoryEnum} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: string, category?: string, options?: any): AxiosPromise<ArtifactsResponsePutPost> {
+        addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: AddArtifactsBySystemIdTypeEnum, category?: AddArtifactsBySystemIdCategoryEnum, options?: any): AxiosPromise<ArtifactsResponsePutPost> {
             return localVarFp.addArtifactsBySystemId(systemId, zipper, isBulk, isTemplate, type, category, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4195,13 +4195,13 @@ export class ArtifactsApi extends BaseAPI {
      * @param {File} zipper 
      * @param {boolean} [isBulk] **Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\&quot; 
      * @param {boolean} [isTemplate] 
-     * @param {string} [type] 
-     * @param {string} [category] 
+     * @param {AddArtifactsBySystemIdTypeEnum} [type] 
+     * @param {AddArtifactsBySystemIdCategoryEnum} [category] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: string, category?: string, options?: AxiosRequestConfig) {
+    public addArtifactsBySystemId(systemId: number, zipper: File, isBulk?: boolean, isTemplate?: boolean, type?: AddArtifactsBySystemIdTypeEnum, category?: AddArtifactsBySystemIdCategoryEnum, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).addArtifactsBySystemId(systemId, zipper, isBulk, isTemplate, type, category, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -4247,6 +4247,32 @@ export class ArtifactsApi extends BaseAPI {
         return ArtifactsApiFp(this.configuration).updateArtifactBySystemId(systemId, requestBody, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const AddArtifactsBySystemIdTypeEnum = {
+    Procedure: 'Procedure',
+    Diagram: 'Diagram',
+    Policy: 'Policy',
+    Labor: 'Labor',
+    Document: 'Document',
+    Image: 'Image',
+    Other: 'Other',
+    ScanResult: 'Scan Result',
+    AuditorReport: 'Auditor Report',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type AddArtifactsBySystemIdTypeEnum = typeof AddArtifactsBySystemIdTypeEnum[keyof typeof AddArtifactsBySystemIdTypeEnum];
+/**
+ * @export
+ */
+export const AddArtifactsBySystemIdCategoryEnum = {
+    ImplementationGuidance: 'Implementation Guidance',
+    Evidence: 'Evidence',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type AddArtifactsBySystemIdCategoryEnum = typeof AddArtifactsBySystemIdCategoryEnum[keyof typeof AddArtifactsBySystemIdCategoryEnum];
 
 
 /**
@@ -4379,6 +4405,7 @@ export class ArtifactsExportApi extends BaseAPI {
         return ArtifactsExportApiFp(this.configuration).getSystemArtifactsExport(systemId, filename, compress, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -4588,6 +4615,7 @@ export class CACApi extends BaseAPI {
 }
 
 
+
 /**
  * CMMCAssessmentsApi - axios parameter creator
  * @export
@@ -4703,6 +4731,7 @@ export class CMMCAssessmentsApi extends BaseAPI {
         return CMMCAssessmentsApiFp(this.configuration).getCmmcAssessments(sinceDate, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -4828,6 +4857,7 @@ export class CloudResourceResultsApi extends BaseAPI {
 }
 
 
+
 /**
  * ContainerScanResultsApi - axios parameter creator
  * @export
@@ -4949,6 +4979,7 @@ export class ContainerScanResultsApi extends BaseAPI {
         return ContainerScanResultsApiFp(this.configuration).addContainerSansBySystemId(systemId, requestBody, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -5156,6 +5187,7 @@ export class ControlsApi extends BaseAPI {
         return ControlsApiFp(this.configuration).updateControlBySystemId(systemId, requestBody, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -7874,6 +7906,7 @@ export class DashboardsApi extends BaseAPI {
 }
 
 
+
 /**
  * MilestonesApi - axios parameter creator
  * @export
@@ -8377,6 +8410,7 @@ export class MilestonesApi extends BaseAPI {
 }
 
 
+
 /**
  * PACApi - axios parameter creator
  * @export
@@ -8574,6 +8608,7 @@ export class PACApi extends BaseAPI {
         return PACApiFp(this.configuration).getSystemPac(systemId, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -9068,6 +9103,7 @@ export class POAMApi extends BaseAPI {
 }
 
 
+
 /**
  * RegistrationApi - axios parameter creator
  * @export
@@ -9173,6 +9209,7 @@ export class RegistrationApi extends BaseAPI {
         return RegistrationApiFp(this.configuration).registerUser(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -9298,6 +9335,7 @@ export class StaticCodeScansApi extends BaseAPI {
 }
 
 
+
 /**
  * SystemRolesApi - axios parameter creator
  * @export
@@ -9346,14 +9384,14 @@ export const SystemRolesApiAxiosParamCreator = function (configuration?: Configu
         /**
          * Returns the role(s) data matching parameters.
          * @summary Get system roles
-         * @param {'CAC' | 'PAC' | 'Other'} roleCategory **Role Category**: The system role category been queried
-         * @param {'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator'} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemRolesByCategoryIdRoleCategoryEnum} roleCategory **Role Category**: The system role category been queried
+         * @param {GetSystemRolesByCategoryIdRoleEnum} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
+         * @param {GetSystemRolesByCategoryIdPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemRolesByCategoryId: async (roleCategory: 'CAC' | 'PAC' | 'Other', role: 'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator', policy?: 'diacap' | 'rmf' | 'reporting', includeDecommissioned?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSystemRolesByCategoryId: async (roleCategory: GetSystemRolesByCategoryIdRoleCategoryEnum, role: GetSystemRolesByCategoryIdRoleEnum, policy?: GetSystemRolesByCategoryIdPolicyEnum, includeDecommissioned?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'roleCategory' is not null or undefined
             assertParamExists('getSystemRolesByCategoryId', 'roleCategory', roleCategory)
             // verify required parameter 'role' is not null or undefined
@@ -9426,14 +9464,14 @@ export const SystemRolesApiFp = function(configuration?: Configuration) {
         /**
          * Returns the role(s) data matching parameters.
          * @summary Get system roles
-         * @param {'CAC' | 'PAC' | 'Other'} roleCategory **Role Category**: The system role category been queried
-         * @param {'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator'} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemRolesByCategoryIdRoleCategoryEnum} roleCategory **Role Category**: The system role category been queried
+         * @param {GetSystemRolesByCategoryIdRoleEnum} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
+         * @param {GetSystemRolesByCategoryIdPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystemRolesByCategoryId(roleCategory: 'CAC' | 'PAC' | 'Other', role: 'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator', policy?: 'diacap' | 'rmf' | 'reporting', includeDecommissioned?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemRolesCategoryResponse>> {
+        async getSystemRolesByCategoryId(roleCategory: GetSystemRolesByCategoryIdRoleCategoryEnum, role: GetSystemRolesByCategoryIdRoleEnum, policy?: GetSystemRolesByCategoryIdPolicyEnum, includeDecommissioned?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemRolesCategoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystemRolesByCategoryId(roleCategory, role, policy, includeDecommissioned, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -9459,14 +9497,14 @@ export const SystemRolesApiFactory = function (configuration?: Configuration, ba
         /**
          * Returns the role(s) data matching parameters.
          * @summary Get system roles
-         * @param {'CAC' | 'PAC' | 'Other'} roleCategory **Role Category**: The system role category been queried
-         * @param {'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator'} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemRolesByCategoryIdRoleCategoryEnum} roleCategory **Role Category**: The system role category been queried
+         * @param {GetSystemRolesByCategoryIdRoleEnum} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
+         * @param {GetSystemRolesByCategoryIdPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemRolesByCategoryId(roleCategory: 'CAC' | 'PAC' | 'Other', role: 'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator', policy?: 'diacap' | 'rmf' | 'reporting', includeDecommissioned?: boolean, options?: any): AxiosPromise<SystemRolesCategoryResponse> {
+        getSystemRolesByCategoryId(roleCategory: GetSystemRolesByCategoryIdRoleCategoryEnum, role: GetSystemRolesByCategoryIdRoleEnum, policy?: GetSystemRolesByCategoryIdPolicyEnum, includeDecommissioned?: boolean, options?: any): AxiosPromise<SystemRolesCategoryResponse> {
             return localVarFp.getSystemRolesByCategoryId(roleCategory, role, policy, includeDecommissioned, options).then((request) => request(axios, basePath));
         },
     };
@@ -9493,18 +9531,56 @@ export class SystemRolesApi extends BaseAPI {
     /**
      * Returns the role(s) data matching parameters.
      * @summary Get system roles
-     * @param {'CAC' | 'PAC' | 'Other'} roleCategory **Role Category**: The system role category been queried
-     * @param {'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator'} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
-     * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+     * @param {GetSystemRolesByCategoryIdRoleCategoryEnum} roleCategory **Role Category**: The system role category been queried
+     * @param {GetSystemRolesByCategoryIdRoleEnum} role **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
+     * @param {GetSystemRolesByCategoryIdPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
      * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SystemRolesApi
      */
-    public getSystemRolesByCategoryId(roleCategory: 'CAC' | 'PAC' | 'Other', role: 'AO' | 'Auditor' | 'Artifact Manager' | 'C&A Team' | 'IAO' | 'ISSO' | 'PM/IAM' | 'SCA' | 'User Rep' | 'Validator', policy?: 'diacap' | 'rmf' | 'reporting', includeDecommissioned?: boolean, options?: AxiosRequestConfig) {
+    public getSystemRolesByCategoryId(roleCategory: GetSystemRolesByCategoryIdRoleCategoryEnum, role: GetSystemRolesByCategoryIdRoleEnum, policy?: GetSystemRolesByCategoryIdPolicyEnum, includeDecommissioned?: boolean, options?: AxiosRequestConfig) {
         return SystemRolesApiFp(this.configuration).getSystemRolesByCategoryId(roleCategory, role, policy, includeDecommissioned, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetSystemRolesByCategoryIdRoleCategoryEnum = {
+    Cac: 'CAC',
+    Pac: 'PAC',
+    Other: 'Other',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemRolesByCategoryIdRoleCategoryEnum = typeof GetSystemRolesByCategoryIdRoleCategoryEnum[keyof typeof GetSystemRolesByCategoryIdRoleCategoryEnum];
+/**
+ * @export
+ */
+export const GetSystemRolesByCategoryIdRoleEnum = {
+    Ao: 'AO',
+    Auditor: 'Auditor',
+    ArtifactManager: 'Artifact Manager',
+    CaTeam: 'C&A Team',
+    Iao: 'IAO',
+    Isso: 'ISSO',
+    PmIam: 'PM/IAM',
+    Sca: 'SCA',
+    UserRep: 'User Rep',
+    Validator: 'Validator',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemRolesByCategoryIdRoleEnum = typeof GetSystemRolesByCategoryIdRoleEnum[keyof typeof GetSystemRolesByCategoryIdRoleEnum];
+/**
+ * @export
+ */
+export const GetSystemRolesByCategoryIdPolicyEnum = {
+    Diacap: 'diacap',
+    Rmf: 'rmf',
+    Reporting: 'reporting',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemRolesByCategoryIdPolicyEnum = typeof GetSystemRolesByCategoryIdPolicyEnum[keyof typeof GetSystemRolesByCategoryIdPolicyEnum];
 
 
 /**
@@ -9518,11 +9594,11 @@ export const SystemsApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Get system information for a specific system
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {boolean} [includePackage] **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystem: async (systemId: number, includePackage?: boolean, policy?: 'diacap' | 'rmf' | 'reporting', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSystem: async (systemId: number, includePackage?: boolean, policy?: GetSystemPolicyEnum, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'systemId' is not null or undefined
             assertParamExists('getSystem', 'systemId', systemId)
             const localVarPath = `/api/systems/{systemId}`
@@ -9573,14 +9649,14 @@ export const SystemsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [registrationType] **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
          * @param {string} [ditprId] **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
          * @param {string} [coamsId] **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemsPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDitprMetrics] **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt;
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {boolean} [reportsForScorecard] **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystems: async (includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: 'diacap' | 'rmf' | 'reporting', includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSystems: async (includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: GetSystemsPolicyEnum, includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/systems`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9660,11 +9736,11 @@ export const SystemsApiFp = function(configuration?: Configuration) {
          * @summary Get system information for a specific system
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {boolean} [includePackage] **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystem(systemId: number, includePackage?: boolean, policy?: 'diacap' | 'rmf' | 'reporting', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemResponse>> {
+        async getSystem(systemId: number, includePackage?: boolean, policy?: GetSystemPolicyEnum, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystem(systemId, includePackage, policy, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -9675,14 +9751,14 @@ export const SystemsApiFp = function(configuration?: Configuration) {
          * @param {string} [registrationType] **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
          * @param {string} [ditprId] **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
          * @param {string} [coamsId] **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemsPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDitprMetrics] **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt;
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {boolean} [reportsForScorecard] **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: 'diacap' | 'rmf' | 'reporting', includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemsResponse>> {
+        async getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: GetSystemsPolicyEnum, includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystems(includePackage, registrationType, ditprId, coamsId, policy, includeDitprMetrics, includeDecommissioned, reportsForScorecard, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -9701,11 +9777,11 @@ export const SystemsApiFactory = function (configuration?: Configuration, basePa
          * @summary Get system information for a specific system
          * @param {number} systemId **System Id**: The unique system record identifier.
          * @param {boolean} [includePackage] **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystem(systemId: number, includePackage?: boolean, policy?: 'diacap' | 'rmf' | 'reporting', options?: any): AxiosPromise<SystemResponse> {
+        getSystem(systemId: number, includePackage?: boolean, policy?: GetSystemPolicyEnum, options?: any): AxiosPromise<SystemResponse> {
             return localVarFp.getSystem(systemId, includePackage, policy, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9715,14 +9791,14 @@ export const SystemsApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [registrationType] **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
          * @param {string} [ditprId] **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
          * @param {string} [coamsId] **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
-         * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+         * @param {GetSystemsPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
          * @param {boolean} [includeDitprMetrics] **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt;
          * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
          * @param {boolean} [reportsForScorecard] **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: 'diacap' | 'rmf' | 'reporting', includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: any): AxiosPromise<SystemsResponse> {
+        getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: GetSystemsPolicyEnum, includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: any): AxiosPromise<SystemsResponse> {
             return localVarFp.getSystems(includePackage, registrationType, ditprId, coamsId, policy, includeDitprMetrics, includeDecommissioned, reportsForScorecard, options).then((request) => request(axios, basePath));
         },
     };
@@ -9740,12 +9816,12 @@ export class SystemsApi extends BaseAPI {
      * @summary Get system information for a specific system
      * @param {number} systemId **System Id**: The unique system record identifier.
      * @param {boolean} [includePackage] **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-     * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+     * @param {GetSystemPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SystemsApi
      */
-    public getSystem(systemId: number, includePackage?: boolean, policy?: 'diacap' | 'rmf' | 'reporting', options?: AxiosRequestConfig) {
+    public getSystem(systemId: number, includePackage?: boolean, policy?: GetSystemPolicyEnum, options?: AxiosRequestConfig) {
         return SystemsApiFp(this.configuration).getSystem(systemId, includePackage, policy, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9756,7 +9832,7 @@ export class SystemsApi extends BaseAPI {
      * @param {string} [registrationType] **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
      * @param {string} [ditprId] **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
      * @param {string} [coamsId] **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
-     * @param {'diacap' | 'rmf' | 'reporting'} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+     * @param {GetSystemsPolicyEnum} [policy] **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
      * @param {boolean} [includeDitprMetrics] **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt;
      * @param {boolean} [includeDecommissioned] **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
      * @param {boolean} [reportsForScorecard] **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard.
@@ -9764,10 +9840,31 @@ export class SystemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SystemsApi
      */
-    public getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: 'diacap' | 'rmf' | 'reporting', includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: AxiosRequestConfig) {
+    public getSystems(includePackage?: boolean, registrationType?: string, ditprId?: string, coamsId?: string, policy?: GetSystemsPolicyEnum, includeDitprMetrics?: boolean, includeDecommissioned?: boolean, reportsForScorecard?: boolean, options?: AxiosRequestConfig) {
         return SystemsApiFp(this.configuration).getSystems(includePackage, registrationType, ditprId, coamsId, policy, includeDitprMetrics, includeDecommissioned, reportsForScorecard, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetSystemPolicyEnum = {
+    Diacap: 'diacap',
+    Rmf: 'rmf',
+    Reporting: 'reporting',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemPolicyEnum = typeof GetSystemPolicyEnum[keyof typeof GetSystemPolicyEnum];
+/**
+ * @export
+ */
+export const GetSystemsPolicyEnum = {
+    Diacap: 'diacap',
+    Rmf: 'rmf',
+    Reporting: 'reporting',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemsPolicyEnum = typeof GetSystemsPolicyEnum[keyof typeof GetSystemsPolicyEnum];
 
 
 /**
@@ -9875,6 +9972,7 @@ export class TestApi extends BaseAPI {
         return TestApiFp(this.configuration).testConnection(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -10100,6 +10198,7 @@ export class TestResultsApi extends BaseAPI {
 }
 
 
+
 /**
  * WorkflowDefinitionsApi - axios parameter creator
  * @export
@@ -10223,6 +10322,7 @@ export class WorkflowDefinitionsApi extends BaseAPI {
 }
 
 
+
 /**
  * WorkflowInstancesApi - axios parameter creator
  * @export
@@ -10235,11 +10335,11 @@ export const WorkflowInstancesApiAxiosParamCreator = function (configuration?: C
          * @param {boolean} [includeComments] **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
          * @param {number} [pageIndex] **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
          * @param {string} [sinceDate] **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
-         * @param {'active' | 'inactive' | 'all'} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
+         * @param {GetSystemWorkflowInstancesStatusEnum} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemWorkflowInstances: async (includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: 'active' | 'inactive' | 'all', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSystemWorkflowInstances: async (includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: GetSystemWorkflowInstancesStatusEnum, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/workflows/instances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10347,11 +10447,11 @@ export const WorkflowInstancesApiFp = function(configuration?: Configuration) {
          * @param {boolean} [includeComments] **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
          * @param {number} [pageIndex] **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
          * @param {string} [sinceDate] **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
-         * @param {'active' | 'inactive' | 'all'} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
+         * @param {GetSystemWorkflowInstancesStatusEnum} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: 'active' | 'inactive' | 'all', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowInstancesResponseGet>> {
+        async getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: GetSystemWorkflowInstancesStatusEnum, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowInstancesResponseGet>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystemWorkflowInstances(includeComments, pageIndex, sinceDate, status, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -10382,11 +10482,11 @@ export const WorkflowInstancesApiFactory = function (configuration?: Configurati
          * @param {boolean} [includeComments] **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
          * @param {number} [pageIndex] **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
          * @param {string} [sinceDate] **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
-         * @param {'active' | 'inactive' | 'all'} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
+         * @param {GetSystemWorkflowInstancesStatusEnum} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: 'active' | 'inactive' | 'all', options?: any): AxiosPromise<WorkflowInstancesResponseGet> {
+        getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: GetSystemWorkflowInstancesStatusEnum, options?: any): AxiosPromise<WorkflowInstancesResponseGet> {
             return localVarFp.getSystemWorkflowInstances(includeComments, pageIndex, sinceDate, status, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10415,12 +10515,12 @@ export class WorkflowInstancesApi extends BaseAPI {
      * @param {boolean} [includeComments] **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
      * @param {number} [pageIndex] **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
      * @param {string} [sinceDate] **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
-     * @param {'active' | 'inactive' | 'all'} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
+     * @param {GetSystemWorkflowInstancesStatusEnum} [status] **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowInstancesApi
      */
-    public getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: 'active' | 'inactive' | 'all', options?: AxiosRequestConfig) {
+    public getSystemWorkflowInstances(includeComments?: boolean, pageIndex?: number, sinceDate?: string, status?: GetSystemWorkflowInstancesStatusEnum, options?: AxiosRequestConfig) {
         return WorkflowInstancesApiFp(this.configuration).getSystemWorkflowInstances(includeComments, pageIndex, sinceDate, status, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10436,5 +10536,16 @@ export class WorkflowInstancesApi extends BaseAPI {
         return WorkflowInstancesApiFp(this.configuration).getSystemWorkflowInstancesByWorkflowInstanceId(workflowInstanceId, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetSystemWorkflowInstancesStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive',
+    All: 'all',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+export type GetSystemWorkflowInstancesStatusEnum = typeof GetSystemWorkflowInstancesStatusEnum[keyof typeof GetSystemWorkflowInstancesStatusEnum];
 
 
