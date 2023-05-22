@@ -1,9 +1,6 @@
 # coding: utf-8
 
-{{>partial_header}}
-
 from setuptools import setup, find_packages  # noqa: H301
-from os.path import abspath, dirname, join
 
 NAME = "{{{projectName}}}"
 VERSION = "{{packageVersion}}"
@@ -19,8 +16,6 @@ REQUIRES = [
     {{> required_libraries quoted=true }}
 ]
 
-README_MD = open(join(dirname(abspath(__file__)), "README.md")).read()
-
 setup(
     name=NAME,
     version=VERSION,
@@ -34,7 +29,7 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     {{#if licenseInfo}}license="{{licenseInfo}}{{/if}}",
-    long_description=README_MD,
+    long_description={{>partial_header}},
 	long_description_content_type="text/markdown"
 )
 {{/with}}
