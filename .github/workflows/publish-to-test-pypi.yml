@@ -5,11 +5,18 @@
 name: Publish Python 🐍 distributions 📦 to TestPyPI
 
 # Push to TestPyPI unconditionally (need to rev version or del/yank same ver)
-on:
-  workflow_run:
-    workflows: ['generate-eMASS-clients']
-    types:
-      - completed
+# Used for testing the python package - to test comment the
+# on:
+#   workflow_run:
+#     workflows: ['generate-eMASS-clients']
+#      types:
+#        - completed
+# and simply use on: push
+on: push
+  # workflow_run:
+  #   workflows: ['generate-eMASS-clients']
+  #   types:
+  #     - completed
 
 jobs:
   build-n-publish:
