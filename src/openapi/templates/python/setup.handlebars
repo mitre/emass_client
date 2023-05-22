@@ -20,8 +20,8 @@ setup(
     name=NAME,
     version=VERSION,
     description="{{appName}}",
-    author="{{#if infoName}}{{infoName}}{{/if}}{{#unless infoName}}OpenAPI Generator community{{/unless}}",
-    author_email="{{#if infoEmail}}{{infoEmail}}{{/if}}{{#unless infoEmail}}team@openapitools.org{{/unless}}",
+    author="OpenAPI-Generator",
+    author_email="saf@groups.mitre.org",
     url="{{#if packageUrl}}{{packageUrl}}{{/if}}",
     keywords=["OpenAPI", "OpenAPI-Generator", "{{{appName}}}"],
     python_requires="{{{generatorLanguageVersion}}}",
@@ -29,7 +29,9 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     {{#if licenseInfo}}license="{{licenseInfo}}{{/if}}",
-    long_description={{>partial_header}},
+    long_description="""\
+    {{>partial_header}} 
+    """,
 	long_description_content_type="text/markdown"
 )
 {{/with}}

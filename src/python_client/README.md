@@ -8,7 +8,7 @@ This Python package was generated from the eMASS API specification:
 
 - API version: v3.9
 - Package version: 3.9.0
-- Build date: 2023-05-21T14:16:28.110661-05:00[America/Chicago]
+- Build date: 2023-05-21T19:48:58.553127800-05:00[America/Chicago]
 
 ## Requirements.
 
