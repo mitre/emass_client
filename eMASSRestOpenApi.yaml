@@ -98,7 +98,7 @@ tags:
       **Notes:**
       - The endpoint can access three different role categories: PAC, CAC, and Other.
       - If a system is dual-policy enabled, the returned system role information will default
-       to the RMF policy information unless otherwise specified.
+        to the RMF policy information unless otherwise specified.
   - name: Controls
     description: "The Controls endpoints provide the ability to view, add, and update
       Security Control information to a system for both the Implementation Plan and
