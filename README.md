@@ -2,7 +2,7 @@
 
 ![CodeQL Vulnerabilities and Errors](https://github.com/mitre/emass_client/actions/workflows/codeql-analysis.yml/badge.svg) ![Ruby Client Testing](https://github.com/mitre/emass_client/actions/workflows/test-ruby-client.yml/badge.svg) 
 
-![GitHub Release Date](https://img.shields.io/github/release-date/mitre/emass_client?label=Release%20Date&logo=github&color=blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version&logo=github) ![Gem](https://img.shields.io/gem/v/emass_client?label=gem%20version&logo=ruby&logoColor=red) ![npm](https://img.shields.io/npm/v/@mitre/emass_client?label=npm%20package&logo=npm)
+![GitHub Release Date](https://img.shields.io/github/release-date/mitre/emass_client?label=Release%20Date&logo=github&color=blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version&logo=github) ![Gem](https://img.shields.io/gem/v/emass_client?label=gem%20version&logo=ruby&logoColor=red) ![npm](https://img.shields.io/npm/v/@mitre/emass_client?label=npm%20package&logo=npm) ![PyPI](https://img.shields.io/pypi/v/emass-client-api?label=pypi%20version&logo=pypi&logoColor=yellow)
 
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) Application Programming Interface (API) specifications and executables. The executables packages currently provided are: RubyGem and TypeScript Node.
