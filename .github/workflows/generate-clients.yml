@@ -1,7 +1,7 @@
 name: Generate OpenAPI Clients
 on:
   push:
-    branches: [ v3_9_0 ]
+    branches: [ main ]
   # Use for testing purposes only
   pull_request:
     #types: [synchronize]
@@ -49,7 +49,7 @@ jobs:
         with:
           generator: python
           config-file: src/openapi/templates/python/python-generator-config.json
-          template-dir: src/openapi/templates/python
+          template-dir: src/openapi/templates/python/mustache
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
