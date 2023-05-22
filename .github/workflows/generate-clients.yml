@@ -78,7 +78,7 @@ jobs:
           # echo "GIT commit and push eMASS clients..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          git add src/ruby_client src/typescript_client src/python_client
+          git add src/ruby_client src/typescript_client
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push -f
           echo "All done now."
