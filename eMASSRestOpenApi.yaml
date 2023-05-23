@@ -58,7 +58,7 @@ info:
     name: eMASS Tier III support
     url: 'https://www.dcsa.mil/is/emass/'
     email: disa.meade.id.mbx.emass-tier-iii-support@mail.mil
-  version: 'v3.4'
+  version: 'v3.9'
 
 externalDocs:
   description: eMASS New User Registration (requires CAC authentication)
@@ -88,8 +88,8 @@ tags:
       The Systems endpoints provide the ability to view system information.
 
       **Notes**
-        - If a system is dual-policy enabled, the returned system details default
-         to the RMF policy information unless otherwise specified for an individual system.
+        - If a system is dual-policy enabled, the returned system details default to
+          the RMF policy information unless otherwise specified for an individual system.
         - Certain fields are instance specific and may not be returned in GET request.
   - name: System Roles
     description: |
@@ -98,27 +98,27 @@ tags:
       **Notes:**
       - The endpoint can access three different role categories: PAC, CAC, and Other.
       - If a system is dual-policy enabled, the returned system role information will default
-       to the RMF policy information unless otherwise specified.
+        to the RMF policy information unless otherwise specified.
   - name: Controls
     description: "The Controls endpoints provide the ability to view, add, and update
       Security Control information to a system for both the Implementation Plan and
       Risk Assessment."
   - name: Test Results
     description: >
-      The Test Results endpoints provide the ability to view and add test results for a system's
-      Assessment Procedures (CCIs) which determine Security Control compliance.
+      The Test Results endpoints provide the ability to view and add test results for a
+      system's Assessment Procedures (CCIs) which determine Security Control compliance.
   - name: POAM
     description: >
-      The POA&Ms endpoints provide the ability to view, add, update, and remove Plan of Action
-      and Milestones (POA&M) items and associated milestones for a system.
+      The POA&Ms endpoints provide the ability to view, add, update, and remove Plan
+      of Action and Milestones (POA&M) items and associated milestones for a system.
   - name: Milestones
     description: >
       The Milestones endpoints provide the ability to view, add, update, and remove milestones
       that are associated with Plan of Action and Milestones (POA&M) items for a system.
   - name: Artifacts
     description: >
-      The Artifacts endpoints provide the ability to view, add, update, and remove artifacts
-      (supporting documentation/evidence) and associated files for a system.
+      The Artifacts endpoints provide the ability to view, add, update, and remove 
+      artifacts (supporting documentation/evidence) and associated files for a system.
   - name: Artifacts Export
     description: >
       The Artifacts Export endpoint provides the ability to download artifact files for a system.
@@ -128,21 +128,21 @@ tags:
       Security Controls and submit them to the second stage in the Control Approval Chain.
 
       **Notes:**
-      - POST requests will only yield successful results if the Security Control is at the
-        first stage of the CAC. If the control is not at the first stage, an error will be returned.      
+      - POST requests will only yield successful results if the Security Control is at the first
+        stage of the CAC. If the control is not at the first stage, an error will be returned.      
   - name: PAC
     description: |
       The Package Approval Chain (PAC) endpoints provide the ability to view the status of
       existing workflows and initiate new workflows for a system.
       
       **Notes:**
-      - If the indicated system has any active workflows, the response will include information
-        such as the workflow type and the current stage of each workflow.
+      - If the indicated system has any active workflows, the response will include 
+        information such as the workflow type and the current stage of each workflow.
       - If there are no active workflows, then a null data member will be returned.
   - name: CMMC Assessments
     description: >
-      The Cybersecurity Maturity Model Certification (CMMC) Assessments endpoint provides the
-      ability to view CMMC assessment information. It is available to CMMC eMASS only.
+      The Cybersecurity Maturity Model Certification (CMMC) Assessments endpoint provides
+      the ability to view CMMC assessment information. It is available to CMMC eMASS only.
   - name: Static Code Scans
     description: >
       The Static Code Scans endpoint provides the ability to upload application scan findings
@@ -155,18 +155,18 @@ tags:
     description: >
       The Workflow Instances endpoint provides the ability to view detailed information on
       all active and historical workflows for an eMASS instance.
-  - name: Cloud Resources
+  - name: Cloud Resource Results
     description: >
-      The Cloud Resources endpoint provides the ability to add, update, and remove
-      cloud resources and their scan results in the assets module for a system.
-  - name: Containers
+      The Cloud Resource Results endpoint provides the ability to add, update, and 
+      remove cloud resources and their scan results in the assets module for a system.
+  - name: Container Scan Results
     description: >
-      The Containers endpoint provides the ability to add, update, and remove
-      containers and their scan results in the assets module for a system.
+      The Container Scan Results endpoint provides the ability to add, update, and
+      remove containers and their scan results in the assets module for a system.
   - name: Dashboards
     description: |
       The Dashboards endpoints provide the ability to view data contained in dashboard exports.
-      In the eMASS front end, these dashboard exports are generated as Excel exports.
+      In the eMASS frontend, these dashboard exports are generated as Excel exports.
       
       Each dashboard dataset available from the API is automatically updated with the current
       configuration of the dashboard and the instance of eMASS as the dashboard changes.
@@ -219,7 +219,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Response500"
-
   #----------------------------------------------------------------------------
   # Register endpoint
   #----------------------------------------------------------------------------
@@ -1550,26 +1549,37 @@ paths:
       summary: "Add one or many artifacts in a system"
       description: |-
           <strong>Information</strong><br>
-          The request body of a POST request through the Artifact Endpoint accepts a single binary file
-          with file extension ".zip" only. This accepted .zip file should contain one or more files
-          corresponding to existing artifacts or new artifacts that will be created upon successful receipt.
-          Filename uniqueness throughout eMASS will be enforced by the API.<br><br>
-          Upon successful receipt of a file, if a file within the .zip is matched via filename to an artifact
-          existing within the application, the file associated with the artifact will be updated. If no artifact
-          is matched via filename to the application, a new artifact will be created with the following
-          default values. Any values not specified below will be blank.
+          The body of a request through the Artifacts POST endpoint accepts a single binary file. Two 
+          Artifact POST methods are currently accepted: individual and bulk. Filename uniqueness within 
+          an eMASS system will be enforced by the API for both methods.
+          <br><br>
+          For POST requests that should result in a single artifact, the request should include the file.
+          <br><br>
+          For POST requests that should result in the creation of many artifacts, the request should include 
+          a single file with the extension ".zip" only and the parameter isBulk should be set to true. This 
+          .zip file should contain one or more files corresponding to existing artifacts or new artifacts that 
+          will be created upon successful receipt.
+          <br><br>
+          Upon successful receipt of one or many artifacts, if a file is matched via filename to an artifact 
+          existing within the application, the file associated with the artifact will be updated. If no artifact 
+          is matched via filename to the application, a new artifact will be created with the following 
+          default values. Any values not specified below will be null
           <ul>
             <li>isTemplate: false</li>
-            <li>type: other</li>
-            <li>category: evidence</li>
+            <li>type: Other</li>
+            <li>category: Evidence</li>
           </ul>
           To update values other than the file itself, please submit a PUT request.<br>
           
-          <strong>Zip file information</strong><br>
-          Upload a zip file contain one or more files corresponding to existing artifacts
-          or new artifacts that will be created upon successful receipt.<br><br>
           <strong>Business Rules</strong><br>
-          Artifact cannot be saved if the file does not have the following file extensions:
+          Artifact cannot be saved if the fields below exceed the following character limits:
+          <ul>
+            <li>Filename - 1,000 characters</li>
+            <li>Name - 100 characters</li>
+            <li>Description - 10,000 characters</li>
+            <li>Reference Page Number - 50 characters</li>
+          </ul>
+          Artifact cannot be saved if the file does not have an allowable file extension/type:
 
               .docx,.doc,.txt,.rtf,.xfdl,.xml,.mht,.mh,tml,.html,.htm,.pdf,.mdb,.accdb,.ppt,
               .pptx,.xls,.xlsx,.csv,.log,.jpeg,.jpg,.tiff,.bmp,.tif,.png,.gif,.zip,.rar,.msg,
@@ -1578,9 +1588,20 @@ paths:
           Artifact version cannot be saved if an Artifact with the same file name already exist in the system.
 
           Artifact cannot be saved if the file size exceeds 30MB.
+
+          Artifact cannot be saved if the following fields are missing data:
+          <ul>
+            <li>Filename</li>
+            <li>Type</li>
+            <li>Category</li>
+          </ul>
+
+          Artifact cannot be saved if the Last Review Date (`lastReviewedDate`) is set in the future.
+
       operationId: addArtifactsBySystemId
       parameters:
         - $ref: '#/components/parameters/systemId'
+        - $ref: '#/components/parameters/isBulk'
       requestBody:
         description: "See `Information` posted above for additional instructions"
         content:
@@ -1594,22 +1615,11 @@ paths:
                   example: false 
                 type:
                   type: string
-                  enum:
-                    - Procedure
-                    - Diagram
-                    - Policy
-                    - Labor
-                    - Document
-                    - Image
-                    - Other
-                    - Scan Result
-                    - Auditor Report
+                  enum: [Procedure, Diagram, Policy, Labor, Document, Image,Other, Scan Result, Auditor Report]
                   example: "Other"
                 category:
                   type: string
-                  enum:
-                    - Implementation Guidance
-                    - Evidence
+                  enum: [Implementation Guidance, Evidence]
                   example: Evidence
                 Zipper:
                   type: string
@@ -2373,7 +2383,7 @@ paths:
       operationId: getSystemWorkflowInstances
       parameters:
         - $ref: '#/components/parameters/includeComments'
-        - $ref: '#/components/parameters/pageIndex'
+        - $ref: '#/components/parameters/workFlowPageIndex'
         - $ref: '#/components/parameters/optionalSinceDate'
         - $ref: '#/components/parameters/status'
       responses:
@@ -2487,12 +2497,12 @@ paths:
                 "$ref": "#/components/schemas/Response500"
 
   #----------------------------------------------------------------------------
-  # Cloude Resources endpoints
+  # Cloud Resource Results endpoints
   #----------------------------------------------------------------------------
   /api/systems/{systemId}/cloud-resource-results:
     post:
       tags:
-        - Cloud Resources
+        - Cloud Resource Results
       summary: "Add one or many cloud resources and their scan results"
       description: |-
         Add cloud resources and their scan results in the assets module for a system `systemId`
@@ -2563,12 +2573,12 @@ paths:
                 "$ref": "#/components/schemas/Response500"
 
   #----------------------------------------------------------------------------
-  # Containers endpoints
+  # Container Scan Results endpoints
   #----------------------------------------------------------------------------
   /api/systems/{systemId}/container-scan-results:
     post:
       tags:
-        - Containers
+        - Container Scan Results
       summary: "Add one or many containers and their scan results"
       description: |-
         Add containers and their scan results in the assets module for a system `systemId`.
@@ -2651,6 +2661,7 @@ paths:
       operationId: getSystemStatusDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -2713,6 +2724,7 @@ paths:
       operationId: getSystemControlComplianceSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -2775,6 +2787,7 @@ paths:
       operationId: getSystemSecurityControlDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -2837,6 +2850,7 @@ paths:
       operationId: getSystemAssessmentProceduresDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -2899,6 +2913,7 @@ paths:
       operationId: getSystemPoamSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -2961,6 +2976,133 @@ paths:
       operationId: getSystemPoamDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-artifacts-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system Artifacts summary information.
+      operationId: getSystemArtifactsSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-artifacts-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system Artifacts details information.
+      operationId: getSystemArtifactsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3023,6 +3165,7 @@ paths:
       operationId: getSystemHardwareSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3085,6 +3228,259 @@ paths:
       operationId: getSystemHardwareDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-sensor-hardware-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system sensor hardware summary dashboard information.
+      operationId: getSystemSensorHardwareSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-sensor-hardware-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system sensor hardware details dashboard information.
+      operationId: getSystemSensorHardwareDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-ports-protocols-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system ports and protocols summary dashboard information.
+      operationId: getSystemPortsProtocolsSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-ports-protocols-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get system ports and protocols details dashboard information.
+      operationId: getSystemPortsProtocolsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3147,6 +3543,7 @@ paths:
       operationId: getSystemAssociationsDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3209,6 +3606,7 @@ paths:
       operationId: getUserSystemAssignmentsDetails
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3271,6 +3669,7 @@ paths:
       operationId: getSystemPrivacySummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3333,6 +3732,7 @@ paths:
       operationId: getVaOmbFsmaSaopSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3395,6 +3795,7 @@ paths:
       operationId: getVaSystemAaSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3457,6 +3858,7 @@ paths:
       operationId: getVaSystemA2Summary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3519,6 +3921,7 @@ paths:
       operationId: getVaSystemPl109ReportingSummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3581,6 +3984,259 @@ paths:
       operationId: getVaSystemFismaInvetorySummary
       parameters:
         - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-fisma-inventory-crypto-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system FISMA inventory crypto summary dashboard information.
+      operationId: getVaSystemFismaInvetoryCryptoSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-threat-risks-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system threat risk summary dashboard information.
+      operationId: getVaSystemThreatRiskSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-threat-sources-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system threat source details dashboard information.
+      operationId: getVaSystemThreatSourceDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/va-system-threat-architecture-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "Get dashboard information"
+      description: |-
+        Get VA system threat architecture details dashboard information.
+      operationId: getVaSystemThreatArchitectureDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
         - $ref: '#/components/parameters/dashboardPageIndex'
         - $ref: '#/components/parameters/dashboardPageSize'
       responses:
@@ -3691,7 +4347,8 @@ components:
         example: 123
 
     #--------------------------------------------------------------------------
-    # Query - Required --------------------------------------------------------
+    # Query - Required 
+    #--------------------------------------------------------------------------
     role:
       name: role
       in: query
@@ -3727,7 +4384,8 @@ components:
         x-faker: random.number
         example: 1       
     #--------------------------------------------------------------------------
-    # Query - Optional --------------------------------------------------------
+    # Query - Optional 
+    #--------------------------------------------------------------------------
     includePackage:
       name: includePackage
       in: query
@@ -3818,6 +4476,19 @@ components:
         type: boolean
         x-faker: random.boolean
         default: true
+    isBulk:
+      name: isBulk
+      in: query
+      description: |
+        **Is Bulk**: If no value is specified, the default is false,
+        and an individual artifact file is expected.
+
+        When set to true, a .zip file is expected which 
+        can contain multiple artifact files"
+      schema:
+        type: boolean
+        x-faker: random.boolean
+        default: false        
     controlAcronyms:
       name: controlAcronyms
       in: query
@@ -3891,7 +4562,7 @@ components:
         type: boolean
         x-faker: random.boolean
         default: true
-    pageIndex:
+    workFlowPageIndex:
       name: pageIndex
       in: query
       description: |
@@ -3928,6 +4599,15 @@ components:
         type: string
         enum: ["active", "inactive", "all"]
         default: "all"
+    dashboardExcludeInherited:
+      name: excludeinherited
+      in: query
+      description: |
+        **Exclude Inherited**: If no value is specified, the default returns false to include inherited data.
+      schema:
+        type: boolean
+        x-faker: random.boolean
+        default: false
     dashboardPageIndex:
       name: pageIndex
       in: query
@@ -4454,31 +5134,46 @@ components:
             description: "[Required] Artifact category options"
             example: "Change Request"
           # Optional fields
+          name: 
+            type: string
+            description: "[Optional] Artifact name. Character Limit = 100."
+            nullable: true
+            x-faker: random.word
+            example: "E-Authentication Assessment"
           description:
             type: string
-            description: "[Optional] Artifact description. 2000 Characters."
+            description: "[Optional] Artifact description. 10,000 Characters."
             example: "Artifact description text"        
-          refPageNumber:
+          referencePageNumber:
             type: string
             description: "[Optional] Artifact reference page number. 50 Characters."
             example: "Reference page number"
           ccis:
             type: string
-            description: "[Required] CCI associated with test result."
+            description: "[Optional] CCI associated with test result."
             example: "000002"                
           controls:
             type: string
+            nullable: true
             description: "[Optional] Control acronym associated with the artifact. NIST SP 800-53 Revision 4 defined."
             example: "AC-8,AC-2(4)"     
-          artifactExpirationDate:
+          expirationDate:
             type: integer
             format: int64
+            nullable: true
             description: "[Optional] Date Artifact expires and requires review. In Unix Date format."
             example: 1549036928
           lastReviewedDate:
             type: integer
             format: int64
-            description: "[Optional]] Date Artifact was last reviewed.. Unix time format."
+            nullable: true
+            description: "[Optional] Date Artifact was last reviewed. Unix time format."
+            example: 1549036928
+          signedDate:
+            type: integer
+            format: int64
+            nullable: true
+            description: "[Optional] Date artifact was signed. Unix time format."
             example: 1549036928
     CacRequestPostBody:
       title: CAC POST Query Body
@@ -4781,7 +5476,7 @@ components:
           example: false          
     #----------------------------------------------------------------------------
     # Request Body example fields for (DELETE)
-    #----------------------------------------------------------------------------    
+    #----------------------------------------------------------------------------
     PoamRequestDeleteBody:
       title: DeletePoams
       type: array
@@ -5295,6 +5990,65 @@ components:
       type: object
       additionalProperties: false
       properties:
+        registrationCompletionDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] Date the system was registered into eMASS."
+          example: 1638741770
+        systemLifeCycleAcquisitionPhase:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identifies the current System Acquisition Phase for programs of record."
+          x-faker: company.bsBuzz
+          example: "Pre-Milestone A"
+        specialType:
+          type: string
+          nullable: true
+          description: "[Read-Only] Lists applicable tracking indicator(s)."
+          x-faker: company.catchPhraseNoun
+          example: "Special Type 1"
+        specialTypeDescription:
+          type: string
+          nullable: true
+          description: "[Read-Only] Provides a brief reason for any tracking indicator(s) selected."
+          x-faker: company.catchPhraseDescriptor
+          example: "Test Special Type Description"
+        missionPortfolio:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identifies the appropriate portfolio or capability area. Navy only."
+          x-faker: hacker.phrase
+          example: "Not Applicable"        
+        isNNPI:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicates whether Naval Nuclear Propulsion Information (NNPI) is stored, disseminated, or processed through this system. Navy only."
+          x-faker: random.boolean
+          example: false
+        isRBC:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicates whether the system is pursuing an RBC authorization. Navy only."
+          x-faker: random.boolean
+          example: false
+        isWaiver:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicates if the system has a waiver from OPNAV N2N6G (DDCIO(N)) to proceed with a DIACAP accreditation. Navy and DIACAP only."
+          x-faker: random.boolean
+          example: true
+        programOffice:
+          type: string
+          nullable: true
+          description: "[Read-Only] The system record's Program Office. Navy only."
+          x-faker: name.jobTitle
+          example: "Test Program Office"
+        vramId:
+          type: string
+          nullable: true
+          description: "[Read-Only] Vulnerability Remediation Asset Manager (VRAM) identification number. \"N/A\" indicates the system record is not currently registered in VRAM.  Navy only."
+          x-faker: system.semver
+          example: "12345"           
         systemId:
           type: integer
           format: int64
@@ -5332,16 +6086,16 @@ components:
           description: "[Read-only] Description of the system record."
           x-faker: random.words
           example: "This is a test system for the eMASS API documentation"
-        systemOwner:
+        instance:
           type: string
           nullable: true
-          description: "[Read-only] Owning organization of the system record."
-          x-faker: company.companyName
-          example: "DISA"
-        organizationName:
+          description: "[Read-Only] Name of the top-level component that owns the system."
+          x-faker: company.companySuffix
+          example: "Navy"
+        owningOrganization:
           type: string
           nullable: true
-          description: "[Read-only] Name of the top-level component that owns the system (e.g. Navy, Air Force, Army, etc..)."
+          description: "[Read-Only] Owning organization of the system record. Values match the eMASS instance Organizational Hierarchy."
           x-faker: company.companyName
           example: "Defense Information Systems Agency"
         secondaryOrganization:
@@ -5359,7 +6113,7 @@ components:
         systemType:
           type: string
           nullable: true
-          description: "[Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT, Interconnection, AIS Application)"
+          description: "[Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT Interconnection, AIS Application, Outsourced IT-Based Process (DoD-controlled), Enclave, Outsourced IT-Based Process (service provider shared))"
           example: "IS Major Application"
           enum: ["IS Major Application", "IS Enclave", "Platform IT", "Platform IT System", "Platform IT Interconnection", "AIS Application", "Outsourced IT-Based Process (DoD-controlled)", "Enclave", "Outsourced IT-Based Process (service provider shared)"]
         isNSS:
@@ -5389,20 +6143,35 @@ components:
         ditprId:
           type: string
           description: "[Read-only] DITPR ID of the system record."
-          x-faker: company.bsAdjective 
+          x-faker: system.semver
+          example: "30498"
+        apmsId:
+          type: string
+          nullable: true
+          description: "[Read-Only] Same field as ditprId but displays as apmsId for Army only."
+          x-faker: random.alphaNumeric
+          example: "30498"
+        vasiId:
+          type: string
+          nullable: true
+          description: "[Read-Only] Same field as ditprId but displays as vasiId for VA only."
+          x-faker: random.alphaNumeric
           example: "30498"
         authorizationStatus:
           type: string
           nullable: true
           description: "[Read-only] Authorization Status of the system record."
-          example: "Authorization to Operate (ATO)"
-          enum: ["Authority to Operate (ATO)","Authorization to Operate (ATO)","Authority to Operate with Conditions (ATO w/Conditions)",
-                 "Interim Authority to Test (IATT)","Interim Authority to Operate (IATO)","Denied Authority to Operate (DATO)",
-                 "Denial of Authorization to Operate (DATO)","Not Yet Authorized","Decommissioned","Unaccredited"]
+          x-faker:
+            random.arrayElement: [["Authorization to Operate (ATO)", "Authorization to Operate with Conditions (ATO w/Conditions)",
+                "Interim Authorization to Test (IATT)","Denied Authorization to Operate (DATO)","Not Yet Authorized",
+                "Decommissioned","Authorization to Operate (ATO)","Interim Authorization to Operate (IATO)",
+                "Interim Authorization to Test (IATT)","Denied Authorization to Operate (DATO)","Unaccredited","Decommissioned"]]
         authorizationDate:
           type: integer
           nullable: true
           description: "[Read-only] Authorization Date of the system record."
+          x-faker: 
+            random.number: 1234567890
           example: 1638741660
         authorizationTerminationDate:
           type: integer
@@ -5436,27 +6205,27 @@ components:
         missionCriticality:
           type: string
           nullable: true
-          description: "[Read-only] Mission Criticality of the system record. Values include the following options (Mission Critical (MC), Mission Essential (ME), Mission Support (MS)."
+          description: "[Read-only] Mission Criticality of the system record."
+          x-faker: random.words
           example: "Mission Support (MS)"
-          enum: ["Mission Critical (MC)", "Mission Essential (ME)", "Mission Support (MS)"]
         geographicalAssociation:
           type: string
           nullable: true
-          description: "[Read-only] Geographical Association of the system record (VA only)."
+          description: "[Read-only] Geographical Association of the system record."
+          x-faker: random.words
           example: "VA Operated IS"
-          enum: ["VA Operated IS", "non-VA Operated IS"]
         systemOwnership:
           type: string
           nullable: true
-          description: "[Read-only] Ownership of the system record (VA only)."
+          description: "[Read-only] Ownership of the system record."
           x-faker: commerce.productName
           example: "Region 1"
         governingMissionArea:
           type: string
           nullable: true
           description: "[Read-only] Governing Mission Area of the system record."
+          x-fakes: radom.words
           example: "DoD portion of the Intelligence MA (DIMA)"
-          enum: ["Business MA (BMA)", "DoD portion of the Intelligence MA (DIMA)", "Enterprise Information Environment MA (EIEMA)", "Warfighting MA (WMA)"]
         primaryFunctionalArea:
           type: string
           nullable: true
@@ -5681,7 +6450,150 @@ components:
           nullable: true
           description: "[Read-only] Indicates if the system reports to the DoD Cyber Hygiene Scorecard."
           x-faker: random.boolean
-          example: true   
+          example: true
+        highestSystemDataClassification:
+          type: string
+          nullable: true
+          description: "[Read-Only] The overall classification level of information that the System is approved to collect, process, store, and/or distribute."
+          example: "Unclassified"
+          x-faker:
+            random.arrayElement: [["Public Trust", "For Official Use Only (FOUO)", "Controlled Unclassified Information (CUI)",
+                "Unclassified", "Restricted Data/Formerly Restricted Data", "Sensitive Compartmented Information",
+                "Special Access Program", "Secret", "Top Secret", "Confidential"]]      
+        overallClassification:
+          type: string
+          nullable: true
+          description: "[Read-Only] Same field as highestSystemDataClassification, but displays as overallClassification for NISP only."
+          example: "Unclassified"
+          x-faker:
+            random.arrayElement: [["Public Trust", "For Official Use Only (FOUO)", "Controlled Unclassified Information (CUI)",
+                "Unclassified", "Restricted Data/Formerly Restricted Data", "Sensitive Compartmented Information",
+                "Special Access Program", "Secret", "Top Secret", "Confidential"]]   
+        isHVA:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicates if the system contains High Value Assets. Does not display if value is null"
+          x-faker: random.boolean
+          example: true
+        isFinancialManagement:
+          type: boolean
+          nullable: true
+          description: |
+            [Read-Only] Per OMB Circular A-127, a financial management system includes the core financial systems and the financial portions 
+            of mixed systems necessary to support financial management, including automated and manual processes, procedures, and 
+            controls, data, hardware, software, and support personnel dedicated to the operation and maintenance of system functions.
+            The following are examples of financial management systems: core financial systems, procurement systems, loan systems, grants
+            systems, payroll systems, budget formulation systems, billing systems, and travel systems.
+          x-faker: random.boolean
+          example: true
+        isReciprocity:
+          type: boolean
+          nullable: true
+          description: |
+            [Read-Only] A reciprocity system is any information system that is part of a mutual agreement among participating
+            organizations to accept each other's security assessments in order to reuse information system resources and/or
+            to accept each other's assessed security posture in order to share information.
+          x-faker: random.boolean
+          example: true
+        reciprocityExemption:
+          type: string
+          nullable: true
+          description: |
+            [Read-Only] The following justifications are acceptable for exemption from reciprocity: (a) the existence of
+            the system is classified (not the data, but the existence of the system) or (b) the system's authorization to
+            operate is in the process of being pulled (e.g. DATO, Decommission).
+          x-faker: random.words
+          example: "Decommission"
+        cloudComputing:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Is this a cloud-based IS?"
+          x-faker: random.boolean
+          example: false
+        cloudType:
+          type: string
+          nullable: true
+          description: "[Read-Only] Values include the following: (Hybrid, Private, Public)"
+          example: "Public"
+          enum: ["Hybrid", "Private", "Public"]
+        atcStatus:
+          type: string
+          nullable: true
+          description: |
+            [Read-Only] The Authority to Connect decision. Values include the following: 
+            (Authority to Connect (ATC), Denial of Authority to Connect (DATC), Not Yet Connected,
+            Decommissioned)
+          example: "Decommissioned"
+          enum: ["Authority to Connect (ATC)", "Denial of Authority to Connect (DATC)", "Not Yet Connected","Decommissioned"]
+        isSaaS:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Software as a Service (SaaS) cloud service model."
+          x-faker: random.boolean
+          example: true
+        isPaaS:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Platform as a Service (PaaS) cloud service model."
+          x-faker: random.boolean
+          example: false
+        isIaaS:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Infrastructure as a Service (IaaS) cloud service model."
+          x-faker: random.boolean
+          example: true
+        otherServiceModels:
+          type: string
+          nullable: true
+          description: "[Read-Only] Free text field to include other cloud service models."
+          x-faker: random.words
+          example: "Test Other Service"
+        needDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] Indicates the date by which the System needs to be deployed to a production environment."
+          x-faker: 
+            random.number: 1234567890
+          example: 1638741660
+        overallRiskScore:
+          type: string
+          nullable: true
+          description: "[Read-Only] The overall risk score of the system"
+          x-faker: random.word
+          example: "Moderate"
+        isHRR:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Identifies whether a System has been designated as High Risk Review. USCG and Navy only."
+          x-faker: random.boolean
+          example: false
+        atcDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] The Connectivity Authorization Date."
+          x-faker: 
+            random.number: 1234567890
+          example: 1638741660
+        atcTerminationDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] The Connectivity Authorization Termination Date."
+          x-faker: 
+            random.number: 1234567890
+          example: 1638741660
+        systemDevelopmentLifeCycle:
+          type: string
+          nullable: true
+          description: "[Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only."
+          x-faker: random.words
+          example: "Test Other Service"
+        isFISMAReportable:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only"
+          x-faker: random.boolean
+          example: false
         package:
           type: array
           nullable: true
@@ -6393,20 +7305,28 @@ components:
         type:
           type: string
           description: "[Required] Artifact type options"
+          x-faker: random.word
           example: "Policy"
-          enum: ["Procedure", "Diagram", "Policy", "Labor", "Document", "Image", "Other", "Scan Result", "Auditor Report"]          
+          # enum: ["Procedure", "Diagram", "Policy", "Labor", "Document", "Image", "Other", "Scan Result", "Auditor Report"]          
         category:
           type: string
           description: "[Required] Artifact category options"
+          x-faker: random.word
           example: "Change Request"
-          enum: ["Implementation Guidance", "Evidence"]
+          # enum: ["Implementation Guidance", "Evidence"]
+        name: 
+          type: string
+          description: "[Optional] Artifact name. Character Limit = 100."
+          nullable: true
+          x-faker: random.word
+          example: "E-Authentication Assessment"
         description:
           type: string
           nullable: true
-          description: "[Optional] Artifact description. 2000 Characters."
+          description: "[Optional] Artifact description. 10,000 Characters."
           x-faker: random.words
           example: "Artifact description text"
-        refPageNumber:
+        referencePageNumber:
           type: string
           nullable: true
           description: "[Optional] Artifact reference page number. 50 Characters."
@@ -6438,7 +7358,7 @@ components:
           example: "4MB"
           x-faker:
             random.arrayElement: [["369 KB","459 KB","134 KB","659 KB","555 KB","1 MB","1.3 MB","2 MB","2.7 MB","3.1 MB","4 MB"]]          
-        artifactExpirationDate:
+        expirationDate:
           type: integer
           format: int64
           nullable: true
@@ -6448,7 +7368,13 @@ components:
           type: integer
           format: int64
           nullable: true
-          description: "[Conditional] Date Artifact was last reviewed.. Unix time format."
+          description: "[Optional] Date Artifact was last reviewed. Unix time format."
+          example: 1549036928
+        signedDate:
+          type: integer
+          format: int64
+          nullable: true
+          description: "[Optional] Date artifact was signed. Unix time format."
           example: 1549036928
     CacGet:
       title: CAC - return query from the server for the GET call
@@ -6645,19 +7571,13 @@ components:
           description: "[Read-Only] The name of the DIB Company."
           x-faker: company.companyName
           example: "Army"
-        duns:
-          type: string
-          nullable: true
-          description: "[Read-Only] The Data Universal Numbering System (DUNS) number."
-          x-faker: finance.account
-          example: "852159753"
-        uniqueEntityIdentifier:
+        uei:
           type: string
           nullable: true
           description: "[Read-Only] The Unique Entity Identifier assigned to the DIB Company."
           x-faker: finance.account
           example: "9809123"
-        cageCodes:
+        cageCodesInScope:
           type: string
           nullable: true
           description: "[Read-Only] The five position code(s) associated with the Organization Seeking Certification (OSC)."
@@ -6695,18 +7615,69 @@ components:
           nullable: true
           description: "[Read-Only] Expiration date of the awarded CMMC certification."
           example: 1638741660
-        certificateId:
+        assessmentId:
           type: string
           nullable: true
           description: "[Read-Only] Unique identifier for the assessment/certificate."
           x-faker: random.uuid
-          example: "41b89528-a7a8-470a-90f4-c3fd1267d6f7"
+          example: "41b89528-a7a8-470a-90f4-c3fd1267d6f7"        
         modelVersion:
           type: string
           nullable: true
           description: "[Read-Only] Version of the CMMC Model used as part of the assessment."
           x-faker: system.semver
           example: "1.12"
+        highestLevelCageCode:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identifies the highest-level CAGE Code associated with a given organization."
+          x-faker: 
+            random.alphaNumeric: 5
+          example: "99D8B"
+        certificationUniqueId:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identifies the unique ID that is associated with a given CMMC certification for an organization."
+          x-faker: 
+            random.alphaNumeric: 9
+          example: "L20000003"
+        poam:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Identifies whether any security requirements received a POA&M during the assessment."
+          x-faker: random.boolean
+          example: false
+        overallScore:
+          type: integer
+          format: int64
+          description: "[Read-Only] Identifies the overall calculated score for the assessment based on the assigned values to each applicable security requirement."
+          x-faker: 
+            random.number: 150
+          example: 110
+        oscAssessmentOfficialLastName:
+          type: string
+          nullable: true
+          description: "[Read-Only] Last name of the company official contracting with the C3PAO for the assessment."
+          x-faker: name.lastName
+          example: "Smith"
+        oscAssessmentOfficialFirstName:
+          type: string
+          nullable: true
+          description: "[Read-Only] First name of the company official contracting with the C3PAO for the assessment."
+          x-faker: name.firstName 
+          example: "John"        
+        oscAssessmentOfficialEmail:
+          type: string
+          nullable: true
+          description: "[Read-Only] Email of the company official contracting with the C3PAO for the assessment."
+          x-faker: internet.email
+          example: "john.smith6.ctr@mail.mil"
+        oscAssessmentOfficialTitle:
+          type: string
+          nullable: true
+          description: "[Read-Only] Title of the company official contracting with the C3PAO for the assessment."
+          x-faker: name.jobTitle
+          example: "The Boss"
         ssps:
           type: array
           nullable: true

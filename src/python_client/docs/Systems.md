@@ -1,0 +1,123 @@
+# Systems
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**registration_completion_date** | **int** | [Read-Only] Date the system was registered into eMASS. | [optional] 
+**system_life_cycle_acquisition_phase** | **str** | [Read-Only] Identifies the current System Acquisition Phase for programs of record. | [optional] 
+**special_type** | **str** | [Read-Only] Lists applicable tracking indicator(s). | [optional] 
+**special_type_description** | **str** | [Read-Only] Provides a brief reason for any tracking indicator(s) selected. | [optional] 
+**mission_portfolio** | **str** | [Read-Only] Identifies the appropriate portfolio or capability area. Navy only. | [optional] 
+**is_nnpi** | **bool** | [Read-Only] Indicates whether Naval Nuclear Propulsion Information (NNPI) is stored, disseminated, or processed through this system. Navy only. | [optional] 
+**is_rbc** | **bool** | [Read-Only] Indicates whether the system is pursuing an RBC authorization. Navy only. | [optional] 
+**is_waiver** | **bool** | [Read-Only] Indicates if the system has a waiver from OPNAV N2N6G (DDCIO(N)) to proceed with a DIACAP accreditation. Navy and DIACAP only. | [optional] 
+**program_office** | **str** | [Read-Only] The system record&#39;s Program Office. Navy only. | [optional] 
+**vram_id** | **str** | [Read-Only] Vulnerability Remediation Asset Manager (VRAM) identification number. \&quot;N/A\&quot; indicates the system record is not currently registered in VRAM.  Navy only. | [optional] 
+**system_id** | **int** | [Read-only] Unique system record identifier. | [optional] 
+**policy** | **str** | [Read-only] RMF/DIACAP Policy identifier for the system record. | [optional] 
+**registration_type** | **str** | [Read-Only] Registration types parameters (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.) | [optional] 
+**name** | **str** | [Read-only] Name of the system record. | [optional] 
+**acronym** | **str** | [Read-only] Acronym of the system record. | [optional] 
+**description** | **str** | [Read-only] Description of the system record. | [optional] 
+**instance** | **str** | [Read-Only] Name of the top-level component that owns the system. | [optional] 
+**owning_organization** | **str** | [Read-Only] Owning organization of the system record. Values match the eMASS instance Organizational Hierarchy. | [optional] 
+**secondary_organization** | **str** | [Read-only] Secondary organization that owns the system record (i.e. Sub-Organization-level. | [optional] 
+**version_release_no** | **str** | [Read-only] Version/Release Number of system record. | [optional] 
+**system_type** | **str** | [Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT Interconnection, AIS Application, Outsourced IT-Based Process (DoD-controlled), Enclave, Outsourced IT-Based Process (service provider shared)) | [optional] 
+**is_nss** | **bool** | [Read-only] Is the system record a National Security System? | [optional] 
+**is_public_facing** | **bool** | [Read-only] Does the system record have a public facing component/presence. | [optional] 
+**coams_id** | **int** | [Read-only] Corresponding Cyber Operational Attributes Management System (COAMS) identifier for the system record. | [optional] 
+**is_type_authorization** | **bool** | [Read-only] Identifies if system is a Type Authorization. | [optional] 
+**ditpr_id** | **str** | [Read-only] DITPR ID of the system record. | [optional] 
+**apms_id** | **str** | [Read-Only] Same field as ditprId but displays as apmsId for Army only. | [optional] 
+**vasi_id** | **str** | [Read-Only] Same field as ditprId but displays as vasiId for VA only. | [optional] 
+**authorization_status** | **str** | [Read-only] Authorization Status of the system record. | [optional] 
+**authorization_date** | **int** | [Read-only] Authorization Date of the system record. | [optional] 
+**authorization_termination_date** | **int** | [Read-only] Authorization Termination Date of the system record. | [optional] 
+**authorization_length** | **int** | [Read-only] Length of system&#39;s Authorization. Calculated based off of Authorization Date &amp; Authorization Termination Date. | [optional] 
+**terms_for_auth** | **str** | [Read-only] Terms/Conditions for receiving and maintaining the system&#39;s Authorization. Assigned by the Authorizing Official. | [optional] 
+**security_plan_approval_status** | **str** | [Read-only] Status of the approval of the system&#39;s RMF Security Plan. Values include the following options (Approved, Denied, Not Yet Approved). | [optional] 
+**security_plan_approval_date** | **int** | [Read-only] Approval date of the system&#39;s RMF Security Plan. | [optional] 
+**mission_criticality** | **str** | [Read-only] Mission Criticality of the system record. | [optional] 
+**geographical_association** | **str** | [Read-only] Geographical Association of the system record. | [optional] 
+**system_ownership** | **str** | [Read-only] Ownership of the system record. | [optional] 
+**governing_mission_area** | **str** | [Read-only] Governing Mission Area of the system record. | [optional] 
+**primary_functional_area** | **str** | [Read-only] Primary functional area of the system record. | [optional] 
+**secondary_functional_area** | **str** | [Read-only] Secondary functional area of the system record. | [optional] 
+**primary_control_set** | **str** | [Read-only] Primary Control Set of the system record. RMF values include the following options (NIST SP 800-53 Revision 4), DIACAP values include the following options (DoDI 8500.2) | [optional] 
+**confidentiality** | **str** | [Read-only] Confidentiality of the system record. RMF values include the following options (High, Moderate, Low) | [optional] 
+**integrity** | **str** | [Read-only] Integrity of the system record. RMF values include the following options (High, Moderate, Low) | [optional] 
+**availability** | **str** | [Read-only] Availability of the system record. RMF values include the following options (High, Moderate, Low) | [optional] 
+**applied_overlays** | **str** | [Read-only] Overlays applied to the system record. | [optional] 
+**rmf_activity** | **str** | [Read-only] RMF Activity of the system record. | [optional] 
+**cross_domain_ticket** | **str** | [Read-only] Cross Domain Tickets of the system record. | [optional] 
+**ditpr_don_id** | **str** | [Read-Only] DITPR-DON identifier of the system record. | [optional] 
+**mac** | **str** | [Read-Only] MAC level of the system record. | [optional] 
+**dod_confidentiality** | **str** | [Read-Only] DoD Confidentiality level of the system record. | [optional] 
+**contingency_plan_tested** | **bool** | [Read-only] Has the system record&#39;s Contingency Plan been tested? | [optional] 
+**contingency_plan_test_date** | **int** | [Read-only] Date the system record&#39;s Contingency Plan was tested. | [optional] 
+**security_review_date** | **int** | [Read-only] Date the system record&#39;s Annual Security Review was conducted. | [optional] 
+**has_open_poam_item** | **bool** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item? | [optional] 
+**has_open_poam_item90to120_past_scheduled_completion_date** | **bool** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item 90 to 120 days past its Scheduled Completion Date? | [optional] 
+**has_open_poam_item120_plus_past_scheudled_completion_date** | **bool** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item 120 days past its Scheduled Completion Date? | [optional] 
+**impact** | **str** | [Optional] Values include the following options (Very Low, Low, Moderate,High,Very High) | [optional] 
+**has_cui** | **bool** | [Read-only] Does the system record contain and/or process Controlled Unclassified information? | [optional] 
+**has_pii** | **bool** | [Read-only] Does the system record contain and/or process Personally Identifiable Information? | [optional] 
+**has_phi** | **bool** | [Read-only] Does the system record contain and/or process Personal Health Information? | [optional] 
+**ppsm_registry_number** | **str** | [Read-only] Unique identifier for the DoD’s Ports, Protocols, and Services Management Registry system. | [optional] 
+**interconnected_information_system_and_identifiers** | **str** | [Read-only] Identify the interconnected information systems and corresponding identifiers within control CA-3. | [optional] 
+**is_pia_required** | **bool** | [Read-only] Does the system require a Privacy Impact Assessment? | [optional] 
+**pia_status** | **str** | [Read-only] Status of the PIA, availability values include the following options (Not Started, In Progress, Completed) | [optional] 
+**pia_date** | **int** | [Read-only] Date in which the system&#39;s PIA took place. | [optional] 
+**user_defined_field1** | **str** | [Read-only] User-defined field to augment Ad Hoc Reporting. | [optional] 
+**user_defined_field2** | **str** | [Read-only] User-defined field to augment Ad Hoc Reporting. | [optional] 
+**user_defined_field3** | **str** | [Read-only] User-defined field to augment Ad Hoc Reporting. | [optional] 
+**user_defined_field4** | **str** | [Read-only] User-defined field to augment Ad Hoc Reporting. | [optional] 
+**user_defined_field5** | **str** | [Read-only] User-defined field to augment Ad Hoc Reporting. | [optional] 
+**current_rmf_lifecycle_step** | **str** | [Read-only] Displays the system&#39;s current step within the RMF Lifecycle. | [optional] 
+**other_information** | **str** | [Read-only] Include any additional information required by the organization. | [optional] 
+**reports_for_scorecard** | **bool** | [Read-only] Indicates if the system reports to the DoD Cyber Hygiene Scorecard. | [optional] 
+**highest_system_data_classification** | **str** | [Read-Only] The overall classification level of information that the System is approved to collect, process, store, and/or distribute. | [optional] 
+**overall_classification** | **str** | [Read-Only] Same field as highestSystemDataClassification, but displays as overallClassification for NISP only. | [optional] 
+**is_hva** | **bool** | [Read-Only] Indicates if the system contains High Value Assets. Does not display if value is null | [optional] 
+**is_financial_management** | **bool** | [Read-Only] Per OMB Circular A-127, a financial management system includes the core financial systems and the financial portions  of mixed systems necessary to support financial management, including automated and manual processes, procedures, and  controls, data, hardware, software, and support personnel dedicated to the operation and maintenance of system functions. The following are examples of financial management systems: core financial systems, procurement systems, loan systems, grants systems, payroll systems, budget formulation systems, billing systems, and travel systems.  | [optional] 
+**is_reciprocity** | **bool** | [Read-Only] A reciprocity system is any information system that is part of a mutual agreement among participating organizations to accept each other&#39;s security assessments in order to reuse information system resources and/or to accept each other&#39;s assessed security posture in order to share information.  | [optional] 
+**reciprocity_exemption** | **str** | [Read-Only] The following justifications are acceptable for exemption from reciprocity: (a) the existence of the system is classified (not the data, but the existence of the system) or (b) the system&#39;s authorization to operate is in the process of being pulled (e.g. DATO, Decommission).  | [optional] 
+**cloud_computing** | **bool** | [Read-Only] Is this a cloud-based IS? | [optional] 
+**cloud_type** | **str** | [Read-Only] Values include the following: (Hybrid, Private, Public) | [optional] 
+**atc_status** | **str** | [Read-Only] The Authority to Connect decision. Values include the following:  (Authority to Connect (ATC), Denial of Authority to Connect (DATC), Not Yet Connected, Decommissioned)  | [optional] 
+**is_saa_s** | **bool** | [Read-Only] Software as a Service (SaaS) cloud service model. | [optional] 
+**is_paa_s** | **bool** | [Read-Only] Platform as a Service (PaaS) cloud service model. | [optional] 
+**is_iaa_s** | **bool** | [Read-Only] Infrastructure as a Service (IaaS) cloud service model. | [optional] 
+**other_service_models** | **str** | [Read-Only] Free text field to include other cloud service models. | [optional] 
+**need_date** | **int** | [Read-Only] Indicates the date by which the System needs to be deployed to a production environment. | [optional] 
+**overall_risk_score** | **str** | [Read-Only] The overall risk score of the system | [optional] 
+**is_hrr** | **bool** | [Read-Only] Identifies whether a System has been designated as High Risk Review. USCG and Navy only. | [optional] 
+**atc_date** | **int** | [Read-Only] The Connectivity Authorization Date. | [optional] 
+**atc_termination_date** | **int** | [Read-Only] The Connectivity Authorization Termination Date. | [optional] 
+**system_development_life_cycle** | **str** | [Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only. | [optional] 
+**is_fisma_reportable** | **bool** | [Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only | [optional] 
+**package** | [**List[PacGet]**](PacGet.md) |  | [optional] 
+**connectivity_ccsd** | [**List[ConnectivityCcsd]**](ConnectivityCcsd.md) |  | [optional] 
+
+## Example
+
+```python
+from emass_client.models.systems import Systems
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Systems from a JSON string
+systems_instance = Systems.from_json(json)
+# print the JSON string representation of the object
+print Systems.to_json()
+
+# convert the object into a dict
+systems_dict = systems_instance.to_dict()
+# create an instance of Systems from a dict
+systems_form_dict = systems.from_dict(systems_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

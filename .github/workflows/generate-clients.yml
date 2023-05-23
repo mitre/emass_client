@@ -1,10 +1,10 @@
 name: Generate OpenAPI Clients
+# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
     branches: [ main ]
   # pull_request:
-  #   #types: [synchronize]
-  #   branches: [ main ]    
+  #   branches: [ main ]
 
 jobs:
   generate-eMASS-clients:
@@ -15,7 +15,6 @@ jobs:
       # Checkout your code
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-        #uses: actions/checkout@v2
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
@@ -26,7 +25,7 @@ jobs:
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
-      - name: Generate Ruby Client 🔧
+      - name: Generate Ruby Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: ruby
@@ -35,7 +34,7 @@ jobs:
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
-      - name: Generate Typescript Client 🔧
+      - name: Generate Typescript Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: typescript-axios
@@ -44,11 +43,20 @@ jobs:
           openapi-file: eMASSRestOpenApi.yaml
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
+      - name: Generate Python Client 🏭
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          config-file: src/openapi/templates/python/python-generator-config.json
+          template-dir: src/openapi/templates/python/mustache
+          openapi-file: eMASSRestOpenApi.yaml
+        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Generated Clients 🚀
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
-          CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts (eMASS Clients)
+          CI_COMMIT_MESSAGE: Continuous Integration Build Client Artifacts (eMASS Clients)
           CI_COMMIT_AUTHOR: Continuous Integration
           # Use previous user who made the last commit (from logs)
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
@@ -63,10 +71,14 @@ jobs:
           rm -R src/typescript_client
           mv typescript-axios-client src/typescript_client
 
+          # echo "Renaming generated directory from python-client to python_client..."
+          rm -R src/python_client
+          mv python-client src/python_client
+
           # echo "GIT commit and push eMASS clients..."
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          git add src/ruby_client src/typescript_client
+          git add src/ruby_client src/typescript_client src/python_client
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push -f
           echo "All done now."

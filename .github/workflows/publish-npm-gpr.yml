@@ -7,10 +7,10 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: "16.x"
           registry-url: https://npm.pkg.github.com/
@@ -28,7 +28,7 @@ jobs:
           npm pack
 
       # Setup .npmrc file to publish to GitHub Package Registry
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@mitre'
@@ -37,6 +37,7 @@ jobs:
       - name: Publish emass_client to GPR
         run: |
           cd src/typescript_client
-          npm publish mitre-emass_client-*.tgz
+          # npm publish mitre-emass_client-*.tgz
+          npm publish --access public mitre-emass_client-*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

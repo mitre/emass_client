@@ -5,12 +5,12 @@ on:
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: "16.x"
           registry-url: 'https://registry.npmjs.org'
@@ -34,15 +34,3 @@ jobs:
           npm publish --access public mitre-emass_client-*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-     # # Setup .npmrc file to publish to GitHub Packages
-     # - uses: actions/setup-node@v1
-     #   if: always()
-     #   with:
-     #     registry-url: 'https://npm.pkg.github.com'
-
-     # - name: Publish emass_client to GitHub Packages
-     #   if: always()
-     #   run: npm publish --access public mitre-emass_client-*.tgz
-     #   env:
-     #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,8 +1,10 @@
-## @mitre/emass_client@3.4.1
+## eMASS API v3.9 Specification
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
+The `@mitre/emass_client@3.9.1` is a TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios)
+that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
+Representational State Transfer (REST) Application Programming Interface (API) specifications
 
-Environment
+The `@mitre/emass_client@3.9.1 npm package` can be used in the following environments:
 * Node.js
 * Webpack
 * Browserify
@@ -59,7 +61,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @mitre/emass_client@3.4.1 --save
+npm install @mitre/emass_client@3.9.1 --save
 ```
 
 _unPublished (not recommended):_
@@ -72,7 +74,7 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 Before accessing any of the endpoints provided by the @mitre/emass_client, we need to configure common axios settings.
 
 ### Axios Configuration
-All calls utilizing the @mitre/emass_client@3.4.1 need to initialize axios as follows:
+All calls utilizing the @mitre/emass_client@3.9.1 need to initialize axios as follows:
 
 ```typescript
 // Load the necessary modules
