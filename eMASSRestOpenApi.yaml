@@ -109,8 +109,8 @@ tags:
       system's Assessment Procedures (CCIs) which determine Security Control compliance.
   - name: POAM
     description: >
-      The POA&Ms endpoints provide the ability to view, add, update, and remove Plan of Action
-      and Milestones (POA&M) items and associated milestones for a system.
+      The POA&Ms endpoints provide the ability to view, add, update, and remove Plan
+      of Action and Milestones (POA&M) items and associated milestones for a system.
   - name: Milestones
     description: >
       The Milestones endpoints provide the ability to view, add, update, and remove milestones

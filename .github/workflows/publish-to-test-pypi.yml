@@ -1,6 +1,3 @@
-# https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/
-# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-# https://docs.github.com/en/packages/working-with-a-github-packages-Registry
 # publish a python package to the test pipy registry - await until the generate clients finishes
 name: Publish Python 🐍 distributions 📦 to TestPyPI
 
@@ -12,11 +9,11 @@ name: Publish Python 🐍 distributions 📦 to TestPyPI
 #      types:
 #        - completed
 # and simply use on: push
-on: push
-  # workflow_run:
-  #   workflows: ['generate-eMASS-clients']
-  #   types:
-  #     - completed
+on:
+  workflow_run:
+    workflows: ['generate-eMASS-clients']
+    types:
+      - completed
 
 jobs:
   build-n-publish:
