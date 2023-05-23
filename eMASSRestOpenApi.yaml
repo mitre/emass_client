@@ -117,8 +117,8 @@ tags:
       that are associated with Plan of Action and Milestones (POA&M) items for a system.
   - name: Artifacts
     description: >
-      The Artifacts endpoints provide the ability to view, add, update, and remove artifacts
-      (supporting documentation/evidence) and associated files for a system.
+      The Artifacts endpoints provide the ability to view, add, update, and remove 
+      artifacts (supporting documentation/evidence) and associated files for a system.
   - name: Artifacts Export
     description: >
       The Artifacts Export endpoint provides the ability to download artifact files for a system.
