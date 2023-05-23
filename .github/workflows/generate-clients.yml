@@ -1,11 +1,11 @@
 name: Generate OpenAPI Clients
 on:
   push:
-    branches: [ V3_9_0 ]
+    branches: [ main ]
   # Use for testing purposes only
   pull_request:
     #types: [synchronize]
-    branches: [ V3_9_0 ]    
+    branches: [ v3_9_0 ]    
 
 jobs:
   generate-eMASS-clients:

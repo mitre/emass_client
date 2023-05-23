@@ -136,8 +136,8 @@ tags:
       existing workflows and initiate new workflows for a system.
       
       **Notes:**
-      - If the indicated system has any active workflows, the response will include information
-        such as the workflow type and the current stage of each workflow.
+      - If the indicated system has any active workflows, the response will include 
+        information such as the workflow type and the current stage of each workflow.
       - If there are no active workflows, then a null data member will be returned.
   - name: CMMC Assessments
     description: >
