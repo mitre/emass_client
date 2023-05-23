@@ -5,7 +5,7 @@ on:
   # Use for testing purposes only
   pull_request:
     #types: [synchronize]
-    branches: [ main ]    
+    branches: [ V3_9_0 ]    
 
 jobs:
   generate-eMASS-clients:
