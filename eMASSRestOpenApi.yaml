@@ -141,8 +141,8 @@ tags:
       - If there are no active workflows, then a null data member will be returned.
   - name: CMMC Assessments
     description: >
-      The Cybersecurity Maturity Model Certification (CMMC) Assessments endpoint provides the
-      ability to view CMMC assessment information. It is available to CMMC eMASS only.
+      The Cybersecurity Maturity Model Certification (CMMC) Assessments endpoint provides
+      the ability to view CMMC assessment information. It is available to CMMC eMASS only.
   - name: Static Code Scans
     description: >
       The Static Code Scans endpoint provides the ability to upload application scan findings
