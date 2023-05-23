@@ -161,8 +161,8 @@ tags:
       remove cloud resources and their scan results in the assets module for a system.
   - name: Container Scan Results
     description: >
-      The Container Scan Results endpoint provides the ability to add, update, and remove
-      containers and their scan results in the assets module for a system.
+      The Container Scan Results endpoint provides the ability to add, update, and
+      remove containers and their scan results in the assets module for a system.
   - name: Dashboards
     description: |
       The Dashboards endpoints provide the ability to view data contained in dashboard exports.

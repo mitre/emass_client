@@ -1,11 +1,10 @@
 name: Generate OpenAPI Clients
+# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
-    branches: [ v3_9_0 ]
-  # Use for testing purposes only
-  pull_request:
-    #types: [synchronize]
-    branches: [ v3_9_0 ]
+    branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   generate-eMASS-clients:
