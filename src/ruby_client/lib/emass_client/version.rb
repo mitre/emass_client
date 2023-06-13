@@ -11,5 +11,5 @@ OpenAPI Generator version: 7.0.0-SNAPSHOT
 =end
 
 module EmassClient
-  VERSION = '3.9.10'
+  VERSION = '3.10.1'
 end
