@@ -1,19 +1,27 @@
 # publish a python package to the test pipy registry - await until the generate clients finishes
 name: Publish Python 🐍 distributions 📦 to TestPyPI
 
-# Push to TestPyPI unconditionally (need to rev version or del/yank same ver)
-# Used for testing the python package - to test comment the
+#-----------------------------------------------------------------------------------
+# Push to TestPyPI unconditionally (need to rev version, del/yank ver will not work)
+# 
+# For testing use:
+# on: push
+# (push to the TestPyPi registry on every push during development)
+#
+# Once test is completed use:
 # on:
 #   workflow_run:
-#     workflows: ['generate-eMASS-clients']
+#     workflows: [Generate OpenAPI Clients] -> old ['generate-eMASS-clients']
 #      types:
 #        - completed
-# and simply use on: push
+#-----------------------------------------------------------------------------------
+
 on:
   workflow_run:
-    workflows: ['generate-eMASS-clients']
+    workflows: [Generate OpenAPI Clients]
     types:
       - completed
+# on: push
 
 jobs:
   build-n-publish:

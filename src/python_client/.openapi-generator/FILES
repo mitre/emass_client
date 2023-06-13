@@ -33,6 +33,8 @@ docs/ControlsGet.md
 docs/ControlsPut.md
 docs/ControlsResponseGet.md
 docs/ControlsResponsePut.md
+docs/DashboardMockResponse.md
+docs/DashboardMockResponsePagination.md
 docs/DashboardsApi.md
 docs/DefinitionTransitions.md
 docs/InstancesTransitions.md
@@ -46,6 +48,7 @@ docs/MilestonesPutPostDelete.md
 docs/MilestonesRequestDeleteBodyInner.md
 docs/MilestonesRequiredPost.md
 docs/MilestonesRequiredPut.md
+docs/MockObject.md
 docs/PACApi.md
 docs/POAMApi.md
 docs/PacGet.md
@@ -168,6 +171,8 @@ emass_client/models/controls_get.py
 emass_client/models/controls_put.py
 emass_client/models/controls_response_get.py
 emass_client/models/controls_response_put.py
+emass_client/models/dashboard_mock_response.py
+emass_client/models/dashboard_mock_response_pagination.py
 emass_client/models/definition_transitions.py
 emass_client/models/instances_transitions.py
 emass_client/models/milestone_response_get.py
@@ -179,6 +184,7 @@ emass_client/models/milestones_put_post_delete.py
 emass_client/models/milestones_request_delete_body_inner.py
 emass_client/models/milestones_required_post.py
 emass_client/models/milestones_required_put.py
+emass_client/models/mock_object.py
 emass_client/models/pac_get.py
 emass_client/models/pac_post.py
 emass_client/models/pac_response_get.py
@@ -243,6 +249,7 @@ emass_client/models/workflow_instance_response_get.py
 emass_client/models/workflow_instances_get.py
 emass_client/models/workflow_instances_response_get.py
 emass_client/models/workflow_instances_response_get_pagination.py
+emass_client/py.typed
 emass_client/rest.py
 git_push.sh
 pyproject.toml
@@ -280,6 +287,8 @@ test/test_controls_get.py
 test/test_controls_put.py
 test/test_controls_response_get.py
 test/test_controls_response_put.py
+test/test_dashboard_mock_response.py
+test/test_dashboard_mock_response_pagination.py
 test/test_dashboards_api.py
 test/test_definition_transitions.py
 test/test_instances_transitions.py
@@ -293,6 +302,7 @@ test/test_milestones_put_post_delete.py
 test/test_milestones_request_delete_body_inner.py
 test/test_milestones_required_post.py
 test/test_milestones_required_put.py
+test/test_mock_object.py
 test/test_pac_api.py
 test/test_pac_get.py
 test/test_pac_post.py

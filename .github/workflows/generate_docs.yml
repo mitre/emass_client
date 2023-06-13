@@ -1,6 +1,7 @@
 name: Generate eMASS Documentation
 
 # Run on each push to main
+# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
     branches: [ main ]

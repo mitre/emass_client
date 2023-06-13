@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -68,182 +68,203 @@ class TestDashboardsApi(unittest.TestCase):
     def test_get_system_artifacts_details(self):
         """Test case for get_system_artifacts_details
 
-        Get dashboard information  # noqa: E501
+        System Artifacts Details  # noqa: E501
         """
         pass
 
     def test_get_system_artifacts_summary(self):
         """Test case for get_system_artifacts_summary
 
-        Get dashboard information  # noqa: E501
+        System Artifacts Summary  # noqa: E501
         """
         pass
 
     def test_get_system_assessment_procedures_details(self):
         """Test case for get_system_assessment_procedures_details
 
-        Get dashboard information  # noqa: E501
+        System Assessment Procedures Details  # noqa: E501
         """
         pass
 
     def test_get_system_associations_details(self):
         """Test case for get_system_associations_details
 
-        Get dashboard information  # noqa: E501
+        System Associations Details  # noqa: E501
+        """
+        pass
+
+    def test_get_system_common_integration_status_summary(self):
+        """Test case for get_system_common_integration_status_summary
+
+        System CONMON Integration Status  # noqa: E501
         """
         pass
 
     def test_get_system_control_compliance_summary(self):
         """Test case for get_system_control_compliance_summary
 
-        Get dashboard information  # noqa: E501
+        System Control Compliance Summary  # noqa: E501
         """
         pass
 
     def test_get_system_hardware_details(self):
         """Test case for get_system_hardware_details
 
-        Get dashboard information  # noqa: E501
+        System Hardware Details  # noqa: E501
         """
         pass
 
     def test_get_system_hardware_summary(self):
         """Test case for get_system_hardware_summary
 
-        Get dashboard information  # noqa: E501
+        System Hardware Summary  # noqa: E501
         """
         pass
 
     def test_get_system_poam_details(self):
         """Test case for get_system_poam_details
 
-        Get dashboard information  # noqa: E501
+        System POA&M Details  # noqa: E501
         """
         pass
 
     def test_get_system_poam_summary(self):
         """Test case for get_system_poam_summary
 
-        Get dashboard information  # noqa: E501
+        System POA&M Summary  # noqa: E501
         """
         pass
 
     def test_get_system_ports_protocols_details(self):
         """Test case for get_system_ports_protocols_details
 
-        Get dashboard information  # noqa: E501
+        System Ports/Protocols Details  # noqa: E501
         """
         pass
 
     def test_get_system_ports_protocols_summary(self):
         """Test case for get_system_ports_protocols_summary
 
-        Get dashboard information  # noqa: E501
+        System Ports/Protocols Summary  # noqa: E501
         """
         pass
 
     def test_get_system_privacy_summary(self):
         """Test case for get_system_privacy_summary
 
-        Get dashboard information  # noqa: E501
+        System Privacy Summary  # noqa: E501
         """
         pass
 
     def test_get_system_security_control_details(self):
         """Test case for get_system_security_control_details
 
-        Get dashboard information  # noqa: E501
+        System Control Compliance Details  # noqa: E501
         """
         pass
 
     def test_get_system_sensor_hardware_details(self):
         """Test case for get_system_sensor_hardware_details
 
-        Get dashboard information  # noqa: E501
+        System Sensor Hardware Details  # noqa: E501
         """
         pass
 
     def test_get_system_sensor_hardware_summary(self):
         """Test case for get_system_sensor_hardware_summary
 
-        Get dashboard information  # noqa: E501
+        System Sensor Hardware Summary  # noqa: E501
+        """
+        pass
+
+    def test_get_system_software_details(self):
+        """Test case for get_system_software_details
+
+        System Software Details  # noqa: E501
+        """
+        pass
+
+    def test_get_system_software_summary(self):
+        """Test case for get_system_software_summary
+
+        System Software Summary  # noqa: E501
         """
         pass
 
     def test_get_system_status_details(self):
         """Test case for get_system_status_details
 
-        Get dashboard information  # noqa: E501
+        System Status Details  # noqa: E501
         """
         pass
 
     def test_get_user_system_assignments_details(self):
         """Test case for get_user_system_assignments_details
 
-        Get dashboard information  # noqa: E501
+        User System Assignments Details  # noqa: E501
         """
         pass
 
     def test_get_va_omb_fsma_saop_summary(self):
         """Test case for get_va_omb_fsma_saop_summary
 
-        Get dashboard information  # noqa: E501
+        VA OMB FISMA SAOP Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_a2_summary(self):
         """Test case for get_va_system_a2_summary
 
-        Get dashboard information  # noqa: E501
+        VA System A2.0 Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_aa_summary(self):
         """Test case for get_va_system_aa_summary
 
-        Get dashboard information  # noqa: E501
+        VA System A&A Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_fisma_invetory_crypto_summary(self):
         """Test case for get_va_system_fisma_invetory_crypto_summary
 
-        Get dashboard information  # noqa: E501
+        VA System FISMA Inventory Crypto Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_fisma_invetory_summary(self):
         """Test case for get_va_system_fisma_invetory_summary
 
-        Get dashboard information  # noqa: E501
+        VA System FISMA Inventory Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_pl109_reporting_summary(self):
         """Test case for get_va_system_pl109_reporting_summary
 
-        Get dashboard information  # noqa: E501
+        VA System P.L. 109 Reporting Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_threat_architecture_details(self):
         """Test case for get_va_system_threat_architecture_details
 
-        Get dashboard information  # noqa: E501
+        VA System Threat Architecture Details  # noqa: E501
         """
         pass
 
     def test_get_va_system_threat_risk_summary(self):
         """Test case for get_va_system_threat_risk_summary
 
-        Get dashboard information  # noqa: E501
+        VA System Threat Risks Summary  # noqa: E501
         """
         pass
 
     def test_get_va_system_threat_source_details(self):
         """Test case for get_va_system_threat_source_details
 
-        Get dashboard information  # noqa: E501
+        VA System Threat Sources Details  # noqa: E501
         """
         pass
 

@@ -36,6 +36,8 @@ docs/ControlsGet.md
 docs/ControlsPut.md
 docs/ControlsResponseGet.md
 docs/ControlsResponsePut.md
+docs/DashboardMockResponse.md
+docs/DashboardMockResponsePagination.md
 docs/DashboardsApi.md
 docs/DefinitionTransitions.md
 docs/InstancesTransitions.md
@@ -49,6 +51,7 @@ docs/MilestonesPutPostDelete.md
 docs/MilestonesRequestDeleteBodyInner.md
 docs/MilestonesRequiredPost.md
 docs/MilestonesRequiredPut.md
+docs/MockObject.md
 docs/PACApi.md
 docs/POAMApi.md
 docs/PacGet.md
@@ -170,6 +173,8 @@ lib/emass_client/models/controls_get.rb
 lib/emass_client/models/controls_put.rb
 lib/emass_client/models/controls_response_get.rb
 lib/emass_client/models/controls_response_put.rb
+lib/emass_client/models/dashboard_mock_response.rb
+lib/emass_client/models/dashboard_mock_response_pagination.rb
 lib/emass_client/models/definition_transitions.rb
 lib/emass_client/models/instances_transitions.rb
 lib/emass_client/models/milestone_response_get.rb
@@ -181,6 +186,7 @@ lib/emass_client/models/milestones_put_post_delete.rb
 lib/emass_client/models/milestones_request_delete_body_inner.rb
 lib/emass_client/models/milestones_required_post.rb
 lib/emass_client/models/milestones_required_put.rb
+lib/emass_client/models/mock_object.rb
 lib/emass_client/models/pac_get.rb
 lib/emass_client/models/pac_post.rb
 lib/emass_client/models/pac_response_get.rb
@@ -289,6 +295,8 @@ spec/models/controls_get_spec.rb
 spec/models/controls_put_spec.rb
 spec/models/controls_response_get_spec.rb
 spec/models/controls_response_put_spec.rb
+spec/models/dashboard_mock_response_pagination_spec.rb
+spec/models/dashboard_mock_response_spec.rb
 spec/models/definition_transitions_spec.rb
 spec/models/instances_transitions_spec.rb
 spec/models/milestone_response_get_milestone_spec.rb
@@ -300,6 +308,7 @@ spec/models/milestones_put_post_delete_spec.rb
 spec/models/milestones_request_delete_body_inner_spec.rb
 spec/models/milestones_required_post_spec.rb
 spec/models/milestones_required_put_spec.rb
+spec/models/mock_object_spec.rb
 spec/models/pac_get_spec.rb
 spec/models/pac_post_spec.rb
 spec/models/pac_response_get_spec.rb

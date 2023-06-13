@@ -2,7 +2,7 @@
 
 # flake8: noqa
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -10,9 +10,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -51,7 +51,7 @@ import emass_client
 
 Execute `pytest` to run the tests.
 
-__version__ = "3.9.1"
+__version__ = "3.10.0"
 
 # import apis into sdk package
 from emass_client.api.artifacts_api import ArtifactsApi
@@ -108,6 +108,8 @@ from emass_client.models.controls_get import ControlsGet
 from emass_client.models.controls_put import ControlsPut
 from emass_client.models.controls_response_get import ControlsResponseGet
 from emass_client.models.controls_response_put import ControlsResponsePut
+from emass_client.models.dashboard_mock_response import DashboardMockResponse
+from emass_client.models.dashboard_mock_response_pagination import DashboardMockResponsePagination
 from emass_client.models.definition_transitions import DefinitionTransitions
 from emass_client.models.instances_transitions import InstancesTransitions
 from emass_client.models.milestone_response_get import MilestoneResponseGet
@@ -119,6 +121,7 @@ from emass_client.models.milestones_put_post_delete import MilestonesPutPostDele
 from emass_client.models.milestones_request_delete_body_inner import MilestonesRequestDeleteBodyInner
 from emass_client.models.milestones_required_post import MilestonesRequiredPost
 from emass_client.models.milestones_required_put import MilestonesRequiredPut
+from emass_client.models.mock_object import MockObject
 from emass_client.models.pac_get import PacGet
 from emass_client.models.pac_post import PacPost
 from emass_client.models.pac_response_get import PacResponseGet

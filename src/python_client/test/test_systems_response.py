@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -107,7 +107,7 @@ class TestSystemsResponse(unittest.TestCase):
                         ditpr_id = '30498', 
                         apms_id = '30498', 
                         vasi_id = '30498', 
-                        authorization_status = '', 
+                        authorization_status = 'Not Yet Authorized', 
                         authorization_date = 1638741660, 
                         authorization_termination_date = 1638741660, 
                         authorization_length = 365, 
@@ -173,6 +173,8 @@ class TestSystemsResponse(unittest.TestCase):
                         atc_termination_date = 1638741660, 
                         system_development_life_cycle = 'Test Other Service', 
                         is_fisma_reportable = False, 
+                        group_tagging = 'Group Tag 1', 
+                        group_tag_descriptions = 'Group Tag 1 explanation', 
                         package = [
                             emass_client.models.pac___return_query_from_the_server_for_the_get_call.PAC - return query from the server for the GET call(
                                 system_id = 35, 

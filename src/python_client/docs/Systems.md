@@ -98,6 +98,8 @@ Name | Type | Description | Notes
 **atc_termination_date** | **int** | [Read-Only] The Connectivity Authorization Termination Date. | [optional] 
 **system_development_life_cycle** | **str** | [Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only. | [optional] 
 **is_fisma_reportable** | **bool** | [Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only | [optional] 
+**group_tagging** | **str** | [Read-Only] System Tags for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] 
+**group_tag_descriptions** | **str** | [Read-Only] System Tag explanation(s) for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] 
 **package** | [**List[PacGet]**](PacGet.md) |  | [optional] 
 **connectivity_ccsd** | [**List[ConnectivityCcsd]**](ConnectivityCcsd.md) |  | [optional] 
 
