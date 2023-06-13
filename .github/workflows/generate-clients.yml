@@ -2,7 +2,7 @@ name: Generate OpenAPI Clients
 # For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
-    branches: [ main ]
+    branches: [ V3_10_1 ]
   # pull_request:
   #   branches: [ main ]
 
@@ -56,8 +56,8 @@ jobs:
       - name: Publish Generated Clients 🚀
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
-          CI_COMMIT_MESSAGE: Continuous Integration Build Client Artifacts (eMASS Clients)
-          CI_COMMIT_AUTHOR: Continuous Integration
+          CI_COMMIT_MESSAGE: CI Build Client Artifacts (eMASS Clients)
+          CI_COMMIT_AUTHOR: CI Pipeline
           # Use previous user who made the last commit (from logs)
           # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
