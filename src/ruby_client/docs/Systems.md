@@ -98,6 +98,8 @@
 | **atc_termination_date** | **Integer** | [Read-Only] The Connectivity Authorization Termination Date. | [optional] |
 | **system_development_life_cycle** | **String** | [Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only. | [optional] |
 | **is_fisma_reportable** | **Boolean** | [Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only | [optional] |
+| **group_tagging** | **String** | [Read-Only] System Tags for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] |
+| **group_tag_descriptions** | **String** | [Read-Only] System Tag explanation(s) for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] |
 | **package** | [**Array&lt;PacGet&gt;**](PacGet.md) |  | [optional] |
 | **connectivity_ccsd** | [**Array&lt;ConnectivityCcsd&gt;**](ConnectivityCcsd.md) |  | [optional] |
 
@@ -135,7 +137,7 @@ instance = EmassClient::Systems.new(
   ditpr_id: 30498,
   apms_id: 30498,
   vasi_id: 30498,
-  authorization_status: null,
+  authorization_status: Not Yet Authorized,
   authorization_date: 1638741660,
   authorization_termination_date: 1638741660,
   authorization_length: 365,
@@ -201,6 +203,8 @@ instance = EmassClient::Systems.new(
   atc_termination_date: 1638741660,
   system_development_life_cycle: Test Other Service,
   is_fisma_reportable: false,
+  group_tagging: Group Tag 1,
+  group_tag_descriptions: Group Tag 1 explanation,
   package: null,
   connectivity_ccsd: null
 )

@@ -1,4 +1,4 @@
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -6,9 +6,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -127,32 +127,35 @@ Class | Method | HTTP request | Description
 *ContainerScanResultsApi* | [**add_container_sans_by_system_id**](docs/ContainerScanResultsApi.md#add_container_sans_by_system_id) | **POST** /api/systems/{systemId}/container-scan-results | Add one or many containers and their scan results
 *ControlsApi* | [**get_system_controls**](docs/ControlsApi.md#get_system_controls) | **GET** /api/systems/{systemId}/controls | Get control information in a system for one or many controls
 *ControlsApi* | [**update_control_by_system_id**](docs/ControlsApi.md#update_control_by_system_id) | **PUT** /api/systems/{systemId}/controls | Update control information in a system for one or many controls
-*DashboardsApi* | [**get_system_artifacts_details**](docs/DashboardsApi.md#get_system_artifacts_details) | **GET** /api/dashboards/system-artifacts-details | Get dashboard information
-*DashboardsApi* | [**get_system_artifacts_summary**](docs/DashboardsApi.md#get_system_artifacts_summary) | **GET** /api/dashboards/system-artifacts-summary | Get dashboard information
-*DashboardsApi* | [**get_system_assessment_procedures_details**](docs/DashboardsApi.md#get_system_assessment_procedures_details) | **GET** /api/dashboards/system-assessment-procedures-details | Get dashboard information
-*DashboardsApi* | [**get_system_associations_details**](docs/DashboardsApi.md#get_system_associations_details) | **GET** /api/dashboards/system-associations-details | Get dashboard information
-*DashboardsApi* | [**get_system_control_compliance_summary**](docs/DashboardsApi.md#get_system_control_compliance_summary) | **GET** /api/dashboards/system-control-compliance-summary | Get dashboard information
-*DashboardsApi* | [**get_system_hardware_details**](docs/DashboardsApi.md#get_system_hardware_details) | **GET** /api/dashboards/system-hardware-details | Get dashboard information
-*DashboardsApi* | [**get_system_hardware_summary**](docs/DashboardsApi.md#get_system_hardware_summary) | **GET** /api/dashboards/system-hardware-summary | Get dashboard information
-*DashboardsApi* | [**get_system_poam_details**](docs/DashboardsApi.md#get_system_poam_details) | **GET** /api/dashboards/system-poam-details | Get dashboard information
-*DashboardsApi* | [**get_system_poam_summary**](docs/DashboardsApi.md#get_system_poam_summary) | **GET** /api/dashboards/system-poam-summary | Get dashboard information
-*DashboardsApi* | [**get_system_ports_protocols_details**](docs/DashboardsApi.md#get_system_ports_protocols_details) | **GET** /api/dashboards/system-ports-protocols-details | Get dashboard information
-*DashboardsApi* | [**get_system_ports_protocols_summary**](docs/DashboardsApi.md#get_system_ports_protocols_summary) | **GET** /api/dashboards/system-ports-protocols-summary | Get dashboard information
-*DashboardsApi* | [**get_system_privacy_summary**](docs/DashboardsApi.md#get_system_privacy_summary) | **GET** /api/dashboards/system-privacy-summary | Get dashboard information
-*DashboardsApi* | [**get_system_security_control_details**](docs/DashboardsApi.md#get_system_security_control_details) | **GET** /api/dashboards/system-security-controls-details | Get dashboard information
-*DashboardsApi* | [**get_system_sensor_hardware_details**](docs/DashboardsApi.md#get_system_sensor_hardware_details) | **GET** /api/dashboards/system-sensor-hardware-details | Get dashboard information
-*DashboardsApi* | [**get_system_sensor_hardware_summary**](docs/DashboardsApi.md#get_system_sensor_hardware_summary) | **GET** /api/dashboards/system-sensor-hardware-summary | Get dashboard information
-*DashboardsApi* | [**get_system_status_details**](docs/DashboardsApi.md#get_system_status_details) | **GET** /api/dashboards/system-status-details | Get dashboard information
-*DashboardsApi* | [**get_user_system_assignments_details**](docs/DashboardsApi.md#get_user_system_assignments_details) | **GET** /api/dashboards/user-system-assignments-details | Get dashboard information
-*DashboardsApi* | [**get_va_omb_fsma_saop_summary**](docs/DashboardsApi.md#get_va_omb_fsma_saop_summary) | **GET** /api/dashboards/va-omb-fisma-saop-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_a2_summary**](docs/DashboardsApi.md#get_va_system_a2_summary) | **GET** /api/dashboards/va-system-a2-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_aa_summary**](docs/DashboardsApi.md#get_va_system_aa_summary) | **GET** /api/dashboards/va-system-aa-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_fisma_invetory_crypto_summary**](docs/DashboardsApi.md#get_va_system_fisma_invetory_crypto_summary) | **GET** /api/dashboards/va-system-fisma-inventory-crypto-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_fisma_invetory_summary**](docs/DashboardsApi.md#get_va_system_fisma_invetory_summary) | **GET** /api/dashboards/va-system-fisma-inventory-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_pl109_reporting_summary**](docs/DashboardsApi.md#get_va_system_pl109_reporting_summary) | **GET** /api/dashboards/va-system-pl-109-reporting-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_threat_architecture_details**](docs/DashboardsApi.md#get_va_system_threat_architecture_details) | **GET** /api/dashboards/va-system-threat-architecture-details | Get dashboard information
-*DashboardsApi* | [**get_va_system_threat_risk_summary**](docs/DashboardsApi.md#get_va_system_threat_risk_summary) | **GET** /api/dashboards/va-system-threat-risks-summary | Get dashboard information
-*DashboardsApi* | [**get_va_system_threat_source_details**](docs/DashboardsApi.md#get_va_system_threat_source_details) | **GET** /api/dashboards/va-system-threat-sources-details | Get dashboard information
+*DashboardsApi* | [**get_system_artifacts_details**](docs/DashboardsApi.md#get_system_artifacts_details) | **GET** /api/dashboards/system-artifacts-details | System Artifacts Details
+*DashboardsApi* | [**get_system_artifacts_summary**](docs/DashboardsApi.md#get_system_artifacts_summary) | **GET** /api/dashboards/system-artifacts-summary | System Artifacts Summary
+*DashboardsApi* | [**get_system_assessment_procedures_details**](docs/DashboardsApi.md#get_system_assessment_procedures_details) | **GET** /api/dashboards/system-assessment-procedures-details | System Assessment Procedures Details
+*DashboardsApi* | [**get_system_associations_details**](docs/DashboardsApi.md#get_system_associations_details) | **GET** /api/dashboards/system-associations-details | System Associations Details
+*DashboardsApi* | [**get_system_common_integration_status_summary**](docs/DashboardsApi.md#get_system_common_integration_status_summary) | **GET** /api/dashboards/system-conmon-integration-status-summary | System CONMON Integration Status
+*DashboardsApi* | [**get_system_control_compliance_summary**](docs/DashboardsApi.md#get_system_control_compliance_summary) | **GET** /api/dashboards/system-control-compliance-summary | System Control Compliance Summary
+*DashboardsApi* | [**get_system_hardware_details**](docs/DashboardsApi.md#get_system_hardware_details) | **GET** /api/dashboards/system-hardware-details | System Hardware Details
+*DashboardsApi* | [**get_system_hardware_summary**](docs/DashboardsApi.md#get_system_hardware_summary) | **GET** /api/dashboards/system-hardware-summary | System Hardware Summary
+*DashboardsApi* | [**get_system_poam_details**](docs/DashboardsApi.md#get_system_poam_details) | **GET** /api/dashboards/system-poam-details | System POA&amp;M Details
+*DashboardsApi* | [**get_system_poam_summary**](docs/DashboardsApi.md#get_system_poam_summary) | **GET** /api/dashboards/system-poam-summary | System POA&amp;M Summary
+*DashboardsApi* | [**get_system_ports_protocols_details**](docs/DashboardsApi.md#get_system_ports_protocols_details) | **GET** /api/dashboards/system-ports-protocols-details | System Ports/Protocols Details
+*DashboardsApi* | [**get_system_ports_protocols_summary**](docs/DashboardsApi.md#get_system_ports_protocols_summary) | **GET** /api/dashboards/system-ports-protocols-summary | System Ports/Protocols Summary
+*DashboardsApi* | [**get_system_privacy_summary**](docs/DashboardsApi.md#get_system_privacy_summary) | **GET** /api/dashboards/system-privacy-summary | System Privacy Summary
+*DashboardsApi* | [**get_system_security_control_details**](docs/DashboardsApi.md#get_system_security_control_details) | **GET** /api/dashboards/system-security-controls-details | System Control Compliance Details
+*DashboardsApi* | [**get_system_sensor_hardware_details**](docs/DashboardsApi.md#get_system_sensor_hardware_details) | **GET** /api/dashboards/system-sensor-hardware-details | System Sensor Hardware Details
+*DashboardsApi* | [**get_system_sensor_hardware_summary**](docs/DashboardsApi.md#get_system_sensor_hardware_summary) | **GET** /api/dashboards/system-sensor-hardware-summary | System Sensor Hardware Summary
+*DashboardsApi* | [**get_system_software_details**](docs/DashboardsApi.md#get_system_software_details) | **GET** /api/dashboards/system-software-details | System Software Details
+*DashboardsApi* | [**get_system_software_summary**](docs/DashboardsApi.md#get_system_software_summary) | **GET** /api/dashboards/system-software-summary | System Software Summary
+*DashboardsApi* | [**get_system_status_details**](docs/DashboardsApi.md#get_system_status_details) | **GET** /api/dashboards/system-status-details | System Status Details
+*DashboardsApi* | [**get_user_system_assignments_details**](docs/DashboardsApi.md#get_user_system_assignments_details) | **GET** /api/dashboards/user-system-assignments-details | User System Assignments Details
+*DashboardsApi* | [**get_va_omb_fsma_saop_summary**](docs/DashboardsApi.md#get_va_omb_fsma_saop_summary) | **GET** /api/dashboards/va-omb-fisma-saop-summary | VA OMB FISMA SAOP Summary
+*DashboardsApi* | [**get_va_system_a2_summary**](docs/DashboardsApi.md#get_va_system_a2_summary) | **GET** /api/dashboards/va-system-a2-summary | VA System A2.0 Summary
+*DashboardsApi* | [**get_va_system_aa_summary**](docs/DashboardsApi.md#get_va_system_aa_summary) | **GET** /api/dashboards/va-system-aa-summary | VA System A&amp;A Summary
+*DashboardsApi* | [**get_va_system_fisma_invetory_crypto_summary**](docs/DashboardsApi.md#get_va_system_fisma_invetory_crypto_summary) | **GET** /api/dashboards/va-system-fisma-inventory-crypto-summary | VA System FISMA Inventory Crypto Summary
+*DashboardsApi* | [**get_va_system_fisma_invetory_summary**](docs/DashboardsApi.md#get_va_system_fisma_invetory_summary) | **GET** /api/dashboards/va-system-fisma-inventory-summary | VA System FISMA Inventory Summary
+*DashboardsApi* | [**get_va_system_pl109_reporting_summary**](docs/DashboardsApi.md#get_va_system_pl109_reporting_summary) | **GET** /api/dashboards/va-system-pl-109-reporting-summary | VA System P.L. 109 Reporting Summary
+*DashboardsApi* | [**get_va_system_threat_architecture_details**](docs/DashboardsApi.md#get_va_system_threat_architecture_details) | **GET** /api/dashboards/va-system-threat-architecture-details | VA System Threat Architecture Details
+*DashboardsApi* | [**get_va_system_threat_risk_summary**](docs/DashboardsApi.md#get_va_system_threat_risk_summary) | **GET** /api/dashboards/va-system-threat-risks-summary | VA System Threat Risks Summary
+*DashboardsApi* | [**get_va_system_threat_source_details**](docs/DashboardsApi.md#get_va_system_threat_source_details) | **GET** /api/dashboards/va-system-threat-sources-details | VA System Threat Sources Details
 *MilestonesApi* | [**add_milestone_by_system_id_and_poam_id**](docs/MilestonesApi.md#add_milestone_by_system_id_and_poam_id) | **POST** /api/systems/{systemId}/poams/{poamId}/milestones | Add milestones to one or many POA&amp;M items in a system
 *MilestonesApi* | [**delete_milestone**](docs/MilestonesApi.md#delete_milestone) | **DELETE** /api/systems/{systemId}/poams/{poamId}/milestones | Remove milestones in a system for one or many POA&amp;M items
 *MilestonesApi* | [**get_system_milestones_by_poam_id**](docs/MilestonesApi.md#get_system_milestones_by_poam_id) | **GET** /api/systems/{systemId}/poams/{poamId}/milestones | Get milestones in one or many POA&amp;M items in a system
@@ -203,6 +206,8 @@ Class | Method | HTTP request | Description
  - [ControlsPut](docs/ControlsPut.md)
  - [ControlsResponseGet](docs/ControlsResponseGet.md)
  - [ControlsResponsePut](docs/ControlsResponsePut.md)
+ - [DashboardMockResponse](docs/DashboardMockResponse.md)
+ - [DashboardMockResponsePagination](docs/DashboardMockResponsePagination.md)
  - [DefinitionTransitions](docs/DefinitionTransitions.md)
  - [InstancesTransitions](docs/InstancesTransitions.md)
  - [MilestoneResponseGet](docs/MilestoneResponseGet.md)
@@ -214,6 +219,7 @@ Class | Method | HTTP request | Description
  - [MilestonesRequestDeleteBodyInner](docs/MilestonesRequestDeleteBodyInner.md)
  - [MilestonesRequiredPost](docs/MilestonesRequiredPost.md)
  - [MilestonesRequiredPut](docs/MilestonesRequiredPut.md)
+ - [MockObject](docs/MockObject.md)
  - [PacGet](docs/PacGet.md)
  - [PacPost](docs/PacPost.md)
  - [PacResponseGet](docs/PacResponseGet.md)

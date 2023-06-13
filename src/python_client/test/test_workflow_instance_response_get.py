@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -77,28 +77,26 @@ class TestWorkflowInstanceResponseGet(unittest.TestCase):
             return WorkflowInstanceResponseGet(
                 meta = emass_client.models.ok.OK(
                     code = 200, ), 
-                data = [
-                    emass_client.models.workflow_instances___return_query_for_the_get_workflow_instance_by_id.Workflow Instances - return query for the GET workflow instance by ID(
-                        workflow_uid = '6f810301-5b3b-4f89-81e7-587fef9142a9', 
-                        system_name = 'Test system 1', 
-                        workflow_instance_id = 35, 
-                        package_name = 'Test RMF Step 1 package', 
-                        created_date = 1636124623, 
-                        last_edited_date = 1631130837, 
-                        last_edited_by = 'john.doe.ctr@mail.mil', 
-                        workflow = 'RMF Step 1: Security Category', 
-                        version = '4', 
-                        current_stage = 'Echelon II', 
-                        transitions = [
-                            emass_client.models.workflow_instances_transition.Workflow Instances Transition(
-                                comments = 'Approved the categorization', 
-                                created_by = 'john.doe.ctr@mail.mil', 
-                                created_date = 1636124623, 
-                                description = 'Submit New Package', 
-                                end_stage = 'Submit Categorization', 
-                                start_stage = 'Not Started', )
-                            ], )
-                    ]
+                data = emass_client.models.workflow_instances___return_query_for_the_get_workflow_instance_by_id.Workflow Instances - return query for the GET workflow instance by ID(
+                    workflow_uid = '6f810301-5b3b-4f89-81e7-587fef9142a9', 
+                    system_name = 'Test system 1', 
+                    workflow_instance_id = 35, 
+                    package_name = 'Test RMF Step 1 package', 
+                    created_date = 1636124623, 
+                    last_edited_date = 1631130837, 
+                    last_edited_by = 'john.doe.ctr@mail.mil', 
+                    workflow = 'RMF Step 1: Security Category', 
+                    version = '4', 
+                    current_stage = 'Echelon II', 
+                    transitions = [
+                        emass_client.models.workflow_instances_transition.Workflow Instances Transition(
+                            comments = 'Approved the categorization', 
+                            created_by = 'john.doe.ctr@mail.mil', 
+                            created_date = 1636124623, 
+                            description = 'Submit New Package', 
+                            end_stage = 'Submit Categorization', 
+                            start_stage = 'Not Started', )
+                        ], )
             )
         else :
             return WorkflowInstanceResponseGet(

@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "emass_client"
-version = "3.9.1"
+version = "3.10.0"
 description = "Enterprise Mission Assurance Support Service (eMASS)"
 authors = ["eMASS Tier III support <disa.meade.id.mbx.emass-tier-iii-support@mail.mil>"]
 license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Enterprise Mission Assurance Support Service (eMASS)"]
+include = ["emass_client/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
