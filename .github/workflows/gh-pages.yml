@@ -1,7 +1,8 @@
+# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [ main ]
+    branches: [ V3_10 ]
   # pull_request:
   #   branches: [ main ]
     

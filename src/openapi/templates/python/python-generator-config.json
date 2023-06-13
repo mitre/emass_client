@@ -1,6 +1,6 @@
 {
   "packageName": "emass_client",
-  "packageVersion": "3.9.1",
+  "packageVersion": "3.10.0",
   "projectName": "emass_client_api",
   "packageUrl": "https://github.com/mitre/emass_client",
   "licenseInfo": "Apache-2.0"

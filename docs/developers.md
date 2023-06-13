@@ -65,7 +65,7 @@ curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: applicat
 ## Building an eMASS Client SDK
 The API clients are generated utilizing the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI.
 
-**Note:** Currently there are two (2) client SDKs (ruby, and typscript-axios) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
+**Note:** Currently there are three (3) client SDKs (ruby, typscript-axios, and python) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
 
 ### Generate an eMASS Client
 Follow these steps to generate an eMASS client for additional supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
@@ -122,6 +122,9 @@ Follow these steps to generate an eMASS client for additional supported language
   ```
   openapi-generators/openapitools-generator-action@v1
   ```
+
+An OpenAPI Generator CLI Docker Image solution is available and documented [here](https://github.com/OpenAPITools/openapi-generator#16---docker) as a Public Pre-built Docker image.
+
 ---
 
 NOTICE

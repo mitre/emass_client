@@ -58,7 +58,7 @@ info:
     name: eMASS Tier III support
     url: 'https://www.dcsa.mil/is/emass/'
     email: disa.meade.id.mbx.emass-tier-iii-support@mail.mil
-  version: 'v3.9'
+  version: 'v3.10'
 
 externalDocs:
   description: eMASS New User Registration (requires CAC authentication)
@@ -100,9 +100,10 @@ tags:
       - If a system is dual-policy enabled, the returned system role information will default
         to the RMF policy information unless otherwise specified.
   - name: Controls
-    description: "The Controls endpoints provide the ability to view, add, and update
+    description: >
+      The Controls endpoints provide the ability to view, add, and update
       Security Control information to a system for both the Implementation Plan and
-      Risk Assessment."
+      Risk Assessment.
   - name: Test Results
     description: >
       The Test Results endpoints provide the ability to view and add test results for a
@@ -2648,14 +2649,18 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #---------------------------------------------------------------------------#
+  #                           D A S H B O A R D S                             #
+  #---------------------------------------------------------------------------#
+
   #----------------------------------------------------------------------------
-  # Dashboards
+  # System Status Dashboards
   #----------------------------------------------------------------------------
   /api/dashboards/system-status-details:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Status Details"
       description: |-
         Get systems status detail dashboard information.
       operationId: getSystemStatusDetails
@@ -2714,11 +2719,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"    
 
+  #----------------------------------------------------------------------------
+  # Enterprise Security Controls Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-control-compliance-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Control Compliance Summary"
       description: |-
         Get systems control compliance summary dashboard information.
       operationId: getSystemControlComplianceSummary
@@ -2781,7 +2789,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Control Compliance Details"
       description: |-
         Get systems security control details dashboard information.
       operationId: getSystemSecurityControlDetails
@@ -2844,7 +2852,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Assessment Procedures Details"
       description: |-
         Get systems assessement procdures details dashboard information.
       operationId: getSystemAssessmentProceduresDetails
@@ -2903,11 +2911,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Enterprise POA&M Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-poam-summary:
    get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System POA&M Summary"
       description: |-
         Get systems POA&Ms summary dashboard information.
       operationId: getSystemPoamSummary
@@ -2970,7 +2981,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System POA&M Details"
       description: |-
         Get system POA&Ms details dashboard information.
       operationId: getSystemPoamDetails
@@ -3029,11 +3040,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Enterprise Artifacts Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-artifacts-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Artifacts Summary"
       description: |-
         Get system Artifacts summary information.
       operationId: getSystemArtifactsSummary
@@ -3096,7 +3110,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Artifacts Details"
       description: |-
         Get system Artifacts details information.
       operationId: getSystemArtifactsDetails
@@ -3155,11 +3169,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Hardware Baseline Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-hardware-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Hardware Summary"
       description: |-
         Get system hardware summary dashboard information.
       operationId: getSystemHardwareSummary
@@ -3222,7 +3239,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Hardware Details"
       description: |-
         Get system hardware details dashboard information.
       operationId: getSystemHardwareDetails
@@ -3281,11 +3298,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Enterprise Sensor-based Hardware Resources Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-sensor-hardware-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Sensor Hardware Summary"
       description: |-
         Get system sensor hardware summary dashboard information.
       operationId: getSystemSensorHardwareSummary
@@ -3348,7 +3368,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Sensor Hardware Details"
       description: |-
         Get system sensor hardware details dashboard information.
       operationId: getSystemSensorHardwareDetails
@@ -3406,12 +3426,144 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Response500"
+  
+  #----------------------------------------------------------------------------
+  # Software Baseline Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-software-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "System Software Summary"
+      description: |-
+        Get system software summary dashboard information.
+      operationId: getSystemSoftwareSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
 
+  /api/dashboards/system-software-details:
+    get:
+      tags:
+       - Dashboards
+      summary: "System Software Details"
+      description: |-
+        Get system software details dashboard information.
+      operationId: getSystemSoftwareDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
+  #----------------------------------------------------------------------------
+  # Ports and Protocols Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-ports-protocols-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Ports/Protocols Summary"
       description: |-
         Get system ports and protocols summary dashboard information.
       operationId: getSystemPortsProtocolsSummary
@@ -3474,7 +3626,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Ports/Protocols Details"
       description: |-
         Get system ports and protocols details dashboard information.
       operationId: getSystemPortsProtocolsDetails
@@ -3533,11 +3685,80 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # System CONMON Integration Status Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-conmon-integration-status-summary:
+    get:
+      tags:
+       - Dashboards
+      summary: "System CONMON Integration Status"
+      description: |-
+        Get system CONMON integration status dashboard information.
+      operationId: getSystemCommonIntegrationStatusSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  #----------------------------------------------------------------------------
+  # System Associations Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-associations-details:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Associations Details"
       description: |-
         Get system associations details dashboard information.
       operationId: getSystemAssociationsDetails
@@ -3596,11 +3817,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Users Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/user-system-assignments-details:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "User System Assignments Details"
       description: |-
         Get user system assignments details dashboard information.
       operationId: getUserSystemAssignmentsDetails
@@ -3659,11 +3883,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Privacy Compliance Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/system-privacy-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "System Privacy Summary"
       description: |-
         Get user system privacy summary dashboard information.
       operationId: getSystemPrivacySummary
@@ -3726,7 +3953,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA OMB FISMA SAOP Summary"
       description: |-
         Get VA OMB-FISMA SAOP summary dashboard information.
       operationId: getVaOmbFsmaSaopSummary
@@ -3785,11 +4012,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
          
+  #----------------------------------------------------------------------------
+  # System A&A Summary Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/va-system-aa-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System A&A Summary"
       description: |-
         Get VA system A&A summary dashboard information.
       operationId: getVaSystemAaSummary
@@ -3848,11 +4078,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
   
+  #----------------------------------------------------------------------------
+  # System A2.0 Summary Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/va-system-a2-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System A2.0 Summary"
       description: |-
         Get VA system A2.0 summary dashboard information.
       operationId: getVaSystemA2Summary
@@ -3911,11 +4144,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # System P.L. 109 Reporting Summary Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/va-system-pl-109-reporting-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System P.L. 109 Reporting Summary"
       description: |-
         Get VA system P.L. 109 reporting summary dashboard information.
       operationId: getVaSystemPl109ReportingSummary
@@ -3974,11 +4210,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # FISMA Inventory Summary Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/va-system-fisma-inventory-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System FISMA Inventory Summary"
       description: |-
         Get VA system FISMA inventory summary dashboard information.
       operationId: getVaSystemFismaInvetorySummary
@@ -4041,7 +4280,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System FISMA Inventory Crypto Summary"
       description: |-
         Get VA system FISMA inventory crypto summary dashboard information.
       operationId: getVaSystemFismaInvetoryCryptoSummary
@@ -4100,11 +4339,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+  #----------------------------------------------------------------------------
+  # Threat Risks Dashboards
+  #----------------------------------------------------------------------------
   /api/dashboards/va-system-threat-risks-summary:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System Threat Risks Summary"
       description: |-
         Get VA system threat risk summary dashboard information.
       operationId: getVaSystemThreatRiskSummary
@@ -4167,7 +4409,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System Threat Sources Details"
       description: |-
         Get VA system threat source details dashboard information.
       operationId: getVaSystemThreatSourceDetails
@@ -4230,7 +4472,7 @@ paths:
     get:
       tags:
        - Dashboards
-      summary: "Get dashboard information"
+      summary: "VA System Threat Architecture Details"
       description: |-
         Get VA system threat architecture details dashboard information.
       operationId: getVaSystemThreatArchitectureDetails
@@ -5266,7 +5508,7 @@ components:
           isBaseline:
             type: boolean
             description: "[Optional] True/false flag for providing results as baseline. If true, all existing compliance results for the resourceId will be replaced by results in the current call"
-            example: "true"
+            example: true
           tags:
             type: object
             description: "[Optional] Informational tags associated to results for other metadata"
@@ -5294,7 +5536,7 @@ components:
                 isCompliant:
                   type: boolean
                   description: "[Required] Compliance status of the policy for the identified cloud resource"
-                  example: "false"
+                  example: false
                 control:
                   type: string
                   description: "[Optional] Comma separated correlation to Security Control (e.g. exact NIST Control acronym)"
@@ -5369,7 +5611,7 @@ components:
                 isBaseline:
                   type: boolean
                   description: "[Optional] True/false flag for providing results as baseline. If true, all existing compliance results for the provided benchmark within the container will be replaced by results in the current call"
-                  example: "false"
+                  example: false
                 results:
                   type: array
                   items:
@@ -5445,14 +5687,14 @@ components:
         rawSeverity:
           type: string
           description: "[Optional] Scan vulnerability ratting"
-          example: "Moderate"
           enum: [Low, Medium, Moderate, High, Critical]
+          example: "Moderate"          
         codeCheckName:
           type: string
           description: "[Required] Name of the software vulnerability or weakness."
-          example: "Hidden Field"
           x-faker:
-            random.arrayElement: [['Hidden Field', 'Redundant Check', 'Invalid Field', 'Vulnerable Field']]           
+            random.arrayElement: [['Hidden Field', 'Redundant Check', 'Invalid Field', 'Vulnerable Field']]
+          example: "Hidden Field"            
         count:
           type: integer
           format: int64
@@ -5957,9 +6199,7 @@ components:
         meta:
           "$ref": "#/components/schemas/Response200"
         data:
-          type: array
-          items:        
-            $ref: '#/components/schemas/WorkflowInstanceGet'
+          $ref: '#/components/schemas/WorkflowInstanceGet'
     Success200Response:
       title: "Default success response schema"
       type: object
@@ -5981,7 +6221,40 @@ components:
                 $ref: '#/components/schemas/Errors'
     Empty200Response:
       type: object
-
+    DashboardMockResponse:
+      title: "Dashboards GET mock response"
+      type: object
+      additionalProperties: false
+      properties:
+        meta:
+          "$ref": "#/components/schemas/Response200"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/MockObject"
+        pagination:
+          type: object
+          properties:
+            totalCount: 
+              type: integer
+              example: 2
+            totalPages:
+              type: integer
+              example: 1
+            pageIndex:
+              type: integer
+              example: 2
+            pageSize:
+              type: integer
+              example: 20000
+            prevPageUrl: 
+              type: string
+              x-faker: internet.url
+              example: "https://myfakeurl.reponse.page.com?PreviousPage"
+            nextPageUrl:
+              type: string
+              x-faker: internet.url
+              example: "https://myfakeurl.reponse.page.com?NextPage"
     #----------------------------------------------------------------------------
     # Supporting 200 Responses - Endpoint response - returned values
     #----------------------------------------------------------------------------
@@ -6065,8 +6338,8 @@ components:
           type: string
           nullable: true
           description: "[Read-Only] Registration types parameters (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.)"
-          example: "Assess and Authorize"
           enum: ["Assess and Authorize", "Assess Only", "Guest", "Regular", "Functional", "Cloud Service Provider", "Common Control Provider"]
+          example: "Assess and Authorize"
         name:
           type: string
           nullable: true
@@ -6077,9 +6350,9 @@ components:
           type: string
           nullable: true
           description: "[Read-only] Acronym of the system record."
-          example: "PM-6"
           x-faker:
-            random.arrayElement: [["AC-1", "AC-2","S-1","S-23","SI-16","SI-56","UA-16","SI-4(11)"]]           
+            random.arrayElement: [["AC-1", "AC-2","S-1","S-23","SI-16","SI-56","UA-16","SI-4(11)"]]
+          example: "PM-6"
         description:
           type: string
           nullable: true
@@ -6114,8 +6387,8 @@ components:
           type: string
           nullable: true
           description: "[Read-only] Type of the system record. RMF values include the following options (IS Major Application, IS Enclave, Platform IT System). DIACAP values include the following options (Platform IT Interconnection, AIS Application, Outsourced IT-Based Process (DoD-controlled), Enclave, Outsourced IT-Based Process (service provider shared))"
-          example: "IS Major Application"
           enum: ["IS Major Application", "IS Enclave", "Platform IT", "Platform IT System", "Platform IT Interconnection", "AIS Application", "Outsourced IT-Based Process (DoD-controlled)", "Enclave", "Outsourced IT-Based Process (service provider shared)"]
+          example: "IS Major Application"
         isNSS:
           type: boolean
           nullable: true
@@ -6166,6 +6439,7 @@ components:
                 "Interim Authorization to Test (IATT)","Denied Authorization to Operate (DATO)","Not Yet Authorized",
                 "Decommissioned","Authorization to Operate (ATO)","Interim Authorization to Operate (IATO)",
                 "Interim Authorization to Test (IATT)","Denied Authorization to Operate (DATO)","Unaccredited","Decommissioned"]]
+          example: "Not Yet Authorized"
         authorizationDate:
           type: integer
           nullable: true
@@ -6182,9 +6456,9 @@ components:
           type: integer
           nullable: true
           description: "[Read-only] Length of system's Authorization. Calculated based off of Authorization Date & Authorization Termination Date."
-          example: 365
           minimum: 28
           maximum: 1825
+          example: 365          
         termsForAuth:
           type: string
           nullable: true
@@ -6195,8 +6469,8 @@ components:
           type: string
           nullable: true
           description: "[Read-only] Status of the approval of the system's RMF Security Plan. Values include the following options (Approved, Denied, Not Yet Approved)."
-          example: "Approved"
           enum: ["Approved", "Not Yet Approved", "Denied"]
+          example: "Approved"
         securityPlanApprovalDate:
           type: integer
           nullable: true
@@ -6230,48 +6504,48 @@ components:
           type: string
           nullable: true
           description: "[Read-only] Primary functional area of the system record."
-          example: "Health/Medical"
           x-faker:
             random.arrayElement: [["Allies", "CBRNE", "Civilian Personnel & Readiness", "Command and Control", "Communications", "Communications Security (COMSEC)",
                 "Economic", "Environmental Security", "Facilities", "Finance", "Health/Medical", "Human Resources", "Information Management",
                 "Inspector General", "Intelligence", "Logistics", "Military Personnel and Readiness", "Nuclear", "Nuclear, Chemical, and Biological",
                 "Operations", "Personnel and Readiness", "Procurement/Acquisition", "Reserve Components", "Scientific and Engineering", "Space and Weather",
                 "Test and Evaluation", "Trainers", "Weapons", "Legal", "Transportation", "Not Applicable (N/A)", "Integration and Testing"]]
+          example: "Health/Medical"
         secondaryFunctionalArea:
           type: string
           nullable: true
           description:  "[Read-only] Secondary functional area of the system record."
-          example: "Logistics"
           x-faker:
             random.arrayElement: [["Allies", "CBRNE", "Civilian Personnel & Readiness", "Command and Control", "Communications", "Communications Security (COMSEC)",
                 "Economic", "Environmental Security", "Facilities", "Finance", "Health/Medical", "Human Resources", "Information Management",
                 "Inspector General", "Intelligence", "Logistics", "Military Personnel and Readiness", "Nuclear", "Nuclear, Chemical, and Biological",
                 "Operations", "Personnel and Readiness", "Procurement/Acquisition", "Reserve Components", "Scientific and Engineering", "Space and Weather",
                 "Test and Evaluation", "Trainers", "Weapons", "Legal", "Transportation", "Not Applicable (N/A)", "Integration and Testing"]]
+          example: "Logistics"
         primaryControlSet:
           type: string
           nullable: true
           description: "[Read-only] Primary Control Set of the system record. RMF values include the following options (NIST SP 800-53 Revision 4), DIACAP values include the following options (DoDI 8500.2)"
-          example: "NIST SP 800-53 Revision 4"
           enum: ["NIST SP 800-53 Revision 4", "DoDI 8500.2"]
+          example: "NIST SP 800-53 Revision 4"
         confidentiality:
           type: string
           nullable: true
           description: "[Read-only] Confidentiality of the system record. RMF values include the following options (High, Moderate, Low)"
-          example: "Low"
           enum: ["High", "Moderate", "Low"]
+          example: "Low"
         integrity:
           type: string
           nullable: true
           description: "[Read-only] Integrity of the system record. RMF values include the following options (High, Moderate, Low)"
-          example: "Moderate"
           enum: ["High", "Moderate", "Low"]
+          example: "Moderate"
         availability:
           type: string
           nullable: true
           description: "[Read-only] Availability of the system record. RMF values include the following options (High, Moderate, Low)"
-          example: "High"
           enum: ["High", "Moderate", "Low"]
+          example: "High"
         appliedOverlays:
           type: string
           nullable: true
@@ -6282,11 +6556,11 @@ components:
           type: string
           nullable: true
           description: "[Read-only] RMF Activity of the system record."
-          example: "Maintain ATO and conduct reviews"
           x-faker:
             random.arrayElement: [["Initiate and plan C&A", "Initiate and plan cybersecurity Assessment Authorization", 
                  "Implement and validate assigned security controls", "Make assessment determination and authorization decision",
                  "Maintain ATO and conduct reviews", "Decommission"]]
+          example: "Maintain ATO and conduct reviews"
         crossDomainTicket:
           type: string
           nullable: true
@@ -6303,14 +6577,14 @@ components:
           type: string
           nullable: true
           description: "[Read-Only] MAC level of the system record."
-          example: "II"
           enum: [ "I", "II", "III"]
+          example: "II"
         dodConfidentiality:
           type: string
           nullable: true
           description: "[Read-Only] DoD Confidentiality level of the system record."
-          example: "Public"
           enum: ["Public", "Sensitive", "Classified"]
+          example: "Public"
         contingencyPlanTested:
           type: boolean
           nullable: true
@@ -6349,8 +6623,8 @@ components:
           type: string
           nullable: true
           description: "[Optional] Values include the following options (Very Low, Low, Moderate,High,Very High)"
-          example: "Low"
           enum: ["Low", "Moderate", "High"]
+          example: "Low"
         hasCUI:
           type: boolean
           nullable: true
@@ -6391,8 +6665,8 @@ components:
           type: string
           nullable: true
           description: "[Read-only] Status of the PIA, availability values include the following options (Not Started, In Progress, Completed)"
-          example: "Not Started"
           enum: ["Not Started", "In Progress", "Completed"]
+          example: "Not Started"
         piaDate:
           type: integer
           nullable: true
@@ -6402,43 +6676,43 @@ components:
           type: string
           nullable: true
           description: "[Read-only] User-defined field to augment Ad Hoc Reporting."
-          example: "Test User-defined Field 1"
           x-faker:
-            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]           
+            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]
+          example: "Test User-defined Field 1"
         userDefinedField2:
           type: string
           nullable: true
           description: "[Read-only] User-defined field to augment Ad Hoc Reporting."
-          example: "Test User-defined Field 2"
           x-faker:
-            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]          
+            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]
+          example: "Test User-defined Field 2"
         userDefinedField3:
           type: string
           nullable: true
           description: "[Read-only] User-defined field to augment Ad Hoc Reporting."
-          example: "Test User-defined Field 3"
           x-faker:
             random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]
+          example: "Test User-defined Field 3"
         userDefinedField4:
           type: string
           nullable: true
           description: "[Read-only] User-defined field to augment Ad Hoc Reporting."
-          example: "Test User-defined Field 4"
           x-faker:
-            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]          
+            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]
+          example: "Test User-defined Field 4"
         userDefinedField5:
           type: string
           nullable: true
           description: "[Read-only] User-defined field to augment Ad Hoc Reporting."
-          example: "Test User-defined Field 5"
           x-faker:
-            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]          
+            random.arrayElement: [["Test User-defined Field 1","Test User-defined Field 2","Test User-defined Field 3","Test User-defined Field 4","Test User-defined Field 4"]]
+          example: "Test User-defined Field 5"
         currentRmfLifecycleStep:
           type: string
           nullable: true
           description: "[Read-only] Displays the system's current step within the RMF Lifecycle."
-          example: "4 - Assess"
           enum: ["1 - Categorize", "2 - Select", "3 - Implement", "4 - Assess", "5 - Authorize", "6 - Monitor"]
+          example: "4 - Assess"
         otherInformation:
           type: string
           nullable: true
@@ -6455,20 +6729,20 @@ components:
           type: string
           nullable: true
           description: "[Read-Only] The overall classification level of information that the System is approved to collect, process, store, and/or distribute."
-          example: "Unclassified"
           x-faker:
             random.arrayElement: [["Public Trust", "For Official Use Only (FOUO)", "Controlled Unclassified Information (CUI)",
                 "Unclassified", "Restricted Data/Formerly Restricted Data", "Sensitive Compartmented Information",
-                "Special Access Program", "Secret", "Top Secret", "Confidential"]]      
+                "Special Access Program", "Secret", "Top Secret", "Confidential"]]
+          example: "Unclassified"
         overallClassification:
           type: string
           nullable: true
           description: "[Read-Only] Same field as highestSystemDataClassification, but displays as overallClassification for NISP only."
-          example: "Unclassified"
           x-faker:
             random.arrayElement: [["Public Trust", "For Official Use Only (FOUO)", "Controlled Unclassified Information (CUI)",
                 "Unclassified", "Restricted Data/Formerly Restricted Data", "Sensitive Compartmented Information",
-                "Special Access Program", "Secret", "Top Secret", "Confidential"]]   
+                "Special Access Program", "Secret", "Top Secret", "Confidential"]]
+          example: "Unclassified"
         isHVA:
           type: boolean
           nullable: true
@@ -6514,8 +6788,8 @@ components:
           type: string
           nullable: true
           description: "[Read-Only] Values include the following: (Hybrid, Private, Public)"
-          example: "Public"
           enum: ["Hybrid", "Private", "Public"]
+          example: "Public"
         atcStatus:
           type: string
           nullable: true
@@ -6523,8 +6797,8 @@ components:
             [Read-Only] The Authority to Connect decision. Values include the following: 
             (Authority to Connect (ATC), Denial of Authority to Connect (DATC), Not Yet Connected,
             Decommissioned)
-          example: "Decommissioned"
           enum: ["Authority to Connect (ATC)", "Denial of Authority to Connect (DATC)", "Not Yet Connected","Decommissioned"]
+          example: "Decommissioned"
         isSaaS:
           type: boolean
           nullable: true
@@ -6594,6 +6868,20 @@ components:
           description: "[Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only"
           x-faker: random.boolean
           example: false
+        groupTagging:
+          type: string
+          nullable: true
+          description: "[Read-Only] System Tags for enterprise level, to include CIO and CISO, tracking efforts. VA only."
+          x-faker:
+            random.arrayElement: [["Group Tag 1", "Group Tag 2", "Group Tag 3", "Group Tag 4", "Group Tag 5"]]
+          example: "Group Tag 1"
+        groupTagDescriptions:
+          type: string
+          nullable: true
+          description: "[Read-Only] System Tag explanation(s) for enterprise level, to include CIO and CISO, tracking efforts. VA only."
+          x-faker:
+            random.arrayElement: [["Group Tag 1 explanation", "Group Tag 2 explanation", "Group Tag 3 explanation", "Group Tag 4 explanation", "Group Tag 5 explanation"]]
+          example: "Group Tag 1 explanation"
         package:
           type: array
           nullable: true
@@ -7976,7 +8264,78 @@ components:
           description: "[Read-Only] The beginning stage that is active before performing a transition."
           x-faker: random.word
           example: "Not Started"  
-  
+    MockObject:
+      title: Object mock data
+      type: object
+      additionalProperties: false
+      properties:
+        pocOrganization:
+          type: string
+          description: "[Required] Organization/Office represented. 100 Characters."
+          x-faker: company.companyName
+          example: "Army"          
+        resources:
+          type: string
+          description: "[Required] List of resources used. 250 Characters."
+          x-faker: random.words
+          example: "Resource text."
+        owningOrganization:
+          type: string
+          nullable: true
+          description: "[Read-Only] Owning organization of the system record. Values match the eMASS instance Organizational Hierarchy."
+          x-faker: company.companyName
+          example: "Defense Information Systems Agency"
+        secondaryOrganization:
+          type: string
+          nullable: true
+          description: "[Read-only] Secondary organization that owns the system record (i.e. Sub-Organization-level."
+          x-faker: company.companyName
+          example: "ID31"
+        pocFirstName:
+          type: string
+          description: "[Conditional] First name of POC. 100 Characters."
+          x-faker: name.firstName
+          example: "John"
+        pocLastName:
+          type: string
+          description: "[Conditional] Last name of POC. 100 Characters."
+          x-faker: name.lastName
+          example: "Smith"
+        pocEmail:
+          type: string
+          description: "[Conditional] Email address of POC. 100 Characters."
+          x-faker: internet.email
+          example: "smith@ah.com"
+        pocPhoneNumber:
+          type: string
+          description: "[Conditional] Phone number of POC (area code) ***-**** format. 100 Characters."
+          x-faker: phone.phoneNumber.email
+          example: "555-555-5555"
+        severity:
+          type: string
+          description: "[Conditional] Required for approved items. Values include the following options: (Very Low, Low, Moderate,High,Very High)"
+          example: "Low"
+        scheduledCompletionDate:
+          type: integer
+          format: int64
+          nullable: true
+          description: "[Conditional] Required for ongoing and completed POA&M items. Unix time format."
+          example: 1599644800
+        completionDate:
+          type: integer
+          format: int64
+          description: "[Conditional] Field is required for completed POA&M items. Unix time format."
+          example: 1505916276
+        comments:
+          type: string
+          description: "[Conditional] Field is required for completed and risk accepted POA&M items. 2000 Characters"
+          x-faker: random.words
+          example: "Comments text."
+        isActive:
+          type: boolean
+          description: "[Conditional] Optionally used in PUT to delete milestones when updating a POA&M."
+          x-faker: random.boolean
+          example: true
     #----------------------------------------------------------------------------
     # HTTP response status code values 
     #----------------------------------------------------------------------------
@@ -8153,6 +8512,7 @@ components:
         example: "key:value"
         x-faker:
           random.arrayElement: [["key: Error message 1","key: Error message 2","key: Error message 3","key: Error message 4","key: Error message 5"]]
+  
   #----------------------------------------------------------------------------
   # Security schemes  -  Define the key name and location
   #----------------------------------------------------------------------------
