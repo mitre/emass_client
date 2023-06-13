@@ -7,8 +7,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.10
-- Package version: 3.10.0
-- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
+- Package version: 3.10.1
+- Build date: 2023-06-13T18:24:16.147147Z[Etc/UTC]
 
 ## Requirements.
 
