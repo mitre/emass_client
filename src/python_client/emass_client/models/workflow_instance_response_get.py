@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -55,8 +55,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, conlist
+from typing import Optional
+from pydantic import BaseModel
 from emass_client.models.response200 import Response200
 from emass_client.models.workflow_instance_get import WorkflowInstanceGet
 
@@ -65,7 +65,7 @@ class WorkflowInstanceResponseGet(BaseModel):
     WorkflowInstanceResponseGet
     """
     meta: Optional[Response200] = None
-    data: Optional[conlist(WorkflowInstanceGet)] = None
+    data: Optional[WorkflowInstanceGet] = None
     __properties = ["meta", "data"]
 
     class Config:
@@ -95,13 +95,9 @@ class WorkflowInstanceResponseGet(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of meta
         if self.meta:
             _dict['meta'] = self.meta.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
@@ -115,7 +111,7 @@ class WorkflowInstanceResponseGet(BaseModel):
 
         _obj = WorkflowInstanceResponseGet.parse_obj({
             "meta": Response200.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
-            "data": [WorkflowInstanceGet.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+            "data": WorkflowInstanceGet.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })
         return _obj
 

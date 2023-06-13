@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.9 Specification
+## eMASS API v3.10 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.9
-- Package version: 3.9.1
-- Build date: 2023-05-23T01:07:18.461999Z[Etc/UTC]
+- API version: v3.10
+- Package version: 3.10.0
+- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
 
 ## Requirements.
 
@@ -158,9 +158,11 @@ class Systems(BaseModel):
     atc_termination_date: Optional[StrictInt] = Field(None, alias="atcTerminationDate", description="[Read-Only] The Connectivity Authorization Termination Date.")
     system_development_life_cycle: Optional[StrictStr] = Field(None, alias="systemDevelopmentLifeCycle", description="[Read-Only] Indicate the date by which the System needs to be deployed to a production environment. VA only.")
     is_fisma_reportable: Optional[StrictBool] = Field(None, alias="isFISMAReportable", description="[Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only")
+    group_tagging: Optional[StrictStr] = Field(None, alias="groupTagging", description="[Read-Only] System Tags for enterprise level, to include CIO and CISO, tracking efforts. VA only.")
+    group_tag_descriptions: Optional[StrictStr] = Field(None, alias="groupTagDescriptions", description="[Read-Only] System Tag explanation(s) for enterprise level, to include CIO and CISO, tracking efforts. VA only.")
     package: Optional[conlist(PacGet)] = None
     connectivity_ccsd: Optional[conlist(ConnectivityCcsd)] = Field(None, alias="connectivityCcsd")
-    __properties = ["registrationCompletionDate", "systemLifeCycleAcquisitionPhase", "specialType", "specialTypeDescription", "missionPortfolio", "isNNPI", "isRBC", "isWaiver", "programOffice", "vramId", "systemId", "policy", "registrationType", "name", "acronym", "description", "instance", "owningOrganization", "secondaryOrganization", "versionReleaseNo", "systemType", "isNSS", "isPublicFacing", "coamsId", "isTypeAuthorization", "ditprId", "apmsId", "vasiId", "authorizationStatus", "authorizationDate", "authorizationTerminationDate", "authorizationLength", "termsForAuth", "securityPlanApprovalStatus", "securityPlanApprovalDate", "missionCriticality", "geographicalAssociation", "systemOwnership", "governingMissionArea", "primaryFunctionalArea", "secondaryFunctionalArea", "primaryControlSet", "confidentiality", "integrity", "availability", "appliedOverlays", "rmfActivity", "crossDomainTicket", "ditprDonId", "mac", "dodConfidentiality", "contingencyPlanTested", "contingencyPlanTestDate", "securityReviewDate", "hasOpenPoamItem", "hasOpenPoamItem90to120PastScheduledCompletionDate", "hasOpenPoamItem120PlusPastScheudledCompletionDate", "impact", "hasCUI", "hasPII", "hasPHI", "ppsmRegistryNumber", "interconnectedInformationSystemAndIdentifiers", "isPiaRequired", "piaStatus", "piaDate", "userDefinedField1", "userDefinedField2", "userDefinedField3", "userDefinedField4", "userDefinedField5", "currentRmfLifecycleStep", "otherInformation", "reportsForScorecard", "highestSystemDataClassification", "overallClassification", "isHVA", "isFinancialManagement", "isReciprocity", "reciprocityExemption", "cloudComputing", "cloudType", "atcStatus", "isSaaS", "isPaaS", "isIaaS", "otherServiceModels", "needDate", "overallRiskScore", "isHRR", "atcDate", "atcTerminationDate", "systemDevelopmentLifeCycle", "isFISMAReportable", "package", "connectivityCcsd"]
+    __properties = ["registrationCompletionDate", "systemLifeCycleAcquisitionPhase", "specialType", "specialTypeDescription", "missionPortfolio", "isNNPI", "isRBC", "isWaiver", "programOffice", "vramId", "systemId", "policy", "registrationType", "name", "acronym", "description", "instance", "owningOrganization", "secondaryOrganization", "versionReleaseNo", "systemType", "isNSS", "isPublicFacing", "coamsId", "isTypeAuthorization", "ditprId", "apmsId", "vasiId", "authorizationStatus", "authorizationDate", "authorizationTerminationDate", "authorizationLength", "termsForAuth", "securityPlanApprovalStatus", "securityPlanApprovalDate", "missionCriticality", "geographicalAssociation", "systemOwnership", "governingMissionArea", "primaryFunctionalArea", "secondaryFunctionalArea", "primaryControlSet", "confidentiality", "integrity", "availability", "appliedOverlays", "rmfActivity", "crossDomainTicket", "ditprDonId", "mac", "dodConfidentiality", "contingencyPlanTested", "contingencyPlanTestDate", "securityReviewDate", "hasOpenPoamItem", "hasOpenPoamItem90to120PastScheduledCompletionDate", "hasOpenPoamItem120PlusPastScheudledCompletionDate", "impact", "hasCUI", "hasPII", "hasPHI", "ppsmRegistryNumber", "interconnectedInformationSystemAndIdentifiers", "isPiaRequired", "piaStatus", "piaDate", "userDefinedField1", "userDefinedField2", "userDefinedField3", "userDefinedField4", "userDefinedField5", "currentRmfLifecycleStep", "otherInformation", "reportsForScorecard", "highestSystemDataClassification", "overallClassification", "isHVA", "isFinancialManagement", "isReciprocity", "reciprocityExemption", "cloudComputing", "cloudType", "atcStatus", "isSaaS", "isPaaS", "isIaaS", "otherServiceModels", "needDate", "overallRiskScore", "isHRR", "atcDate", "atcTerminationDate", "systemDevelopmentLifeCycle", "isFISMAReportable", "groupTagging", "groupTagDescriptions", "package", "connectivityCcsd"]
 
     @validator('policy')
     def policy_validate_enum(cls, value):
@@ -810,6 +812,16 @@ class Systems(BaseModel):
         if self.is_fisma_reportable is None and "is_fisma_reportable" in self.__fields_set__:
             _dict['isFISMAReportable'] = None
 
+        # set to None if group_tagging (nullable) is None
+        # and __fields_set__ contains the field
+        if self.group_tagging is None and "group_tagging" in self.__fields_set__:
+            _dict['groupTagging'] = None
+
+        # set to None if group_tag_descriptions (nullable) is None
+        # and __fields_set__ contains the field
+        if self.group_tag_descriptions is None and "group_tag_descriptions" in self.__fields_set__:
+            _dict['groupTagDescriptions'] = None
+
         # set to None if package (nullable) is None
         # and __fields_set__ contains the field
         if self.package is None and "package" in self.__fields_set__:
@@ -926,6 +938,8 @@ class Systems(BaseModel):
             "atc_termination_date": obj.get("atcTerminationDate"),
             "system_development_life_cycle": obj.get("systemDevelopmentLifeCycle"),
             "is_fisma_reportable": obj.get("isFISMAReportable"),
+            "group_tagging": obj.get("groupTagging"),
+            "group_tag_descriptions": obj.get("groupTagDescriptions"),
             "package": [PacGet.from_dict(_item) for _item in obj.get("package")] if obj.get("package") is not None else None,
             "connectivity_ccsd": [ConnectivityCcsd.from_dict(_item) for _item in obj.get("connectivityCcsd")] if obj.get("connectivityCcsd") is not None else None
         })

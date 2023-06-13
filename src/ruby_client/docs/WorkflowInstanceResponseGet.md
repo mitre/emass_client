@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **meta** | [**Response200**](Response200.md) |  | [optional] |
-| **data** | [**Array&lt;WorkflowInstanceGet&gt;**](WorkflowInstanceGet.md) |  | [optional] |
+| **data** | [**WorkflowInstanceGet**](WorkflowInstanceGet.md) |  | [optional] |
 
 ## Example
 
