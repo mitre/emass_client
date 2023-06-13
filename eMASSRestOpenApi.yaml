@@ -154,8 +154,8 @@ tags:
       available on the eMASS instance. Every transition for each workflow stage is included.
   - name: Workflow Instances
     description: >
-      The Workflow Instances endpoint provides the ability to view detailed information on
-      all active and historical workflows for an eMASS instance.
+      The Workflow Instances endpoint provides the ability to view detailed information
+      on all active and historical workflows for an eMASS instance.
   - name: Cloud Resource Results
     description: >
       The Cloud Resource Results endpoint provides the ability to add, update, and 
