@@ -4,7 +4,7 @@ name: Generate eMASS Documentation
 # For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
-    branches: [ V3_10 ]
+    branches: [ main ]
   # pull_request:
   #   branches: [ main ]
 jobs:

@@ -16,12 +16,12 @@ name: Publish Python 🐍 distributions 📦 to TestPyPI
 #        - completed
 #-----------------------------------------------------------------------------------
 
-# on:
-#   workflow_run:
-#     workflows: [Generate OpenAPI Clients]
-#     types:
-#       - completed
-on: push
+on:
+  workflow_run:
+    workflows: [Generate OpenAPI Clients]
+    types:
+      - completed
+# on: push
 
 jobs:
   build-n-publish:
