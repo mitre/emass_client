@@ -133,8 +133,8 @@ tags:
         stage of the CAC. If the control is not at the first stage, an error will be returned.      
   - name: PAC
     description: |
-      The Package Approval Chain (PAC) endpoints provide the ability to view the status of
-      existing workflows and initiate new workflows for a system.
+      The Package Approval Chain (PAC) endpoints provide the ability to view the status
+      of existing workflows and initiate new workflows for a system.
       
       **Notes:**
       - If the indicated system has any active workflows, the response will include 
