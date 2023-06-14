@@ -19,7 +19,9 @@ info:
       
       Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key. 
       The API key must be provided in the request header for all endpoint calls (api-key). If the service receives
-      an untrusted certificate or API key, a 401 error response code will be returned along with an error message.</br></br>
+      an untrusted certificate or API key, a 401 error response code will be returned along with an error message.
+      
+      </br></br>
   
       <strong>Available Request Headers</strong></br>
       <table>
@@ -133,8 +135,8 @@ tags:
         stage of the CAC. If the control is not at the first stage, an error will be returned.      
   - name: PAC
     description: |
-      The Package Approval Chain (PAC) endpoints provide the ability to view the status of
-      existing workflows and initiate new workflows for a system.
+      The Package Approval Chain (PAC) endpoints provide the ability to view the status
+      of existing workflows and initiate new workflows for a system.
       
       **Notes:**
       - If the indicated system has any active workflows, the response will include 

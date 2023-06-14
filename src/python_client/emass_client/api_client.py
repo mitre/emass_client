@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.10
-- Package version: 3.10.0
-- Build date: 2023-06-13T13:46:18.843637Z[Etc/UTC]
+- Package version: 3.10.1
+- Build date: 2023-06-13T18:24:16.147147Z[Etc/UTC]
 
 ## Requirements.
 
@@ -113,7 +113,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/3.10.0/python'
+        self.user_agent = 'OpenAPI-Generator/3.10.1/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
