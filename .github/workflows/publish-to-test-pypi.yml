@@ -6,22 +6,25 @@ name: Publish Python 🐍 distributions 📦 to TestPyPI
 # 
 # For testing use:
 # on: push
-# (push to the TestPyPi registry on every push during development)
+#  NOTE:
+#   push to the TestPyPi registry on every push during development.
+#   Don't use final ver number, it will fail when published based on the 
+#   workflows: [Generate OpenAPI Clients])
 #
 # Once test is completed use:
 # on:
 #   workflow_run:
-#     workflows: [Generate OpenAPI Clients] -> old ['generate-eMASS-clients']
+#     workflows: [Generate OpenAPI Clients]
 #      types:
 #        - completed
 #-----------------------------------------------------------------------------------
 
-on:
-  workflow_run:
-    workflows: [Generate OpenAPI Clients]
-    types:
-      - completed
-# on: push
+# on:
+#   workflow_run:
+#     workflows: [Generate OpenAPI Clients]
+#     types:
+#       - completed
+on: push
 
 jobs:
   build-n-publish:

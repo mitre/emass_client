@@ -19,9 +19,7 @@ info:
       
       Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key. 
       The API key must be provided in the request header for all endpoint calls (api-key). If the service receives
-      an untrusted certificate or API key, a 401 error response code will be returned along with an error message.
-      
-      </br></br>
+      an untrusted certificate or API key, a 401 error response code will be returned along with an error message.</br></br>
   
       <strong>Available Request Headers</strong></br>
       <table>
@@ -60,7 +58,7 @@ info:
     name: eMASS Tier III support
     url: 'https://www.dcsa.mil/is/emass/'
     email: disa.meade.id.mbx.emass-tier-iii-support@mail.mil
-  version: 'v3.10'
+  version: 'v3.12'
 
 externalDocs:
   description: eMASS New User Registration (requires CAC authentication)
@@ -108,8 +106,8 @@ tags:
       Risk Assessment.
   - name: Test Results
     description: >
-      The Test Results endpoints provide the ability to view and add test results for a
-      system's Assessment Procedures (CCIs) which determine Security Control compliance.
+      The Test Results endpoints provide the ability to view and add test results for a 
+      system's Assessment Procedures which determine Security Control compliance.
   - name: POAM
     description: >
       The POA&Ms endpoints provide the ability to view, add, update, and remove Plan
@@ -135,8 +133,8 @@ tags:
         stage of the CAC. If the control is not at the first stage, an error will be returned.      
   - name: PAC
     description: |
-      The Package Approval Chain (PAC) endpoints provide the ability to view the status
-      of existing workflows and initiate new workflows for a system.
+      The Package Approval Chain (PAC) endpoints provide the ability to view the status of
+      existing workflows and initiate new workflows for a system.
       
       **Notes:**
       - If the indicated system has any active workflows, the response will include 
@@ -156,8 +154,8 @@ tags:
       available on the eMASS instance. Every transition for each workflow stage is included.
   - name: Workflow Instances
     description: >
-      The Workflow Instances endpoint provides the ability to view detailed information
-      on all active and historical workflows for an eMASS instance.
+      The Workflow Instances endpoint provides the ability to view detailed information on
+      all active and historical workflows for an eMASS instance.
   - name: Cloud Resource Results
     description: >
       The Cloud Resource Results endpoint provides the ability to add, update, and 
@@ -176,7 +174,26 @@ tags:
       
       Organization-specific fields may differ. Organization-specific Dashboards should only be
       used by that organization (e.g., VA [dashboard name] should be used by VA).
-
+  - name: System Status Dashboard
+  - name: Enterprise Terms Conditions Dashboards
+  - name: Enterprise Security Controls Dashboards
+  - name: Enterprise POA&M Dashboards
+  - name: Enterprise Artifacts Dashboards
+  - name: Hardware Baseline Dashboards
+  - name: Enterprise Sensor-based Hardware Resources Dashboards
+  - name: Software Baseline Dashboards
+  - name: Enterprise Sensor-based Software Resources Dashboards
+  - name: Enterprise Vulnerability Dashboards
+  - name: Ports and Protocols Dashboards
+  - name: System CONMON Integration Status Dashboard
+  - name: System Associations Dashboard
+  - name: Users Dashboard
+  - name: Privacy Compliance Dashboards
+  - name: System A&A Summary Dashboard
+  - name: System A2.0 Summary Dashboard
+  - name: System P.L. 109 Reporting Summary Dashboard
+  - name: FISMA Inventory Summary Dashboards
+  - name: Threat Risks Dashboards
 #-------------------------------------------------------------------------------
 # P A T H S - The available paths and operations for the API endpoints
 #-------------------------------------------------------------------------------
@@ -294,13 +311,13 @@ paths:
       description: "Returns all system(s) that match the query parameters"
       operationId: getSystems
       parameters:
-        - $ref: '#/components/parameters/includePackage'
-        - $ref: '#/components/parameters/registrationType'
-        - $ref: '#/components/parameters/ditprId'
         - $ref: '#/components/parameters/coamsId'
-        - $ref: '#/components/parameters/policy'
-        - $ref: '#/components/parameters/includeDitprMetrics'
+        - $ref: '#/components/parameters/ditprId'   
         - $ref: '#/components/parameters/includeDecommissioned'
+        - $ref: '#/components/parameters/includeDitprMetrics'
+        - $ref: '#/components/parameters/includePackage'
+        - $ref: '#/components/parameters/policy' 
+        - $ref: '#/components/parameters/registrationType'
         - $ref: '#/components/parameters/reportsForScorecard'
       responses:
         '200':
@@ -484,7 +501,6 @@ paths:
         - $ref: '#/components/parameters/roleCategory'
         - $ref: '#/components/parameters/role'
         - $ref: '#/components/parameters/policy'
-        - $ref: '#/components/parameters/includeDecommissioned'
       responses:
         '200':
           description: "Successful response"
@@ -614,16 +630,23 @@ paths:
         - `estimatedCompletionDate`
         - `implementationNarrative`
 
-        The following optional fields are required based on the Implementation Status `implementationStatus` value<br>
+        The following optional fields (plus the **Request Body Required Fields**) are required based on the Implementation Status `implementationStatus` value<br>
         | Value                    | Required Fields
         |--------------------------|---------------------------------------------------
-        | Planned  or Implemented  | `estimatedCompletionDate`, `responsibleEntities`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`
-        | Not Applicable           | `naJustification`, `responsibleEntities`
-        | Manually Inherited       | `commonControlProvider`, `estimatedCompletionDate`, `responsibleEntities`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`
+        | Planned  or Implemented  | `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`
+        | Not Applicable           | `naJustification`
+        | Manually Inherited       | `commonControlProvider`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`
         
         If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:
           - `controlDesignation`
           - `commonnControlProvider`
+        
+        **NOTES:**
+        - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:
+          - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`
+          - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments`
+        - Implementation Plan information cannot be updated if Security Control does not exist in the system record.
+
       operationId: updateControlBySystemId
       parameters:
         - $ref: '#/components/parameters/systemId'
@@ -686,6 +709,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/systemId'
         - $ref: '#/components/parameters/controlAcronyms'
+        - $ref: '#/components/parameters/assessmentProcedures'
         - $ref: '#/components/parameters/ccis'
         - $ref: '#/components/parameters/latestOnly'
       responses:
@@ -746,11 +770,11 @@ paths:
         Adds test results for given `systemId`
 
         **Request Body Required Fields**
-        - `cci`
         - `testedBy`
         - `testDate`
         - `description`
         - `complianceStatus`
+        - `assessmentProcedure`       
      
       operationId: addTestResultsBySystemId
       parameters:
@@ -833,6 +857,7 @@ paths:
         - $ref: '#/components/parameters/scheduledCompletionDateStart'
         - $ref: '#/components/parameters/scheduledCompletionDateEnd'
         - $ref: '#/components/parameters/controlAcronyms'
+        - $ref: '#/components/parameters/assessmentProcedures'
         - $ref: '#/components/parameters/ccis'
         - $ref: '#/components/parameters/systemOnly'
       responses:
@@ -992,7 +1017,7 @@ paths:
           in the request. If no such user is found, these fields are **required** within the request.<br>
           `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />
 
-        - To delete a milestone through the POA&M PUT the field `isActive` must be set to `false`: `isActive=false`.
+        - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.
       operationId: updatePoamBySystemId
       parameters:
         - $ref: '#/components/parameters/systemId'
@@ -1385,7 +1410,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/MilestonesPutPostDelete"
+                "$ref": "#/components/schemas/MilestoneResponseDelete"
         '400':
           description: "Bad Request"
           content:
@@ -1494,6 +1519,7 @@ paths:
         - $ref: '#/components/parameters/systemId'
         - $ref: '#/components/parameters/filename'
         - $ref: '#/components/parameters/controlAcronyms'
+        - $ref: '#/components/parameters/assessmentProcedures'
         - $ref: '#/components/parameters/ccis'
         - $ref: '#/components/parameters/systemOnly'
       responses:
@@ -1588,15 +1614,15 @@ paths:
               .pptx,.xls,.xlsx,.csv,.log,.jpeg,.jpg,.tiff,.bmp,.tif,.png,.gif,.zip,.rar,.msg,
               .vsd,.vsw,.vdx,.z{#},.ckl,.avi,.vsdx
 
-          Artifact version cannot be saved if an Artifact with the same file name already exist in the system.
+          Artifact version cannot be saved if an Artifact with the same file name (filename) already exist in the system.
 
           Artifact cannot be saved if the file size exceeds 30MB.
 
           Artifact cannot be saved if the following fields are missing data:
           <ul>
-            <li>Filename</li>
-            <li>Type</li>
-            <li>Category</li>
+            <li>Filename (filename)</li>
+            <li>Type (type)</li>
+            <li>Category (category)</li>
           </ul>
 
           Artifact cannot be saved if the Last Review Date (`lastReviewedDate`) is set in the future.
@@ -1696,6 +1722,21 @@ paths:
         - `isTemplate`
         - `type`
         - `category`
+
+        <strong>Information</strong><br>
+        The PUT request will replace all existing data with the field/value combinations included in the request body. 
+        
+        If any fields are not included, the absent fields will become null. 
+          
+        The fields `name` and `isTemplate` are non-nullable fields. If not specified in the PUT command
+        they will default to the following:
+          - `name=filename`
+          - `isTemplate=false`
+          
+        Also, note that one-to-many fields (`controls` and `ccis`) will also be replaced with the values specified in the PUT.
+
+        If existing `control or cci` mappings exist in eMASS, the values in the PUT will not append, but 
+        rather replace all existing control and cci mappings with the values in the request body.
 
       operationId: updateArtifactBySystemId
       parameters:
@@ -1946,8 +1987,16 @@ paths:
         - CAC
       summary: "Submit control to second role of CAC"
       description: |-
-        Adds a Control Approval Chain (CAC) for given `systemId` path parameter<br><br>
-        POST requests will only yield successful results if the control is currently sitting at the first
+
+        **Request Body Required Fields**
+        - `controlAcronym`
+        - `comments`
+
+        **Notes:**
+        - Comments `comments` are not required at the first role of the CAC but are required at the second role of
+        the CAC. Comments cannot exceed 10,000 characters.
+        
+        - POST requests will only yield successful results if the control is currently sitting at the first
         role of the CAC. If the control is not currently sitting at the first role, then an error will be
         returned.
       operationId: addSystemCac
@@ -2023,10 +2072,17 @@ paths:
     get:
       tags:
        - PAC
-      summary: "Get location of system package in PAC"
+      summary: "Get status of active workflows in a system"
       description: |-
           Returns the location of a system's package in the Package Approval Chain (PAC)
           for matching `systemId` path parameter
+
+          **Notes:**
+          - If the indicated system has any active workflows, the response will include information
+            such as the workflow type and the current stage of each workflow.
+
+          - If there are no active workflows, then a null data member will be returned.
+
       operationId: getSystemPac
       parameters:
         - $ref: '#/components/parameters/systemId'
@@ -2083,9 +2139,15 @@ paths:
     post:
       tags:
         - PAC
-      summary: "Submit system package for review"
+      summary: "Initiate system workflow for review"
       description: |-
         Adds a Package Approval Chain (PAC) for given `systemId` path parameter
+
+        **Request Body Required Fields**
+        - `workflow`
+        - `name`
+        - `comments`
+
       operationId: addSystemPac
       parameters:
         - $ref: "#/components/parameters/systemId"
@@ -2227,14 +2289,24 @@ paths:
       description: |-
         Upload or clear application scan findings into a system's `systemId` assets module.
 
+        **Request Body Required Fields**
+        - Application Object (`application`)
+          - `applicationName`
+          - `version`
+        - Application Findings Object Array (`applicationFindings`)
+          - `codeCheckName`
+          - `count`
+          - `scanDate`          
+          - `cweId`
+
         **Note:** To clear an application's findings, use only the field `clearFindings` as
         the Request body and set it to true. Example: 
         ```
         [ 
           { 
             "application": { 
-              "applicationName": "Artemis", 
-              "version": "Version 5.0" 
+              "applicationName": "application name", 
+              "version": "application version" 
             }, 
             "applicationFindings": [ 
               { "clearFindings": true } 
@@ -2386,6 +2458,7 @@ paths:
       operationId: getSystemWorkflowInstances
       parameters:
         - $ref: '#/components/parameters/includeComments'
+        - $ref: '#/components/parameters/includeDecommissionSystems'
         - $ref: '#/components/parameters/workFlowPageIndex'
         - $ref: '#/components/parameters/optionalSinceDate'
         - $ref: '#/components/parameters/status'
@@ -2509,6 +2582,35 @@ paths:
       summary: "Add one or many cloud resources and their scan results"
       description: |-
         Add cloud resources and their scan results in the assets module for a system `systemId`
+
+        **Request Body Required Fields**
+        - `provider`
+        - `resourceId`
+        - `resourceName`
+        - `resourceType`
+        - Compliance Results Object Array `complianceResults`
+          - `cspPolicyDefinitionId`
+          - `isCompliant`
+          - `policyDefinitionTitle`
+
+        **Example Request Body Required Fields**
+        ```
+        [ 
+          { 
+            "provider": "provide name",
+            "resourceId": "resource identification",
+            "resourceName": "resource name",
+            "resourceType": "resource type",
+            "complianceResults": [ 
+              { 
+                "cspPolicyDefinitionId": "CSP policy definition identification",
+                "policyDefinitionTitle": "policy definition title",
+                "isCompliant": [true or false]
+              } 
+            ] 
+          } 
+        ]
+        ```
       operationId: addCloudResourcesBySystemId
       parameters:
         - $ref: "#/components/parameters/systemId"
@@ -2575,6 +2677,60 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+    delete:
+      tags:
+        - Cloud Resource Results
+      summary: "Remove one or many cloud resources in a system"
+      description: |-
+        Removes cloud resources and their scan results in the assets module for a system `systemId`
+      operationId: deleteCloudResources
+      parameters:
+        - $ref: '#/components/parameters/systemId'
+      requestBody:
+        description: "Delete the given Cloud Resource Id"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/CloudResourcesDeleteBody"
+        required: true 
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/CloudResourcesDelete"
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
   #----------------------------------------------------------------------------
   # Container Scan Results endpoints
   #----------------------------------------------------------------------------
@@ -2585,6 +2741,45 @@ paths:
       summary: "Add one or many containers and their scan results"
       description: |-
         Add containers and their scan results in the assets module for a system `systemId`.
+        
+        **Request Body Required Fields**
+        - `containerId`
+        - `containerName`
+        - `time`
+        - Bench Marks Object Array `benchmarks`
+          - `benchmark`
+          - Results Object Array `results`
+            - `ruleId`
+            - `status`
+            - `lastSeen`
+
+        **Example Request Body Required Fields**
+        ```
+        [
+          {
+            "containerId": "container identification",
+            "containerName": "container name",
+            "time": Datetime of scan/result (1648217219),
+            "benchmarks": [
+              { 
+                "benchmark": "RHEL_8_STIG",
+                "results": [ 
+                  { 
+                    "ruleId": "rule identification",
+                    "status": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],
+                    "lastSeen": Unix date format (1648217219)
+                  }, {
+                    "ruleId": "rule identification",
+                    "status": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],
+                    "lastSeen": Unix date format (1648217219)
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+        ````
+
       operationId: addContainerSansBySystemId
       parameters:
         - $ref: "#/components/parameters/systemId"
@@ -2651,6 +2846,60 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Response500"
 
+    delete:
+      tags:
+        - Container Scan Results
+      summary: "Remove one or many containers in a system"
+      description: |-
+        Removes container scan resources and their scan results in the assets module for a system `systemId`
+      operationId: deleteContainerSans
+      parameters:
+        - $ref: '#/components/parameters/systemId'
+      requestBody:
+        description: "Delete the given Container Scan Id"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ContainerResourcesDeleteBody"
+        required: true 
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ContainersResponseDelete"
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
   #---------------------------------------------------------------------------#
   #                           D A S H B O A R D S                             #
   #---------------------------------------------------------------------------#
@@ -2661,7 +2910,7 @@ paths:
   /api/dashboards/system-status-details:
     get:
       tags:
-       - Dashboards
+       - System Status Dashboard
       summary: "System Status Details"
       description: |-
         Get systems status detail dashboard information.
@@ -2722,12 +2971,141 @@ paths:
                 "$ref": "#/components/schemas/Response500"    
 
   #----------------------------------------------------------------------------
+  # Enterprise Terms Conditions Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-terms-conditions-summary:
+    get:
+      tags:
+       - Enterprise Terms Conditions Dashboards
+      summary: "System Terms Conditions Summary"
+      description: |-
+        Get systems terms conditions summary dashboard information.
+      operationId: getSystemTermsConditionsSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-terms-conditions-details:
+    get:
+      tags:
+       - Enterprise Terms Conditions Dashboards
+      summary: "System Terms Conditions Details"
+      description: |-
+        Get systems terms conditions details dashboard information.
+      operationId: getSystemTermsConditionsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  #----------------------------------------------------------------------------
   # Enterprise Security Controls Dashboards
   #----------------------------------------------------------------------------
   /api/dashboards/system-control-compliance-summary:
     get:
       tags:
-       - Dashboards
+       - Enterprise Security Controls Dashboards
       summary: "System Control Compliance Summary"
       description: |-
         Get systems control compliance summary dashboard information.
@@ -2790,7 +3168,7 @@ paths:
   /api/dashboards/system-security-controls-details:
     get:
       tags:
-       - Dashboards
+       - Enterprise Security Controls Dashboards
       summary: "System Control Compliance Details"
       description: |-
         Get systems security control details dashboard information.
@@ -2853,7 +3231,7 @@ paths:
   /api/dashboards/system-assessment-procedures-details:
     get:
       tags:
-       - Dashboards
+       - Enterprise Security Controls Dashboards
       summary: "System Assessment Procedures Details"
       description: |-
         Get systems assessement procdures details dashboard information.
@@ -2919,7 +3297,7 @@ paths:
   /api/dashboards/system-poam-summary:
    get:
       tags:
-       - Dashboards
+       - Enterprise POA&M Dashboards
       summary: "System POA&M Summary"
       description: |-
         Get systems POA&Ms summary dashboard information.
@@ -2982,7 +3360,7 @@ paths:
   /api/dashboards/system-poam-details:
     get:
       tags:
-       - Dashboards
+       - Enterprise POA&M Dashboards
       summary: "System POA&M Details"
       description: |-
         Get system POA&Ms details dashboard information.
@@ -3048,7 +3426,7 @@ paths:
   /api/dashboards/system-artifacts-summary:
     get:
       tags:
-       - Dashboards
+       - Enterprise Artifacts Dashboards
       summary: "System Artifacts Summary"
       description: |-
         Get system Artifacts summary information.
@@ -3111,7 +3489,7 @@ paths:
   /api/dashboards/system-artifacts-details:
     get:
       tags:
-       - Dashboards
+       - Enterprise Artifacts Dashboards
       summary: "System Artifacts Details"
       description: |-
         Get system Artifacts details information.
@@ -3177,7 +3555,7 @@ paths:
   /api/dashboards/system-hardware-summary:
     get:
       tags:
-       - Dashboards
+       - Hardware Baseline Dashboards
       summary: "System Hardware Summary"
       description: |-
         Get system hardware summary dashboard information.
@@ -3240,7 +3618,7 @@ paths:
   /api/dashboards/system-hardware-details:
     get:
       tags:
-       - Dashboards
+       - Hardware Baseline Dashboards
       summary: "System Hardware Details"
       description: |-
         Get system hardware details dashboard information.
@@ -3306,7 +3684,7 @@ paths:
   /api/dashboards/system-sensor-hardware-summary:
     get:
       tags:
-       - Dashboards
+       - Enterprise Sensor-based Hardware Resources Dashboards
       summary: "System Sensor Hardware Summary"
       description: |-
         Get system sensor hardware summary dashboard information.
@@ -3369,7 +3747,7 @@ paths:
   /api/dashboards/system-sensor-hardware-details:
     get:
       tags:
-       - Dashboards
+       - Enterprise Sensor-based Hardware Resources Dashboards
       summary: "System Sensor Hardware Details"
       description: |-
         Get system sensor hardware details dashboard information.
@@ -3435,7 +3813,7 @@ paths:
   /api/dashboards/system-software-summary:
     get:
       tags:
-       - Dashboards
+       - Software Baseline Dashboards
       summary: "System Software Summary"
       description: |-
         Get system software summary dashboard information.
@@ -3498,7 +3876,7 @@ paths:
   /api/dashboards/system-software-details:
     get:
       tags:
-       - Dashboards
+       - Software Baseline Dashboards
       summary: "System Software Details"
       description: |-
         Get system software details dashboard information.
@@ -3557,14 +3935,398 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Response500"
+
+  #----------------------------------------------------------------------------
+  # Enterprise Sensor-based Software Resources Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-sensor-software-summary:
+    get:
+      tags:
+       - Enterprise Sensor-based Software Resources Dashboards
+      summary: "System Sensor Software Summary"
+      description: |-
+        Get system sensor software summary dashboard information.
+      operationId: getSystemSensorSoftwareSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-sensor-software-details:
+    get:
+      tags:
+       - Enterprise Sensor-based Software Resources Dashboards
+      summary: "System Sensor Software Details"
+      description: |-
+        Get system sensor hardsoftwareware details dashboard information.
+      operationId: getSystemSensorSoftwareDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
   
+  /api/dashboards/system-sensor-software-counts:
+    get:
+      tags:
+       - Enterprise Sensor-based Software Resources Dashboards
+      summary: "System Sensor Software Counts"
+      description: |-
+        Get system sensor hardsoftwareware count dashboard information.
+      operationId: getSystemSensorSoftwareCounts
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+  
+  #----------------------------------------------------------------------------
+  # Enterprise Vulnerability Dashboards
+  #----------------------------------------------------------------------------
+  /api/dashboards/system-vulnerability-summary:
+    get:
+      tags:
+       - Enterprise Vulnerability Dashboards
+      summary: "System Vulnerability Summary"
+      description: |-
+        Get system vulnerability summary dashboard information.
+      operationId: getSystemVulnerabilitySummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-device-findings-summary:
+    get:
+      tags:
+       - Enterprise Vulnerability Dashboards
+      summary: "System Device Findings Summary"
+      description: |-
+        Get system device findings summary dashboard information.
+      operationId: getSystemDeviceFindingsSummary
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
+  /api/dashboards/system-device-findings-details:
+    get:
+      tags:
+       - Enterprise Vulnerability Dashboards
+      summary: "System Device Findings Details"
+      description: |-
+        Get ssystem device findings details dashboard information.
+      operationId: getSystemDeviceFindingsDetails
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/dashboardExcludeInherited'
+        - $ref: '#/components/parameters/dashboardPageIndex'
+        - $ref: '#/components/parameters/dashboardPageSize'
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+               type: object
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response400"          
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response401"
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response403"                
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response404"
+        '405':
+          description: "Method Not Allowed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response405"
+        '490':
+          description: "API Rule Failed"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response490"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Response500"
+
   #----------------------------------------------------------------------------
   # Ports and Protocols Dashboards
   #----------------------------------------------------------------------------
   /api/dashboards/system-ports-protocols-summary:
     get:
       tags:
-       - Dashboards
+       - Ports and Protocols Dashboards
       summary: "System Ports/Protocols Summary"
       description: |-
         Get system ports and protocols summary dashboard information.
@@ -3627,7 +4389,7 @@ paths:
   /api/dashboards/system-ports-protocols-details:
     get:
       tags:
-       - Dashboards
+       - Ports and Protocols Dashboards
       summary: "System Ports/Protocols Details"
       description: |-
         Get system ports and protocols details dashboard information.
@@ -3693,7 +4455,7 @@ paths:
   /api/dashboards/system-conmon-integration-status-summary:
     get:
       tags:
-       - Dashboards
+       - System CONMON Integration Status Dashboard
       summary: "System CONMON Integration Status"
       description: |-
         Get system CONMON integration status dashboard information.
@@ -3759,7 +4521,7 @@ paths:
   /api/dashboards/system-associations-details:
     get:
       tags:
-       - Dashboards
+       - System Associations Dashboard
       summary: "System Associations Details"
       description: |-
         Get system associations details dashboard information.
@@ -3825,7 +4587,7 @@ paths:
   /api/dashboards/user-system-assignments-details:
     get:
       tags:
-       - Dashboards
+       - Users Dashboard
       summary: "User System Assignments Details"
       description: |-
         Get user system assignments details dashboard information.
@@ -3891,7 +4653,7 @@ paths:
   /api/dashboards/system-privacy-summary:
     get:
       tags:
-       - Dashboards
+       - Privacy Compliance Dashboards
       summary: "System Privacy Summary"
       description: |-
         Get user system privacy summary dashboard information.
@@ -3954,7 +4716,7 @@ paths:
   /api/dashboards/va-omb-fisma-saop-summary:
     get:
       tags:
-       - Dashboards
+       - Privacy Compliance Dashboards
       summary: "VA OMB FISMA SAOP Summary"
       description: |-
         Get VA OMB-FISMA SAOP summary dashboard information.
@@ -4020,7 +4782,7 @@ paths:
   /api/dashboards/va-system-aa-summary:
     get:
       tags:
-       - Dashboards
+       - System A&A Summary Dashboard
       summary: "VA System A&A Summary"
       description: |-
         Get VA system A&A summary dashboard information.
@@ -4086,7 +4848,7 @@ paths:
   /api/dashboards/va-system-a2-summary:
     get:
       tags:
-       - Dashboards
+       - System A2.0 Summary Dashboard
       summary: "VA System A2.0 Summary"
       description: |-
         Get VA system A2.0 summary dashboard information.
@@ -4152,7 +4914,7 @@ paths:
   /api/dashboards/va-system-pl-109-reporting-summary:
     get:
       tags:
-       - Dashboards
+       - System P.L. 109 Reporting Summary Dashboard
       summary: "VA System P.L. 109 Reporting Summary"
       description: |-
         Get VA system P.L. 109 reporting summary dashboard information.
@@ -4218,7 +4980,7 @@ paths:
   /api/dashboards/va-system-fisma-inventory-summary:
     get:
       tags:
-       - Dashboards
+       - FISMA Inventory Summary Dashboards
       summary: "VA System FISMA Inventory Summary"
       description: |-
         Get VA system FISMA inventory summary dashboard information.
@@ -4281,7 +5043,7 @@ paths:
   /api/dashboards/va-system-fisma-inventory-crypto-summary:
     get:
       tags:
-       - Dashboards
+       - FISMA Inventory Summary Dashboards
       summary: "VA System FISMA Inventory Crypto Summary"
       description: |-
         Get VA system FISMA inventory crypto summary dashboard information.
@@ -4347,7 +5109,7 @@ paths:
   /api/dashboards/va-system-threat-risks-summary:
     get:
       tags:
-       - Dashboards
+       - Threat Risks Dashboards
       summary: "VA System Threat Risks Summary"
       description: |-
         Get VA system threat risk summary dashboard information.
@@ -4410,7 +5172,7 @@ paths:
   /api/dashboards/va-system-threat-sources-details:
     get:
       tags:
-       - Dashboards
+       - Threat Risks Dashboards
       summary: "VA System Threat Sources Details"
       description: |-
         Get VA system threat source details dashboard information.
@@ -4473,7 +5235,7 @@ paths:
   /api/dashboards/va-system-threat-architecture-details:
     get:
       tags:
-       - Dashboards
+       - Threat Risks Dashboards
       summary: "VA System Threat Architecture Details"
       description: |-
         Get VA system threat architecture details dashboard information.
@@ -4600,7 +5362,7 @@ components:
       required: true
       schema:
         type: string
-        enum: ["AO","Auditor","Artifact Manager","C&A Team","IAO","ISSO","PM/IAM","SCA","User Rep", "Validator"]
+        # enum: ["AO","Auditor","Artifact Manager","C&A Team","IAO","ISSO","PM/IAM","SCA","User Rep", "Validator"]
         default: "IAO"
     exportfilename:
       name: filename
@@ -4633,11 +5395,14 @@ components:
     includePackage:
       name: includePackage
       in: query
-      description: "**Include Package**:  Indicates if additional packages information is retrieved for queried system."
+      description: |-
+        **Include Package**:  Indicates if additional packages information are retrieved for queried system.
+
+        If no value is specified, the default returns false to not include package information
       schema:
         type: boolean
         x-faker: random.boolean
-        default: true
+        default: false
     registrationType:
       name: registrationType
       in: query
@@ -4664,7 +5429,10 @@ components:
     policy:
       name: policy
       in: query
-      description: "**System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information."
+      description: |-
+        **System Policy**: Filter query by system policy.
+        
+        If no value is specified, the default returns RMF policy information for dual-policy systems.
       schema:
         type: string
         enum: ["diacap", "rmf", "reporting"]
@@ -4680,11 +5448,14 @@ components:
       name: includeDitprMetrics
       in: query
       description: |-
-        **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:<br>
-          <ul>
-            <li>registrationType</li>
-            <li>policy</li>
-          </ul>
+        **Include DITPR**: Indicates if DITPR metrics are retrieved.
+        
+        This query string parameter cannot be used in conjunction with the following parameters:
+          - includePackage
+          - ditprId
+          - coamsId
+
+        If no value is specified, the default returns false to not include DITPR Metrics.
       schema:
         type: boolean
         x-faker: random.boolean
@@ -4692,7 +5463,10 @@ components:
     includeDecommissioned:
       name: includeDecommissioned
       in: query
-      description: "**Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems."
+      description: |-
+          **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.
+
+          If no value is specified, the default returns true to include decommissioned systems.
       schema:
         type: boolean
         x-faker: random.boolean
@@ -4700,7 +5474,7 @@ components:
     reportsForScorecard:
       name: reportsForScorecard
       in: query
-      description: "**DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard."
+      description: "**DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard."
       schema:
         type: boolean
         x-faker: random.boolean
@@ -4736,19 +5510,25 @@ components:
     controlAcronyms:
       name: controlAcronyms
       in: query
-      description: "**System Acronym**: Filter query by given system acronym (single or comma separated)."
+      description: "**Control Acronym**: Filter query by given system acronym (single value or comma separated)."
+      schema:
+        type: string
+    assessmentProcedures:
+      name: assessmentProcedures
+      in: query
+      description: "**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated)."
       schema:
         type: string
     ccis:
       name: ccis
       in: query
-      description: "**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated)."
+      description: "**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated)."
       schema:
         type: string
     latestOnly:
       name: latestOnly
       in: query
-      description: "**Latest Results Only**: Indicates that only the latest test resultes are retrieved (single or comma separated)."
+      description: "**Latest Results Only**: Indicates that only the latest test resultes are retrieved."
       schema:
         type: boolean
         x-faker: random.boolean
@@ -4806,6 +5586,15 @@ components:
         type: boolean
         x-faker: random.boolean
         default: true
+    includeDecommissionSystems:
+      name: includeDecommissionSystems
+      in: query
+      description: |
+        **Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems.
+      schema:
+        type: boolean
+        x-faker: random.boolean
+        default: false
     workFlowPageIndex:
       name: pageIndex
       in: query
@@ -4990,18 +5779,14 @@ components:
       title: Test Results Query Body
       type: array
       required:
-        - cci
         - testedBy
         - testDate
         - description
         - complianceStatus
+        - assessmentProcedure
       additionalProperties: false
       items:
         properties:
-          cci:
-            type: string
-            description: "[Required] CCI associated with test result."
-            example: "002108"
           testedBy:
             type: string
             description: "[Required] Last Name, First Name. 100 Characters."
@@ -5020,6 +5805,10 @@ components:
             type: string
             description: "[Required] Test result compliance status"
             example: "Compliant"
+          assessmentProcedure:
+            type: string
+            description: "[Required] The Security Control Assessment Procedure being assessed."
+            example: "AC-1.1"            
     PoamRequestPostBody:
       title: POAM POST Query Body
       type: array
@@ -5084,6 +5873,10 @@ components:
             type: string
             description: "[Optional] CCI associated with POA&M."
             example: "000132"
+          assessmentProcedure:
+            type: string
+            description: "[Optional] The Security Control Assessment Procedure being associated with the POA&M Item."
+            example: "AC-1.4"          
           securityChecks:
             type: string
             description: "[Optional] Security Checks that are associated with the POA&M."
@@ -5213,7 +6006,11 @@ components:
           cci:
             type: string
             description: "CCI associated with POA&M."
-            example: "000002"        
+            example: "000002"
+          assessmentProcedure:
+            type: string
+            description: "[Optional] The Security Control Assessment Procedure being associated with the POA&M Item."
+            example: "AC-1.4"
           securityChecks:
             type: string
             description: "[Optional] Security Checks that are associated with the POA&M."
@@ -5392,15 +6189,15 @@ components:
             type: string
             description: "[Optional] Artifact reference page number. 50 Characters."
             example: "Reference page number"
-          ccis:
-            type: string
-            description: "[Optional] CCI associated with test result."
-            example: "000002"                
           controls:
             type: string
             nullable: true
             description: "[Optional] Control acronym associated with the artifact. NIST SP 800-53 Revision 4 defined."
-            example: "AC-8,AC-2(4)"     
+            example: "AC-1,AC-2"
+          assessmentProcedures:
+            type: string
+            description: "[Optional] The Security Control Assessment Procedure being associated with the artifact."
+            example: "AC-1.1,AC-1.2"    
           expirationDate:
             type: integer
             format: int64
@@ -5422,6 +6219,8 @@ components:
     CacRequestPostBody:
       title: CAC POST Query Body
       type: array
+      required:
+        - controlAcronym
       additionalProperties: false
       items:
         properties:
@@ -5436,6 +6235,10 @@ components:
     PacRequestPostBody:
       title: PAC POST Query Body
       type: array
+      required:
+        - workflow
+        - name
+        - comments
       additionalProperties: false
       items:
         properties:
@@ -5472,13 +6275,19 @@ components:
         applicationFindings:
           type: array
           items:
-            $ref: "#/components/schemas/StaticCodeApplication"      
+            $ref: "#/components/schemas/StaticCodeApplicationPost"      
     CloudResourcesRequestPostBody:
       title: Cloude Resource POST Request Body
       type: array
+      required:
+        - provider
+        - resourceId
+        - resourceName
+        - resourceType
       additionalProperties: false
       items:
-        properties: 
+        properties:
+          # Required Fields
           provider:
             type: string
             description: "[Required] Cloud service provider name"
@@ -5495,6 +6304,7 @@ components:
             type: string
             description: "[Required] Type of Cloud resource"
             example: "Microsoft.storage.table"
+          # Optional Fields
           initiatedBy:
             type: string
             description: "[Optional] Email of POC"
@@ -5511,6 +6321,7 @@ components:
             type: boolean
             description: "[Optional] True/false flag for providing results as baseline. If true, all existing compliance results for the resourceId will be replaced by results in the current call"
             example: true
+          # Optional object 
           tags:
             type: object
             description: "[Optional] Informational tags associated to results for other metadata"
@@ -5518,10 +6329,16 @@ components:
               test:
                 type: string
                 example: "testtag"
+          # Required object array with required and optional Fields
           complianceResults:
             type: array
+            required:
+              - cspPolicyDefinitionId
+              - policyDefinitionTitle
+              - isCompliant
             items:
               properties:
+                # Required Fields
                 cspPolicyDefinitionId:
                   type: string
                   description: "[Required] Unique identifier/compliance namespace for CSP/Resource's policy definition/compliance check"
@@ -5530,15 +6347,16 @@ components:
                   type: string
                   description: "[Required] Friendly policy/compliance check title. Recommend short title"
                   example: "AU-11 - Audit Record Retention"
+                isCompliant:
+                  type: boolean
+                  description: "[Required] Compliance status of the policy for the identified cloud resource"
+                  example: false
+                # Optional Fields
                 complianceCheckTimestamp:
                   type: integer
                   format: int64
                   description: "[Optional] Unix date format"
                   example: 1644003780
-                isCompliant:
-                  type: boolean
-                  description: "[Required] Compliance status of the policy for the identified cloud resource"
-                  example: false
                 control:
                   type: string
                   description: "[Optional] Comma separated correlation to Security Control (e.g. exact NIST Control acronym)"
@@ -5567,9 +6385,14 @@ components:
     ContainersRequestPostBody:
       title: Containers POST Request Body
       type: array
+      required:
+        - containerId
+        - containerName
+        - time
       additionalProperties: false
       items:
         properties:
+          # Required Fields
           containerId:
             type: string
             description: "[Required] Unique identifier of the container"
@@ -5578,6 +6401,12 @@ components:
             type: string
             description: "[Required] Friendly name of the container"
             example: "command-control"
+          time:
+            type: integer
+            format: int64
+            description: "[Required] Datetime of scan/result. Unix date format"
+            example: 1648217219            
+          # Optional Fields
           podName:
             type: string
             description: "[Optional] Name of pod (e.g. Kubernetes pod)"
@@ -5590,11 +6419,7 @@ components:
             type: string
             description: "[Optional] Namespace of container in container orchestration (e.g. Kubernetes namespace)"
             example: "command-control"
-          time:
-            type: integer
-            format: int64
-            description: "[Required] Datetime of scan/result. Unix date format"
-            example: 1648217219
+          # Optional Object
           tags:
             type: object
             description: "[Optional] Informational tags associated to results for other metadata"
@@ -5602,22 +6427,33 @@ components:
               test:
                 type: string
                 example: "testtag"
+          # Required object array with required and optional Fields                
           benchmarks:
             type: array
+            required:
+              - benchmark
             items:
               properties:
+                # Required Fields
                 benchmark:
                   type: string
                   description: "[Required] Identifier of the benchmark/grouping of compliance results. (e.g. for STIG results, provide the benchmark id for the STIG technology)"
                   example: "RHEL_8_STIG"
+                # Optional Fields
                 isBaseline:
                   type: boolean
                   description: "[Optional] True/false flag for providing results as baseline. If true, all existing compliance results for the provided benchmark within the container will be replaced by results in the current call"
                   example: false
+                # Required object array with required and optional Fields
                 results:
                   type: array
+                  required:
+                    - ruleId
+                    - status
+                    - lastSeen
                   items:
                     properties:
+                      # Required Fields
                       ruleId:
                         type: string
                         description: "[Required] Identifier for the compliance result, vulnerability, etc. the result is for"
@@ -5632,6 +6468,7 @@ components:
                         format: int64
                         description: "Date last seen, Unix date format"
                         example: 1648217219
+                      # Optional Fields
                       message:
                         type: string
                         description: "[Optional] Comments for the result"
@@ -5681,7 +6518,7 @@ components:
           format: int64
           description: "[Required] Shecdule completion date. Unix time format."
           example: 1599644800
-    StaticCodeApplication:
+    StaticCodeApplicationPost:
       title: Static Code Application POST object"
       type: object
       additionalProperties: false
@@ -5757,8 +6594,30 @@ components:
             description: "[Required] File name should match exactly one file within the provided zip file. 1000 Characters."
             x-faker: system.commonFileName
             example: "AutorizationGuidance.pdf"
+    CloudResourcesDeleteBody:
+      title: DeleteCloudResources
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          resourceId:
+            type: string
+            description: "[Required] Unique item identifier"
+            example: "/subscriptions/123456789/sample/resource/namespace/default"
+    ContainerResourcesDeleteBody:
+      title: DeleteContainerResources
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          containerId:
+            type: string
+            description: "[Required] Unique item identifier"
+            example: "157ac21c-49b4-4faf-a4ac-bfefd869ba3b"            
     #----------------------------------------------------------------------------
-    # 200 Responses
+    # 200 Responses for (GET, POST, PUT, and DELETE)
     #----------------------------------------------------------------------------
     Test:
       title: "api GET response schema"    
@@ -5980,6 +6839,17 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MilestonesPutPostDelete"
+    MilestoneResponseDelete:
+      title: "Milestones DELETE response schema"        
+      type: object
+      additionalProperties: false
+      properties:
+        meta:
+          "$ref": "#/components/schemas/Response200"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/MilestonesPutPostDelete"
     ArtifactsResponseGet:
       title: "Artifacts GET response schema"        
       type: object
@@ -6128,7 +6998,18 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/CloudResourcesPost'
+            $ref: '#/components/schemas/CloudResourcesPostDelete'
+    CloudResourcesDelete:
+      title: "Cloud Resource DELETE response schema"        
+      type: object
+      additionalProperties: false
+      properties:
+        meta:
+          "$ref": "#/components/schemas/Response200"
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CloudResourcesPostDelete'
     ContainersResponsePost: 
       type: object
       additionalProperties: false
@@ -6138,7 +7019,18 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ContainersResourcesPost'    
+            $ref: '#/components/schemas/ContainersResourcesPostDelete'  
+    ContainersResponseDelete:
+      title: "Container Resource DELETE response schema"        
+      type: object
+      additionalProperties: false
+      properties:
+        meta:
+          "$ref": "#/components/schemas/Response200"
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainersResourcesPostDelete'
     CmmcResponseGet:
       title: "CMMC GET response schema"
       type: object
@@ -6269,6 +7161,8 @@ components:
           type: integer
           nullable: true
           description: "[Read-Only] Date the system was registered into eMASS."
+          x-faker: 
+            random.number: 1234567890
           example: 1638741770
         systemLifeCycleAcquisitionPhase:
           type: string
@@ -6339,8 +7233,8 @@ components:
         registrationType:
           type: string
           nullable: true
-          description: "[Read-Only] Registration types parameters (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.)"
-          enum: ["Assess and Authorize", "Assess Only", "Guest", "Regular", "Functional", "Cloud Service Provider", "Common Control Provider"]
+          description: "[Read-Only] Registration type of the system record. Values include (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.)"
+          enum: ["Assess and Authorize", "Assess Only", "Guest","Regular","Functional","Cloud Service Provider"]
           example: "Assess and Authorize"
         name:
           type: string
@@ -6453,6 +7347,8 @@ components:
           type: integer
           nullable: true
           description: "[Read-only] Authorization Termination Date of the system record."
+          x-faker: 
+            random.number: 1234567890
           example: 1638741660
         authorizationLength:
           type: integer
@@ -6477,6 +7373,8 @@ components:
           type: integer
           nullable: true
           description: "[Read-only] Approval date of the system's RMF Security Plan."
+          x-faker: 
+            random.number: 1234567890
           example: 1638741660
         missionCriticality:
           type: string
@@ -6597,12 +7495,35 @@ components:
           type: integer
           nullable: true
           description: "[Read-only] Date the system record's Contingency Plan was tested."
+          x-faker: 
+            random.number: 1234567890          
           example: 1426957321
-        securityReviewDate:
+        securityReviewRequired:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Is the system required to complete a Security Review?"
+          x-faker: random.boolean
+          example: true
+        securityReviewCompleted:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Has a Security Review been completed for this system?"
+          x-faker: random.boolean
+          example: true
+        securityReviewCompletionDate:
           type: integer
           nullable: true
-          description: "[Read-only] Date the system record's Annual Security Review was conducted."
+          description: "[Read-Only] Date of the system's latest security review or annual assessment."
+          x-faker: 
+            random.number: 1234567890
           example: 1531958400
+        nextSecurityReviewDueDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] Date when the system's next security review or annual assessment is due by."
+          x-faker: 
+            random.number: 1234567890
+          example: 1526957321
         hasOpenPoamItem:
           type: boolean
           nullable: true
@@ -6645,12 +7566,24 @@ components:
           description: "[Read-only] Does the system record contain and/or process Personal Health Information?"
           x-faker: random.boolean
           example: false
+        ppsmRegistrationRequired:
+          type: string
+          nullable: true
+          description: "[Read-Only] Determine if a PPSM registration is required."
+          x-faker: random.words
+          example: "PPSM registration required"  
         ppsmRegistryNumber:
           type: string
           nullable: true
-          description: "[Read-only] Unique identifier for the DoD’s Ports, Protocols, and Services Management Registry system."
+          description: "[Read-only] Unique identifier for the DoD's Ports, Protocols, and Services Management Registry system."
           x-faker: random.words
-          example: "Test PPSM Registry Number"        
+          example: "Test PPSM Registry Number"
+        ppsmRegistrationExemptionJustification:
+          type: string
+          nullable: true
+          description: "[Read-Only] Clarify why a PPSM registraiton is not necessary."
+          x-faker: random.words
+          example: "Exemption justification"
         interconnectedInformationSystemAndIdentifiers:
           type: string
           nullable: true
@@ -6673,6 +7606,8 @@ components:
           type: integer
           nullable: true
           description: "[Read-only] Date in which the system's PIA took place."
+          x-faker: 
+            random.number: 1234567890
           example: 1622048629
         userDefinedField1:
           type: string
@@ -6884,6 +7819,103 @@ components:
           x-faker:
             random.arrayElement: [["Group Tag 1 explanation", "Group Tag 2 explanation", "Group Tag 3 explanation", "Group Tag 4 explanation", "Group Tag 5 explanation"]]
           example: "Group Tag 1 explanation"
+        dadmsId:
+          type: string
+          nullable: true
+          description: "[Read-Only] The system's DADMS ID. USMC only."
+          x-faker: system.semver
+          example: "DADMS-1"
+        dadmsExpirationDate:
+          type: integer
+          nullable: true
+          description: "[Read-Only] Date the system expires in DADMS. USMC only."
+          x-faker: 
+            random.number: 1234567890
+          example: 1638751730
+        enclaveConnectivity:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the type of connectivity for the network/enclave, e.g., DISA circuit (NIPR, SIPR) or HPCMP circuit (DREN, SDREN, Outreach). Navy only."
+          x-faker:
+            random.arrayElement: [["NIPR", "SIPR", "HPCMP", "DREN", "SDREN"]]
+          example: "NIPR"        
+        environmentType:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only."
+          x-faker:
+            random.arrayElement: [["Personal Computing", "Time Sharing Computing", "Client Server Computing", "Distributed Computing",
+                "Cloud Computing","Cluster Computing"]]
+          example: "Cloud Computing"  
+        navyCommonControlProvider:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicate whether the information system provides inheritable controls. Navy only"
+          x-faker: random.boolean
+          example: false
+        navyCloudBroker:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the broker responsible for the delivery of commercial cloud services and capabilities. Refer to Navy Commercial Cloud Brokerage Policy. Navy Only"
+          x-faker: company.companyName
+          example: "AWS IL 5"
+        cloudBrokerEmassId:
+          type: integer
+          nullable: true
+          description: "[Read-Only] The eMASS ID of the identified cloud broker. Navy only."
+          x-faker: 
+            random.number: 12345678
+          example: 2349
+        cloudBrokerProvisionalAuthorizationAtd:
+          type: integer
+          nullable: true
+          description: "[Read-Only] The provisional authorization termination date of the identified cloud broker. Navy only"
+          x-faker: 
+            random.number: 1234567890
+          example: 1638741660
+        navyJointAuthorization:
+          type: boolean
+          nullable: true
+          description: "[Read-Only] Indicate whether this is a joint authorization being issued by two or more Authorizing Officials. Navy only"
+          x-faker: random.boolean
+          example: false
+        nmciNgenClins:
+          type: string
+          nullable: true
+          description: "[Read-Only] Provide all NMCI CLINs associated to the system/services within the authorization boundary. Navy only"
+          x-faker: random.word
+          example: "NMCI CLIN"
+        enterpriseLocations:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the Navy enterprise network where the information system is deployed. Navy only"
+          x-faker: internet.domainName
+          example: "All Navy Networks"
+        whitelistId:
+          type: string
+          nullable: true
+          description: "[Read-Only] Systems that have public-facing components/presences are typically required to be documented and registered as part of Organzationally-approved whitelisting processes."
+          x-faker: random.words
+          example: "DoD DMZ Whitelist"
+        whitelistInventory:
+          type: string
+          nullable: true
+          description: "[Read-Only] Provide/upload the documentation that identifies or describes the components or aspects of the System that are public-facing (whitelisted)."
+          x-faker: random.words
+          example: "Whitelist document"
+        cybersecurityServiceProvider:
+          type: string
+          nullable: true
+          description: "[Read-Only] Name of the system's Cybersecurity Service Provider."
+          x-faker:
+            random.arrayElement: [["NIPR", "SIPR", "HPCMP", "DREN", "SDREN"]]
+          example: "NIPR"    
+        cybersecurityServiceProviderExceptionJustification:
+          type: string
+          nullable: true
+          description: "[Read-Only] If Not Applicable, provide the exception justification."
+          x-faker: random.words
+          example: "Exception justification"
         package:
           type: array
           nullable: true
@@ -6948,15 +7980,16 @@ components:
         roleCategory:
           type: string
           description: "[Required] System role categories"
-          example: "PAC"
           x-faker:
             random.arrayElement: [["CAC", "PAC","Other"]]
+          example: "PAC"            
         role:
           type: string
           description: "[Required] System role description"
-          example: "AO"
           x-faker:
-            random.arrayElement: [["PM/IAM", "SCA", "AO", "ISSO", "IAO", "Validator (IV&V)", "User Rep (View Only)", "Auditor", "Artifact Manager","C&A Team"]]
+            random.arrayElement: [["PM/IAM", "SCA", "AO", "ISSO", "ISSM", "IAO", "Validator (IV&V)", 
+                "User Rep (View Only)", "Auditor", "Artifact Manager","C&A Team"]]
+          example: "AO"
         users:
           type: array
           nullable: true
@@ -7021,11 +8054,12 @@ components:
           nullable: true
           description: "[Read-only] List of overlays that affect the control."
           example: "Requirements"
-          enum: ["Privacy", "Requirements", "Concurrency"]
+          x-faker:
+            random.arrayElement: [["Privacy", "Requirements", "Concurrency"]]
         includedStatus:
           type: string
           nullable: true
-          description: "[Read-only] Indicates the manner by which a control was included in the system’s categorization."
+          description: "[Read-only] Indicates the manner by which a control was included in the system's categorization."
           example: "Manually"
         complianceStatus:
           type: string
@@ -7053,6 +8087,7 @@ components:
           type: string
           nullable: true
           description: "[Conditional] Provide justification for Security Controls deemed Not Applicable to the system."
+          x-faker: random.words
           example: "System EOL within 120 days"
         controlDesignation:
           type: string
@@ -7102,7 +8137,7 @@ components:
           type: string
           nullable: true
           description: "[Conditional] Additional comments for Security Control regarding SLCM. Character Limit = 4,000."
-          x-faker: random.word
+          x-faker: random.words
           example: "Test SLCM Comments"
         severity:
           type: string
@@ -7143,7 +8178,7 @@ components:
         impactDescription:
           type: string
           nullable: true
-          description: "[Optional] Include description of Security Control’s impact."
+          description: "[Optional] Include description of Security Control's impact."
           x-faker: random.words
           example: "Impact text"
         residualRiskLevel:
@@ -7158,6 +8193,36 @@ components:
           description: "[Optional] Identifies the assessment method / combination that will determine if the security requirements are implemented correctly."
           example: "Test"
           enum: ['Test', 'Interview', 'Examine', 'Test, Interview', 'Test, Examine', 'Interview, Examine','Test, Interview, Examine']
+        mitigations:
+          type: string
+          nullable: true
+          description: "[Optional] Identify any mitigations in place for the Non-Compliant Security Control's vulnerabilities. Character Limit = 2,000."
+          x-faker: random.words
+          example: "Test Mitigations"
+        applicationLayer:
+          type: string
+          nullable: true
+          description: "[Optional] If the Financial Management (Navy) overlay is applied to the system, this field appears and can be populated. Character Limit = 2,000. Navy only."
+          x-faker:
+            random.arrayElement: [["Personal Computing", "Time Sharing Computing", "Client Server Computing", "Distributed Computing",
+                "Cloud Computing","Cluster Computing"]]
+          example: "Cloud Computing"
+        databaseLayer:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only."
+          x-faker:
+            random.arrayElement: [["Personal Computing", "Time Sharing Computing", "Client Server Computing", "Distributed Computing",
+                "Cloud Computing","Cluster Computing"]]
+          example: "Time Sharing Computing"
+        operatingSystemLayer:
+          type: string
+          nullable: true
+          description: "[Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only."
+          x-faker:
+            random.arrayElement: [["Personal Computing", "Time Sharing Computing", "Client Server Computing", "Distributed Computing",
+                "Cloud Computing","Cluster Computing"]]
+          example: "Time Sharing Computing"
     ControlsPut:
       title: Controls - return query from the server for the PUT call
       type: object
@@ -7205,7 +8270,14 @@ components:
           description: "[Required] CCI associated with test result."
           example: "000002"
           x-faker:
-            random.arrayElement: [["000012","000045","000005","000125","000145","000063","000451","000254","000852","001234","002115","000155"]]          
+            random.arrayElement: [["000012","000045","000005","000125","000145","000063","000451","000254","000852","001234","002115","000155"]]
+        assessmentProcedure:
+          type: string
+          description: "[Required] The Security Control Assessment Procedure being assessed."
+          example: "AC-1.1"
+          x-faker:
+            random.arrayElement: [["AC-1","AC-2","AC-3","AC-1.1","AC-1.2","AC-1.3",
+              "AC-2.1","AC-2.2","AC-2.3","AC-3.1","AC-3.2","AC-3.3"]]
         isInherited:
           type: boolean
           nullable: true
@@ -7221,7 +8293,9 @@ components:
           type: integer
           format: int64
           description: "[Required] Unix time format."
-          example: 1638741660
+          x-faker: 
+            random.number: 1234567890
+          example: 1638741770
         description:
           type: string
           description: "[Required] Include description of test result. 4000 Characters."
@@ -7268,12 +8342,6 @@ components:
       type: object
       additionalProperties: false
       properties:
-        externalUid:
-          type: string
-          nullable: true
-          description: "[Optional] Unique identifier external to the eMASS application for use with associating POA&Ms. 100 Characters."
-          x-faker: random.uuid
-          example: "d6d98b88-c866-4496-9bd4-de7ba48d0f52"
         systemId:
           type: integer
           format: int64
@@ -7298,6 +8366,12 @@ components:
           description: "[Read-only] Indicates whether a test result is inherited."
           x-faker: random.boolean
           example: true
+        externalUid:
+          type: string
+          nullable: true
+          description: "[Optional] Unique identifier external to the eMASS application for use with associating POA&Ms. 100 Characters."
+          x-faker: random.uuid
+          example: "d6d98b88-c866-4496-9bd4-de7ba48d0f52"
         controlAcronym:
           type: string
           nullable: true
@@ -7312,6 +8386,13 @@ components:
           example: "000001,000002"
           x-faker:
             random.arrayElement: [["000012","000045","000005","000125","000145","000063","000451","000254","000852","001234","002115","000155"]]          
+        assessmentProcedure:
+          type: string
+          description: "[Optional] The Security Control Assessment Procedure being associated with the POA&M Item."
+          example: "AC-1.1"
+          x-faker:
+            random.arrayElement: [["AC-1","AC-2","AC-3","AC-1.1","AC-1.2","AC-1.3",
+              "AC-2.1","AC-2.2","AC-2.3","AC-3.1","AC-3.2","AC-3.3"]]
         status:
           type: string
           description: "[Required] Values include the following: (Ongoing,Risk Accepted,Completed,Not Applicable"
@@ -7463,7 +8544,149 @@ components:
           nullable: true
           description: "[Conditional] Optionally used in PUT to delete milestones when updating a POA&M."
           x-faker: random.boolean
-          example: true       
+          example: true
+        resultingResidualRiskLevelAfterProposedMitigations:
+          type: string
+          nullable: true
+          description: "[Optional] Indicate the risk level expected after any proposed mitigations are implemented. Proposed mitigations should be appropriately documented as POA&M milestones. Navy only."
+          example: "Low"
+          enum: ["Very Low", "Low", "Moderate", "High", "Very High"]
+        predisposingConditions:
+          type: string
+          nullable: true
+          description: "[Optional] A predisposing condition is a condition existing within an organization, a mission or business process, enterprise architecture, information system/PIT, or environment of operation, which affects (i.e., increases or decreases) the likelihood that threat events, once initiated, result in adverse impacts. Navy only."
+          x-faker: random.words
+          example: "The predisposing condition justification"
+        threatDescription:
+          type: string
+          nullable: true
+          description: "[Optional] Describe the identified threat(s) and relevance to the information system. Navy only."
+          x-faker: random.words
+          example: "The identified threat(s) description"
+        devicesAffected:
+          type: string
+          nullable: true
+          description: "[Optional] List any affected devices by hostname. If all devices in the information system are affected, state 'system' or 'all'. Navy only"
+          x-faker:
+            random.arrayElement: [["hostname-1","hostname-2","hostname-3","hostname-4","hostnam-5","system","all"]]
+          example: "system"
+        identifiedInCFOAuditOrOtherReview:
+          type: boolean
+          description: "[Required] If not specified, this field will be set to false because it does not accept a null value. VA only"
+          x-faker: random.boolean
+          example: true
+        personnelResourcesFundedBaseHours:
+          type: number
+          format: float
+          nullable: true
+          description: |
+            [Conditional] At least one of the following is required and must be completed for each POA&M Item:
+              Personnel Resources-> Funded Base Hours
+              Personnel Resources-> Unfunded Base Hours
+              Non-Personnel Resources-> Funded Amount
+              Non-Personnel Resources-> Unfunded Amount
+            Displays numbers to the second decimal point (e.g., 100.00). VA only.
+          x-faker: 
+            random.number: 
+              min: 100
+              max: 300
+              precision: 0.01
+              decimals: 2
+          example: 100.00
+        personnelResourcesCostCode:
+          type: string
+          nullable: true
+          description: |
+            [Conditional] Required if Personnel Resources: Funded Base Hours is populated.
+            Only accepts values present in the field's lookup table (modifiable by eMASS System Admins). VA only.
+          x-faker: finance.transactionType
+        personnelResourcesUnfundedBaseHours:
+          type: number
+          format: float
+          nullable: true
+          description: |
+            [Conditional] At least one of the following is required and must be completed for each POA&M Item:
+              Personnel Resources-> Funded Base Hours
+              Personnel Resources-> Unfunded Base Hours
+              Non-Personnel Resources-> Funded Amount
+              Non-Personnel Resources-> Unfunded Amount
+            Displays numbers to the second decimal point (e.g., 100.00). VA only.
+          x-faker: 
+            random.number: 
+              min: 100
+              max: 300
+              precision: 0.01
+              decimals: 2
+          example: 100.00
+        personnelResourcesNonfundingObstacle:
+          type: string
+          nullable: true
+          description: |
+            [Conditional] Required if Personnel Resources: Unfunded Base Hours is populated.
+            Only accepts values present in the field's lookup table (modifiable by eMASS System Admins). VA only.
+          x-faker: random.words
+          example: "Not an system of interest"
+        personnelResourcesNonfundingObstacleOtherReason:
+          type: string
+          nullable: true
+          description: "[Conditional] Required if the value \"Other\" is populated for the field Personnel Resources: Non-Funding Obstacle. VA only."
+          x-faker: random.words
+          example: "Not an system of interest"
+        nonPersonnelResourcesFundedAmount:
+          type: number
+          format: float
+          nullable: true
+          description: |
+            [Conditional] At least one of the following is required and must be completed for each POA&M Item:
+              Personnel Resources-> Funded Base Hours
+              Personnel Resources-> Unfunded Base Hours
+              Non-Personnel Resources-> Funded Amount
+              Non-Personnel Resources-> Unfunded Amount
+            Displays numbers to the second decimal point (e.g., 100.00). VA only.
+          x-faker: 
+            random.number: 
+              min: 100
+              max: 300
+              precision: 0.01
+              decimals: 2
+        nonPersonnelResourcesCostCode:
+          type: string
+          nullable: true
+          description: |
+            [Conditional] Required if Non-Personnel Resources: Funded Amount is populated.
+            Only accepts values present in the field's lookup table (modifiable by eMASS System Admins). VA only.
+          x-faker: finance.transactionType
+        nonPersonnelResourcesUnfundedAmount:
+          type: number
+          format: float
+          nullable: true
+          description: |
+            [Conditional] At least one of the following is required and must be completed for each POA&M Item:
+              Personnel Resources-> Funded Base Hours
+              Personnel Resources-> Unfunded Base Hours
+              Non-Personnel Resources-> Funded Amount
+              Non-Personnel Resources-> Unfunded Amount
+            Displays numbers to the second decimal point (e.g., 100.00). VA only.
+          x-faker: 
+            random.number: 
+              min: 100
+              max: 300
+              precision: 0.01
+              decimals: 2
+        nonPersonnelResourcesNonfundingObstacle:
+          type: string
+          nullable: true
+          description: |
+            [Conditional] Required if Non-Personnel Resources: Unfunded Amount is populated.
+            Only accepts values present in the field's lookup table (modifiable by eMASS System Admins). VA only.
+          x-faker: random.words
+          example: "Not an system of interest"
+        nonPersonnelResourcesNonfundingObstacleOtherReason:
+          type: string
+          nullable: true
+          description: "[Conditional] Required if the value \"Other\" is populated for the field Non-Personnel Resources: Non-Funding Obstacle. VA only."
+          x-faker: random.words
+          example: "Not an system of interest"
     PoamPostPutDel:
       type: object
       additionalProperties: false
@@ -7577,7 +8800,9 @@ components:
           example: 35
         filename:
           type: string
-          description: "[Required] File name should match exactly one file within the provided zip file. 1000 Characters."
+          description: |
+            [Required] File name should match exactly one file within the provided zip file. 1000 Characters.
+            or Application/zip file. Max 30MB per artifact.
           x-faker: system.commonFileName
           example: "AutorizationGuidance.pdf"
         isInherited:
@@ -7625,7 +8850,7 @@ components:
         ccis:
           type: string
           nullable: true
-          description: "[Optional] CCI associated with test result."
+          description: "[Read-Only] CCI mapping for Assessment Procedures associated with the artifact."
           example: "000001,000002"
           x-faker:
             random.arrayElement: [["000012,000045", "000005","000125,000145","000063,000451,000254","000852","001234,002115","000155"]]            
@@ -7635,6 +8860,10 @@ components:
           description: "[Optional] Control acronym associated with the artifact. NIST SP 800-53 Revision 4 defined."
           x-faker: company.companySuffix
           example: "AC-8,AC-2(4)"
+        assessmentProcedures:
+          type: string
+          description: "[Optional] The Security Control Assessment Procedure being associated with the artifact."
+          example: "AC-1.1"
         mimeContentType:
           type: string
           nullable: true
@@ -7719,12 +8948,6 @@ components:
       title: PAC - return query from the server for the GET call
       type: object
       properties:
-        systemId:
-          type: integer
-          format: int64
-          description: "[Required] Unique eMASS system identifier."
-          x-faker: random.number
-          example: 35
         workflow:
           type: string
           description: "[Required] Values include the following:(Assess and Authorize, Assess Only, Security Plan Approval)"
@@ -7745,22 +8968,23 @@ components:
           type: integer
           nullable: true
           description: "[Read-Only] Number of the current stage in the active workflow."
+          x-faker: 
+            random.number: 10
           example: 4
         totalStages:
           type: integer
           nullable: true
           description: "[Read-Only] Total number of stages in the active workflow."
+          x-faker: 
+            random.number: 10
           example: 6
         daysAtCurrentStage:
           type: integer
           nullable: true
           description: "[Read-Only] Indicates the number of days at current workflow stage."
+          x-faker: 
+            random.number: 25
           example: 2
-        comments:
-          type: string
-          description: "[Required] Comments related to package approval chain. Character Limit = 4,000."
-          x-faker: random.words
-          example: "Comments text."
     PacPost:
       title: PAC - return query from the server for the POST call
       type: object
@@ -7806,9 +9030,10 @@ components:
           example: 35
         errors:
           $ref: '#/components/schemas/Errors'          
-    CloudResourcesPost: 
-      title: Cloud Resources - return query from the server for the POST call
+    CloudResourcesPostDelete: 
+      title: Cloud Resources - return query from the server for the POST/DELETE calls
       type: object
+      additionalProperties: false
       properties:
         resourceId:
           type: string
@@ -7825,9 +9050,10 @@ components:
           example: 35
         errors:
           $ref: '#/components/schemas/Errors'  
-    ContainersResourcesPost:
-      title: Containers - return query from the server for the POST call
+    ContainersResourcesPostDelete:
+      title: Containers - return query from the server for the POST/DELETE calls
       type: object
+      additionalProperties: false
       properties:
         containerId:
           type: string
@@ -8509,7 +9735,8 @@ components:
     Errors:
       type: array
       nullable: true
-      maxItems: 5
+      minItems: 1
+      maxItems: 3
       items:
         example: "key:value"
         x-faker:

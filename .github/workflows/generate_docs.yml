@@ -5,8 +5,8 @@ name: Generate eMASS Documentation
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ api_3_11_implementation ]
 jobs:
   test_job:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
       - name: redoc-cli test
         uses: seeebiii/redoc-cli-github-action@v9
         with:
-          args: 'bundle eMASSRestOpenApi.yaml -o docs/redoc/index.html'
+          args: 'bundle docs/eMASSRestOpenApi.yaml -o docs/redoc/index.html'
 
       - name: check result
         run: |
