@@ -14,14 +14,17 @@ jobs:
 
       # Checkout your code
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       # Check for changed files (looking for changes to the docs/eMASSRestOpenApi.yaml file)
       - name: Get changed files 🔧
-        id: changed-files
-        uses: tj-actions/changed-files@v21
+        # id: changed-files
+        id: changed-files-specific-source-file
+        uses: tj-actions/changed-files@v39
+        with:
+          files_from_source_file: docs/eMASSRestOpenApi.yaml
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
@@ -32,7 +35,7 @@ jobs:
           config-file: src/openapi/templates/ruby/ruby-generator-config.json
           template-dir: src/openapi/templates/ruby
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'docs/eMASSRestOpenApi.yaml')
+        if: contains(steps.changed-files-specific-source-file.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       - name: Generate Typescript Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
@@ -41,7 +44,7 @@ jobs:
           config-file: src/openapi/templates/typescript/typescript-generator-config.json
           template-dir: src/openapi/templates/typescript
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'docs/eMASSRestOpenApi.yaml')
+        if: contains(steps.changed-files-specific-source-file.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       - name: Generate Python Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
@@ -50,11 +53,11 @@ jobs:
           config-file: src/openapi/templates/python/python-generator-config.json
           template-dir: src/openapi/templates/python/mustache
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'docs/eMASSRestOpenApi.yaml')
+        if: contains(steps.changed-files-specific-source-file.outputs.modified_files, 'eMASSRestOpenApi.yaml')
 
       # Publish the newly generated eMASS client to the current repo
-      - name: Publish Generated Clients 🚀
-        if: contains(steps.changed-files.outputs.modified_files, 'docs/eMASSRestOpenApi.yaml')
+      - name: Publish Generated Clients to GitHub 🚀
+        if: contains(steps.changed-files-specific-source-file.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         env: 
           CI_COMMIT_MESSAGE: CI Build Client Artifacts (eMASS Clients)
           CI_COMMIT_AUTHOR: CI Pipeline
