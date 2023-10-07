@@ -1,13 +1,14 @@
 # Developers Instructions
 
-The documentation provided in this repository describes the eMASS REST API (v3.3) structure. It is an OpenAPI (v3.0.3) specification compliant describing and visualizing the eMASS RESTful API web services (endpoints).
+The documentation provided in this repository describes the eMASS REST API structure. It is an OpenAPI (v3.0.3) specification compliant describing and visualizing the eMASS RESTful API web services (endpoints).
 
 The API is documented in YAML and can be viewed utilizing Swagger Editor or Visual Studio Code (VSC) with swagger and yaml extensions.
 
 ## Visualizing 
 ### Viewing the API via Swagger
 
-There are online tool options for viewing and editing OpenAPI compliant RESTfull APIs like the eMASS API documentations. Some of these tools are Swagger Editor or SwaggerHub. <strong>We discourage the utilization of any online capability for editing a controlled unclassified API document</strong>.
+There are online tool options for viewing and editing OpenAPI compliant RESTfull APIs like the eMASS API documentations. Some of these tools are Swagger Editor or SwaggerHub. 
+
 
 ***Note***: We recommend utilizing the instruction provided here for viewing or editing the eMASS API.
 
@@ -56,7 +57,7 @@ prism mock -d -p 4010 eMASSRestOpenAPI.yaml
 * If using VSC, Prism restarts automatically when the yaml file is modified and saved
 * Use `npx` instead of `npm` to install packages locally, but still be able to run them as if they were global
 
-Now you can access the fake API endpoints utilizing either CURL or the Swagger Editor. The following curl command invokes the systems endpoint with a path parameter of policy=rmf:
+Now you can access the mock API endpoints utilizing either CURL or the Swagger Editor. The following curl command invokes the systems endpoint with a path parameter of policy=rmf:
 ``` node
 curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: application/json" -H  "api-key: f32516cc-57d3-43f5-9e16-8f86780a4cce" -H  "user-uid: 1647389405"
 ```
@@ -68,6 +69,8 @@ The API clients are generated utilizing the [OpenAPI Generator](https://github.c
 **Note:** Currently there are three (3) client SDKs (ruby, typscript-axios, and python) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
 
 ### Generate an eMASS Client
+
+#### Using Java executables
 Follow these steps to generate an eMASS client for additional supported language provided by the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI:
 - Step 1
   
@@ -122,8 +125,22 @@ Follow these steps to generate an eMASS client for additional supported language
   ```
   openapi-generators/openapitools-generator-action@v1
   ```
+#### Using Docker 
+An OpenAPI Generator CLI Docker Image solution is available and documented here as a [Public Pre-built Docker image](https://github.com/OpenAPITools/openapi-generator#16---docker).
 
-An OpenAPI Generator CLI Docker Image solution is available and documented [here](https://github.com/OpenAPITools/openapi-generator#16---docker) as a Public Pre-built Docker image.
+Available options are:
+
+- Use the official CLI
+    ```
+    docker pull openapitools/openapi-generator-cli
+    ```
+ - Run openapi-generator as a web service
+    ```
+    docker pull openapitools/openapi-generator-online
+    docker run -d -e GENERATOR_HOST=http://12.34.56.78 -p 80:8080 openapitools/openapi-generator-online
+    ```
+      (where 12.34.56.78 is your server IP address)
+
 
 ---
 
