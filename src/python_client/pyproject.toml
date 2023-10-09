@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "emass_client"
-version = "3.10.1"
+version = "3.11.0"
 description = "Enterprise Mission Assurance Support Service (eMASS)"
 authors = ["eMASS Tier III support <disa.meade.id.mbx.emass-tier-iii-support@mail.mil>"]
 license = "Apache-2.0"
@@ -14,8 +14,8 @@ python = "^3.7"
 
 urllib3 = ">= 1.25.3"
 python-dateutil = ">=2.8.2"
-pydantic = "^1.10.5, <2"
-aenum = ">=3.1.11"
+pydantic = ">=2"
+typing-extensions = ">=4.7.1"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.2.1"

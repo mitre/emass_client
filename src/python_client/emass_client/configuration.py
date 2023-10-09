@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -56,7 +56,6 @@ import sys
 import urllib3
 
 import http.client as httplib
-from emass_client.exceptions import ApiValueError
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'multipleOf', 'maximum', 'exclusiveMaximum',
@@ -64,7 +63,7 @@ JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'minLength', 'pattern', 'maxItems', 'minItems'
 }
 
-class Configuration(object):
+class Configuration:
     """This class contains various settings of the API client.
 
     :param host: Base url.
@@ -86,7 +85,8 @@ class Configuration(object):
       configuration.
     :param server_operation_variables: Mapping from operation ID to a mapping with
       string values to replace variables in templated server configuration.
-      The validation of enums is performed for variables with defined enum values before.
+      The validation of enums is performed for variables with defined enum
+      values before.
     :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
       in PEM format.
 
@@ -121,7 +121,7 @@ conf = emass_client.Configuration(
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
                  ssl_ca_cert=None,
-                 ):
+                 ) -> None:
         """Constructor
         """
         self._base_path = "http://localhost:4010" if host is None else host
@@ -451,8 +451,8 @@ conf = emass_client.Configuration(
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: v3.10\n"\
-               "SDK Package Version: 3.10.1".\
+               "Version of the API: v3.12\n"\
+               "SDK Package Version: 3.11.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

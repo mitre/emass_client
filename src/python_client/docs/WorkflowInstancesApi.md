@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_system_workflow_instances**
-> WorkflowInstancesResponseGet get_system_workflow_instances(include_comments=include_comments, page_index=page_index, since_date=since_date, status=status)
+> WorkflowInstancesResponseGet get_system_workflow_instances(include_comments=include_comments, include_decommission_systems=include_decommission_systems, page_index=page_index, since_date=since_date, status=status)
 
 Get workflow instances in a site
 
@@ -62,13 +62,14 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.WorkflowInstancesApi(api_client)
     include_comments = True # bool | **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization.  (optional) (default to True)
+    include_decommission_systems = False # bool | **Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems.  (optional) (default to False)
     page_index = 0 # int | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances.  (optional) (default to 0)
     since_date = '1638764040' # str | **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made.  (optional)
     status = 'all' # str | **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active.  (optional) (default to 'all')
 
     try:
         # Get workflow instances in a site
-        api_response = api_instance.get_system_workflow_instances(include_comments=include_comments, page_index=page_index, since_date=since_date, status=status)
+        api_response = api_instance.get_system_workflow_instances(include_comments=include_comments, include_decommission_systems=include_decommission_systems, page_index=page_index, since_date=since_date, status=status)
         print("The response of WorkflowInstancesApi->get_system_workflow_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -76,11 +77,13 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **include_comments** | **bool**| **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization.  | [optional] [default to True]
+ **include_decommission_systems** | **bool**| **Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems.  | [optional] [default to False]
  **page_index** | **int**| **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances.  | [optional] [default to 0]
  **since_date** | **str**| **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made.  | [optional] 
  **status** | **str**| **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active.  | [optional] [default to &#39;all&#39;]
@@ -175,6 +178,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkflowInstancesApi->get_system_workflow_instances_by_workflow_instance_id: %s\n" % e)
 ```
+
 
 
 ### Parameters

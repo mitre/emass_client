@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost:4010*
 
 Upload static code scans or Clear static code scans
 
-Upload or clear application scan findings into a system's `systemId` assets module.  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"Artemis\",        \"version\": \"Version 5.0\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
+Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
 
 ### Examples
 

@@ -119,10 +119,9 @@ end
 
 api_instance = EmassClient::SystemRolesApi.new
 role_category = 'CAC' # String | **Role Category**: The system role category been queried
-role = 'AO' # String | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
+role = 'role_example' # String | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
 opts = {
-  policy: 'diacap', # String | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
-  include_decommissioned: true # Boolean | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
+  policy: 'diacap' # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
 }
 
 begin
@@ -158,8 +157,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **role_category** | **String** | **Role Category**: The system role category been queried | [default to &#39;PAC&#39;] |
 | **role** | **String** | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. | [default to &#39;IAO&#39;] |
-| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional][default to &#39;rmf&#39;] |
-| **include_decommissioned** | **Boolean** | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. | [optional][default to true] |
+| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
 
 ### Return type
 

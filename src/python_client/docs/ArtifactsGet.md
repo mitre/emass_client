@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **system_id** | **int** | [Required] Unique eMASS system identifier. | [optional] 
-**filename** | **str** | [Required] File name should match exactly one file within the provided zip file. 1000 Characters. | [optional] 
+**filename** | **str** | [Required] File name should match exactly one file within the provided zip file. 1000 Characters. or Application/zip file. Max 30MB per artifact.  | [optional] 
 **is_inherited** | **bool** | [Read-only] Indicates whether an artifact is inherited. | [optional] 
 **is_template** | **bool** | [Required] Indicates whether an artifact template. | [optional] 
 **type** | **str** | [Required] Artifact type options | [optional] 
@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **name** | **str** | [Optional] Artifact name. Character Limit &#x3D; 100. | [optional] 
 **description** | **str** | [Optional] Artifact description. 10,000 Characters. | [optional] 
 **reference_page_number** | **str** | [Optional] Artifact reference page number. 50 Characters. | [optional] 
-**ccis** | **str** | [Optional] CCI associated with test result. | [optional] 
+**ccis** | **str** | [Read-Only] CCI mapping for Assessment Procedures associated with the artifact. | [optional] 
 **controls** | **str** | [Optional] Control acronym associated with the artifact. NIST SP 800-53 Revision 4 defined. | [optional] 
+**assessment_procedures** | **str** | [Optional] The Security Control Assessment Procedure being associated with the artifact. | [optional] 
 **mime_content_type** | **str** | [Read-Only] Standard MIME content type derived from file extension. | [optional] 
 **file_size** | **str** | [Read-Only] File size of attached artifact. | [optional] 
 **expiration_date** | **int** | [Optional] Date Artifact expires and requires review. In Unix Date format. | [optional] 

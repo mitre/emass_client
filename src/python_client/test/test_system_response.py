@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.system_response import SystemResponse  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestSystemResponse(unittest.TestCase):
     """SystemResponse unit test stubs"""
@@ -65,18 +63,18 @@ class TestSystemResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> SystemResponse:
         """Test SystemResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SystemResponse`
         """
-        model = emass_client.models.system_response.SystemResponse()  # noqa: E501
-        if include_optional :
+        model = SystemResponse()  # noqa: E501
+        if include_optional:
             return SystemResponse(
                 meta = emass_client.models.ok.OK(
-                    code = 200, ), 
+                    code = 200, ),
                 data = emass_client.models.systems___return_query_from_the_server_for_the_get_call.Systems - return query from the server for the GET call(
                     registration_completion_date = 1638741770, 
                     system_life_cycle_acquisition_phase = 'Pre-Milestone A', 
@@ -131,7 +129,10 @@ class TestSystemResponse(unittest.TestCase):
                     dod_confidentiality = 'Public', 
                     contingency_plan_tested = True, 
                     contingency_plan_test_date = 1426957321, 
-                    security_review_date = 1531958400, 
+                    security_review_required = True, 
+                    security_review_completed = True, 
+                    security_review_completion_date = 1531958400, 
+                    next_security_review_due_date = 1526957321, 
                     has_open_poam_item = True, 
                     has_open_poam_item90to120_past_scheduled_completion_date = False, 
                     has_open_poam_item120_plus_past_scheudled_completion_date = False, 
@@ -139,7 +140,9 @@ class TestSystemResponse(unittest.TestCase):
                     has_cui = False, 
                     has_pii = False, 
                     has_phi = False, 
+                    ppsm_registration_required = 'PPSM registration required', 
                     ppsm_registry_number = 'Test PPSM Registry Number', 
+                    ppsm_registration_exemption_justification = 'Exemption justification', 
                     interconnected_information_system_and_identifiers = 'Test', 
                     is_pia_required = True, 
                     pia_status = 'Not Started', 
@@ -174,16 +177,29 @@ class TestSystemResponse(unittest.TestCase):
                     is_fisma_reportable = False, 
                     group_tagging = 'Group Tag 1', 
                     group_tag_descriptions = 'Group Tag 1 explanation', 
+                    dadms_id = 'DADMS-1', 
+                    dadms_expiration_date = 1638751730, 
+                    enclave_connectivity = 'NIPR', 
+                    environment_type = 'Cloud Computing', 
+                    navy_common_control_provider = False, 
+                    navy_cloud_broker = 'AWS IL 5', 
+                    cloud_broker_emass_id = 2349, 
+                    cloud_broker_provisional_authorization_atd = 1638741660, 
+                    navy_joint_authorization = False, 
+                    nmci_ngen_clins = 'NMCI CLIN', 
+                    enterprise_locations = 'All Navy Networks', 
+                    whitelist_id = 'DoD DMZ Whitelist', 
+                    whitelist_inventory = 'Whitelist document', 
+                    cybersecurity_service_provider = 'NIPR', 
+                    cybersecurity_service_provider_exception_justification = 'Exception justification', 
                     package = [
                         emass_client.models.pac___return_query_from_the_server_for_the_get_call.PAC - return query from the server for the GET call(
-                            system_id = 35, 
                             workflow = 'Assess and Authorize', 
                             name = 'Package name text', 
                             current_stage_name = 'SCA-R', 
                             current_stage = 4, 
                             total_stages = 6, 
-                            days_at_current_stage = 2, 
-                            comments = 'Comments text.', )
+                            days_at_current_stage = 2, )
                         ], 
                     connectivity_ccsd = [
                         emass_client.models.system_ccsd_connectivity.System CCSD Connectivity(
@@ -191,7 +207,7 @@ class TestSystemResponse(unittest.TestCase):
                             connectivity = 'Test Connectivity', )
                         ], )
             )
-        else :
+        else:
             return SystemResponse(
         )
         """

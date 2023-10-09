@@ -62,8 +62,8 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.SystemsApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    include_package = True # bool | **Include Package**:  Indicates if additional packages information is retrieved for queried system. (optional) (default to True)
-    policy = 'rmf' # str | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. (optional) (default to 'rmf')
+    include_package = False # bool | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information (optional) (default to False)
+    policy = 'rmf' # str | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. (optional) (default to 'rmf')
 
     try:
         # Get system information for a specific system
@@ -75,13 +75,14 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **include_package** | **bool**| **Include Package**:  Indicates if additional packages information is retrieved for queried system. | [optional] [default to True]
- **policy** | **str**| **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional] [default to &#39;rmf&#39;]
+ **include_package** | **bool**| **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional] [default to False]
+ **policy** | **str**| **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional] [default to &#39;rmf&#39;]
 
 ### Return type
 
@@ -111,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_systems**
-> SystemsResponse get_systems(include_package=include_package, registration_type=registration_type, ditpr_id=ditpr_id, coams_id=coams_id, policy=policy, include_ditpr_metrics=include_ditpr_metrics, include_decommissioned=include_decommissioned, reports_for_scorecard=reports_for_scorecard)
+> SystemsResponse get_systems(coams_id=coams_id, ditpr_id=ditpr_id, include_decommissioned=include_decommissioned, include_ditpr_metrics=include_ditpr_metrics, include_package=include_package, policy=policy, registration_type=registration_type, reports_for_scorecard=reports_for_scorecard)
 
 Get system information
 
@@ -163,18 +164,18 @@ configuration.api_key['userId'] = os.environ["API_KEY"]
 with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.SystemsApi(api_client)
-    include_package = True # bool | **Include Package**:  Indicates if additional packages information is retrieved for queried system. (optional) (default to True)
-    registration_type = 'regular' # str | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   (optional) (default to 'regular')
-    ditpr_id = 'ditpr_id_example' # str | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). (optional)
     coams_id = 'coams_id_example' # str | **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS). (optional)
-    policy = 'rmf' # str | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. (optional) (default to 'rmf')
-    include_ditpr_metrics = False # bool | **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:<br>   <ul>     <li>registrationType</li>     <li>policy</li>   </ul> (optional) (default to False)
-    include_decommissioned = True # bool | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. (optional) (default to True)
-    reports_for_scorecard = True # bool | **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard. (optional) (default to True)
+    ditpr_id = 'ditpr_id_example' # str | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). (optional)
+    include_decommissioned = True # bool | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems. (optional) (default to True)
+    include_ditpr_metrics = False # bool | **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics. (optional) (default to False)
+    include_package = False # bool | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information (optional) (default to False)
+    policy = 'rmf' # str | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. (optional) (default to 'rmf')
+    registration_type = 'regular' # str | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   (optional) (default to 'regular')
+    reports_for_scorecard = True # bool | **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard. (optional) (default to True)
 
     try:
         # Get system information
-        api_response = api_instance.get_systems(include_package=include_package, registration_type=registration_type, ditpr_id=ditpr_id, coams_id=coams_id, policy=policy, include_ditpr_metrics=include_ditpr_metrics, include_decommissioned=include_decommissioned, reports_for_scorecard=reports_for_scorecard)
+        api_response = api_instance.get_systems(coams_id=coams_id, ditpr_id=ditpr_id, include_decommissioned=include_decommissioned, include_ditpr_metrics=include_ditpr_metrics, include_package=include_package, policy=policy, registration_type=registration_type, reports_for_scorecard=reports_for_scorecard)
         print("The response of SystemsApi->get_systems:\n")
         pprint(api_response)
     except Exception as e:
@@ -182,18 +183,19 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include_package** | **bool**| **Include Package**:  Indicates if additional packages information is retrieved for queried system. | [optional] [default to True]
- **registration_type** | **str**| **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional] [default to &#39;regular&#39;]
- **ditpr_id** | **str**| **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). | [optional] 
  **coams_id** | **str**| **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS). | [optional] 
- **policy** | **str**| **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional] [default to &#39;rmf&#39;]
- **include_ditpr_metrics** | **bool**| **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt; | [optional] [default to False]
- **include_decommissioned** | **bool**| **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. | [optional] [default to True]
- **reports_for_scorecard** | **bool**| **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard. | [optional] [default to True]
+ **ditpr_id** | **str**| **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). | [optional] 
+ **include_decommissioned** | **bool**| **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems. | [optional] [default to True]
+ **include_ditpr_metrics** | **bool**| **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics. | [optional] [default to False]
+ **include_package** | **bool**| **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional] [default to False]
+ **policy** | **str**| **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional] [default to &#39;rmf&#39;]
+ **registration_type** | **str**| **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional] [default to &#39;regular&#39;]
+ **reports_for_scorecard** | **bool**| **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard. | [optional] [default to True]
 
 ### Return type
 

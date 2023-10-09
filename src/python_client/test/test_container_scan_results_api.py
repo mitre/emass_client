@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -51,24 +51,29 @@ Execute `pytest` to run the tests.
 
 import unittest
 
-import emass_client
 from emass_client.api.container_scan_results_api import ContainerScanResultsApi  # noqa: E501
-from emass_client.rest import ApiException
 
 
 class TestContainerScanResultsApi(unittest.TestCase):
     """ContainerScanResultsApi unit test stubs"""
 
-    def setUp(self):
-        self.api = emass_client.api.container_scan_results_api.ContainerScanResultsApi()  # noqa: E501
+    def setUp(self) -> None:
+        self.api = ContainerScanResultsApi()  # noqa: E501
 
-    def tearDown(self):
+    def tearDown(self) -> None:
         pass
 
-    def test_add_container_sans_by_system_id(self):
+    def test_add_container_sans_by_system_id(self) -> None:
         """Test case for add_container_sans_by_system_id
 
         Add one or many containers and their scan results  # noqa: E501
+        """
+        pass
+
+    def test_delete_container_sans(self) -> None:
+        """Test case for delete_container_sans
+
+        Remove one or many containers in a system  # noqa: E501
         """
         pass
 

@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -55,7 +55,7 @@ class OpenApiException(Exception):
 
 class ApiTypeError(OpenApiException, TypeError):
     def __init__(self, msg, path_to_item=None, valid_classes=None,
-                 key_type=None):
+                 key_type=None) -> None:
         """ Raises an exception for TypeErrors
 
         Args:
@@ -83,7 +83,7 @@ class ApiTypeError(OpenApiException, TypeError):
 
 
 class ApiValueError(OpenApiException, ValueError):
-    def __init__(self, msg, path_to_item=None):
+    def __init__(self, msg, path_to_item=None) -> None:
         """
         Args:
             msg (str): the exception message
@@ -101,7 +101,7 @@ class ApiValueError(OpenApiException, ValueError):
 
 
 class ApiAttributeError(OpenApiException, AttributeError):
-    def __init__(self, msg, path_to_item=None):
+    def __init__(self, msg, path_to_item=None) -> None:
         """
         Raised when an attribute reference or assignment fails.
 
@@ -120,7 +120,7 @@ class ApiAttributeError(OpenApiException, AttributeError):
 
 
 class ApiKeyError(OpenApiException, KeyError):
-    def __init__(self, msg, path_to_item=None):
+    def __init__(self, msg, path_to_item=None) -> None:
         """
         Args:
             msg (str): the exception message
@@ -138,7 +138,7 @@ class ApiKeyError(OpenApiException, KeyError):
 
 class ApiException(OpenApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         if http_resp:
             self.status = http_resp.status
             self.reason = http_resp.reason
@@ -165,30 +165,30 @@ class ApiException(OpenApiException):
 
 class BadRequestException(ApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(BadRequestException, self).__init__(status, reason, http_resp)
 
 class NotFoundException(ApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(NotFoundException, self).__init__(status, reason, http_resp)
 
 
 class UnauthorizedException(ApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(UnauthorizedException, self).__init__(status, reason, http_resp)
 
 
 class ForbiddenException(ApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(ForbiddenException, self).__init__(status, reason, http_resp)
 
 
 class ServiceException(ApiException):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(ServiceException, self).__init__(status, reason, http_resp)
 
 

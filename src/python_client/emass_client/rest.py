@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -66,7 +66,7 @@ logger = logging.getLogger(__name__)
 
 class RESTResponse(io.IOBase):
 
-    def __init__(self, resp):
+    def __init__(self, resp) -> None:
         self.urllib3_response = resp
         self.status = resp.status
         self.reason = resp.reason
@@ -81,9 +81,9 @@ class RESTResponse(io.IOBase):
         return self.urllib3_response.headers.get(name, default)
 
 
-class RESTClientObject(object):
+class RESTClientObject:
 
-    def __init__(self, configuration, pools_size=4, maxsize=None):
+    def __init__(self, configuration, pools_size=4, maxsize=None) -> None:
         # urllib3.PoolManager will pass all kw parameters to connectionpool
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/poolmanager.py#L75  # noqa: E501
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/connectionpool.py#L680  # noqa: E501

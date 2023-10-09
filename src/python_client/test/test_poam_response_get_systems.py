@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.poam_response_get_systems import PoamResponseGetSystems  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestPoamResponseGetSystems(unittest.TestCase):
     """PoamResponseGetSystems unit test stubs"""
@@ -65,27 +63,28 @@ class TestPoamResponseGetSystems(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> PoamResponseGetSystems:
         """Test PoamResponseGetSystems
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `PoamResponseGetSystems`
         """
-        model = emass_client.models.poam_response_get_systems.PoamResponseGetSystems()  # noqa: E501
-        if include_optional :
+        model = PoamResponseGetSystems()  # noqa: E501
+        if include_optional:
             return PoamResponseGetSystems(
                 meta = emass_client.models.ok.OK(
-                    code = 200, ), 
+                    code = 200, ),
                 data = [
                     emass_client.models.poam___return_query_from_the_server_for_the_get_call.POAM - return query from the server for the GET call(
-                        external_uid = 'd6d98b88-c866-4496-9bd4-de7ba48d0f52', 
                         system_id = 830, 
                         poam_id = 45, 
                         display_poam_id = 100000010, 
                         is_inherited = True, 
+                        external_uid = 'd6d98b88-c866-4496-9bd4-de7ba48d0f52', 
                         control_acronym = '“AC-3”', 
                         cci = '000001,000002', 
+                        assessment_procedure = 'AC-1.1', 
                         status = 'Completed', 
                         review_status = 'Under Review', 
                         vulnerability_description = 'Description text', 
@@ -119,10 +118,25 @@ class TestPoamResponseGetSystems(unittest.TestCase):
                         extension_date = 1505916298, 
                         comments = 'Comments text.', 
                         mitigation = 'Mitigation text', 
-                        is_active = True, )
+                        is_active = True, 
+                        resulting_residual_risk_level_after_proposed_mitigations = 'Low', 
+                        predisposing_conditions = 'The predisposing condition justification', 
+                        threat_description = 'The identified threat(s) description', 
+                        devices_affected = 'system', 
+                        identified_in_cfo_audit_or_other_review = True, 
+                        personnel_resources_funded_base_hours = 100.0, 
+                        personnel_resources_cost_code = '', 
+                        personnel_resources_unfunded_base_hours = 100.0, 
+                        personnel_resources_nonfunding_obstacle = 'Not an system of interest', 
+                        personnel_resources_nonfunding_obstacle_other_reason = 'Not an system of interest', 
+                        non_personnel_resources_funded_amount = 1.337, 
+                        non_personnel_resources_cost_code = '', 
+                        non_personnel_resources_unfunded_amount = 1.337, 
+                        non_personnel_resources_nonfunding_obstacle = 'Not an system of interest', 
+                        non_personnel_resources_nonfunding_obstacle_other_reason = 'Not an system of interest', )
                     ]
             )
-        else :
+        else:
             return PoamResponseGetSystems(
         )
         """

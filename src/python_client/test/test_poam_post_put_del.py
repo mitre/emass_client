@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.poam_post_put_del import PoamPostPutDel  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestPoamPostPutDel(unittest.TestCase):
     """PoamPostPutDel unit test stubs"""
@@ -65,25 +63,25 @@ class TestPoamPostPutDel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> PoamPostPutDel:
         """Test PoamPostPutDel
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `PoamPostPutDel`
         """
-        model = emass_client.models.poam_post_put_del.PoamPostPutDel()  # noqa: E501
-        if include_optional :
+        model = PoamPostPutDel()  # noqa: E501
+        if include_optional:
             return PoamPostPutDel(
-                system_id = 33, 
-                poam_id = 45, 
-                external_uid = 'd6d98b88-c866-4496-9bd4-de7ba48d0f52', 
-                success = True, 
+                system_id = 33,
+                poam_id = 45,
+                external_uid = 'd6d98b88-c866-4496-9bd4-de7ba48d0f52',
+                success = True,
                 errors = [
                     key:value
                     ]
             )
-        else :
+        else:
             return PoamPostPutDel(
         )
         """

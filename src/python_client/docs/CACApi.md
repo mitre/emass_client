@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Submit control to second role of CAC
 
-Adds a Control Approval Chain (CAC) for given `systemId` path parameter<br><br> POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
+ **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
 
 ### Example
 
@@ -25,6 +25,7 @@ import time
 import os
 import emass_client
 from emass_client.models.cac_response_post import CacResponsePost
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -72,6 +73,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling CACApi->add_system_cac: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -163,7 +165,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.CACApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    control_acronyms = 'control_acronyms_example' # str | **System Acronym**: Filter query by given system acronym (single or comma separated). (optional)
+    control_acronyms = 'control_acronyms_example' # str | **Control Acronym**: Filter query by given system acronym (single value or comma separated). (optional)
 
     try:
         # Get location of one or many controls in CAC
@@ -175,12 +177,13 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **control_acronyms** | **str**| **System Acronym**: Filter query by given system acronym (single or comma separated). | [optional] 
+ **control_acronyms** | **str**| **Control Acronym**: Filter query by given system acronym (single value or comma separated). | [optional] 
 
 ### Return type
 

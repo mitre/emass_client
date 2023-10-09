@@ -28,6 +28,7 @@ import time
 import os
 import emass_client
 from emass_client.models.milestone_response_post import MilestoneResponsePost
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -78,6 +79,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -115,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_milestone**
-> MilestonesPutPostDelete delete_milestone(system_id, poam_id, milestones_request_delete_body_inner)
+> MilestoneResponseDelete delete_milestone(system_id, poam_id, milestones_request_delete_body_inner)
 
 Remove milestones in a system for one or many POA&M items
 
@@ -130,7 +132,7 @@ Remove the POA&M matching `systemId` and `poamId` for path parameters and `milst
 import time
 import os
 import emass_client
-from emass_client.models.milestones_put_post_delete import MilestonesPutPostDelete
+from emass_client.models.milestone_response_delete import MilestoneResponseDelete
 from emass_client.models.milestones_request_delete_body_inner import MilestonesRequestDeleteBodyInner
 from emass_client.rest import ApiException
 from pprint import pprint
@@ -182,6 +184,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -192,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MilestonesPutPostDelete**](MilestonesPutPostDelete.md)
+[**MilestoneResponseDelete**](MilestoneResponseDelete.md)
 
 ### Authorization
 
@@ -281,6 +284,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling MilestonesApi->get_system_milestones_by_poam_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -386,6 +390,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -438,6 +443,7 @@ import time
 import os
 import emass_client
 from emass_client.models.milestone_response_put import MilestoneResponsePut
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -486,6 +492,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling MilestonesApi->update_milestone_by_system_id_and_poam_id: %s\n" % e)
 ```
+
 
 
 ### Parameters

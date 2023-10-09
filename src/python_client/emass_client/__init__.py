@@ -2,7 +2,7 @@
 
 # flake8: noqa
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -10,9 +10,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -51,7 +51,7 @@ import emass_client
 
 Execute `pytest` to run the tests.
 
-__version__ = "3.10.1"
+__version__ = "3.11.0"
 
 # import apis into sdk package
 from emass_client.api.artifacts_api import ArtifactsApi
@@ -61,16 +61,35 @@ from emass_client.api.cmmc_assessments_api import CMMCAssessmentsApi
 from emass_client.api.cloud_resource_results_api import CloudResourceResultsApi
 from emass_client.api.container_scan_results_api import ContainerScanResultsApi
 from emass_client.api.controls_api import ControlsApi
-from emass_client.api.dashboards_api import DashboardsApi
+from emass_client.api.enterprise_artifacts_dashboards_api import EnterpriseArtifactsDashboardsApi
+from emass_client.api.enterprise_poam_dashboards_api import EnterprisePOAMDashboardsApi
+from emass_client.api.enterprise_security_controls_dashboards_api import EnterpriseSecurityControlsDashboardsApi
+from emass_client.api.enterprise_sensor_based_hardware_resources_dashboards_api import EnterpriseSensorBasedHardwareResourcesDashboardsApi
+from emass_client.api.enterprise_sensor_based_software_resources_dashboards_api import EnterpriseSensorBasedSoftwareResourcesDashboardsApi
+from emass_client.api.enterprise_terms_conditions_dashboards_api import EnterpriseTermsConditionsDashboardsApi
+from emass_client.api.enterprise_vulnerability_dashboards_api import EnterpriseVulnerabilityDashboardsApi
+from emass_client.api.fisma_inventory_summary_dashboards_api import FISMAInventorySummaryDashboardsApi
+from emass_client.api.hardware_baseline_dashboards_api import HardwareBaselineDashboardsApi
 from emass_client.api.milestones_api import MilestonesApi
 from emass_client.api.pac_api import PACApi
 from emass_client.api.poam_api import POAMApi
+from emass_client.api.ports_and_protocols_dashboards_api import PortsAndProtocolsDashboardsApi
+from emass_client.api.privacy_compliance_dashboards_api import PrivacyComplianceDashboardsApi
 from emass_client.api.registration_api import RegistrationApi
+from emass_client.api.software_baseline_dashboards_api import SoftwareBaselineDashboardsApi
 from emass_client.api.static_code_scans_api import StaticCodeScansApi
+from emass_client.api.system_a20_summary_dashboard_api import SystemA20SummaryDashboardApi
+from emass_client.api.system_aa_summary_dashboard_api import SystemAASummaryDashboardApi
+from emass_client.api.system_associations_dashboard_api import SystemAssociationsDashboardApi
+from emass_client.api.system_conmon_integration_status_dashboard_api import SystemCONMONIntegrationStatusDashboardApi
+from emass_client.api.system_pl109_reporting_summary_dashboard_api import SystemPL109ReportingSummaryDashboardApi
 from emass_client.api.system_roles_api import SystemRolesApi
+from emass_client.api.system_status_dashboard_api import SystemStatusDashboardApi
 from emass_client.api.systems_api import SystemsApi
 from emass_client.api.test_api import TestApi
 from emass_client.api.test_results_api import TestResultsApi
+from emass_client.api.threat_risks_dashboards_api import ThreatRisksDashboardsApi
+from emass_client.api.users_dashboard_api import UsersDashboardApi
 from emass_client.api.workflow_definitions_api import WorkflowDefinitionsApi
 from emass_client.api.workflow_instances_api import WorkflowInstancesApi
 
@@ -97,12 +116,16 @@ from emass_client.models.cac_get import CacGet
 from emass_client.models.cac_response_get import CacResponseGet
 from emass_client.models.cac_response_post import CacResponsePost
 from emass_client.models.cac_response_post_data_inner import CacResponsePostDataInner
-from emass_client.models.cloud_resources_post import CloudResourcesPost
+from emass_client.models.cloud_resources_delete import CloudResourcesDelete
+from emass_client.models.cloud_resources_delete_body_inner import CloudResourcesDeleteBodyInner
+from emass_client.models.cloud_resources_post_delete import CloudResourcesPostDelete
 from emass_client.models.cloud_resources_response_post import CloudResourcesResponsePost
 from emass_client.models.cmmc_get import CmmcGet
 from emass_client.models.cmmc_response_get import CmmcResponseGet
 from emass_client.models.connectivity_ccsd import ConnectivityCcsd
-from emass_client.models.containers_resources_post import ContainersResourcesPost
+from emass_client.models.container_resources_delete_body_inner import ContainerResourcesDeleteBodyInner
+from emass_client.models.containers_resources_post_delete import ContainersResourcesPostDelete
+from emass_client.models.containers_response_delete import ContainersResponseDelete
 from emass_client.models.containers_response_post import ContainersResponsePost
 from emass_client.models.controls_get import ControlsGet
 from emass_client.models.controls_put import ControlsPut
@@ -112,6 +135,7 @@ from emass_client.models.dashboard_mock_response import DashboardMockResponse
 from emass_client.models.dashboard_mock_response_pagination import DashboardMockResponsePagination
 from emass_client.models.definition_transitions import DefinitionTransitions
 from emass_client.models.instances_transitions import InstancesTransitions
+from emass_client.models.milestone_response_delete import MilestoneResponseDelete
 from emass_client.models.milestone_response_get import MilestoneResponseGet
 from emass_client.models.milestone_response_get_milestone import MilestoneResponseGetMilestone
 from emass_client.models.milestone_response_post import MilestoneResponsePost
@@ -159,7 +183,7 @@ from emass_client.models.role_category import RoleCategory
 from emass_client.models.roles import Roles
 from emass_client.models.ssps import Ssps
 from emass_client.models.stage import Stage
-from emass_client.models.static_code_application import StaticCodeApplication
+from emass_client.models.static_code_application_post import StaticCodeApplicationPost
 from emass_client.models.static_code_post import StaticCodePost
 from emass_client.models.static_code_request_post_body import StaticCodeRequestPostBody
 from emass_client.models.static_code_request_post_body_application import StaticCodeRequestPostBodyApplication

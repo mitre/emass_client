@@ -14,7 +14,7 @@ All URIs are relative to *http://localhost:4010*
 
 Add one or many test results in a system
 
-Adds test results for given `systemId`  **Request Body Required Fields** - `cci` - `testedBy` - `testDate` - `description` - `complianceStatus`
+Adds test results for given `systemId`  **Request Body Required Fields** - `testedBy` - `testDate` - `description` - `complianceStatus` - `assessmentProcedure`       
 
 ### Examples
 
@@ -125,9 +125,10 @@ end
 api_instance = EmassClient::TestResultsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
-  control_acronyms: 'control_acronyms_example', # String | **System Acronym**: Filter query by given system acronym (single or comma separated).
-  ccis: 'ccis_example', # String | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated).
-  latest_only: true # Boolean | **Latest Results Only**: Indicates that only the latest test resultes are retrieved (single or comma separated).
+  control_acronyms: 'control_acronyms_example', # String | **Control Acronym**: Filter query by given system acronym (single value or comma separated).
+  assessment_procedures: 'assessment_procedures_example', # String | **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).
+  ccis: 'ccis_example', # String | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).
+  latest_only: true # Boolean | **Latest Results Only**: Indicates that only the latest test resultes are retrieved.
 }
 
 begin
@@ -162,9 +163,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **control_acronyms** | **String** | **System Acronym**: Filter query by given system acronym (single or comma separated). | [optional] |
-| **ccis** | **String** | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated). | [optional] |
-| **latest_only** | **Boolean** | **Latest Results Only**: Indicates that only the latest test resultes are retrieved (single or comma separated). | [optional][default to true] |
+| **control_acronyms** | **String** | **Control Acronym**: Filter query by given system acronym (single value or comma separated). | [optional] |
+| **assessment_procedures** | **String** | **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated). | [optional] |
+| **ccis** | **String** | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated). | [optional] |
+| **latest_only** | **Boolean** | **Latest Results Only**: Indicates that only the latest test resultes are retrieved. | [optional][default to true] |
 
 ### Return type
 

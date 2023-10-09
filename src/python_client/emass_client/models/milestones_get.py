@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -56,21 +56,27 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
+from typing import Dict, Any
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class MilestonesGet(BaseModel):
     """
     MilestonesGet
     """
-    system_id: Optional[StrictInt] = Field(None, alias="systemId", description="[Required] Unique eMASS system identifier.")
-    milestone_id: Optional[StrictInt] = Field(None, alias="milestoneId", description="[Required] Unique item identifier")
-    poam_id: Optional[StrictInt] = Field(None, alias="poamId", description="[Required] Unique item identifier")
-    description: Optional[StrictStr] = Field(None, description="[Required] Include milestone description.")
-    scheduled_completion_date: Optional[StrictInt] = Field(None, alias="scheduledCompletionDate", description="[Required] Required for ongoing and completed POA&M items. Unix time format.")
-    review_status: Optional[StrictStr] = Field(None, alias="reviewStatus", description="[Read-Only] Values include the following options: (Not Approved,Under Review,Approved)")
-    __properties = ["systemId", "milestoneId", "poamId", "description", "scheduledCompletionDate", "reviewStatus"]
+    system_id: Optional[StrictInt] = Field(default=None, description="[Required] Unique eMASS system identifier.", alias="systemId")
+    milestone_id: Optional[StrictInt] = Field(default=None, description="[Required] Unique item identifier", alias="milestoneId")
+    poam_id: Optional[StrictInt] = Field(default=None, description="[Required] Unique item identifier", alias="poamId")
+    description: Optional[StrictStr] = Field(default=None, description="[Required] Include milestone description.")
+    scheduled_completion_date: Optional[StrictInt] = Field(default=None, description="[Required] Required for ongoing and completed POA&M items. Unix time format.", alias="scheduledCompletionDate")
+    review_status: Optional[StrictStr] = Field(default=None, description="[Read-Only] Values include the following options: (Not Approved,Under Review,Approved)", alias="reviewStatus")
+    __properties: ClassVar[List[str]] = ["systemId", "milestoneId", "poamId", "description", "scheduledCompletionDate", "reviewStatus"]
 
-    @validator('review_status')
+    @field_validator('review_status')
     def review_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -80,48 +86,51 @@ class MilestonesGet(BaseModel):
             raise ValueError("must be one of enum values ('Not Approved', 'Under Review', 'Approved')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> MilestonesGet:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of MilestonesGet from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
+        _dict = self.model_dump(by_alias=True,
                           exclude={
                           },
                           exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> MilestonesGet:
+    def from_dict(cls, obj: dict) -> Self:
         """Create an instance of MilestonesGet from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return MilestonesGet.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = MilestonesGet.parse_obj({
-            "system_id": obj.get("systemId"),
-            "milestone_id": obj.get("milestoneId"),
-            "poam_id": obj.get("poamId"),
+        _obj = cls.model_validate({
+            "systemId": obj.get("systemId"),
+            "milestoneId": obj.get("milestoneId"),
+            "poamId": obj.get("poamId"),
             "description": obj.get("description"),
-            "scheduled_completion_date": obj.get("scheduledCompletionDate"),
-            "review_status": obj.get("reviewStatus")
+            "scheduledCompletionDate": obj.get("scheduledCompletionDate"),
+            "reviewStatus": obj.get("reviewStatus")
         })
         return _obj
+
 

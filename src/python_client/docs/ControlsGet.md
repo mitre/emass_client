@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ccis** | **str** | [Read-only] Comma separated list of CCIs associated with the control. | [optional] 
 **is_inherited** | **bool** | [Read-only] Indicates whether a control is inherited. | [optional] 
 **modified_by_overlays** | **str** | [Read-only] List of overlays that affect the control. | [optional] 
-**included_status** | **str** | [Read-only] Indicates the manner by which a control was included in the system’s categorization. | [optional] 
+**included_status** | **str** | [Read-only] Indicates the manner by which a control was included in the system&#39;s categorization. | [optional] 
 **compliance_status** | **str** | [Read-only] Compliance of the control. | [optional] 
 **responsible_entities** | **str** | [Required] Include written description of Responsible Entities that are responsible for the Security Control. Character Limit &#x3D; 2,000. | [optional] 
 **implementation_status** | **str** | [Optional] Implementation Status of the Security Control for the information system. | [optional] 
@@ -31,9 +31,13 @@ Name | Type | Description | Notes
 **relevance_of_threat** | **str** | [Optional] Values include the following options (Very Low, Low, Moderate,High,Very High) | [optional] 
 **likelihood** | **str** | [Optional] Values include the following options (Very Low, Low, Moderate,High,Very High) | [optional] 
 **impact** | **str** | [Optional] Values include the following options (Very Low, Low, Moderate,High,Very High) | [optional] 
-**impact_description** | **str** | [Optional] Include description of Security Control’s impact. | [optional] 
+**impact_description** | **str** | [Optional] Include description of Security Control&#39;s impact. | [optional] 
 **residual_risk_level** | **str** | [Optional] Values include the following options (Very Low, Low, Moderate,High,Very High) | [optional] 
 **test_method** | **str** | [Optional] Identifies the assessment method / combination that will determine if the security requirements are implemented correctly. | [optional] 
+**mitigations** | **str** | [Optional] Identify any mitigations in place for the Non-Compliant Security Control&#39;s vulnerabilities. Character Limit &#x3D; 2,000. | [optional] 
+**application_layer** | **str** | [Optional] If the Financial Management (Navy) overlay is applied to the system, this field appears and can be populated. Character Limit &#x3D; 2,000. Navy only. | [optional] 
+**database_layer** | **str** | [Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only. | [optional] 
+**operating_system_layer** | **str** | [Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only. | [optional] 
 
 ## Example
 

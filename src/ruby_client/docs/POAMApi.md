@@ -213,8 +213,9 @@ system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
   scheduled_completion_date_start: 'scheduled_completion_date_start_example', # String | **Date Started**: Filter query by the scheduled completion start date (Unix date format).
   scheduled_completion_date_end: 'scheduled_completion_date_end_example', # String | **Date Ended**: Filter query by the scheduled completion start date (Unix date format).
-  control_acronyms: 'control_acronyms_example', # String | **System Acronym**: Filter query by given system acronym (single or comma separated).
-  ccis: 'ccis_example', # String | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated).
+  control_acronyms: 'control_acronyms_example', # String | **Control Acronym**: Filter query by given system acronym (single value or comma separated).
+  assessment_procedures: 'assessment_procedures_example', # String | **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).
+  ccis: 'ccis_example', # String | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).
   system_only: true # Boolean | **Systems Only**: Indicates that only system(s) information is retrieved.
 }
 
@@ -252,8 +253,9 @@ end
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
 | **scheduled_completion_date_start** | **String** | **Date Started**: Filter query by the scheduled completion start date (Unix date format). | [optional] |
 | **scheduled_completion_date_end** | **String** | **Date Ended**: Filter query by the scheduled completion start date (Unix date format). | [optional] |
-| **control_acronyms** | **String** | **System Acronym**: Filter query by given system acronym (single or comma separated). | [optional] |
-| **ccis** | **String** | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated). | [optional] |
+| **control_acronyms** | **String** | **Control Acronym**: Filter query by given system acronym (single value or comma separated). | [optional] |
+| **assessment_procedures** | **String** | **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated). | [optional] |
+| **ccis** | **String** | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated). | [optional] |
 | **system_only** | **Boolean** | **Systems Only**: Indicates that only system(s) information is retrieved. | [optional][default to true] |
 
 ### Return type
@@ -359,7 +361,7 @@ end
 
 Update one or many POA&M items in a system
 
-Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To delete a milestone through the POA&M PUT the field `isActive` must be set to `false`: `isActive=false`.
+Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.
 
 ### Examples
 

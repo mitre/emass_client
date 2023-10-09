@@ -7,6 +7,7 @@
 | **system_id** | **Integer** | [Required] Unique eMASS identifier. Will need to provide correct number | [optional] |
 | **control** | **String** | [Read-Only] Control acronym associated with the test result. NIST SP 800-53 Revision 4 defined. | [optional] |
 | **cci** | **String** | [Required] CCI associated with test result. | [optional] |
+| **assessment_procedure** | **String** | [Required] The Security Control Assessment Procedure being assessed. | [optional] |
 | **is_inherited** | **Boolean** | [Read-only] Indicates whether a test result is inherited. | [optional] |
 | **tested_by** | **String** | [Required] Last Name, First Name. 100 Characters. | [optional] |
 | **test_date** | **Integer** | [Required] Unix time format. | [optional] |
@@ -23,9 +24,10 @@ instance = EmassClient::TestResultsGet.new(
   system_id: 35,
   control: AC-3,
   cci: 000002,
+  assessment_procedure: AC-1.1,
   is_inherited: true,
   tested_by: Smith, Joe,
-  test_date: 1638741660,
+  test_date: 1638741770,
   description: Test result description,
   type: Self-Assessment,
   compliance_status: Compliant

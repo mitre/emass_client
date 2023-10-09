@@ -74,6 +74,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -113,7 +114,7 @@ Name | Type | Description  | Notes
 
 Update control information in a system for one or many controls
 
- Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  The following optional fields are required based on the Implementation Status `implementationStatus` value<br> | Value                    | Required Fields |--------------------------|--------------------------------------------------- | Planned  or Implemented  | `estimatedCompletionDate`, `responsibleEntities`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments` | Not Applicable           | `naJustification`, `responsibleEntities` | Manually Inherited       | `commonControlProvider`, `estimatedCompletionDate`, `responsibleEntities`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`  If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:   - `controlDesignation`   - `commonnControlProvider`
+ Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  The following optional fields (plus the **Request Body Required Fields**) are required based on the Implementation Status `implementationStatus` value<br> | Value                    | Required Fields |--------------------------|--------------------------------------------------- | Planned  or Implemented  | `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments` | Not Applicable           | `naJustification` | Manually Inherited       | `commonControlProvider`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`  If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:   - `controlDesignation`   - `commonnControlProvider`  **NOTES:** - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:   - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`   - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments` - Implementation Plan information cannot be updated if Security Control does not exist in the system record.
 
 ### Example
 
@@ -125,6 +126,7 @@ import time
 import os
 import emass_client
 from emass_client.models.controls_response_put import ControlsResponsePut
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -172,6 +174,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ControlsApi->update_control_by_system_id: %s\n" % e)
 ```
+
 
 
 ### Parameters

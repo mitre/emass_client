@@ -28,6 +28,7 @@ import time
 import os
 import emass_client
 from emass_client.models.poam_response_post import PoamResponsePost
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -75,6 +76,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling POAMApi->add_poam_by_system_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -179,6 +181,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -212,7 +215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_system_poams**
-> PoamResponseGetSystems get_system_poams(system_id, scheduled_completion_date_start=scheduled_completion_date_start, scheduled_completion_date_end=scheduled_completion_date_end, control_acronyms=control_acronyms, ccis=ccis, system_only=system_only)
+> PoamResponseGetSystems get_system_poams(system_id, scheduled_completion_date_start=scheduled_completion_date_start, scheduled_completion_date_end=scheduled_completion_date_end, control_acronyms=control_acronyms, assessment_procedures=assessment_procedures, ccis=ccis, system_only=system_only)
 
 Get one or many POA&M items in a system
 
@@ -267,18 +270,20 @@ with emass_client.ApiClient(configuration) as api_client:
     system_id = 35 # int | **System Id**: The unique system record identifier.
     scheduled_completion_date_start = 'scheduled_completion_date_start_example' # str | **Date Started**: Filter query by the scheduled completion start date (Unix date format). (optional)
     scheduled_completion_date_end = 'scheduled_completion_date_end_example' # str | **Date Ended**: Filter query by the scheduled completion start date (Unix date format). (optional)
-    control_acronyms = 'control_acronyms_example' # str | **System Acronym**: Filter query by given system acronym (single or comma separated). (optional)
-    ccis = 'ccis_example' # str | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated). (optional)
+    control_acronyms = 'control_acronyms_example' # str | **Control Acronym**: Filter query by given system acronym (single value or comma separated). (optional)
+    assessment_procedures = 'assessment_procedures_example' # str | **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated). (optional)
+    ccis = 'ccis_example' # str | **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated). (optional)
     system_only = True # bool | **Systems Only**: Indicates that only system(s) information is retrieved. (optional) (default to True)
 
     try:
         # Get one or many POA&M items in a system
-        api_response = api_instance.get_system_poams(system_id, scheduled_completion_date_start=scheduled_completion_date_start, scheduled_completion_date_end=scheduled_completion_date_end, control_acronyms=control_acronyms, ccis=ccis, system_only=system_only)
+        api_response = api_instance.get_system_poams(system_id, scheduled_completion_date_start=scheduled_completion_date_start, scheduled_completion_date_end=scheduled_completion_date_end, control_acronyms=control_acronyms, assessment_procedures=assessment_procedures, ccis=ccis, system_only=system_only)
         print("The response of POAMApi->get_system_poams:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling POAMApi->get_system_poams: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -288,8 +293,9 @@ Name | Type | Description  | Notes
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
  **scheduled_completion_date_start** | **str**| **Date Started**: Filter query by the scheduled completion start date (Unix date format). | [optional] 
  **scheduled_completion_date_end** | **str**| **Date Ended**: Filter query by the scheduled completion start date (Unix date format). | [optional] 
- **control_acronyms** | **str**| **System Acronym**: Filter query by given system acronym (single or comma separated). | [optional] 
- **ccis** | **str**| **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single or comma separated). | [optional] 
+ **control_acronyms** | **str**| **Control Acronym**: Filter query by given system acronym (single value or comma separated). | [optional] 
+ **assessment_procedures** | **str**| **Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated). | [optional] 
+ **ccis** | **str**| **CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated). | [optional] 
  **system_only** | **bool**| **Systems Only**: Indicates that only system(s) information is retrieved. | [optional] [default to True]
 
 ### Return type
@@ -385,6 +391,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -424,7 +431,7 @@ Name | Type | Description  | Notes
 
 Update one or many POA&M items in a system
 
-Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To delete a milestone through the POA&M PUT the field `isActive` must be set to `false`: `isActive=false`.
+Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.
 
 ### Example
 
@@ -436,6 +443,7 @@ import time
 import os
 import emass_client
 from emass_client.models.poam_response_put import PoamResponsePut
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -483,6 +491,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling POAMApi->update_poam_by_system_id: %s\n" % e)
 ```
+
 
 
 ### Parameters

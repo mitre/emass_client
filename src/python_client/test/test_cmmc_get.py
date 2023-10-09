@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.cmmc_get import CmmcGet  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestCmmcGet(unittest.TestCase):
     """CmmcGet unit test stubs"""
@@ -65,35 +63,35 @@ class TestCmmcGet(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> CmmcGet:
         """Test CmmcGet
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CmmcGet`
         """
-        model = emass_client.models.cmmc_get.CmmcGet()  # noqa: E501
-        if include_optional :
+        model = CmmcGet()  # noqa: E501
+        if include_optional:
             return CmmcGet(
-                operation = 'UPDATED', 
-                hq_organization_name = 'Army', 
-                uei = '9809123', 
-                cage_codes_in_scope = '89ED9; 99D8B', 
-                osc_name = 'UC Labs', 
-                scope = 'Enterprise', 
-                scope_description = 'Assessment of UC's Lab', 
-                awarded_cmmc_level = 'Not Certified', 
-                expiration_date = 1638741660, 
-                assessment_id = '41b89528-a7a8-470a-90f4-c3fd1267d6f7', 
-                model_version = '1.12', 
-                highest_level_cage_code = '99D8B', 
-                certification_unique_id = 'L20000003', 
-                poam = False, 
-                overall_score = 110, 
-                osc_assessment_official_last_name = 'Smith', 
-                osc_assessment_official_first_name = 'John', 
-                osc_assessment_official_email = 'john.smith6.ctr@mail.mil', 
-                osc_assessment_official_title = 'The Boss', 
+                operation = 'UPDATED',
+                hq_organization_name = 'Army',
+                uei = '9809123',
+                cage_codes_in_scope = '89ED9; 99D8B',
+                osc_name = 'UC Labs',
+                scope = 'Enterprise',
+                scope_description = 'Assessment of UC's Lab',
+                awarded_cmmc_level = 'Not Certified',
+                expiration_date = 1638741660,
+                assessment_id = '41b89528-a7a8-470a-90f4-c3fd1267d6f7',
+                model_version = '1.12',
+                highest_level_cage_code = '99D8B',
+                certification_unique_id = 'L20000003',
+                poam = False,
+                overall_score = 110,
+                osc_assessment_official_last_name = 'Smith',
+                osc_assessment_official_first_name = 'John',
+                osc_assessment_official_email = 'john.smith6.ctr@mail.mil',
+                osc_assessment_official_title = 'The Boss',
                 ssps = [
                     emass_client.models.system_role.System Role(
                         ssp_name = 'UC Lab', 
@@ -101,7 +99,7 @@ class TestCmmcGet(unittest.TestCase):
                         ssp_date = 1638741660, )
                     ]
             )
-        else :
+        else:
             return CmmcGet(
         )
         """

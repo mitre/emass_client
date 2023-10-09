@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application** | [**StaticCodeRequestPostBodyApplication**](StaticCodeRequestPostBodyApplication.md) |  | [optional] 
-**application_findings** | [**List[StaticCodeApplication]**](StaticCodeApplication.md) |  | [optional] 
+**application_findings** | [**List[StaticCodeApplicationPost]**](StaticCodeApplicationPost.md) |  | [optional] 
 
 ## Example
 

@@ -16,7 +16,7 @@
 | **vram_id** | **String** | [Read-Only] Vulnerability Remediation Asset Manager (VRAM) identification number. \&quot;N/A\&quot; indicates the system record is not currently registered in VRAM.  Navy only. | [optional] |
 | **system_id** | **Integer** | [Read-only] Unique system record identifier. | [optional] |
 | **policy** | **String** | [Read-only] RMF/DIACAP Policy identifier for the system record. | [optional] |
-| **registration_type** | **String** | [Read-Only] Registration types parameters (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.) | [optional] |
+| **registration_type** | **String** | [Read-Only] Registration type of the system record. Values include (assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider.) | [optional] |
 | **name** | **String** | [Read-only] Name of the system record. | [optional] |
 | **acronym** | **String** | [Read-only] Acronym of the system record. | [optional] |
 | **description** | **String** | [Read-only] Description of the system record. | [optional] |
@@ -57,7 +57,10 @@
 | **dod_confidentiality** | **String** | [Read-Only] DoD Confidentiality level of the system record. | [optional] |
 | **contingency_plan_tested** | **Boolean** | [Read-only] Has the system record&#39;s Contingency Plan been tested? | [optional] |
 | **contingency_plan_test_date** | **Integer** | [Read-only] Date the system record&#39;s Contingency Plan was tested. | [optional] |
-| **security_review_date** | **Integer** | [Read-only] Date the system record&#39;s Annual Security Review was conducted. | [optional] |
+| **security_review_required** | **Boolean** | [Read-Only] Is the system required to complete a Security Review? | [optional] |
+| **security_review_completed** | **Boolean** | [Read-Only] Has a Security Review been completed for this system? | [optional] |
+| **security_review_completion_date** | **Integer** | [Read-Only] Date of the system&#39;s latest security review or annual assessment. | [optional] |
+| **next_security_review_due_date** | **Integer** | [Read-Only] Date when the system&#39;s next security review or annual assessment is due by. | [optional] |
 | **has_open_poam_item** | **Boolean** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item? | [optional] |
 | **has_open_poam_item90to120_past_scheduled_completion_date** | **Boolean** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item 90 to 120 days past its Scheduled Completion Date? | [optional] |
 | **has_open_poam_item120_plus_past_scheudled_completion_date** | **Boolean** | [Read-Only] Does the system record have an Ongoing or Risk Accepted POA&amp;M Item 120 days past its Scheduled Completion Date? | [optional] |
@@ -65,7 +68,9 @@
 | **has_cui** | **Boolean** | [Read-only] Does the system record contain and/or process Controlled Unclassified information? | [optional] |
 | **has_pii** | **Boolean** | [Read-only] Does the system record contain and/or process Personally Identifiable Information? | [optional] |
 | **has_phi** | **Boolean** | [Read-only] Does the system record contain and/or process Personal Health Information? | [optional] |
-| **ppsm_registry_number** | **String** | [Read-only] Unique identifier for the DoD’s Ports, Protocols, and Services Management Registry system. | [optional] |
+| **ppsm_registration_required** | **String** | [Read-Only] Determine if a PPSM registration is required. | [optional] |
+| **ppsm_registry_number** | **String** | [Read-only] Unique identifier for the DoD&#39;s Ports, Protocols, and Services Management Registry system. | [optional] |
+| **ppsm_registration_exemption_justification** | **String** | [Read-Only] Clarify why a PPSM registraiton is not necessary. | [optional] |
 | **interconnected_information_system_and_identifiers** | **String** | [Read-only] Identify the interconnected information systems and corresponding identifiers within control CA-3. | [optional] |
 | **is_pia_required** | **Boolean** | [Read-only] Does the system require a Privacy Impact Assessment? | [optional] |
 | **pia_status** | **String** | [Read-only] Status of the PIA, availability values include the following options (Not Started, In Progress, Completed) | [optional] |
@@ -100,6 +105,21 @@
 | **is_fisma_reportable** | **Boolean** | [Read-Only] Is this IS reportable per Federal Information Security Management Act (FISMA) established requirements? VA only | [optional] |
 | **group_tagging** | **String** | [Read-Only] System Tags for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] |
 | **group_tag_descriptions** | **String** | [Read-Only] System Tag explanation(s) for enterprise level, to include CIO and CISO, tracking efforts. VA only. | [optional] |
+| **dadms_id** | **String** | [Read-Only] The system&#39;s DADMS ID. USMC only. | [optional] |
+| **dadms_expiration_date** | **Integer** | [Read-Only] Date the system expires in DADMS. USMC only. | [optional] |
+| **enclave_connectivity** | **String** | [Read-Only] Identify the type of connectivity for the network/enclave, e.g., DISA circuit (NIPR, SIPR) or HPCMP circuit (DREN, SDREN, Outreach). Navy only. | [optional] |
+| **environment_type** | **String** | [Read-Only] Identify the primary computing environment for where the information system is deployed. Navy only. | [optional] |
+| **navy_common_control_provider** | **Boolean** | [Read-Only] Indicate whether the information system provides inheritable controls. Navy only | [optional] |
+| **navy_cloud_broker** | **String** | [Read-Only] Identify the broker responsible for the delivery of commercial cloud services and capabilities. Refer to Navy Commercial Cloud Brokerage Policy. Navy Only | [optional] |
+| **cloud_broker_emass_id** | **Integer** | [Read-Only] The eMASS ID of the identified cloud broker. Navy only. | [optional] |
+| **cloud_broker_provisional_authorization_atd** | **Integer** | [Read-Only] The provisional authorization termination date of the identified cloud broker. Navy only | [optional] |
+| **navy_joint_authorization** | **Boolean** | [Read-Only] Indicate whether this is a joint authorization being issued by two or more Authorizing Officials. Navy only | [optional] |
+| **nmci_ngen_clins** | **String** | [Read-Only] Provide all NMCI CLINs associated to the system/services within the authorization boundary. Navy only | [optional] |
+| **enterprise_locations** | **String** | [Read-Only] Identify the Navy enterprise network where the information system is deployed. Navy only | [optional] |
+| **whitelist_id** | **String** | [Read-Only] Systems that have public-facing components/presences are typically required to be documented and registered as part of Organzationally-approved whitelisting processes. | [optional] |
+| **whitelist_inventory** | **String** | [Read-Only] Provide/upload the documentation that identifies or describes the components or aspects of the System that are public-facing (whitelisted). | [optional] |
+| **cybersecurity_service_provider** | **String** | [Read-Only] Name of the system&#39;s Cybersecurity Service Provider. | [optional] |
+| **cybersecurity_service_provider_exception_justification** | **String** | [Read-Only] If Not Applicable, provide the exception justification. | [optional] |
 | **package** | [**Array&lt;PacGet&gt;**](PacGet.md) |  | [optional] |
 | **connectivity_ccsd** | [**Array&lt;ConnectivityCcsd&gt;**](ConnectivityCcsd.md) |  | [optional] |
 
@@ -162,7 +182,10 @@ instance = EmassClient::Systems.new(
   dod_confidentiality: Public,
   contingency_plan_tested: true,
   contingency_plan_test_date: 1426957321,
-  security_review_date: 1531958400,
+  security_review_required: true,
+  security_review_completed: true,
+  security_review_completion_date: 1531958400,
+  next_security_review_due_date: 1526957321,
   has_open_poam_item: true,
   has_open_poam_item90to120_past_scheduled_completion_date: false,
   has_open_poam_item120_plus_past_scheudled_completion_date: false,
@@ -170,7 +193,9 @@ instance = EmassClient::Systems.new(
   has_cui: false,
   has_pii: false,
   has_phi: false,
+  ppsm_registration_required: PPSM registration required,
   ppsm_registry_number: Test PPSM Registry Number,
+  ppsm_registration_exemption_justification: Exemption justification,
   interconnected_information_system_and_identifiers: Test,
   is_pia_required: true,
   pia_status: Not Started,
@@ -205,6 +230,21 @@ instance = EmassClient::Systems.new(
   is_fisma_reportable: false,
   group_tagging: Group Tag 1,
   group_tag_descriptions: Group Tag 1 explanation,
+  dadms_id: DADMS-1,
+  dadms_expiration_date: 1638751730,
+  enclave_connectivity: NIPR,
+  environment_type: Cloud Computing,
+  navy_common_control_provider: false,
+  navy_cloud_broker: AWS IL 5,
+  cloud_broker_emass_id: 2349,
+  cloud_broker_provisional_authorization_atd: 1638741660,
+  navy_joint_authorization: false,
+  nmci_ngen_clins: NMCI CLIN,
+  enterprise_locations: All Navy Networks,
+  whitelist_id: DoD DMZ Whitelist,
+  whitelist_inventory: Whitelist document,
+  cybersecurity_service_provider: NIPR,
+  cybersecurity_service_provider_exception_justification: Exception justification,
   package: null,
   connectivity_ccsd: null
 )

@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.0
+- Build date: 2023-10-09T21:35:37.766947Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.cac_response_post import CacResponsePost  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestCacResponsePost(unittest.TestCase):
     """CacResponsePost unit test stubs"""
@@ -65,18 +63,18 @@ class TestCacResponsePost(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> CacResponsePost:
         """Test CacResponsePost
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CacResponsePost`
         """
-        model = emass_client.models.cac_response_post.CacResponsePost()  # noqa: E501
-        if include_optional :
+        model = CacResponsePost()  # noqa: E501
+        if include_optional:
             return CacResponsePost(
                 meta = emass_client.models.ok.OK(
-                    code = 200, ), 
+                    code = 200, ),
                 data = [
                     emass_client.models.cac_response_post_data_inner.CacResponsePost_data_inner(
                         control_acronym = 'AC-3', 
@@ -87,7 +85,7 @@ class TestCacResponsePost(unittest.TestCase):
                             ], )
                     ]
             )
-        else :
+        else:
             return CacResponsePost(
         )
         """
