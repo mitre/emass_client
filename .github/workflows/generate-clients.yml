@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ api_3_11_implementation ]
 
 jobs:
   generate-eMASS-clients:

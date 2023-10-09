@@ -6,14 +6,14 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ api_3_11_implementation ]
 jobs:
   test_job:
     runs-on: ubuntu-latest
     name: Generate Document with redoc
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # use the public name of the action
       - name: redoc-cli test
