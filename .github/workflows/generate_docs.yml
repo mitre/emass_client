@@ -4,9 +4,9 @@ name: Generate eMASS Documentation
 # For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ api_3_11_implementation ]
+  # pull_request:
+  #   branches: [ main ]
 jobs:
   test_job:
     runs-on: ubuntu-latest
@@ -15,9 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # use the public name of the action
-      - name: redoc-cli test
-        uses: seeebiii/redoc-cli-github-action@v9
+      # Use redoc-cli-github-action to generate the HTML bundle
+      - name: Generate the HTML bumdle (redoc-cli)
+        uses: seeebiii/redoc-cli-github-action@v10
         with:
           args: 'bundle docs/eMASSRestOpenApi.yaml -o docs/redoc/index.html'
 
@@ -25,8 +25,9 @@ jobs:
         run: |
           ls -al
           test -f docs/redoc/index.html || (echo "Fail to generate docs/redoc/index.html from previous step." && exit 1)
-
-      - name: deploy
+      
+      # Deploy static files to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
