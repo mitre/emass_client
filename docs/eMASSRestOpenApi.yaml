@@ -15,7 +15,7 @@ info:
       New users will need to [register](https://nisp.emass.apps.mil/Content/Help/jobaids/eMASS_OT_NewUser_Job_Aid.pdf)
       an API key with the eMASS development team prior to accessing the site for the first time. The eMASS REST API 
       requires a client certificate (SSL/TLS, DoD PKI only). Use the `Registration` POST endpoint to register the client
-      certificate.</br></br>
+      certificate. CHANGE 1</br></br>
       
       Every call to the eMASS REST API will require the use of the agreed upon public key certificate and API key. 
       The API key must be provided in the request header for all endpoint calls (api-key). If the service receives
