@@ -5,7 +5,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/mitre/emass_client?label=Release%20Date&logo=github&color=blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mitre/emass_client?label=Release%20Version&logo=github) ![Gem](https://img.shields.io/gem/v/emass_client?label=gem%20version&logo=ruby&logoColor=red) ![npm](https://img.shields.io/npm/v/@mitre/emass_client?label=npm%20version&logo=npm) ![PyPI](https://img.shields.io/pypi/v/emass-client-api?label=pypi%20version&logo=pypi&logoColor=yellow)
 
 # eMASS Client
-The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) [Application Programming Interface (API) specifications](https://github.com/mitre/emass_client/blob/main/docs/eMASS_API_Documentation.pdf) and executables. The executables packages currently provided are: RubyGem, TypeScript Node, and Python.
+The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) [Application Programming Interface (API) specifications](/docs/eMASS_API_Documentation.pdf) and executables. The executables packages currently provided are: RubyGem, TypeScript Node, and Python.
 
 ***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem. Additionally, the [SAF CLI](https://github.com/mitre/saf#emass-api-cli) implements the `emass_client` npm package.
 

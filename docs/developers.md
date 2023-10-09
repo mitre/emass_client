@@ -125,6 +125,7 @@ Follow these steps to generate an eMASS client for additional supported language
   ```
   openapi-generators/openapitools-generator-action@v1
   ```
+
 #### Using Docker 
 An OpenAPI Generator CLI Docker Image solution is available and documented here as a [Public Pre-built Docker image](https://github.com/OpenAPITools/openapi-generator#16---docker).
 
