@@ -9,7 +9,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "emass_client_api"
-VERSION = "3.11.0"
+VERSION = "3.11.1"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
@@ -41,8 +41,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.0
-- Build date: 2023-10-10T00:19:35.596959Z[Etc/UTC]
+- Package version: 3.11.1
+- Build date: 2023-10-10T00:32:11.514559Z[Etc/UTC]
 
 ## Requirements.
 
