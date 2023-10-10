@@ -34,8 +34,7 @@ jobs:
 
     steps:
       # Checkout your code
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # Check for changed files (looking for changes to the src/python_client/README.md) file)
       - name: Get changed file (src/python_client/README.md)  🔧
