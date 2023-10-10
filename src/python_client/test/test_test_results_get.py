@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.test_results_get import TestResultsGet  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestTestResultsGet(unittest.TestCase):
     """TestResultsGet unit test stubs"""
@@ -65,27 +63,28 @@ class TestTestResultsGet(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> TestResultsGet:
         """Test TestResultsGet
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TestResultsGet`
         """
-        model = emass_client.models.test_results_get.TestResultsGet()  # noqa: E501
-        if include_optional :
+        model = TestResultsGet()  # noqa: E501
+        if include_optional:
             return TestResultsGet(
-                system_id = 35, 
-                control = 'AC-3', 
-                cci = '000002', 
-                is_inherited = True, 
-                tested_by = 'Smith, Joe', 
-                test_date = 1638741660, 
-                description = 'Test result description', 
-                type = 'Self-Assessment', 
+                system_id = 35,
+                control = 'AC-3',
+                cci = '000002',
+                assessment_procedure = 'AC-1.1',
+                is_inherited = True,
+                tested_by = 'Smith, Joe',
+                test_date = 1638741770,
+                description = 'Test result description',
+                type = 'Self-Assessment',
                 compliance_status = 'Compliant'
             )
-        else :
+        else:
             return TestResultsGet(
         )
         """

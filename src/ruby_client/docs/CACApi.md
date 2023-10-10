@@ -14,7 +14,7 @@ All URIs are relative to *http://localhost:4010*
 
 Submit control to second role of CAC
 
-Adds a Control Approval Chain (CAC) for given `systemId` path parameter<br><br> POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
+ **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
 
 ### Examples
 
@@ -125,7 +125,7 @@ end
 api_instance = EmassClient::CACApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
-  control_acronyms: 'control_acronyms_example' # String | **System Acronym**: Filter query by given system acronym (single or comma separated).
+  control_acronyms: 'control_acronyms_example' # String | **Control Acronym**: Filter query by given system acronym (single value or comma separated).
 }
 
 begin
@@ -160,7 +160,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **control_acronyms** | **String** | **System Acronym**: Filter query by given system acronym (single or comma separated). | [optional] |
+| **control_acronyms** | **String** | **Control Acronym**: Filter query by given system acronym (single value or comma separated). | [optional] |
 
 ### Return type
 

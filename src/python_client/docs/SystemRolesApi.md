@@ -72,6 +72,7 @@ with emass_client.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 This endpoint does not need any parameter.
 
@@ -103,7 +104,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_system_roles_by_category_id**
-> SystemRolesCategoryResponse get_system_roles_by_category_id(role_category, role, policy=policy, include_decommissioned=include_decommissioned)
+> SystemRolesCategoryResponse get_system_roles_by_category_id(role_category, role, policy=policy)
 
 Get system roles
 
@@ -157,17 +158,17 @@ with emass_client.ApiClient(configuration) as api_client:
     api_instance = emass_client.SystemRolesApi(api_client)
     role_category = 'PAC' # str | **Role Category**: The system role category been queried (default to 'PAC')
     role = 'IAO' # str | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. (default to 'IAO')
-    policy = 'rmf' # str | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. (optional) (default to 'rmf')
-    include_decommissioned = True # bool | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. (optional) (default to True)
+    policy = 'rmf' # str | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. (optional) (default to 'rmf')
 
     try:
         # Get system roles
-        api_response = api_instance.get_system_roles_by_category_id(role_category, role, policy=policy, include_decommissioned=include_decommissioned)
+        api_response = api_instance.get_system_roles_by_category_id(role_category, role, policy=policy)
         print("The response of SystemRolesApi->get_system_roles_by_category_id:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling SystemRolesApi->get_system_roles_by_category_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -176,8 +177,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_category** | **str**| **Role Category**: The system role category been queried | [default to &#39;PAC&#39;]
  **role** | **str**| **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. | [default to &#39;IAO&#39;]
- **policy** | **str**| **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional] [default to &#39;rmf&#39;]
- **include_decommissioned** | **bool**| **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. | [optional] [default to True]
+ **policy** | **str**| **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional] [default to &#39;rmf&#39;]
 
 ### Return type
 

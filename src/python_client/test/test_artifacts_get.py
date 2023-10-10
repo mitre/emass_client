@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.artifacts_get import ArtifactsGet  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestArtifactsGet(unittest.TestCase):
     """ArtifactsGet unit test stubs"""
@@ -65,34 +63,35 @@ class TestArtifactsGet(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> ArtifactsGet:
         """Test ArtifactsGet
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ArtifactsGet`
         """
-        model = emass_client.models.artifacts_get.ArtifactsGet()  # noqa: E501
-        if include_optional :
+        model = ArtifactsGet()  # noqa: E501
+        if include_optional:
             return ArtifactsGet(
-                system_id = 35, 
-                filename = 'AutorizationGuidance.pdf', 
-                is_inherited = True, 
-                is_template = False, 
-                type = 'Policy', 
-                category = 'Change Request', 
-                name = 'E-Authentication Assessment', 
-                description = 'Artifact description text', 
-                reference_page_number = 'Reference page number', 
-                ccis = '000001,000002', 
-                controls = 'AC-8,AC-2(4)', 
-                mime_content_type = 'application/zip', 
-                file_size = '4MB', 
-                expiration_date = 1549036926, 
-                last_reviewed_date = 1549036928, 
+                system_id = 35,
+                filename = 'AutorizationGuidance.pdf',
+                is_inherited = True,
+                is_template = False,
+                type = 'Policy',
+                category = 'Change Request',
+                name = 'E-Authentication Assessment',
+                description = 'Artifact description text',
+                reference_page_number = 'Reference page number',
+                ccis = '000001,000002',
+                controls = 'AC-8,AC-2(4)',
+                assessment_procedures = 'AC-1.1',
+                mime_content_type = 'application/zip',
+                file_size = '4MB',
+                expiration_date = 1549036926,
+                last_reviewed_date = 1549036928,
                 signed_date = 1549036928
             )
-        else :
+        else:
             return ArtifactsGet(
         )
         """

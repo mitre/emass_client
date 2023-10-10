@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.roles import Roles  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestRoles(unittest.TestCase):
     """Roles unit test stubs"""
@@ -65,18 +63,18 @@ class TestRoles(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> Roles:
         """Test Roles
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `Roles`
         """
-        model = emass_client.models.roles.Roles()  # noqa: E501
-        if include_optional :
+        model = Roles()  # noqa: E501
+        if include_optional:
             return Roles(
-                role_category = 'PAC', 
-                role = 'AO', 
+                role_category = 'PAC',
+                role = 'AO',
                 users = [
                     emass_client.models.system_role_users.System role users(
                         first_name = 'John', 
@@ -84,7 +82,7 @@ class TestRoles(unittest.TestCase):
                         email = 'John.Smith@hb.com', )
                     ]
             )
-        else :
+        else:
             return Roles(
         )
         """

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # flake8: noqa
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -9,9 +9,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -62,12 +62,16 @@ from emass_client.models.cac_get import CacGet
 from emass_client.models.cac_response_get import CacResponseGet
 from emass_client.models.cac_response_post import CacResponsePost
 from emass_client.models.cac_response_post_data_inner import CacResponsePostDataInner
-from emass_client.models.cloud_resources_post import CloudResourcesPost
+from emass_client.models.cloud_resources_delete import CloudResourcesDelete
+from emass_client.models.cloud_resources_delete_body_inner import CloudResourcesDeleteBodyInner
+from emass_client.models.cloud_resources_post_delete import CloudResourcesPostDelete
 from emass_client.models.cloud_resources_response_post import CloudResourcesResponsePost
 from emass_client.models.cmmc_get import CmmcGet
 from emass_client.models.cmmc_response_get import CmmcResponseGet
 from emass_client.models.connectivity_ccsd import ConnectivityCcsd
-from emass_client.models.containers_resources_post import ContainersResourcesPost
+from emass_client.models.container_resources_delete_body_inner import ContainerResourcesDeleteBodyInner
+from emass_client.models.containers_resources_post_delete import ContainersResourcesPostDelete
+from emass_client.models.containers_response_delete import ContainersResponseDelete
 from emass_client.models.containers_response_post import ContainersResponsePost
 from emass_client.models.controls_get import ControlsGet
 from emass_client.models.controls_put import ControlsPut
@@ -77,6 +81,7 @@ from emass_client.models.dashboard_mock_response import DashboardMockResponse
 from emass_client.models.dashboard_mock_response_pagination import DashboardMockResponsePagination
 from emass_client.models.definition_transitions import DefinitionTransitions
 from emass_client.models.instances_transitions import InstancesTransitions
+from emass_client.models.milestone_response_delete import MilestoneResponseDelete
 from emass_client.models.milestone_response_get import MilestoneResponseGet
 from emass_client.models.milestone_response_get_milestone import MilestoneResponseGetMilestone
 from emass_client.models.milestone_response_post import MilestoneResponsePost
@@ -124,7 +129,7 @@ from emass_client.models.role_category import RoleCategory
 from emass_client.models.roles import Roles
 from emass_client.models.ssps import Ssps
 from emass_client.models.stage import Stage
-from emass_client.models.static_code_application import StaticCodeApplication
+from emass_client.models.static_code_application_post import StaticCodeApplicationPost
 from emass_client.models.static_code_post import StaticCodePost
 from emass_client.models.static_code_request_post_body import StaticCodeRequestPostBody
 from emass_client.models.static_code_request_post_body_application import StaticCodeRequestPostBodyApplication

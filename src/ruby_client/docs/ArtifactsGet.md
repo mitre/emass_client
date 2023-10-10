@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | [Required] Unique eMASS system identifier. | [optional] |
-| **filename** | **String** | [Required] File name should match exactly one file within the provided zip file. 1000 Characters. | [optional] |
+| **filename** | **String** | [Required] File name should match exactly one file within the provided zip file. 1000 Characters. or Application/zip file. Max 30MB per artifact.  | [optional] |
 | **is_inherited** | **Boolean** | [Read-only] Indicates whether an artifact is inherited. | [optional] |
 | **is_template** | **Boolean** | [Required] Indicates whether an artifact template. | [optional] |
 | **type** | **String** | [Required] Artifact type options | [optional] |
@@ -13,8 +13,9 @@
 | **name** | **String** | [Optional] Artifact name. Character Limit &#x3D; 100. | [optional] |
 | **description** | **String** | [Optional] Artifact description. 10,000 Characters. | [optional] |
 | **reference_page_number** | **String** | [Optional] Artifact reference page number. 50 Characters. | [optional] |
-| **ccis** | **String** | [Optional] CCI associated with test result. | [optional] |
+| **ccis** | **String** | [Read-Only] CCI mapping for Assessment Procedures associated with the artifact. | [optional] |
 | **controls** | **String** | [Optional] Control acronym associated with the artifact. NIST SP 800-53 Revision 4 defined. | [optional] |
+| **assessment_procedures** | **String** | [Optional] The Security Control Assessment Procedure being associated with the artifact. | [optional] |
 | **mime_content_type** | **String** | [Read-Only] Standard MIME content type derived from file extension. | [optional] |
 | **file_size** | **String** | [Read-Only] File size of attached artifact. | [optional] |
 | **expiration_date** | **Integer** | [Optional] Date Artifact expires and requires review. In Unix Date format. | [optional] |
@@ -38,6 +39,7 @@ instance = EmassClient::ArtifactsGet.new(
   reference_page_number: Reference page number,
   ccis: 000001,000002,
   controls: AC-8,AC-2(4),
+  assessment_procedures: AC-1.1,
   mime_content_type: application/zip,
   file_size: 4MB,
   expiration_date: 1549036926,

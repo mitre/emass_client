@@ -98,7 +98,7 @@ end
 
 ## delete_milestone
 
-> <MilestonesPutPostDelete> delete_milestone(system_id, poam_id, milestones_request_delete_body_inner)
+> <MilestoneResponseDelete> delete_milestone(system_id, poam_id, milestones_request_delete_body_inner)
 
 Remove milestones in a system for one or many POA&M items
 
@@ -145,7 +145,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MilestonesPutPostDelete>, Integer, Hash)> delete_milestone_with_http_info(system_id, poam_id, milestones_request_delete_body_inner)
+> <Array(<MilestoneResponseDelete>, Integer, Hash)> delete_milestone_with_http_info(system_id, poam_id, milestones_request_delete_body_inner)
 
 ```ruby
 begin
@@ -153,7 +153,7 @@ begin
   data, status_code, headers = api_instance.delete_milestone_with_http_info(system_id, poam_id, milestones_request_delete_body_inner)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <MilestonesPutPostDelete>
+  p data # => <MilestoneResponseDelete>
 rescue EmassClient::ApiError => e
   puts "Error when calling MilestonesApi->delete_milestone_with_http_info: #{e}"
 end
@@ -169,7 +169,7 @@ end
 
 ### Return type
 
-[**MilestonesPutPostDelete**](MilestonesPutPostDelete.md)
+[**MilestoneResponseDelete**](MilestoneResponseDelete.md)
 
 ### Authorization
 

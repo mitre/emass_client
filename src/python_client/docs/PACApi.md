@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost:4010*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_system_pac**](PACApi.md#add_system_pac) | **POST** /api/systems/{systemId}/approval/pac | Submit system package for review
-[**get_system_pac**](PACApi.md#get_system_pac) | **GET** /api/systems/{systemId}/approval/pac | Get location of system package in PAC
+[**add_system_pac**](PACApi.md#add_system_pac) | **POST** /api/systems/{systemId}/approval/pac | Initiate system workflow for review
+[**get_system_pac**](PACApi.md#get_system_pac) | **GET** /api/systems/{systemId}/approval/pac | Get status of active workflows in a system
 
 
 # **add_system_pac**
 > PacResponsePost add_system_pac(system_id, request_body)
 
-Submit system package for review
+Initiate system workflow for review
 
-Adds a Package Approval Chain (PAC) for given `systemId` path parameter
+Adds a Package Approval Chain (PAC) for given `systemId` path parameter  **Request Body Required Fields** - `workflow` - `name` - `comments`
 
 ### Example
 
@@ -25,6 +25,7 @@ import time
 import os
 import emass_client
 from emass_client.models.pac_response_post import PacResponsePost
+from emass_client.models.object import object
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -65,13 +66,14 @@ with emass_client.ApiClient(configuration) as api_client:
     request_body = None # List[object] | Add system package to PAC for review
 
     try:
-        # Submit system package for review
+        # Initiate system workflow for review
         api_response = api_instance.add_system_pac(system_id, request_body)
         print("The response of PACApi->add_system_pac:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling PACApi->add_system_pac: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -112,9 +114,9 @@ Name | Type | Description  | Notes
 # **get_system_pac**
 > PacResponseGet get_system_pac(system_id)
 
-Get location of system package in PAC
+Get status of active workflows in a system
 
-Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter
+Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.
 
 ### Example
 
@@ -165,13 +167,14 @@ with emass_client.ApiClient(configuration) as api_client:
     system_id = 35 # int | **System Id**: The unique system record identifier.
 
     try:
-        # Get location of system package in PAC
+        # Get status of active workflows in a system
         api_response = api_instance.get_system_pac(system_id)
         print("The response of PACApi->get_system_pac:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling PACApi->get_system_pac: %s\n" % e)
 ```
+
 
 
 ### Parameters

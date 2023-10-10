@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**Response200**](Response200.md) |  | [optional] 
-**data** | [**List[ContainersResourcesPost]**](ContainersResourcesPost.md) |  | [optional] 
+**data** | [**List[ContainersResourcesPostDelete]**](ContainersResourcesPostDelete.md) |  | [optional] 
 
 ## Example
 

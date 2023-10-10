@@ -4,14 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**system_id** | **int** | [Required] Unique eMASS system identifier. | [optional] 
 **workflow** | **str** | [Required] Values include the following:(Assess and Authorize, Assess Only, Security Plan Approval) | [optional] 
 **name** | **str** | [Required] Package name. 100 Characters. | [optional] 
 **current_stage_name** | **str** | [Read-Only] Name of the current stage in the active workflow. | [optional] 
 **current_stage** | **int** | [Read-Only] Number of the current stage in the active workflow. | [optional] 
 **total_stages** | **int** | [Read-Only] Total number of stages in the active workflow. | [optional] 
 **days_at_current_stage** | **int** | [Read-Only] Indicates the number of days at current workflow stage. | [optional] 
-**comments** | **str** | [Required] Comments related to package approval chain. Character Limit &#x3D; 4,000. | [optional] 
 
 ## Example
 

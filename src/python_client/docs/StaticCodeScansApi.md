@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Upload static code scans or Clear static code scans
 
-Upload or clear application scan findings into a system's `systemId` assets module.  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"Artemis\",        \"version\": \"Version 5.0\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
+Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
 
 ### Example
 
@@ -72,6 +72,7 @@ with emass_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling StaticCodeScansApi->add_static_code_scans_by_system_id: %s\n" % e)
 ```
+
 
 
 ### Parameters

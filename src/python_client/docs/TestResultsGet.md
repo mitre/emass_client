@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **system_id** | **int** | [Required] Unique eMASS identifier. Will need to provide correct number | [optional] 
 **control** | **str** | [Read-Only] Control acronym associated with the test result. NIST SP 800-53 Revision 4 defined. | [optional] 
 **cci** | **str** | [Required] CCI associated with test result. | [optional] 
+**assessment_procedure** | **str** | [Required] The Security Control Assessment Procedure being assessed. | [optional] 
 **is_inherited** | **bool** | [Read-only] Indicates whether a test result is inherited. | [optional] 
 **tested_by** | **str** | [Required] Last Name, First Name. 100 Characters. | [optional] 
 **test_date** | **int** | [Required] Unix time format. | [optional] 

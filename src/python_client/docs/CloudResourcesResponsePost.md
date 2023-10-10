@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**Response200**](Response200.md) |  | [optional] 
-**data** | [**List[CloudResourcesPost]**](CloudResourcesPost.md) |  | [optional] 
+**data** | [**List[CloudResourcesPostDelete]**](CloudResourcesPostDelete.md) |  | [optional] 
 
 ## Example
 

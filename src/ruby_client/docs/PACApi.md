@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost:4010*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**add_system_pac**](PACApi.md#add_system_pac) | **POST** /api/systems/{systemId}/approval/pac | Submit system package for review |
-| [**get_system_pac**](PACApi.md#get_system_pac) | **GET** /api/systems/{systemId}/approval/pac | Get location of system package in PAC |
+| [**add_system_pac**](PACApi.md#add_system_pac) | **POST** /api/systems/{systemId}/approval/pac | Initiate system workflow for review |
+| [**get_system_pac**](PACApi.md#get_system_pac) | **GET** /api/systems/{systemId}/approval/pac | Get status of active workflows in a system |
 
 
 ## add_system_pac
 
 > <PacResponsePost> add_system_pac(system_id, request_body)
 
-Submit system package for review
+Initiate system workflow for review
 
-Adds a Package Approval Chain (PAC) for given `systemId` path parameter
+Adds a Package Approval Chain (PAC) for given `systemId` path parameter  **Request Body Required Fields** - `workflow` - `name` - `comments`
 
 ### Examples
 
@@ -44,7 +44,7 @@ system_id = 35 # Integer | **System Id**: The unique system record identifier.
 request_body = [3.56] # Array<Object> | Add system package to PAC for review
 
 begin
-  # Submit system package for review
+  # Initiate system workflow for review
   result = api_instance.add_system_pac(system_id, request_body)
   p result
 rescue EmassClient::ApiError => e
@@ -60,7 +60,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Submit system package for review
+  # Initiate system workflow for review
   data, status_code, headers = api_instance.add_system_pac_with_http_info(system_id, request_body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -95,9 +95,9 @@ end
 
 > <PacResponseGet> get_system_pac(system_id)
 
-Get location of system package in PAC
+Get status of active workflows in a system
 
-Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter
+Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.
 
 ### Examples
 
@@ -126,7 +126,7 @@ api_instance = EmassClient::PACApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 
 begin
-  # Get location of system package in PAC
+  # Get status of active workflows in a system
   result = api_instance.get_system_pac(system_id)
   p result
 rescue EmassClient::ApiError => e
@@ -142,7 +142,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get location of system package in PAC
+  # Get status of active workflows in a system
   data, status_code, headers = api_instance.get_system_pac_with_http_info(system_id)
   p status_code # => 2xx
   p headers # => { ... }

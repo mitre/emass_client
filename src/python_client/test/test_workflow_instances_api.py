@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -51,28 +51,26 @@ Execute `pytest` to run the tests.
 
 import unittest
 
-import emass_client
 from emass_client.api.workflow_instances_api import WorkflowInstancesApi  # noqa: E501
-from emass_client.rest import ApiException
 
 
 class TestWorkflowInstancesApi(unittest.TestCase):
     """WorkflowInstancesApi unit test stubs"""
 
-    def setUp(self):
-        self.api = emass_client.api.workflow_instances_api.WorkflowInstancesApi()  # noqa: E501
+    def setUp(self) -> None:
+        self.api = WorkflowInstancesApi()  # noqa: E501
 
-    def tearDown(self):
+    def tearDown(self) -> None:
         pass
 
-    def test_get_system_workflow_instances(self):
+    def test_get_system_workflow_instances(self) -> None:
         """Test case for get_system_workflow_instances
 
         Get workflow instances in a site  # noqa: E501
         """
         pass
 
-    def test_get_system_workflow_instances_by_workflow_instance_id(self):
+    def test_get_system_workflow_instances_by_workflow_instance_id(self) -> None:
         """Test case for get_system_workflow_instances_by_workflow_instance_id
 
         Get workflow instance by ID  # noqa: E501

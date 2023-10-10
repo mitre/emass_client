@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -52,9 +52,7 @@ Execute `pytest` to run the tests.
 import unittest
 import datetime
 
-import emass_client
 from emass_client.models.workflow_instances_response_get import WorkflowInstancesResponseGet  # noqa: E501
-from emass_client.rest import ApiException
 
 class TestWorkflowInstancesResponseGet(unittest.TestCase):
     """WorkflowInstancesResponseGet unit test stubs"""
@@ -65,18 +63,18 @@ class TestWorkflowInstancesResponseGet(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
+    def make_instance(self, include_optional) -> WorkflowInstancesResponseGet:
         """Test WorkflowInstancesResponseGet
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `WorkflowInstancesResponseGet`
         """
-        model = emass_client.models.workflow_instances_response_get.WorkflowInstancesResponseGet()  # noqa: E501
-        if include_optional :
+        model = WorkflowInstancesResponseGet()  # noqa: E501
+        if include_optional:
             return WorkflowInstancesResponseGet(
                 meta = emass_client.models.ok.OK(
-                    code = 200, ), 
+                    code = 200, ),
                 data = [
                     emass_client.models.workflow_instances___return_query_for_the_get_workflow_instances_in_a_site.Workflow Instances - return query for the GET workflow instances in a site(
                         workflow_uid = '6f810301-5b3b-4f89-81e7-587fef9142a9', 
@@ -99,14 +97,14 @@ class TestWorkflowInstancesResponseGet(unittest.TestCase):
                                 end_stage = 'Submit Categorization', 
                                 start_stage = 'Not Started', )
                             ], )
-                    ], 
+                    ],
                 pagination = emass_client.models.workflow_instances_response_get_pagination.WorkflowInstancesResponseGet_pagination(
                     total_count = 12, 
                     total_pages = 2, 
                     prev_page_url = 'https://my.endpoint.url.org/previousPage', 
                     next_page_url = 'https://my.endpoint.url.org/nextPage', )
             )
-        else :
+        else:
             return WorkflowInstancesResponseGet(
         )
         """

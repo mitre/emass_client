@@ -42,8 +42,8 @@ end
 api_instance = EmassClient::SystemsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
-  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-  policy: 'diacap' # String | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
+  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information
+  policy: 'diacap' # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
 }
 
 begin
@@ -78,8 +78,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information is retrieved for queried system. | [optional][default to true] |
-| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional][default to &#39;rmf&#39;] |
+| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional][default to false] |
+| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
 
 ### Return type
 
@@ -128,14 +128,14 @@ end
 
 api_instance = EmassClient::SystemsApi.new
 opts = {
-  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information is retrieved for queried system.
-  registration_type: 'registration_type_example', # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
-  ditpr_id: 'ditpr_id_example', # String | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
   coams_id: 'coams_id_example', # String | **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
-  policy: 'diacap', # String | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information.
-  include_ditpr_metrics: true, # Boolean | **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:<br>   <ul>     <li>registrationType</li>     <li>policy</li>   </ul>
-  include_decommissioned: true, # Boolean | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
-  reports_for_scorecard: true # Boolean | **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard.
+  ditpr_id: 'ditpr_id_example', # String | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
+  include_decommissioned: true, # Boolean | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.
+  include_ditpr_metrics: true, # Boolean | **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.
+  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information
+  policy: 'diacap', # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
+  registration_type: 'registration_type_example', # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
+  reports_for_scorecard: true # Boolean | **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.
 }
 
 begin
@@ -169,14 +169,14 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information is retrieved for queried system. | [optional][default to true] |
-| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional][default to &#39;regular&#39;] |
-| **ditpr_id** | **String** | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). | [optional] |
 | **coams_id** | **String** | **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS). | [optional] |
-| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified and more than one policy is available, the default return is the RMF policy information. | [optional][default to &#39;rmf&#39;] |
-| **include_ditpr_metrics** | **Boolean** | **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter can only be used in conjunction with the following parameters:&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;registrationType&lt;/li&gt;     &lt;li&gt;policy&lt;/li&gt;   &lt;/ul&gt; | [optional][default to false] |
-| **include_decommissioned** | **Boolean** | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. | [optional][default to true] |
-| **reports_for_scorecard** | **Boolean** | **DoD Cyber Hygiene Scorecard**: Indicates if the system reports to the DoD Cyber Hygiene Scorecard. | [optional][default to true] |
+| **ditpr_id** | **String** | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). | [optional] |
+| **include_decommissioned** | **Boolean** | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems. | [optional][default to true] |
+| **include_ditpr_metrics** | **Boolean** | **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics. | [optional][default to false] |
+| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional][default to false] |
+| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
+| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional][default to &#39;regular&#39;] |
+| **reports_for_scorecard** | **Boolean** | **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard. | [optional][default to true] |
 
 ### Return type
 

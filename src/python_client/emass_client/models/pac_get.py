@@ -1,6 +1,6 @@
 # coding: utf-8
 
-## eMASS API v3.10 Specification
+## eMASS API v3.12 Specification
 
 The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications.
@@ -8,9 +8,9 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 
 This Python package was generated from the eMASS API specification:
 
-- API version: v3.10
-- Package version: 3.10.1
-- Build date: 2023-06-14T17:42:15.829833Z[Etc/UTC]
+- API version: v3.12
+- Package version: 3.11.1
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
@@ -56,23 +56,27 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
+from typing import Dict, Any
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class PacGet(BaseModel):
     """
     PacGet
     """
-    system_id: Optional[StrictInt] = Field(None, alias="systemId", description="[Required] Unique eMASS system identifier.")
-    workflow: Optional[StrictStr] = Field(None, description="[Required] Values include the following:(Assess and Authorize, Assess Only, Security Plan Approval)")
-    name: Optional[StrictStr] = Field(None, description="[Required] Package name. 100 Characters.")
-    current_stage_name: Optional[StrictStr] = Field(None, alias="currentStageName", description="[Read-Only] Name of the current stage in the active workflow.")
-    current_stage: Optional[StrictInt] = Field(None, alias="currentStage", description="[Read-Only] Number of the current stage in the active workflow.")
-    total_stages: Optional[StrictInt] = Field(None, alias="totalStages", description="[Read-Only] Total number of stages in the active workflow.")
-    days_at_current_stage: Optional[StrictInt] = Field(None, alias="daysAtCurrentStage", description="[Read-Only] Indicates the number of days at current workflow stage.")
-    comments: Optional[StrictStr] = Field(None, description="[Required] Comments related to package approval chain. Character Limit = 4,000.")
-    __properties = ["systemId", "workflow", "name", "currentStageName", "currentStage", "totalStages", "daysAtCurrentStage", "comments"]
+    workflow: Optional[StrictStr] = Field(default=None, description="[Required] Values include the following:(Assess and Authorize, Assess Only, Security Plan Approval)")
+    name: Optional[StrictStr] = Field(default=None, description="[Required] Package name. 100 Characters.")
+    current_stage_name: Optional[StrictStr] = Field(default=None, description="[Read-Only] Name of the current stage in the active workflow.", alias="currentStageName")
+    current_stage: Optional[StrictInt] = Field(default=None, description="[Read-Only] Number of the current stage in the active workflow.", alias="currentStage")
+    total_stages: Optional[StrictInt] = Field(default=None, description="[Read-Only] Total number of stages in the active workflow.", alias="totalStages")
+    days_at_current_stage: Optional[StrictInt] = Field(default=None, description="[Read-Only] Indicates the number of days at current workflow stage.", alias="daysAtCurrentStage")
+    __properties: ClassVar[List[str]] = ["workflow", "name", "currentStageName", "currentStage", "totalStages", "daysAtCurrentStage"]
 
-    @validator('workflow')
+    @field_validator('workflow')
     def workflow_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -82,70 +86,71 @@ class PacGet(BaseModel):
             raise ValueError("must be one of enum values ('Assess and Authorize', 'Assess Only', 'Security Plan Approval')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PacGet:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PacGet from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
+        _dict = self.model_dump(by_alias=True,
                           exclude={
                           },
                           exclude_none=True)
         # set to None if current_stage_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.current_stage_name is None and "current_stage_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.current_stage_name is None and "current_stage_name" in self.model_fields_set:
             _dict['currentStageName'] = None
 
         # set to None if current_stage (nullable) is None
-        # and __fields_set__ contains the field
-        if self.current_stage is None and "current_stage" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.current_stage is None and "current_stage" in self.model_fields_set:
             _dict['currentStage'] = None
 
         # set to None if total_stages (nullable) is None
-        # and __fields_set__ contains the field
-        if self.total_stages is None and "total_stages" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.total_stages is None and "total_stages" in self.model_fields_set:
             _dict['totalStages'] = None
 
         # set to None if days_at_current_stage (nullable) is None
-        # and __fields_set__ contains the field
-        if self.days_at_current_stage is None and "days_at_current_stage" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.days_at_current_stage is None and "days_at_current_stage" in self.model_fields_set:
             _dict['daysAtCurrentStage'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PacGet:
+    def from_dict(cls, obj: dict) -> Self:
         """Create an instance of PacGet from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PacGet.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PacGet.parse_obj({
-            "system_id": obj.get("systemId"),
+        _obj = cls.model_validate({
             "workflow": obj.get("workflow"),
             "name": obj.get("name"),
-            "current_stage_name": obj.get("currentStageName"),
-            "current_stage": obj.get("currentStage"),
-            "total_stages": obj.get("totalStages"),
-            "days_at_current_stage": obj.get("daysAtCurrentStage"),
-            "comments": obj.get("comments")
+            "currentStageName": obj.get("currentStageName"),
+            "currentStage": obj.get("currentStage"),
+            "totalStages": obj.get("totalStages"),
+            "daysAtCurrentStage": obj.get("daysAtCurrentStage")
         })
         return _obj
+
 
