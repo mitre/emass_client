@@ -7,8 +7,9 @@ name: Publish Python 🐍 distributions 📦 to TestPyPI
 # For testing use:
 # on: push
 #  NOTE:
-#   push to the TestPyPi registry on every push during development.
-#   Don't use final ver number, it will fail when published based on the 
+#   The workflow may fail the first time the clients are generate as it does not wait 
+#   for the [Generate OpenAPI Clients] to complete before it executes.
+#   Don't use final ver number when testing, it will fail when published based on the 
 #   workflows: [Generate OpenAPI Clients])
 #
 # Once test is completed use:

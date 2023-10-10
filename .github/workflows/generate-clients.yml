@@ -21,10 +21,7 @@ jobs:
       # Check for changed files (looking for changes to the docs/eMASSRestOpenApi.yaml file)
       - name: Get changed file (eMASSRestOpenApi.yaml)  🔧
         id: changed-files
-        #id: changed-files-specific-source-file
         uses: tj-actions/changed-files@v39
-        # with:
-        #   files_from_source_file: docs/eMASSRestOpenApi.yaml
 
       - name: Run a step if eMASSRestOpenApi.yaml was modified
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')

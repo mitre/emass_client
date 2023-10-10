@@ -2,9 +2,9 @@ name: Test Ruby Client
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ api_3_11_implementation ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   test:
