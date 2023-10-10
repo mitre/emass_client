@@ -2,7 +2,7 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [ api_3_11_implementation ]
+    branches: [ main ]
   # pull_request:
   #   branches: [ main ]
     
