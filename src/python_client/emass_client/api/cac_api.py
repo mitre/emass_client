@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -87,7 +87,12 @@ class CACApi:
         self.api_client = api_client
 
     @validate_call
-    def add_system_cac(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add control(s) to second role of CAC")], **kwargs) -> CacResponsePost:  # noqa: E501
+    def add_system_cac(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add control(s) to second role of CAC")],
+        **kwargs,
+    ) -> CacResponsePost:
         """Submit control to second role of CAC  # noqa: E501
 
          **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.  # noqa: E501
@@ -119,7 +124,12 @@ class CACApi:
         return self.add_system_cac_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_system_cac_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add control(s) to second role of CAC")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_system_cac_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add control(s) to second role of CAC")],
+        **kwargs,
+    ) -> ApiResponse:
         """Submit control to second role of CAC  # noqa: E501
 
          **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.  # noqa: E501
@@ -250,7 +260,12 @@ class CACApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_cac(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, **kwargs) -> CacResponseGet:  # noqa: E501
+    def get_system_cac(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        **kwargs,
+    ) -> CacResponseGet:
         """Get location of one or many controls in CAC  # noqa: E501
 
         Returns the location of a system's package in the Control Approval Chain (CAC) for matching `systemId` path parameter  # noqa: E501
@@ -282,7 +297,12 @@ class CACApi:
         return self.get_system_cac_with_http_info(system_id, control_acronyms, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_cac_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_cac_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get location of one or many controls in CAC  # noqa: E501
 
         Returns the location of a system's package in the Control Approval Chain (CAC) for matching `systemId` path parameter  # noqa: E501

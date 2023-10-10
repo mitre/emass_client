@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -91,7 +91,12 @@ class POAMApi:
         self.api_client = api_client
 
     @validate_call
-    def add_poam_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add POA&M(s) to a system (systemID)")], **kwargs) -> PoamResponsePost:  # noqa: E501
+    def add_poam_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add POA&M(s) to a system (systemID)")],
+        **kwargs,
+    ) -> PoamResponsePost:
         """Add one or many POA&M items in a system  # noqa: E501
 
         Add a POA&M for given `systemId`<br>  **Request Body Required Fields** - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `resources`  **Note**<br /> If a POC email is supplied, the application will attempt to locate a user already registered within the application and pre-populate any information not explicitly supplied in the request. If no such user is found, these fields are **required** within the request.<br> `pocFirstName`, `pocLastName`, `pocPhoneNumber`<br />  # noqa: E501
@@ -123,7 +128,12 @@ class POAMApi:
         return self.add_poam_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_poam_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add POA&M(s) to a system (systemID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_poam_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add POA&M(s) to a system (systemID)")],
+        **kwargs,
+    ) -> ApiResponse:
         """Add one or many POA&M items in a system  # noqa: E501
 
         Add a POA&M for given `systemId`<br>  **Request Body Required Fields** - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `resources`  **Note**<br /> If a POC email is supplied, the application will attempt to locate a user already registered within the application and pre-populate any information not explicitly supplied in the request. If no such user is found, these fields are **required** within the request.<br> `pocFirstName`, `pocLastName`, `pocPhoneNumber`<br />  # noqa: E501
@@ -254,7 +264,12 @@ class POAMApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def delete_poam(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_request_delete_body_inner : Annotated[List[PoamRequestDeleteBodyInner], Field(description="Delete the given POA&M Id")], **kwargs) -> PoamResponseDelete:  # noqa: E501
+    def delete_poam(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_request_delete_body_inner: Annotated[List[PoamRequestDeleteBodyInner], Field(description="Delete the given POA&M Id")],
+        **kwargs,
+    ) -> PoamResponseDelete:
         """Remove one or many POA&M items in a system  # noqa: E501
 
         Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>  # noqa: E501
@@ -286,7 +301,12 @@ class POAMApi:
         return self.delete_poam_with_http_info(system_id, poam_request_delete_body_inner, **kwargs)  # noqa: E501
 
     @validate_call
-    def delete_poam_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_request_delete_body_inner : Annotated[List[PoamRequestDeleteBodyInner], Field(description="Delete the given POA&M Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_poam_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_request_delete_body_inner: Annotated[List[PoamRequestDeleteBodyInner], Field(description="Delete the given POA&M Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Remove one or many POA&M items in a system  # noqa: E501
 
         Remove the POA&M matching `systemId` path parameter and `poamId` Request Body<br>  # noqa: E501
@@ -414,7 +434,17 @@ class POAMApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_poams(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], scheduled_completion_date_start : Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None, scheduled_completion_date_end : Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None, control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, system_only : Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None, **kwargs) -> PoamResponseGetSystems:  # noqa: E501
+    def get_system_poams(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        scheduled_completion_date_start: Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        scheduled_completion_date_end: Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        system_only: Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None,
+        **kwargs,
+    ) -> PoamResponseGetSystems:
         """Get one or many POA&M items in a system  # noqa: E501
 
         Returns system(s) containing POA&M items for matching parameters.  # noqa: E501
@@ -456,7 +486,17 @@ class POAMApi:
         return self.get_system_poams_with_http_info(system_id, scheduled_completion_date_start, scheduled_completion_date_end, control_acronyms, assessment_procedures, ccis, system_only, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_poams_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], scheduled_completion_date_start : Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None, scheduled_completion_date_end : Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None, control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, system_only : Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_poams_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        scheduled_completion_date_start: Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        scheduled_completion_date_end: Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        system_only: Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get one or many POA&M items in a system  # noqa: E501
 
         Returns system(s) containing POA&M items for matching parameters.  # noqa: E501
@@ -609,7 +649,12 @@ class POAMApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_poams_by_poam_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], **kwargs) -> PoamResponseGetPoams:  # noqa: E501
+    def get_system_poams_by_poam_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        **kwargs,
+    ) -> PoamResponseGetPoams:
         """Get POA&M item by ID in a system  # noqa: E501
 
         Returns system(s) containing POA&M items for matching parameters.  # noqa: E501
@@ -641,7 +686,12 @@ class POAMApi:
         return self.get_system_poams_by_poam_id_with_http_info(system_id, poam_id, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_poams_by_poam_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_poams_by_poam_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        **kwargs,
+    ) -> ApiResponse:
         """Get POA&M item by ID in a system  # noqa: E501
 
         Returns system(s) containing POA&M items for matching parameters.  # noqa: E501
@@ -764,7 +814,12 @@ class POAMApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def update_poam_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Update an existing control by Id")], **kwargs) -> PoamResponsePut:  # noqa: E501
+    def update_poam_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update an existing control by Id")],
+        **kwargs,
+    ) -> PoamResponsePut:
         """Update one or many POA&M items in a system  # noqa: E501
 
         Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.  # noqa: E501
@@ -796,7 +851,12 @@ class POAMApi:
         return self.update_poam_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def update_poam_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Update an existing control by Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_poam_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update an existing control by Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Update one or many POA&M items in a system  # noqa: E501
 
         Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.  # noqa: E501

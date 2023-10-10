@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -87,7 +87,12 @@ class ControlsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system_controls(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], acronyms : Annotated[Optional[StrictStr], Field(description="**Acronym**: The system acronym(s) being queried (single value or comma delimited values).")] = None, **kwargs) -> ControlsResponseGet:  # noqa: E501
+    def get_system_controls(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        acronyms: Annotated[Optional[StrictStr], Field(description="**Acronym**: The system acronym(s) being queried (single value or comma delimited values).")] = None,
+        **kwargs,
+    ) -> ControlsResponseGet:
         """Get control information in a system for one or many controls  # noqa: E501
 
         Returns system control information for matching `systemId` path parameter  # noqa: E501
@@ -119,7 +124,12 @@ class ControlsApi:
         return self.get_system_controls_with_http_info(system_id, acronyms, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_controls_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], acronyms : Annotated[Optional[StrictStr], Field(description="**Acronym**: The system acronym(s) being queried (single value or comma delimited values).")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_controls_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        acronyms: Annotated[Optional[StrictStr], Field(description="**Acronym**: The system acronym(s) being queried (single value or comma delimited values).")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get control information in a system for one or many controls  # noqa: E501
 
         Returns system control information for matching `systemId` path parameter  # noqa: E501
@@ -242,7 +252,12 @@ class ControlsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def update_control_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Update an existing control by Id")], **kwargs) -> ControlsResponsePut:  # noqa: E501
+    def update_control_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update an existing control by Id")],
+        **kwargs,
+    ) -> ControlsResponsePut:
         """Update control information in a system for one or many controls  # noqa: E501
 
          Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  The following optional fields (plus the **Request Body Required Fields**) are required based on the Implementation Status `implementationStatus` value<br> | Value                    | Required Fields |--------------------------|--------------------------------------------------- | Planned  or Implemented  | `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments` | Not Applicable           | `naJustification` | Manually Inherited       | `commonControlProvider`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`  If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:   - `controlDesignation`   - `commonnControlProvider`  **NOTES:** - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:   - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`   - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments` - Implementation Plan information cannot be updated if Security Control does not exist in the system record.  # noqa: E501
@@ -274,7 +289,12 @@ class ControlsApi:
         return self.update_control_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def update_control_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Update an existing control by Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_control_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update an existing control by Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Update control information in a system for one or many controls  # noqa: E501
 
          Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  The following optional fields (plus the **Request Body Required Fields**) are required based on the Implementation Status `implementationStatus` value<br> | Value                    | Required Fields |--------------------------|--------------------------------------------------- | Planned  or Implemented  | `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments` | Not Applicable           | `naJustification` | Manually Inherited       | `commonControlProvider`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`  If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:   - `controlDesignation`   - `commonnControlProvider`  **NOTES:** - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:   - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`   - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments` - Implementation Plan information cannot be updated if Security Control does not exist in the system record.  # noqa: E501

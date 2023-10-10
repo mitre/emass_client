@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -86,7 +86,13 @@ class SystemsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], include_package : Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None, policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, **kwargs) -> SystemResponse:  # noqa: E501
+    def get_system(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        include_package: Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None,
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        **kwargs,
+    ) -> SystemResponse:
         """Get system information for a specific system  # noqa: E501
 
         Returns the system matching provided parameters  # noqa: E501
@@ -120,7 +126,13 @@ class SystemsApi:
         return self.get_system_with_http_info(system_id, include_package, policy, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], include_package : Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None, policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        include_package: Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None,
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get system information for a specific system  # noqa: E501
 
         Returns the system matching provided parameters  # noqa: E501
@@ -249,7 +261,18 @@ class SystemsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_systems(self, coams_id : Annotated[Optional[StrictStr], Field(description="**COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).")] = None, ditpr_id : Annotated[Optional[StrictStr], Field(description="**DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).")] = None, include_decommissioned : Annotated[Optional[StrictBool], Field(description="**Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.")] = None, include_ditpr_metrics : Annotated[Optional[StrictBool], Field(description="**Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.")] = None, include_package : Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None, policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, registration_type : Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None, reports_for_scorecard : Annotated[Optional[StrictBool], Field(description="**DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.")] = None, **kwargs) -> SystemsResponse:  # noqa: E501
+    def get_systems(
+        self,
+        coams_id: Annotated[Optional[StrictStr], Field(description="**COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).")] = None,
+        ditpr_id: Annotated[Optional[StrictStr], Field(description="**DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).")] = None,
+        include_decommissioned: Annotated[Optional[StrictBool], Field(description="**Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.")] = None,
+        include_ditpr_metrics: Annotated[Optional[StrictBool], Field(description="**Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.")] = None,
+        include_package: Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None,
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        registration_type: Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None,
+        reports_for_scorecard: Annotated[Optional[StrictBool], Field(description="**DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.")] = None,
+        **kwargs,
+    ) -> SystemsResponse:
         """Get system information  # noqa: E501
 
         Returns all system(s) that match the query parameters  # noqa: E501
@@ -293,7 +316,18 @@ class SystemsApi:
         return self.get_systems_with_http_info(coams_id, ditpr_id, include_decommissioned, include_ditpr_metrics, include_package, policy, registration_type, reports_for_scorecard, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_systems_with_http_info(self, coams_id : Annotated[Optional[StrictStr], Field(description="**COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).")] = None, ditpr_id : Annotated[Optional[StrictStr], Field(description="**DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).")] = None, include_decommissioned : Annotated[Optional[StrictBool], Field(description="**Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.")] = None, include_ditpr_metrics : Annotated[Optional[StrictBool], Field(description="**Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.")] = None, include_package : Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None, policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, registration_type : Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None, reports_for_scorecard : Annotated[Optional[StrictBool], Field(description="**DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_systems_with_http_info(
+        self,
+        coams_id: Annotated[Optional[StrictStr], Field(description="**COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).")] = None,
+        ditpr_id: Annotated[Optional[StrictStr], Field(description="**DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).")] = None,
+        include_decommissioned: Annotated[Optional[StrictBool], Field(description="**Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.")] = None,
+        include_ditpr_metrics: Annotated[Optional[StrictBool], Field(description="**Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.")] = None,
+        include_package: Annotated[Optional[StrictBool], Field(description="**Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information")] = None,
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        registration_type: Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None,
+        reports_for_scorecard: Annotated[Optional[StrictBool], Field(description="**DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get system information  # noqa: E501
 
         Returns all system(s) that match the query parameters  # noqa: E501

@@ -11,8 +11,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -51,7 +51,7 @@ import emass_client
 
 Execute `pytest` to run the tests.
 
-__version__ = "3.11.1"
+__version__ = "3.12.0"
 
 # import apis into sdk package
 from emass_client.api.artifacts_api import ArtifactsApi

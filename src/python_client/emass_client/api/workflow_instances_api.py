@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -86,7 +86,15 @@ class WorkflowInstancesApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system_workflow_instances(self, include_comments : Annotated[Optional[StrictBool], Field(description="**Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. ")] = None, include_decommission_systems : Annotated[Optional[StrictBool], Field(description="**Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. ")] = None, since_date : Annotated[Optional[StrictStr], Field(description="**Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. ")] = None, status : Annotated[Optional[StrictStr], Field(description="**Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. ")] = None, **kwargs) -> WorkflowInstancesResponseGet:  # noqa: E501
+    def get_system_workflow_instances(
+        self,
+        include_comments: Annotated[Optional[StrictBool], Field(description="**Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. ")] = None,
+        include_decommission_systems: Annotated[Optional[StrictBool], Field(description="**Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. ")] = None,
+        since_date: Annotated[Optional[StrictStr], Field(description="**Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. ")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="**Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. ")] = None,
+        **kwargs,
+    ) -> WorkflowInstancesResponseGet:
         """Get workflow instances in a site  # noqa: E501
 
         View detailed information on all active and historical workflows filtered by provided parameters.  # noqa: E501
@@ -124,7 +132,15 @@ class WorkflowInstancesApi:
         return self.get_system_workflow_instances_with_http_info(include_comments, include_decommission_systems, page_index, since_date, status, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_workflow_instances_with_http_info(self, include_comments : Annotated[Optional[StrictBool], Field(description="**Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. ")] = None, include_decommission_systems : Annotated[Optional[StrictBool], Field(description="**Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. ")] = None, since_date : Annotated[Optional[StrictStr], Field(description="**Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. ")] = None, status : Annotated[Optional[StrictStr], Field(description="**Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_workflow_instances_with_http_info(
+        self,
+        include_comments: Annotated[Optional[StrictBool], Field(description="**Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. ")] = None,
+        include_decommission_systems: Annotated[Optional[StrictBool], Field(description="**Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. ")] = None,
+        since_date: Annotated[Optional[StrictStr], Field(description="**Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. ")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="**Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get workflow instances in a site  # noqa: E501
 
         View detailed information on all active and historical workflows filtered by provided parameters.  # noqa: E501
@@ -265,7 +281,11 @@ class WorkflowInstancesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_workflow_instances_by_workflow_instance_id(self, workflow_instance_id : Annotated[StrictInt, Field(description="**Workflow Instance Id**: The unique workflow definition identifier.")], **kwargs) -> WorkflowInstanceResponseGet:  # noqa: E501
+    def get_system_workflow_instances_by_workflow_instance_id(
+        self,
+        workflow_instance_id: Annotated[StrictInt, Field(description="**Workflow Instance Id**: The unique workflow definition identifier.")],
+        **kwargs,
+    ) -> WorkflowInstanceResponseGet:
         """Get workflow instance by ID  # noqa: E501
 
         View detailed historical workflow information for `workflowInstanceId`.  # noqa: E501
@@ -295,7 +315,11 @@ class WorkflowInstancesApi:
         return self.get_system_workflow_instances_by_workflow_instance_id_with_http_info(workflow_instance_id, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_workflow_instances_by_workflow_instance_id_with_http_info(self, workflow_instance_id : Annotated[StrictInt, Field(description="**Workflow Instance Id**: The unique workflow definition identifier.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_workflow_instances_by_workflow_instance_id_with_http_info(
+        self,
+        workflow_instance_id: Annotated[StrictInt, Field(description="**Workflow Instance Id**: The unique workflow definition identifier.")],
+        **kwargs,
+    ) -> ApiResponse:
         """Get workflow instance by ID  # noqa: E501
 
         View detailed historical workflow information for `workflowInstanceId`.  # noqa: E501

@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -84,7 +84,14 @@ class HardwareBaselineDashboardsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system_hardware_details(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> object:  # noqa: E501
+    def get_system_hardware_details(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> object:
         """System Hardware Details  # noqa: E501
 
         Get system hardware details dashboard information.  # noqa: E501
@@ -120,7 +127,14 @@ class HardwareBaselineDashboardsApi:
         return self.get_system_hardware_details_with_http_info(org_id, excludeinherited, page_index, page_size, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_hardware_details_with_http_info(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_hardware_details_with_http_info(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """System Hardware Details  # noqa: E501
 
         Get system hardware details dashboard information.  # noqa: E501
@@ -255,7 +269,14 @@ class HardwareBaselineDashboardsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_hardware_summary(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> object:  # noqa: E501
+    def get_system_hardware_summary(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> object:
         """System Hardware Summary  # noqa: E501
 
         Get system hardware summary dashboard information.  # noqa: E501
@@ -291,7 +312,14 @@ class HardwareBaselineDashboardsApi:
         return self.get_system_hardware_summary_with_http_info(org_id, excludeinherited, page_index, page_size, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_hardware_summary_with_http_info(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_hardware_summary_with_http_info(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """System Hardware Summary  # noqa: E501
 
         Get system hardware summary dashboard information.  # noqa: E501

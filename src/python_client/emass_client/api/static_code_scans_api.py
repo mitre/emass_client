@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -84,7 +84,12 @@ class StaticCodeScansApi:
         self.api_client = api_client
 
     @validate_call
-    def add_static_code_scans_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], static_code_request_post_body : Annotated[StaticCodeRequestPostBody, Field(description="Add static code scans or Clear static code scans")], **kwargs) -> StaticCodeResponsePost:  # noqa: E501
+    def add_static_code_scans_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        static_code_request_post_body: Annotated[StaticCodeRequestPostBody, Field(description="Add static code scans or Clear static code scans")],
+        **kwargs,
+    ) -> StaticCodeResponsePost:
         """Upload static code scans or Clear static code scans  # noqa: E501
 
         Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```  # noqa: E501
@@ -116,7 +121,12 @@ class StaticCodeScansApi:
         return self.add_static_code_scans_by_system_id_with_http_info(system_id, static_code_request_post_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_static_code_scans_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], static_code_request_post_body : Annotated[StaticCodeRequestPostBody, Field(description="Add static code scans or Clear static code scans")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_static_code_scans_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        static_code_request_post_body: Annotated[StaticCodeRequestPostBody, Field(description="Add static code scans or Clear static code scans")],
+        **kwargs,
+    ) -> ApiResponse:
         """Upload static code scans or Clear static code scans  # noqa: E501
 
         Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```  # noqa: E501

@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -85,7 +85,12 @@ class WorkflowDefinitionsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_workflow_definitions(self, include_inactive : Annotated[Optional[StrictBool], Field(description="**Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions.")] = None, registration_type : Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None, **kwargs) -> WorkflowDefinitionResponseGet:  # noqa: E501
+    def get_workflow_definitions(
+        self,
+        include_inactive: Annotated[Optional[StrictBool], Field(description="**Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions.")] = None,
+        registration_type: Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None,
+        **kwargs,
+    ) -> WorkflowDefinitionResponseGet:
         """Get workflow definitions in a site  # noqa: E501
 
         View all workflow schemas available on the eMASS instance filtered by  status `includeInactive` and registration type `registrationType`.  # noqa: E501
@@ -117,7 +122,12 @@ class WorkflowDefinitionsApi:
         return self.get_workflow_definitions_with_http_info(include_inactive, registration_type, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_workflow_definitions_with_http_info(self, include_inactive : Annotated[Optional[StrictBool], Field(description="**Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions.")] = None, registration_type : Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_workflow_definitions_with_http_info(
+        self,
+        include_inactive: Annotated[Optional[StrictBool], Field(description="**Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions.")] = None,
+        registration_type: Annotated[Optional[StrictStr], Field(description="**Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get workflow definitions in a site  # noqa: E501
 
         View all workflow schemas available on the eMASS instance filtered by  status `includeInactive` and registration type `registrationType`.  # noqa: E501

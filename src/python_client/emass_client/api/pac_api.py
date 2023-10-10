@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -87,7 +87,12 @@ class PACApi:
         self.api_client = api_client
 
     @validate_call
-    def add_system_pac(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add system package to PAC for review")], **kwargs) -> PacResponsePost:  # noqa: E501
+    def add_system_pac(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add system package to PAC for review")],
+        **kwargs,
+    ) -> PacResponsePost:
         """Initiate system workflow for review  # noqa: E501
 
         Adds a Package Approval Chain (PAC) for given `systemId` path parameter  **Request Body Required Fields** - `workflow` - `name` - `comments`  # noqa: E501
@@ -119,7 +124,12 @@ class PACApi:
         return self.add_system_pac_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_system_pac_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add system package to PAC for review")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_system_pac_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add system package to PAC for review")],
+        **kwargs,
+    ) -> ApiResponse:
         """Initiate system workflow for review  # noqa: E501
 
         Adds a Package Approval Chain (PAC) for given `systemId` path parameter  **Request Body Required Fields** - `workflow` - `name` - `comments`  # noqa: E501
@@ -250,7 +260,11 @@ class PACApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_pac(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], **kwargs) -> PacResponseGet:  # noqa: E501
+    def get_system_pac(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        **kwargs,
+    ) -> PacResponseGet:
         """Get status of active workflows in a system  # noqa: E501
 
         Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.  # noqa: E501
@@ -280,7 +294,11 @@ class PACApi:
         return self.get_system_pac_with_http_info(system_id, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_pac_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_pac_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        **kwargs,
+    ) -> ApiResponse:
         """Get status of active workflows in a system  # noqa: E501
 
         Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.  # noqa: E501

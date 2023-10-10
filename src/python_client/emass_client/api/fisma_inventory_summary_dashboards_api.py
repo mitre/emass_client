@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -84,7 +84,14 @@ class FISMAInventorySummaryDashboardsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_va_system_fisma_invetory_crypto_summary(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> object:  # noqa: E501
+    def get_va_system_fisma_invetory_crypto_summary(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> object:
         """VA System FISMA Inventory Crypto Summary  # noqa: E501
 
         Get VA system FISMA inventory crypto summary dashboard information.  # noqa: E501
@@ -120,7 +127,14 @@ class FISMAInventorySummaryDashboardsApi:
         return self.get_va_system_fisma_invetory_crypto_summary_with_http_info(org_id, excludeinherited, page_index, page_size, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_va_system_fisma_invetory_crypto_summary_with_http_info(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_va_system_fisma_invetory_crypto_summary_with_http_info(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """VA System FISMA Inventory Crypto Summary  # noqa: E501
 
         Get VA system FISMA inventory crypto summary dashboard information.  # noqa: E501
@@ -255,7 +269,14 @@ class FISMAInventorySummaryDashboardsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_va_system_fisma_invetory_summary(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> object:  # noqa: E501
+    def get_va_system_fisma_invetory_summary(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> object:
         """VA System FISMA Inventory Summary  # noqa: E501
 
         Get VA system FISMA inventory summary dashboard information.  # noqa: E501
@@ -291,7 +312,14 @@ class FISMAInventorySummaryDashboardsApi:
         return self.get_va_system_fisma_invetory_summary_with_http_info(org_id, excludeinherited, page_index, page_size, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_va_system_fisma_invetory_summary_with_http_info(self, org_id : Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")], excludeinherited : Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None, page_index : Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None, page_size : Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_va_system_fisma_invetory_summary_with_http_info(
+        self,
+        org_id: Annotated[StrictInt, Field(description="**Organization Id**: The unique organization identifier.")],
+        excludeinherited: Annotated[Optional[StrictBool], Field(description="**Exclude Inherited**: If no value is specified, the default returns false to include inherited data. ")] = None,
+        page_index: Annotated[Optional[StrictInt], Field(description="**Page Index**: If no value is specified, the default returns results from the first page with an index of 0. ")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="**Page Size**: If no value is specified, the default returns 20000 per page. ")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """VA System FISMA Inventory Summary  # noqa: E501
 
         Get VA system FISMA inventory summary dashboard information.  # noqa: E501

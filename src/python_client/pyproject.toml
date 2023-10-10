@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "emass_client"
-version = "3.11.1"
+version = "3.12.0"
 description = "Enterprise Mission Assurance Support Service (eMASS)"
 authors = ["eMASS Tier III support <disa.meade.id.mbx.emass-tier-iii-support@mail.mil>"]
 license = "Apache-2.0"

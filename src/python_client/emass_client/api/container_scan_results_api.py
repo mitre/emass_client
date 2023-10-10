@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -88,7 +88,12 @@ class ContainerScanResultsApi:
         self.api_client = api_client
 
     @validate_call
-    def add_container_sans_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add containers and their scan results")], **kwargs) -> ContainersResponsePost:  # noqa: E501
+    def add_container_sans_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add containers and their scan results")],
+        **kwargs,
+    ) -> ContainersResponsePost:
         """Add one or many containers and their scan results  # noqa: E501
 
         Add containers and their scan results in the assets module for a system `systemId`.  **Request Body Required Fields** - `containerId` - `containerName` - `time` - Bench Marks Object Array `benchmarks`   - `benchmark`   - Results Object Array `results`     - `ruleId`     - `status`     - `lastSeen`  **Example Request Body Required Fields** ``` [   {     \"containerId\": \"container identification\",     \"containerName\": \"container name\",     \"time\": Datetime of scan/result (1648217219),     \"benchmarks\": [       {          \"benchmark\": \"RHEL_8_STIG\",         \"results\": [            {              \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }, {             \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }         ]       }     ]   } ] ````  # noqa: E501
@@ -120,7 +125,12 @@ class ContainerScanResultsApi:
         return self.add_container_sans_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_container_sans_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add containers and their scan results")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_container_sans_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add containers and their scan results")],
+        **kwargs,
+    ) -> ApiResponse:
         """Add one or many containers and their scan results  # noqa: E501
 
         Add containers and their scan results in the assets module for a system `systemId`.  **Request Body Required Fields** - `containerId` - `containerName` - `time` - Bench Marks Object Array `benchmarks`   - `benchmark`   - Results Object Array `results`     - `ruleId`     - `status`     - `lastSeen`  **Example Request Body Required Fields** ``` [   {     \"containerId\": \"container identification\",     \"containerName\": \"container name\",     \"time\": Datetime of scan/result (1648217219),     \"benchmarks\": [       {          \"benchmark\": \"RHEL_8_STIG\",         \"results\": [            {              \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }, {             \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }         ]       }     ]   } ] ````  # noqa: E501
@@ -251,7 +261,12 @@ class ContainerScanResultsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def delete_container_sans(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], container_resources_delete_body_inner : Annotated[List[ContainerResourcesDeleteBodyInner], Field(description="Delete the given Container Scan Id")], **kwargs) -> ContainersResponseDelete:  # noqa: E501
+    def delete_container_sans(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        container_resources_delete_body_inner: Annotated[List[ContainerResourcesDeleteBodyInner], Field(description="Delete the given Container Scan Id")],
+        **kwargs,
+    ) -> ContainersResponseDelete:
         """Remove one or many containers in a system  # noqa: E501
 
         Removes container scan resources and their scan results in the assets module for a system `systemId`  # noqa: E501
@@ -283,7 +298,12 @@ class ContainerScanResultsApi:
         return self.delete_container_sans_with_http_info(system_id, container_resources_delete_body_inner, **kwargs)  # noqa: E501
 
     @validate_call
-    def delete_container_sans_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], container_resources_delete_body_inner : Annotated[List[ContainerResourcesDeleteBodyInner], Field(description="Delete the given Container Scan Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_container_sans_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        container_resources_delete_body_inner: Annotated[List[ContainerResourcesDeleteBodyInner], Field(description="Delete the given Container Scan Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Remove one or many containers in a system  # noqa: E501
 
         Removes container scan resources and their scan results in the assets module for a system `systemId`  # noqa: E501

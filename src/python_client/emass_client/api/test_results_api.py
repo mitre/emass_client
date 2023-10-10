@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -87,7 +87,12 @@ class TestResultsApi:
         self.api_client = api_client
 
     @validate_call
-    def add_test_results_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add test results to a system (systemId)")], **kwargs) -> TestResultsResponsePost:  # noqa: E501
+    def add_test_results_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add test results to a system (systemId)")],
+        **kwargs,
+    ) -> TestResultsResponsePost:
         """Add one or many test results in a system  # noqa: E501
 
         Adds test results for given `systemId`  **Request Body Required Fields** - `testedBy` - `testDate` - `description` - `complianceStatus` - `assessmentProcedure`         # noqa: E501
@@ -119,7 +124,12 @@ class TestResultsApi:
         return self.add_test_results_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_test_results_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add test results to a system (systemId)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_test_results_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add test results to a system (systemId)")],
+        **kwargs,
+    ) -> ApiResponse:
         """Add one or many test results in a system  # noqa: E501
 
         Adds test results for given `systemId`  **Request Body Required Fields** - `testedBy` - `testDate` - `description` - `complianceStatus` - `assessmentProcedure`         # noqa: E501
@@ -250,7 +260,15 @@ class TestResultsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_test_results(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, latest_only : Annotated[Optional[StrictBool], Field(description="**Latest Results Only**: Indicates that only the latest test resultes are retrieved.")] = None, **kwargs) -> TestResultsResponseGet:  # noqa: E501
+    def get_system_test_results(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        latest_only: Annotated[Optional[StrictBool], Field(description="**Latest Results Only**: Indicates that only the latest test resultes are retrieved.")] = None,
+        **kwargs,
+    ) -> TestResultsResponseGet:
         """Get one or many test results in a system  # noqa: E501
 
         Returns system test results information for matching parameters.<br>  # noqa: E501
@@ -288,7 +306,15 @@ class TestResultsApi:
         return self.get_system_test_results_with_http_info(system_id, control_acronyms, assessment_procedures, ccis, latest_only, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_test_results_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, latest_only : Annotated[Optional[StrictBool], Field(description="**Latest Results Only**: Indicates that only the latest test resultes are retrieved.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_test_results_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        latest_only: Annotated[Optional[StrictBool], Field(description="**Latest Results Only**: Indicates that only the latest test resultes are retrieved.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get one or many test results in a system  # noqa: E501
 
         Returns system test results information for matching parameters.<br>  # noqa: E501

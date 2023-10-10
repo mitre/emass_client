@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -89,7 +89,16 @@ class ArtifactsApi:
         self.api_client = api_client
 
     @validate_call
-    def add_artifacts_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], zipper : Union[StrictBytes, StrictStr], is_bulk : Annotated[Optional[StrictBool], Field(description="**Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\" ")] = None, is_template : Optional[StrictBool] = None, type : Optional[StrictStr] = None, category : Optional[StrictStr] = None, **kwargs) -> ArtifactsResponsePutPost:  # noqa: E501
+    def add_artifacts_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        zipper: Union[StrictBytes, StrictStr],
+        is_bulk: Annotated[Optional[StrictBool], Field(description="**Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\" ")] = None,
+        is_template: Optional[StrictBool] = None,
+        type: Optional[StrictStr] = None,
+        category: Optional[StrictStr] = None,
+        **kwargs,
+    ) -> ArtifactsResponsePutPost:
         """Add one or many artifacts in a system  # noqa: E501
 
         <strong>Information</strong><br> The body of a request through the Artifacts POST endpoint accepts a single binary file. Two  Artifact POST methods are currently accepted: individual and bulk. Filename uniqueness within  an eMASS system will be enforced by the API for both methods. <br><br> For POST requests that should result in a single artifact, the request should include the file. <br><br> For POST requests that should result in the creation of many artifacts, the request should include  a single file with the extension \".zip\" only and the parameter isBulk should be set to true. This  .zip file should contain one or more files corresponding to existing artifacts or new artifacts that  will be created upon successful receipt. <br><br> Upon successful receipt of one or many artifacts, if a file is matched via filename to an artifact  existing within the application, the file associated with the artifact will be updated. If no artifact  is matched via filename to the application, a new artifact will be created with the following  default values. Any values not specified below will be null <ul>   <li>isTemplate: false</li>   <li>type: Other</li>   <li>category: Evidence</li> </ul> To update values other than the file itself, please submit a PUT request.<br>  <strong>Business Rules</strong><br> Artifact cannot be saved if the fields below exceed the following character limits: <ul>   <li>Filename - 1,000 characters</li>   <li>Name - 100 characters</li>   <li>Description - 10,000 characters</li>   <li>Reference Page Number - 50 characters</li> </ul> Artifact cannot be saved if the file does not have an allowable file extension/type:      .docx,.doc,.txt,.rtf,.xfdl,.xml,.mht,.mh,tml,.html,.htm,.pdf,.mdb,.accdb,.ppt,     .pptx,.xls,.xlsx,.csv,.log,.jpeg,.jpg,.tiff,.bmp,.tif,.png,.gif,.zip,.rar,.msg,     .vsd,.vsw,.vdx,.z{#},.ckl,.avi,.vsdx  Artifact version cannot be saved if an Artifact with the same file name (filename) already exist in the system.  Artifact cannot be saved if the file size exceeds 30MB.  Artifact cannot be saved if the following fields are missing data: <ul>   <li>Filename (filename)</li>   <li>Type (type)</li>   <li>Category (category)</li> </ul>  Artifact cannot be saved if the Last Review Date (`lastReviewedDate`) is set in the future.  # noqa: E501
@@ -129,7 +138,16 @@ class ArtifactsApi:
         return self.add_artifacts_by_system_id_with_http_info(system_id, zipper, is_bulk, is_template, type, category, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_artifacts_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], zipper : Union[StrictBytes, StrictStr], is_bulk : Annotated[Optional[StrictBool], Field(description="**Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\" ")] = None, is_template : Optional[StrictBool] = None, type : Optional[StrictStr] = None, category : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def add_artifacts_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        zipper: Union[StrictBytes, StrictStr],
+        is_bulk: Annotated[Optional[StrictBool], Field(description="**Is Bulk**: If no value is specified, the default is false, and an individual artifact file is expected.  When set to true, a .zip file is expected which  can contain multiple artifact files\" ")] = None,
+        is_template: Optional[StrictBool] = None,
+        type: Optional[StrictStr] = None,
+        category: Optional[StrictStr] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Add one or many artifacts in a system  # noqa: E501
 
         <strong>Information</strong><br> The body of a request through the Artifacts POST endpoint accepts a single binary file. Two  Artifact POST methods are currently accepted: individual and bulk. Filename uniqueness within  an eMASS system will be enforced by the API for both methods. <br><br> For POST requests that should result in a single artifact, the request should include the file. <br><br> For POST requests that should result in the creation of many artifacts, the request should include  a single file with the extension \".zip\" only and the parameter isBulk should be set to true. This  .zip file should contain one or more files corresponding to existing artifacts or new artifacts that  will be created upon successful receipt. <br><br> Upon successful receipt of one or many artifacts, if a file is matched via filename to an artifact  existing within the application, the file associated with the artifact will be updated. If no artifact  is matched via filename to the application, a new artifact will be created with the following  default values. Any values not specified below will be null <ul>   <li>isTemplate: false</li>   <li>type: Other</li>   <li>category: Evidence</li> </ul> To update values other than the file itself, please submit a PUT request.<br>  <strong>Business Rules</strong><br> Artifact cannot be saved if the fields below exceed the following character limits: <ul>   <li>Filename - 1,000 characters</li>   <li>Name - 100 characters</li>   <li>Description - 10,000 characters</li>   <li>Reference Page Number - 50 characters</li> </ul> Artifact cannot be saved if the file does not have an allowable file extension/type:      .docx,.doc,.txt,.rtf,.xfdl,.xml,.mht,.mh,tml,.html,.htm,.pdf,.mdb,.accdb,.ppt,     .pptx,.xls,.xlsx,.csv,.log,.jpeg,.jpg,.tiff,.bmp,.tif,.png,.gif,.zip,.rar,.msg,     .vsd,.vsw,.vdx,.z{#},.ckl,.avi,.vsdx  Artifact version cannot be saved if an Artifact with the same file name (filename) already exist in the system.  Artifact cannot be saved if the file size exceeds 30MB.  Artifact cannot be saved if the following fields are missing data: <ul>   <li>Filename (filename)</li>   <li>Type (type)</li>   <li>Category (category)</li> </ul>  Artifact cannot be saved if the Last Review Date (`lastReviewedDate`) is set in the future.  # noqa: E501
@@ -284,7 +302,12 @@ class ArtifactsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def delete_artifact(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], artifacts_request_delete_body_inner : Annotated[List[ArtifactsRequestDeleteBodyInner], Field(description="Delete artifact files for the given System Id")], **kwargs) -> ArtifactsResponseDel:  # noqa: E501
+    def delete_artifact(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        artifacts_request_delete_body_inner: Annotated[List[ArtifactsRequestDeleteBodyInner], Field(description="Delete artifact files for the given System Id")],
+        **kwargs,
+    ) -> ArtifactsResponseDel:
         """Remove one or many artifacts in a system  # noqa: E501
 
         Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt  # noqa: E501
@@ -316,7 +339,12 @@ class ArtifactsApi:
         return self.delete_artifact_with_http_info(system_id, artifacts_request_delete_body_inner, **kwargs)  # noqa: E501
 
     @validate_call
-    def delete_artifact_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], artifacts_request_delete_body_inner : Annotated[List[ArtifactsRequestDeleteBodyInner], Field(description="Delete artifact files for the given System Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_artifact_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        artifacts_request_delete_body_inner: Annotated[List[ArtifactsRequestDeleteBodyInner], Field(description="Delete artifact files for the given System Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Remove one or many artifacts in a system  # noqa: E501
 
         Remove the Artifact(s) matching `systemId` path parameter and request body artifact(s) file name<br><br> <b>Note:</b> Multiple files can be deleted by providing multiple file names at the CL (comma delimited)  Example: --files file1.txt, file2.txt  # noqa: E501
@@ -444,7 +472,16 @@ class ArtifactsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_artifacts(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], filename : Annotated[Optional[StrictStr], Field(description="**File Name**: The file name (to include file-extension).")] = None, control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, system_only : Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None, **kwargs) -> ArtifactsResponseGet:  # noqa: E501
+    def get_system_artifacts(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        filename: Annotated[Optional[StrictStr], Field(description="**File Name**: The file name (to include file-extension).")] = None,
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        system_only: Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None,
+        **kwargs,
+    ) -> ArtifactsResponseGet:
         """Get one or many artifacts in a system  # noqa: E501
 
         Returns selected artifacts matching parameters to include the file name containing the artifacts.  # noqa: E501
@@ -484,7 +521,16 @@ class ArtifactsApi:
         return self.get_system_artifacts_with_http_info(system_id, filename, control_acronyms, assessment_procedures, ccis, system_only, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_artifacts_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], filename : Annotated[Optional[StrictStr], Field(description="**File Name**: The file name (to include file-extension).")] = None, control_acronyms : Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None, assessment_procedures : Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None, ccis : Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None, system_only : Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_artifacts_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        filename: Annotated[Optional[StrictStr], Field(description="**File Name**: The file name (to include file-extension).")] = None,
+        control_acronyms: Annotated[Optional[StrictStr], Field(description="**Control Acronym**: Filter query by given system acronym (single value or comma separated).")] = None,
+        assessment_procedures: Annotated[Optional[StrictStr], Field(description="**Assessment Procedure**: Filter query by given Security Control Assessment Procedure (single value or comma separated).")] = None,
+        ccis: Annotated[Optional[StrictStr], Field(description="**CCI System**: Filter query by Control Correlation Identifiers (CCIs) (single value or comma separated).")] = None,
+        system_only: Annotated[Optional[StrictBool], Field(description="**Systems Only**: Indicates that only system(s) information is retrieved.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get one or many artifacts in a system  # noqa: E501
 
         Returns selected artifacts matching parameters to include the file name containing the artifacts.  # noqa: E501
@@ -631,7 +677,12 @@ class ArtifactsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def update_artifact_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="See `information` above for additional instructions")], **kwargs) -> ArtifactsResponsePutPost:  # noqa: E501
+    def update_artifact_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="See `information` above for additional instructions")],
+        **kwargs,
+    ) -> ArtifactsResponsePutPost:
         """Update one or many artifacts in a system  # noqa: E501
 
         Updates an artifact for given `systemId` path parameter<br><br>  **Request Body Required Fields** - `filename` - `isTemplate` - `type` - `category`  <strong>Information</strong><br> The PUT request will replace all existing data with the field/value combinations included in the request body.   If any fields are not included, the absent fields will become null.     The fields `name` and `isTemplate` are non-nullable fields. If not specified in the PUT command they will default to the following:   - `name=filename`   - `isTemplate=false`    Also, note that one-to-many fields (`controls` and `ccis`) will also be replaced with the values specified in the PUT.  If existing `control or cci` mappings exist in eMASS, the values in the PUT will not append, but  rather replace all existing control and cci mappings with the values in the request body.  # noqa: E501
@@ -663,7 +714,12 @@ class ArtifactsApi:
         return self.update_artifact_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def update_artifact_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="See `information` above for additional instructions")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_artifact_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="See `information` above for additional instructions")],
+        **kwargs,
+    ) -> ApiResponse:
         """Update one or many artifacts in a system  # noqa: E501
 
         Updates an artifact for given `systemId` path parameter<br><br>  **Request Body Required Fields** - `filename` - `isTemplate` - `type` - `category`  <strong>Information</strong><br> The PUT request will replace all existing data with the field/value combinations included in the request body.   If any fields are not included, the absent fields will become null.     The fields `name` and `isTemplate` are non-nullable fields. If not specified in the PUT command they will default to the following:   - `name=filename`   - `isTemplate=false`    Also, note that one-to-many fields (`controls` and `ccis`) will also be replaced with the values specified in the PUT.  If existing `control or cci` mappings exist in eMASS, the values in the PUT will not append, but  rather replace all existing control and cci mappings with the values in the request body.  # noqa: E501

@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -84,7 +84,13 @@ class ArtifactsExportApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system_artifacts_export(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], filename : Annotated[StrictStr, Field(description="**File Name**: The file name (to include file-extension).")], compress : Annotated[Optional[StrictBool], Field(description="**Compress File**: Determines if returned file is compressed.")] = None, **kwargs) -> bytearray:  # noqa: E501
+    def get_system_artifacts_export(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        filename: Annotated[StrictStr, Field(description="**File Name**: The file name (to include file-extension).")],
+        compress: Annotated[Optional[StrictBool], Field(description="**Compress File**: Determines if returned file is compressed.")] = None,
+        **kwargs,
+    ) -> bytearray:
         """Get the file of an artifact in a system  # noqa: E501
 
         <strong>Sample Responce</strong><br>  Binary file associated with given filename.<br>  If `compress` parameter is specified, zip archive of binary file associated with given filename.  # noqa: E501
@@ -118,7 +124,13 @@ class ArtifactsExportApi:
         return self.get_system_artifacts_export_with_http_info(system_id, filename, compress, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_artifacts_export_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], filename : Annotated[StrictStr, Field(description="**File Name**: The file name (to include file-extension).")], compress : Annotated[Optional[StrictBool], Field(description="**Compress File**: Determines if returned file is compressed.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_artifacts_export_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        filename: Annotated[StrictStr, Field(description="**File Name**: The file name (to include file-extension).")],
+        compress: Annotated[Optional[StrictBool], Field(description="**Compress File**: Determines if returned file is compressed.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get the file of an artifact in a system  # noqa: E501
 
         <strong>Sample Responce</strong><br>  Binary file associated with given filename.<br>  If `compress` parameter is specified, zip archive of binary file associated with given filename.  # noqa: E501

@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -86,7 +86,10 @@ class SystemRolesApi:
         self.api_client = api_client
 
     @validate_call
-    def get_system_roles(self, **kwargs) -> SystemRolesResponse:  # noqa: E501
+    def get_system_roles(
+        self,
+        **kwargs,
+    ) -> SystemRolesResponse:
         """Get available roles  # noqa: E501
 
         Returns all available roles  # noqa: E501
@@ -114,7 +117,10 @@ class SystemRolesApi:
         return self.get_system_roles_with_http_info(**kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_roles_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_roles_with_http_info(
+        self,
+        **kwargs,
+    ) -> ApiResponse:
         """Get available roles  # noqa: E501
 
         Returns all available roles  # noqa: E501
@@ -225,7 +231,13 @@ class SystemRolesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_roles_by_category_id(self, role_category : Annotated[StrictStr, Field(description="**Role Category**: The system role category been queried")], role : Annotated[StrictStr, Field(description="**Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.")], policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, **kwargs) -> SystemRolesCategoryResponse:  # noqa: E501
+    def get_system_roles_by_category_id(
+        self,
+        role_category: Annotated[StrictStr, Field(description="**Role Category**: The system role category been queried")],
+        role: Annotated[StrictStr, Field(description="**Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.")],
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        **kwargs,
+    ) -> SystemRolesCategoryResponse:
         """Get system roles  # noqa: E501
 
         Returns the role(s) data matching parameters.  # noqa: E501
@@ -259,7 +271,13 @@ class SystemRolesApi:
         return self.get_system_roles_by_category_id_with_http_info(role_category, role, policy, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_roles_by_category_id_with_http_info(self, role_category : Annotated[StrictStr, Field(description="**Role Category**: The system role category been queried")], role : Annotated[StrictStr, Field(description="**Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.")], policy : Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_roles_by_category_id_with_http_info(
+        self,
+        role_category: Annotated[StrictStr, Field(description="**Role Category**: The system role category been queried")],
+        role: Annotated[StrictStr, Field(description="**Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.")],
+        policy: Annotated[Optional[StrictStr], Field(description="**System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get system roles  # noqa: E501
 
         Returns the role(s) data matching parameters.  # noqa: E501

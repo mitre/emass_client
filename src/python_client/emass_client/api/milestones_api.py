@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -91,7 +91,13 @@ class MilestonesApi:
         self.api_client = api_client
 
     @validate_call
-    def add_milestone_by_system_id_and_poam_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], request_body : Annotated[List[object], Field(description="Add milestones to an existing system poam")], **kwargs) -> MilestoneResponsePost:  # noqa: E501
+    def add_milestone_by_system_id_and_poam_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add milestones to an existing system poam")],
+        **kwargs,
+    ) -> MilestoneResponsePost:
         """Add milestones to one or many POA&M items in a system  # noqa: E501
 
         Adds a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `description` - `scheduledCompletionDate`  # noqa: E501
@@ -125,7 +131,13 @@ class MilestonesApi:
         return self.add_milestone_by_system_id_and_poam_id_with_http_info(system_id, poam_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_milestone_by_system_id_and_poam_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], request_body : Annotated[List[object], Field(description="Add milestones to an existing system poam")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_milestone_by_system_id_and_poam_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add milestones to an existing system poam")],
+        **kwargs,
+    ) -> ApiResponse:
         """Add milestones to one or many POA&M items in a system  # noqa: E501
 
         Adds a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `description` - `scheduledCompletionDate`  # noqa: E501
@@ -262,7 +274,13 @@ class MilestonesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def delete_milestone(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], milestones_request_delete_body_inner : Annotated[List[MilestonesRequestDeleteBodyInner], Field(description="Delete the given Milestone Id")], **kwargs) -> MilestoneResponseDelete:  # noqa: E501
+    def delete_milestone(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        milestones_request_delete_body_inner: Annotated[List[MilestonesRequestDeleteBodyInner], Field(description="Delete the given Milestone Id")],
+        **kwargs,
+    ) -> MilestoneResponseDelete:
         """Remove milestones in a system for one or many POA&M items  # noqa: E501
 
         Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Requst Body  **Notes**<br> To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).  # noqa: E501
@@ -296,7 +314,13 @@ class MilestonesApi:
         return self.delete_milestone_with_http_info(system_id, poam_id, milestones_request_delete_body_inner, **kwargs)  # noqa: E501
 
     @validate_call
-    def delete_milestone_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], milestones_request_delete_body_inner : Annotated[List[MilestonesRequestDeleteBodyInner], Field(description="Delete the given Milestone Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_milestone_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        milestones_request_delete_body_inner: Annotated[List[MilestonesRequestDeleteBodyInner], Field(description="Delete the given Milestone Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Remove milestones in a system for one or many POA&M items  # noqa: E501
 
         Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Requst Body  **Notes**<br> To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).  # noqa: E501
@@ -430,7 +454,14 @@ class MilestonesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_milestones_by_poam_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], scheduled_completion_date_start : Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None, scheduled_completion_date_end : Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None, **kwargs) -> MilestoneResponseGet:  # noqa: E501
+    def get_system_milestones_by_poam_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        scheduled_completion_date_start: Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        scheduled_completion_date_end: Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        **kwargs,
+    ) -> MilestoneResponseGet:
         """Get milestones in one or many POA&M items in a system  # noqa: E501
 
         Returns system containing milestones for matching parameters.  # noqa: E501
@@ -466,7 +497,14 @@ class MilestonesApi:
         return self.get_system_milestones_by_poam_id_with_http_info(system_id, poam_id, scheduled_completion_date_start, scheduled_completion_date_end, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_milestones_by_poam_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], scheduled_completion_date_start : Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None, scheduled_completion_date_end : Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_milestones_by_poam_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        scheduled_completion_date_start: Annotated[Optional[StrictStr], Field(description="**Date Started**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        scheduled_completion_date_end: Annotated[Optional[StrictStr], Field(description="**Date Ended**: Filter query by the scheduled completion start date (Unix date format).")] = None,
+        **kwargs,
+    ) -> ApiResponse:
         """Get milestones in one or many POA&M items in a system  # noqa: E501
 
         Returns system containing milestones for matching parameters.  # noqa: E501
@@ -601,7 +639,13 @@ class MilestonesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def get_system_milestones_by_poam_id_and_milestone_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], milestone_id : Annotated[StrictInt, Field(description="**Milestone Id**: The unique milestone record identifier.")], **kwargs) -> MilestoneResponseGetMilestone:  # noqa: E501
+    def get_system_milestones_by_poam_id_and_milestone_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        milestone_id: Annotated[StrictInt, Field(description="**Milestone Id**: The unique milestone record identifier.")],
+        **kwargs,
+    ) -> MilestoneResponseGetMilestone:
         """Get milestone by ID in POA&M item in a system  # noqa: E501
 
         Returns systems containing milestones for matching parameters.  # noqa: E501
@@ -635,7 +679,13 @@ class MilestonesApi:
         return self.get_system_milestones_by_poam_id_and_milestone_id_with_http_info(system_id, poam_id, milestone_id, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_system_milestones_by_poam_id_and_milestone_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], milestone_id : Annotated[StrictInt, Field(description="**Milestone Id**: The unique milestone record identifier.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_system_milestones_by_poam_id_and_milestone_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        milestone_id: Annotated[StrictInt, Field(description="**Milestone Id**: The unique milestone record identifier.")],
+        **kwargs,
+    ) -> ApiResponse:
         """Get milestone by ID in POA&M item in a system  # noqa: E501
 
         Returns systems containing milestones for matching parameters.  # noqa: E501
@@ -764,7 +814,13 @@ class MilestonesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def update_milestone_by_system_id_and_poam_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], request_body : Annotated[List[object], Field(description="Update milestones for an existing system poam")], **kwargs) -> MilestoneResponsePut:  # noqa: E501
+    def update_milestone_by_system_id_and_poam_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update milestones for an existing system poam")],
+        **kwargs,
+    ) -> MilestoneResponsePut:
         """Update one or many POA&M items in a system  # noqa: E501
 
         Updates a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `milestoneId` - `description` - `scheduledCompletionDate`  # noqa: E501
@@ -798,7 +854,13 @@ class MilestonesApi:
         return self.update_milestone_by_system_id_and_poam_id_with_http_info(system_id, poam_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def update_milestone_by_system_id_and_poam_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], poam_id : Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")], request_body : Annotated[List[object], Field(description="Update milestones for an existing system poam")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_milestone_by_system_id_and_poam_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        poam_id: Annotated[StrictInt, Field(description="**POA&M Id**: The unique POA&M record identifier.")],
+        request_body: Annotated[List[object], Field(description="Update milestones for an existing system poam")],
+        **kwargs,
+    ) -> ApiResponse:
         """Update one or many POA&M items in a system  # noqa: E501
 
         Updates a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `milestoneId` - `description` - `scheduledCompletionDate`  # noqa: E501

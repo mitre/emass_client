@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -88,7 +88,12 @@ class CloudResourceResultsApi:
         self.api_client = api_client
 
     @validate_call
-    def add_cloud_resources_by_system_id(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add cloud resources and their scan results")], **kwargs) -> CloudResourcesResponsePost:  # noqa: E501
+    def add_cloud_resources_by_system_id(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add cloud resources and their scan results")],
+        **kwargs,
+    ) -> CloudResourcesResponsePost:
         """Add one or many cloud resources and their scan results  # noqa: E501
 
         Add cloud resources and their scan results in the assets module for a system `systemId`  **Request Body Required Fields** - `provider` - `resourceId` - `resourceName` - `resourceType` - Compliance Results Object Array `complianceResults`   - `cspPolicyDefinitionId`   - `isCompliant`   - `policyDefinitionTitle`  **Example Request Body Required Fields** ``` [    {      \"provider\": \"provide name\",     \"resourceId\": \"resource identification\",     \"resourceName\": \"resource name\",     \"resourceType\": \"resource type\",     \"complianceResults\": [        {          \"cspPolicyDefinitionId\": \"CSP policy definition identification\",         \"policyDefinitionTitle\": \"policy definition title\",         \"isCompliant\": [true or false]       }      ]    }  ] ```  # noqa: E501
@@ -120,7 +125,12 @@ class CloudResourceResultsApi:
         return self.add_cloud_resources_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
     @validate_call
-    def add_cloud_resources_by_system_id_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], request_body : Annotated[List[object], Field(description="Add cloud resources and their scan results")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_cloud_resources_by_system_id_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        request_body: Annotated[List[object], Field(description="Add cloud resources and their scan results")],
+        **kwargs,
+    ) -> ApiResponse:
         """Add one or many cloud resources and their scan results  # noqa: E501
 
         Add cloud resources and their scan results in the assets module for a system `systemId`  **Request Body Required Fields** - `provider` - `resourceId` - `resourceName` - `resourceType` - Compliance Results Object Array `complianceResults`   - `cspPolicyDefinitionId`   - `isCompliant`   - `policyDefinitionTitle`  **Example Request Body Required Fields** ``` [    {      \"provider\": \"provide name\",     \"resourceId\": \"resource identification\",     \"resourceName\": \"resource name\",     \"resourceType\": \"resource type\",     \"complianceResults\": [        {          \"cspPolicyDefinitionId\": \"CSP policy definition identification\",         \"policyDefinitionTitle\": \"policy definition title\",         \"isCompliant\": [true or false]       }      ]    }  ] ```  # noqa: E501
@@ -251,7 +261,12 @@ class CloudResourceResultsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_call
-    def delete_cloud_resources(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], cloud_resources_delete_body_inner : Annotated[List[CloudResourcesDeleteBodyInner], Field(description="Delete the given Cloud Resource Id")], **kwargs) -> CloudResourcesDelete:  # noqa: E501
+    def delete_cloud_resources(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        cloud_resources_delete_body_inner: Annotated[List[CloudResourcesDeleteBodyInner], Field(description="Delete the given Cloud Resource Id")],
+        **kwargs,
+    ) -> CloudResourcesDelete:
         """Remove one or many cloud resources in a system  # noqa: E501
 
         Removes cloud resources and their scan results in the assets module for a system `systemId`  # noqa: E501
@@ -283,7 +298,12 @@ class CloudResourceResultsApi:
         return self.delete_cloud_resources_with_http_info(system_id, cloud_resources_delete_body_inner, **kwargs)  # noqa: E501
 
     @validate_call
-    def delete_cloud_resources_with_http_info(self, system_id : Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")], cloud_resources_delete_body_inner : Annotated[List[CloudResourcesDeleteBodyInner], Field(description="Delete the given Cloud Resource Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_cloud_resources_with_http_info(
+        self,
+        system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
+        cloud_resources_delete_body_inner: Annotated[List[CloudResourcesDeleteBodyInner], Field(description="Delete the given Cloud Resource Id")],
+        **kwargs,
+    ) -> ApiResponse:
         """Remove one or many cloud resources in a system  # noqa: E501
 
         Removes cloud resources and their scan results in the assets module for a system `systemId`  # noqa: E501

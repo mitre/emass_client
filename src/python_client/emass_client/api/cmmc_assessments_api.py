@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -83,7 +83,11 @@ class CMMCAssessmentsApi:
         self.api_client = api_client
 
     @validate_call
-    def get_cmmc_assessments(self, since_date : Annotated[StrictStr, Field(description="**Date** CMMC date (Unix date format)")], **kwargs) -> CmmcResponseGet:  # noqa: E501
+    def get_cmmc_assessments(
+        self,
+        since_date: Annotated[StrictStr, Field(description="**Date** CMMC date (Unix date format)")],
+        **kwargs,
+    ) -> CmmcResponseGet:
         """Get CMMC assessment information  # noqa: E501
 
         Get all CMMC assessment after the given date `sinceDate` parameter. It is available to CMMC eMASS only.  # noqa: E501
@@ -113,7 +117,11 @@ class CMMCAssessmentsApi:
         return self.get_cmmc_assessments_with_http_info(since_date, **kwargs)  # noqa: E501
 
     @validate_call
-    def get_cmmc_assessments_with_http_info(self, since_date : Annotated[StrictStr, Field(description="**Date** CMMC date (Unix date format)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_cmmc_assessments_with_http_info(
+        self,
+        since_date: Annotated[StrictStr, Field(description="**Date** CMMC date (Unix date format)")],
+        **kwargs,
+    ) -> ApiResponse:
         """Get CMMC assessment information  # noqa: E501
 
         Get all CMMC assessment after the given date `sinceDate` parameter. It is available to CMMC eMASS only.  # noqa: E501

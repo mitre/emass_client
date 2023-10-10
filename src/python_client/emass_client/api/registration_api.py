@@ -9,8 +9,8 @@ Representational State Transfer (REST) Application Programming Interface (API) s
 This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
-- Package version: 3.11.1
-- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
+- Package version: 3.12.0
+- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
 
 ## Requirements.
 
@@ -79,7 +79,10 @@ class RegistrationApi:
         self.api_client = api_client
 
     @validate_call
-    def register_user(self, **kwargs) -> Register:  # noqa: E501
+    def register_user(
+        self,
+        **kwargs,
+    ) -> Register:
         """Register user certificate and obtain an API key  # noqa: E501
 
         Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.  # noqa: E501
@@ -107,7 +110,10 @@ class RegistrationApi:
         return self.register_user_with_http_info(**kwargs)  # noqa: E501
 
     @validate_call
-    def register_user_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def register_user_with_http_info(
+        self,
+        **kwargs,
+    ) -> ApiResponse:
         """Register user certificate and obtain an API key  # noqa: E501
 
         Returns the API Key (api-key) that must be provided in the request header for all endpoint calls.  # noqa: E501
