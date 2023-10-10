@@ -10,7 +10,7 @@ This Python package was generated from the eMASS API specification:
 
 - API version: v3.12
 - Package version: 3.11.1
-- Build date: 2023-10-10T00:32:11.514559Z[Etc/UTC]
+- Build date: 2023-10-10T02:05:20.537795Z[Etc/UTC]
 
 ## Requirements.
 
