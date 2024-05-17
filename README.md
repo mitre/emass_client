@@ -11,11 +11,15 @@ The eMASS client repository (```emass_client```) maintains the Enterprise Missio
 
 # Highlights
 ## [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/)
-The eMASS API is documented in YAML and can be viewed utilizing a multitude of visualization tools. Included is a dependency-free (and nice looking) rendering tool for viewing the API specification. The documentation is automatically generated using a Continuos Integration (CI) action [redoc-cli](https://www.npmjs.com/package/redoc-cli) command line tool.
+The eMASS API specification provides a broad understanding of how the API behaves and how the API links with an eMASS application instances. It explains how the API functions and the results to expect when using the API.
 
+## [eMASS API Getting Started](https://mitre.github.io/emass_client/docs/eMASSGettingStarted.md)
+Provides information on how to register the eMASS API with any eMASS application.
+    .
 
 ## [eMASS API Viewer](https://mitre.github.io/emass_client/docs/renderer/)
-This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please reference [Developers Instruction](docs/developers.md) on how to setup a local mock server
+Allows interaction with the API’s resources without having any of the implementation logic in place. A local mock servers cn also be used, please reference [Developers Instruction](docs/developers.md) on how to setup a local mock server.
+
 
 # eMASS API Clients Generation Process
 The executable packages (APIs) generated are used to access eMASS data and functionality by external third-party developers, business partners, or internal departments.

@@ -1,5 +1,18 @@
 name: Generate OpenAPI Clients
-# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
+# -----------------------------------------------------------------------------
+# Workflow action used to generate the eMASS API clients via the OpenAPI action
+# The clients are only generated if the eMASS specification file 
+# (eMASSRestOpenApi.yaml) has been modified. 
+#
+# Client generated are: Ruby, TypeScript, and Python
+# Publish the newly generated eMASS client API packages to the current repo
+#
+# Action is automatically trigger when: someone pushes to main
+# 
+# For testing use the PR name for 'branches:' - once done testing revert the
+# 'branches:' name to main
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 on:
   push:
     branches: [ main ]
@@ -23,7 +36,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v39
 
-      - name: Run a step if eMASSRestOpenApi.yaml was modified
+      - name: Run step if eMASSRestOpenApi.yaml was modified
         if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
         run: |
           echo "eMASSRestOpenApi.yaml file has been modified."
