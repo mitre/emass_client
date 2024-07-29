@@ -1,59 +1,36 @@
 # coding: utf-8
 
-## eMASS API v3.12 Specification
-
-The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
-Representational State Transfer (REST) Application Programming Interface (API) specifications.
+### eMASS API v3.12 Specification
+#The emass_client_api is a Python client that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)Representational State Transfer (REST) Application Programming Interface (API) specifications.
 
 
-This Python package was generated from the eMASS API specification:
+#This Python package was generated from the eMASS API specification:
+#- API version: v3.12- Package version: 3.12.0
+#- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
+### Requirements.
+#Python 
+### Installation & Usage### pip install
 
-- API version: v3.12
-- Package version: 3.12.0
-- Build date: 2023-10-10T14:36:02.975730Z[Etc/UTC]
+#If the python package is hosted on a repository, you can install directly using:
+#```shpip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+#```(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
-## Requirements.
+#Then import the package:```python
+#import emass_client#```
+#### Setuptools
+#Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
+#```shpython setup.py install --user
+#```(or `sudo python setup.py install` to install the package for all users)
 
-Python 
-
-## Installation & Usage
-### pip install
-
-If the python package is hosted on a repository, you can install directly using:
-
-```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
-
-Then import the package:
-```python
-import emass_client
-```
-
-### Setuptools
-
-Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
-
-```sh
-python setup.py install --user
-```
-(or `sudo python setup.py install` to install the package for all users)
-
-Then import the package:
-```python
-import emass_client
-```
-
-### Tests
-
-Execute `pytest` to run the tests.
-
+#Then import the package:```python
+#import emass_client#```
+#### Tests
+#Execute `pytest` to run the tests.
 import re  # noqa: F401
 import io
 import warnings
 
-from pydantic import validate_call, ValidationError
+from pydantic import ValidationError
 from typing import Dict, List, Optional, Tuple
 
 from pydantic import Field
@@ -88,7 +65,6 @@ class ArtifactsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_call
     def add_artifacts_by_system_id(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -137,7 +113,6 @@ class ArtifactsApi:
             raise ValueError(message)
         return self.add_artifacts_by_system_id_with_http_info(system_id, zipper, is_bulk, is_template, type, category, **kwargs)  # noqa: E501
 
-    @validate_call
     def add_artifacts_by_system_id_with_http_info(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -301,7 +276,6 @@ class ArtifactsApi:
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
-    @validate_call
     def delete_artifact(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -338,7 +312,6 @@ class ArtifactsApi:
             raise ValueError(message)
         return self.delete_artifact_with_http_info(system_id, artifacts_request_delete_body_inner, **kwargs)  # noqa: E501
 
-    @validate_call
     def delete_artifact_with_http_info(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -471,7 +444,6 @@ class ArtifactsApi:
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
-    @validate_call
     def get_system_artifacts(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -520,7 +492,6 @@ class ArtifactsApi:
             raise ValueError(message)
         return self.get_system_artifacts_with_http_info(system_id, filename, control_acronyms, assessment_procedures, ccis, system_only, **kwargs)  # noqa: E501
 
-    @validate_call
     def get_system_artifacts_with_http_info(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -676,7 +647,6 @@ class ArtifactsApi:
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
-    @validate_call
     def update_artifact_by_system_id(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
@@ -713,7 +683,6 @@ class ArtifactsApi:
             raise ValueError(message)
         return self.update_artifact_by_system_id_with_http_info(system_id, request_body, **kwargs)  # noqa: E501
 
-    @validate_call
     def update_artifact_by_system_id_with_http_info(
         self,
         system_id: Annotated[StrictInt, Field(description="**System Id**: The unique system record identifier.")],
