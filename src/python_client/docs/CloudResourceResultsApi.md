@@ -13,16 +13,44 @@ Method | HTTP request | Description
 
 Add one or many cloud resources and their scan results
 
-Add cloud resources and their scan results in the assets module for a system `systemId`  **Request Body Required Fields** - `provider` - `resourceId` - `resourceName` - `resourceType` - Compliance Results Object Array `complianceResults`   - `cspPolicyDefinitionId`   - `isCompliant`   - `policyDefinitionTitle`  **Example Request Body Required Fields** ``` [    {      \"provider\": \"provide name\",     \"resourceId\": \"resource identification\",     \"resourceName\": \"resource name\",     \"resourceType\": \"resource type\",     \"complianceResults\": [        {          \"cspPolicyDefinitionId\": \"CSP policy definition identification\",         \"policyDefinitionTitle\": \"policy definition title\",         \"isCompliant\": [true or false]       }      ]    }  ] ```
+Add cloud resources and their scan results in the assets module for a system `systemId`
+
+**Request Body Required Fields**
+- `provider`
+- `resourceId`
+- `resourceName`
+- `resourceType`
+- `complianceResults` (Object Array)
+  - `cspPolicyDefinitionId`
+  - `isCompliant`
+  - `policyDefinitionTitle`
+
+**Example Request Body Required Fields**
+```
+[
+  {
+    "provider": "provide name",
+    "resourceId": "resource identification",
+    "resourceName": "resource name",
+    "resourceType": "resource type",
+    "complianceResults": [
+      {
+        "cspPolicyDefinitionId": "CSP policy definition identification",
+        "policyDefinitionTitle": "policy definition title",
+        "isCompliant": [true or false]
+      }
+    ]
+  }
+]
+```
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.cloud_resources_response_post import CloudResourcesResponsePost
 from emass_client.models.object import object
@@ -63,7 +91,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.CloudResourceResultsApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    request_body = None # List[object] | Add cloud resources and their scan results
+    request_body = None # List[object] | Example request body for adding cloud resources and their scan results
 
     try:
         # Add one or many cloud resources and their scan results
@@ -78,10 +106,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add cloud resources and their scan results | 
+ **request_body** | [**List[object]**](object.md)| Example request body for adding cloud resources and their scan results | 
 
 ### Return type
 
@@ -97,9 +126,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -123,9 +153,8 @@ Removes cloud resources and their scan results in the assets module for a system
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.cloud_resources_delete import CloudResourcesDelete
 from emass_client.models.cloud_resources_delete_body_inner import CloudResourcesDeleteBodyInner
@@ -181,6 +210,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -200,9 +230,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful operation |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

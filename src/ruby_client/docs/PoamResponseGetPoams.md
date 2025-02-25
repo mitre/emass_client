@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **meta** | [**Response200**](Response200.md) |  | [optional] |
-| **data** | [**PoamGet**](PoamGet.md) |  | [optional] |
+| **data** | [**PoamResponseGetPoamsData**](PoamResponseGetPoamsData.md) |  | [optional] |
 
 ## Example
 

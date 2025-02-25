@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **system_id** | **int** | The system identifier that the POAM was added. | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of MilestonesPutPostDelete from a JSON string
 milestones_put_post_delete_instance = MilestonesPutPostDelete.from_json(json)
 # print the JSON string representation of the object
-print MilestonesPutPostDelete.to_json()
+print(MilestonesPutPostDelete.to_json())
 
 # convert the object into a dict
 milestones_put_post_delete_dict = milestones_put_post_delete_instance.to_dict()
 # create an instance of MilestonesPutPostDelete from a dict
-milestones_put_post_delete_form_dict = milestones_put_post_delete.from_dict(milestones_put_post_delete_dict)
+milestones_put_post_delete_from_dict = MilestonesPutPostDelete.from_dict(milestones_put_post_delete_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**Response200**](Response200.md) |  | [optional] 
@@ -17,12 +18,12 @@ json = "{}"
 # create an instance of MilestoneResponseDelete from a JSON string
 milestone_response_delete_instance = MilestoneResponseDelete.from_json(json)
 # print the JSON string representation of the object
-print MilestoneResponseDelete.to_json()
+print(MilestoneResponseDelete.to_json())
 
 # convert the object into a dict
 milestone_response_delete_dict = milestone_response_delete_instance.to_dict()
 # create an instance of MilestoneResponseDelete from a dict
-milestone_response_delete_form_dict = milestone_response_delete.from_dict(milestone_response_delete_dict)
+milestone_response_delete_from_dict = MilestoneResponseDelete.from_dict(milestone_response_delete_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

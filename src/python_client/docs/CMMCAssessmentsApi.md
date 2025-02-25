@@ -12,16 +12,16 @@ Method | HTTP request | Description
 
 Get CMMC assessment information
 
-Get all CMMC assessment after the given date `sinceDate` parameter. It is available to CMMC eMASS only.
+Get all CMMC assessment after the given date `sinceDate` parameter. It is available
+to CMMC eMASS only.
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.cmmc_response_get import CmmcResponseGet
 from emass_client.rest import ApiException
@@ -75,6 +75,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **since_date** | **str**| **Date** CMMC date (Unix date format) | 
@@ -93,9 +94,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

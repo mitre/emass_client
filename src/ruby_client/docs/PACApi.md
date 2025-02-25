@@ -24,24 +24,24 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::PACApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Add system package to PAC for review
+request_body = [3.56] # Array<Object> | Example request body for adding system package to PAC for review
 
 begin
   # Initiate system workflow for review
@@ -75,7 +75,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Add system package to PAC for review |  |
+| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Example request body for adding system package to PAC for review |  |
 
 ### Return type
 
@@ -97,7 +97,7 @@ end
 
 Get status of active workflows in a system
 
-Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.
+Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **NOTES:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow. - If there are no active workflows, then a null data member will be returned.
 
 ### Examples
 
@@ -107,19 +107,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::PACApi.new

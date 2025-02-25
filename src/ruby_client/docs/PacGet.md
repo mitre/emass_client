@@ -10,6 +10,7 @@
 | **current_stage** | **Integer** | [Read-Only] Number of the current stage in the active workflow. | [optional] |
 | **total_stages** | **Integer** | [Read-Only] Total number of stages in the active workflow. | [optional] |
 | **days_at_current_stage** | **Integer** | [Read-Only] Indicates the number of days at current workflow stage. | [optional] |
+| **comments** | **String** | [Required]] Comments submitted upon initiation of the indicated workflow. Character Limit &#x3D; 4,000. | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = EmassClient::PacGet.new(
   current_stage_name: SCA-R,
   current_stage: 4,
   total_stages: 6,
-  days_at_current_stage: 2
+  days_at_current_stage: 2,
+  comments: PAC initial submition comments
 )
 ```
 

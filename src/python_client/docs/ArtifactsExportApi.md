@@ -12,16 +12,17 @@ Method | HTTP request | Description
 
 Get the file of an artifact in a system
 
-<strong>Sample Responce</strong><br>  Binary file associated with given filename.<br>  If `compress` parameter is specified, zip archive of binary file associated with given filename.
+<strong>Sample Responce</strong><br>
+ Binary file associated with given filename.<br>
+ If `compress` parameter is specified, zip archive of binary file associated with given filename.
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.rest import ApiException
 from pprint import pprint
@@ -76,6 +77,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -96,6 +98,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful retrieved Artifacts file |  -  |

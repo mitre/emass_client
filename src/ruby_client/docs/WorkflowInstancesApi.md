@@ -24,28 +24,28 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::WorkflowInstancesApi.new
 opts = {
-  include_comments: true, # Boolean | **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
+  include_comments: true, # Boolean | **Include Comments**: If no value is specified, the default returns true to not include transition comments. Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization. 
   include_decommission_systems: true, # Boolean | **Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems. 
-  page_index: 56, # Integer | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances. 
-  since_date: '1638764040', # String | **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made. 
-  status: 'active' # String | **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
+  page_index: 56, # Integer | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0. **Note:** Pages contain 1000 workflow instances. 
+  since_date: '1638764040', # String | **Date**: Filter on authorization/assessment date (Unix date format). Note: Filters off the lastEditedDate field. Note: The authorization/assessment decisions on completed workflows can be edited for up to 30 days after the initial decision is made. 
+  status: 'active' # String | **Status**: Filter by status. If no value is specified, the default returns all to include both active and inactive workflows. Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active. 
 }
 
 begin
@@ -79,11 +79,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **include_comments** | **Boolean** | **Include Comments**: If no value is specified, the default returns true to not include transition comments.  Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization.  | [optional][default to true] |
+| **include_comments** | **Boolean** | **Include Comments**: If no value is specified, the default returns true to not include transition comments. Note: Corresponds to the Comments textbox that is required at most workflow transitions. Does not include other text input fields such as Terms / Conditions for Authorization.  | [optional][default to true] |
 | **include_decommission_systems** | **Boolean** | **Include Decommission Systems**: If no value is specified, the default returns false to exclude decommissioned systems.  | [optional][default to false] |
-| **page_index** | **Integer** | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0.  **Note:** Pages contain 1000 workflow instances.  | [optional][default to 0] |
-| **since_date** | **String** | **Date**: Filter on authorization/assessment date (Unix date format).  Note: Filters off the lastEditedDate field.  Note: The authorization/assessment decisions on completed workflows  can be edited for up to 30 days after the initial decision is made.  | [optional] |
-| **status** | **String** | **Status**: Filter by status.  If no value is specified, the default returns all to include both active and inactive workflows.  Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active.  | [optional][default to &#39;all&#39;] |
+| **page_index** | **Integer** | **Page Index**: If no value is specified, the default returns results from the first page with an index of 0. **Note:** Pages contain 1000 workflow instances.  | [optional][default to 0] |
+| **since_date** | **String** | **Date**: Filter on authorization/assessment date (Unix date format). Note: Filters off the lastEditedDate field. Note: The authorization/assessment decisions on completed workflows can be edited for up to 30 days after the initial decision is made.  | [optional] |
+| **status** | **String** | **Status**: Filter by status. If no value is specified, the default returns all to include both active and inactive workflows. Note: Any workflows at a current stage of Complete or Cancelled are inactive. Ongoing workflows currently at other stages are active.  | [optional][default to &#39;all&#39;] |
 
 ### Return type
 
@@ -115,19 +115,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::WorkflowInstancesApi.new

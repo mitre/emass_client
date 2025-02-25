@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workflow_uid** | **str** | [Read-Only] Unique workflow definition identifier. | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of WorkflowDefinitionGet from a JSON string
 workflow_definition_get_instance = WorkflowDefinitionGet.from_json(json)
 # print the JSON string representation of the object
-print WorkflowDefinitionGet.to_json()
+print(WorkflowDefinitionGet.to_json())
 
 # convert the object into a dict
 workflow_definition_get_dict = workflow_definition_get_instance.to_dict()
 # create an instance of WorkflowDefinitionGet from a dict
-workflow_definition_get_form_dict = workflow_definition_get.from_dict(workflow_definition_get_dict)
+workflow_definition_get_from_dict = WorkflowDefinitionGet.from_dict(workflow_definition_get_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

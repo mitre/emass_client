@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **raw_severity** | **str** | [Optional] Scan vulnerability ratting | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of StaticCodeApplicationPost from a JSON string
 static_code_application_post_instance = StaticCodeApplicationPost.from_json(json)
 # print the JSON string representation of the object
-print StaticCodeApplicationPost.to_json()
+print(StaticCodeApplicationPost.to_json())
 
 # convert the object into a dict
 static_code_application_post_dict = static_code_application_post_instance.to_dict()
 # create an instance of StaticCodeApplicationPost from a dict
-static_code_application_post_form_dict = static_code_application_post.from_dict(static_code_application_post_dict)
+static_code_application_post_from_dict = StaticCodeApplicationPost.from_dict(static_code_application_post_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

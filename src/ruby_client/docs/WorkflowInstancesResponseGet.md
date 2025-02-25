@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **meta** | [**Response200**](Response200.md) |  | [optional] |
-| **data** | [**Array&lt;WorkflowInstancesGet&gt;**](WorkflowInstancesGet.md) |  | [optional] |
+| **data** | [**Array&lt;WorkflowInstanceGet&gt;**](WorkflowInstanceGet.md) |  | [optional] |
 | **pagination** | [**WorkflowInstancesResponseGetPagination**](WorkflowInstancesResponseGetPagination.md) |  | [optional] |
 
 ## Example

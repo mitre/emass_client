@@ -14,7 +14,7 @@ All URIs are relative to *http://localhost:4010*
 
 Add one or many cloud resources and their scan results
 
-Add cloud resources and their scan results in the assets module for a system `systemId`  **Request Body Required Fields** - `provider` - `resourceId` - `resourceName` - `resourceType` - Compliance Results Object Array `complianceResults`   - `cspPolicyDefinitionId`   - `isCompliant`   - `policyDefinitionTitle`  **Example Request Body Required Fields** ``` [    {      \"provider\": \"provide name\",     \"resourceId\": \"resource identification\",     \"resourceName\": \"resource name\",     \"resourceType\": \"resource type\",     \"complianceResults\": [        {          \"cspPolicyDefinitionId\": \"CSP policy definition identification\",         \"policyDefinitionTitle\": \"policy definition title\",         \"isCompliant\": [true or false]       }      ]    }  ] ```
+Add cloud resources and their scan results in the assets module for a system `systemId`  **Request Body Required Fields** - `provider` - `resourceId` - `resourceName` - `resourceType` - `complianceResults` (Object Array)   - `cspPolicyDefinitionId`   - `isCompliant`   - `policyDefinitionTitle`  **Example Request Body Required Fields** ``` [   {     \"provider\": \"provide name\",     \"resourceId\": \"resource identification\",     \"resourceName\": \"resource name\",     \"resourceType\": \"resource type\",     \"complianceResults\": [       {         \"cspPolicyDefinitionId\": \"CSP policy definition identification\",         \"policyDefinitionTitle\": \"policy definition title\",         \"isCompliant\": [true or false]       }     ]   } ] ```
 
 ### Examples
 
@@ -24,24 +24,24 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::CloudResourceResultsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Add cloud resources and their scan results
+request_body = [3.56] # Array<Object> | Example request body for adding cloud resources and their scan results
 
 begin
   # Add one or many cloud resources and their scan results
@@ -75,7 +75,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Add cloud resources and their scan results |  |
+| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Example request body for adding cloud resources and their scan results |  |
 
 ### Return type
 
@@ -107,19 +107,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::CloudResourceResultsApi.new

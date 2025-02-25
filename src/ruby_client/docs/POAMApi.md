@@ -13,11 +13,11 @@ All URIs are relative to *http://localhost:4010*
 
 ## add_poam_by_system_id
 
-> <PoamResponsePost> add_poam_by_system_id(system_id, request_body)
+> <PoamResponsePostPutDelete> add_poam_by_system_id(system_id, poam_required_fields)
 
 Add one or many POA&M items in a system
 
-Add a POA&M for given `systemId`<br>  **Request Body Required Fields** - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `resources`  **Note**<br /> If a POC email is supplied, the application will attempt to locate a user already registered within the application and pre-populate any information not explicitly supplied in the request. If no such user is found, these fields are **required** within the request.<br> `pocFirstName`, `pocLastName`, `pocPhoneNumber`<br />
+Add a POA&M for given `systemId`  **Request Body Required Fields** <table>   <thead>     <tr><th><b>Field</b></th><th><b>Require/Condition</b></th></tr>   </thead>   <tbody>     <tr><td><code>status</code></td><td>Always (every POST)</td></tr>     <tr><td><code>vulnerabilityDescription</code></td><td>Always (every POST)</td></tr>     <tr><td><code>sourceIdentifyingVulnerability</code></td><td>Always (every POST)</td></tr>     <tr><td><code>pocOrganization</code></td><td>Always (every POST)</td></tr>     <tr><td><code>resources</code></td><td>Always (every POST)</td></tr>     <tr><td><code>identifiedInCFOAuditOrOtherReview</code></td><td>Required for VA. Optional for Army and USCG.</td></tr>     <tr><td><code>scheduledCompletionDate</code></td><td>Required for ongoing and completed POA&M items</td></tr>     <tr><td><code>pocFirstName</code></td><td>Only if Last Name, Email, or Phone Number have data</td></tr>     <tr><td><code>pocLastName</code></td><td>Only if First Name, Email, or Phone Number have data</td></tr>     <tr><td><code>pocEmail</code></td><td>Only if First Name, Last Name, or Phone Number have data</td></tr>     <tr><td><code>pocPhoneNumber</code></td><td>Only if First Name, Last Name, or Email have data</td></tr>     <tr><td><code>completionDate</code></td><td>For completed POA&M Item only</td></tr>     <tr><td><code>comments</code></td><td>For completed or Risk Accepted POA&M Items only</td></tr>   </tbody> </table>  **NOTE**: Certain eMASS instances also require the Risk Analysis fields to be populated:   - `severity`   - `relevanceOfThreat`   - `likelihood`   - `impact`   - `residualRiskLevel`   - `mitigations`  </br> **Business Rules**  The following rules apply to the Review Status `status` field value: <table>   <thead><tr><th><b>Value</b></th><th><b>Rule</b></th></tr></thead>   <tbody>     <tr><td><b>Not Approved</b></td><td>POA&M cannot be saved if Milestone Scheduled Completion Date exceeds POA&M Item Scheduled Completion Date</td></tr>     <tr><td><b>Approved</b></td><td>POA&M can only be saved if Milestone Scheduled Completion Date exceeds POA&M Item Scheduled Completion Date</td></tr>     <tr><td></td><td>Are required to have a Severity Value assigned</td></tr>     <tr><td><b>Completed</b> or <b>Ongoing</b></td><td>Cannot be saved without Milestones</td></tr>     <tr><td><b>Risk Accepted</b></td><td>POA&M Item cannot be saved with a Scheduled Completion Date <code>scheduledCompletionDate</code> or have Milestones</td></tr>     <tr><td><b>Approved</b> or <b>Completed</b> or <b>Ongoing</b></td><td>Cannot update Scheduled Completion Date</td></tr>  </tbody> </table>  **Additional Rules** - POA&M Item cannot be saved if associated Security Control or AP is inherited. - Completed POA&M Item cannot be saved if Completion Date (`completionDate`) is in the future. - POA&M Items cannot be updated if they are included in an active package. - Archived POA&M Items cannot be updated. - POA&M Items with a status of \"Not Applicable\" will be updated through test result creation. - If the Security Control or Assessment Procedure does not exist in the system, the POA&M Item maybe imported at the System Level.   **Fields Characters Limitation** - POA&M Item cannot be saved if the Point of Contact (POC) fields exceed 100 characters:   - `pocOrganization` `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber` - POA&M Item cannot be saved if Resources (`resource`) field exceeds 250 characters - POA&M Item cannot be saved if the following fields exceeds 2,000 characters:   - `mitigations`, `sourceIdentifyingVulnerability`, `comments`   - Milestones Field: `description` - POA&M Items cannot be saved if Milestone Description (`description`) exceeds 2,000 characters.
 
 ### Examples
 
@@ -27,28 +27,28 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::POAMApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Add POA&M(s) to a system (systemID)
+poam_required_fields = [EmassClient::PoamRequiredFields.new] # Array<PoamRequiredFields> | Example request body to add POA&M(s) to a system (systemId)
 
 begin
   # Add one or many POA&M items in a system
-  result = api_instance.add_poam_by_system_id(system_id, request_body)
+  result = api_instance.add_poam_by_system_id(system_id, poam_required_fields)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->add_poam_by_system_id: #{e}"
@@ -59,15 +59,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PoamResponsePost>, Integer, Hash)> add_poam_by_system_id_with_http_info(system_id, request_body)
+> <Array(<PoamResponsePostPutDelete>, Integer, Hash)> add_poam_by_system_id_with_http_info(system_id, poam_required_fields)
 
 ```ruby
 begin
   # Add one or many POA&M items in a system
-  data, status_code, headers = api_instance.add_poam_by_system_id_with_http_info(system_id, request_body)
+  data, status_code, headers = api_instance.add_poam_by_system_id_with_http_info(system_id, poam_required_fields)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PoamResponsePost>
+  p data # => <PoamResponsePostPutDelete>
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->add_poam_by_system_id_with_http_info: #{e}"
 end
@@ -78,11 +78,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Add POA&amp;M(s) to a system (systemID) |  |
+| **poam_required_fields** | [**Array&lt;PoamRequiredFields&gt;**](PoamRequiredFields.md) | Example request body to add POA&amp;M(s) to a system (systemId) |  |
 
 ### Return type
 
-[**PoamResponsePost**](PoamResponsePost.md)
+[**PoamResponsePostPutDelete**](PoamResponsePostPutDelete.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ end
 
 ## delete_poam
 
-> <PoamResponseDelete> delete_poam(system_id, poam_request_delete_body_inner)
+> <PoamResponsePostPutDelete> delete_poam(system_id, poam_request_delete_body_inner)
 
 Remove one or many POA&M items in a system
 
@@ -110,19 +110,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::POAMApi.new
@@ -142,7 +142,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PoamResponseDelete>, Integer, Hash)> delete_poam_with_http_info(system_id, poam_request_delete_body_inner)
+> <Array(<PoamResponsePostPutDelete>, Integer, Hash)> delete_poam_with_http_info(system_id, poam_request_delete_body_inner)
 
 ```ruby
 begin
@@ -150,7 +150,7 @@ begin
   data, status_code, headers = api_instance.delete_poam_with_http_info(system_id, poam_request_delete_body_inner)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PoamResponseDelete>
+  p data # => <PoamResponsePostPutDelete>
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->delete_poam_with_http_info: #{e}"
 end
@@ -165,7 +165,7 @@ end
 
 ### Return type
 
-[**PoamResponseDelete**](PoamResponseDelete.md)
+[**PoamResponsePostPutDelete**](PoamResponsePostPutDelete.md)
 
 ### Authorization
 
@@ -193,19 +193,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::POAMApi.new
@@ -288,19 +288,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::POAMApi.new
@@ -357,11 +357,11 @@ end
 
 ## update_poam_by_system_id
 
-> <PoamResponsePut> update_poam_by_system_id(system_id, request_body)
+> <PoamResponsePostPutDelete> update_poam_by_system_id(system_id, poam_ids)
 
 Update one or many POA&M items in a system
 
-Update a POA&M for given `systemId`<br>  **Request Body Required Fields** - `poamId` - `displayPoamId` - `status` - `vulnerabilityDescription` - `sourceIdentVuln` - `pocOrganization` - `reviewStatus`  **Notes** - If a POC email is supplied, the application will attempt to locate a user already   registered within the application and pre-populate any information not explicitly supplied   in the request. If no such user is found, these fields are **required** within the request.<br>   `pocOrganization`, `pocFirstName`, `pocLastName`, `pocEmail`, `pocPhoneNumber`<br />  - To prevent uploading duplicate/undesired milestones through the POA&M PUT we must include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`.
+Update a POA&M for given `systemId`<br>  **Request Body Required Fields** <table>   <thead>     <tr><th><b>Field</b></th><th><b>Require/Condition</b></th></tr>   </thead>   <tbody>     <tr><td><code>poamId</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>displayPoamId</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>status</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>vulnerabilityDescription</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>sourceIdentifyingVulnerability</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>pocOrganization</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>resources</code></td><td>Always (every PUT)</td></tr>     <tr><td><code>identifiedInCFOAuditOrOtherReview</code></td><td>Required for VA. Optional for Army and USCG.</td></tr>     <tr><td><code>scheduledCompletionDate</code></td><td>Required for ongoing and completed POA&M items</td></tr>     <tr><td><code>pocFirstName</code></td><td>Only if Last Name, Email, or Phone Number have data</td></tr>     <tr><td><code>pocLastName</code></td><td>Only if First Name, Email, or Phone Number have data</td></tr>     <tr><td><code>pocEmail</code></td><td>Only if First Name, Last Name, or Phone Number have data</td></tr>     <tr><td><code>pocPhoneNumber</code></td><td>Only if First Name, Last Name, or Email have data</td></tr>     <tr><td><code>completionDate</code></td><td>For completed POA&M Item only</td></tr>     <tr><td><code>comments</code></td><td>For completed or Risk Accepted POA&M Items only</td></tr>   </tbody> </table>  **NOTES**: - Certain eMASS instances also require the Risk Analysis fields to be populated:   - `severity`   - `relevanceOfThreat`   - `likelihood`   - `impact`   - `residualRiskLevel`   - `mitigations` - To prevent uploading duplicate/undesired milestones through the POA&M PUT include an `isActive` field for the milestone and set it to equal to false `(isActive=false)`. </br>  **Business Rules:** See business rules for the POST endpoint
 
 ### Examples
 
@@ -371,28 +371,28 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::POAMApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Update an existing control by Id
+poam_ids = [EmassClient::PoamIds.new] # Array<PoamIds> | Example request body for updating a POA&M for a system (systemId)
 
 begin
   # Update one or many POA&M items in a system
-  result = api_instance.update_poam_by_system_id(system_id, request_body)
+  result = api_instance.update_poam_by_system_id(system_id, poam_ids)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->update_poam_by_system_id: #{e}"
@@ -403,15 +403,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PoamResponsePut>, Integer, Hash)> update_poam_by_system_id_with_http_info(system_id, request_body)
+> <Array(<PoamResponsePostPutDelete>, Integer, Hash)> update_poam_by_system_id_with_http_info(system_id, poam_ids)
 
 ```ruby
 begin
   # Update one or many POA&M items in a system
-  data, status_code, headers = api_instance.update_poam_by_system_id_with_http_info(system_id, request_body)
+  data, status_code, headers = api_instance.update_poam_by_system_id_with_http_info(system_id, poam_ids)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PoamResponsePut>
+  p data # => <PoamResponsePostPutDelete>
 rescue EmassClient::ApiError => e
   puts "Error when calling POAMApi->update_poam_by_system_id_with_http_info: #{e}"
 end
@@ -422,11 +422,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Update an existing control by Id |  |
+| **poam_ids** | [**Array&lt;PoamIds&gt;**](PoamIds.md) | Example request body for updating a POA&amp;M for a system (systemId) |  |
 
 ### Return type
 
-[**PoamResponsePut**](PoamResponsePut.md)
+[**PoamResponsePostPutDelete**](PoamResponsePostPutDelete.md)
 
 ### Authorization
 

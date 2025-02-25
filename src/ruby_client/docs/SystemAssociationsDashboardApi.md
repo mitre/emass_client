@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:4010*
 
 ## get_system_associations_details
 
-> Object get_system_associations_details(org_id, opts)
+> <GetSystemStatusDetails200Response> get_system_associations_details(org_id, opts)
 
 System Associations Details
 
@@ -23,19 +23,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::SystemAssociationsDashboardApi.new
@@ -59,7 +59,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> get_system_associations_details_with_http_info(org_id, opts)
+> <Array(<GetSystemStatusDetails200Response>, Integer, Hash)> get_system_associations_details_with_http_info(org_id, opts)
 
 ```ruby
 begin
@@ -67,7 +67,7 @@ begin
   data, status_code, headers = api_instance.get_system_associations_details_with_http_info(org_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <GetSystemStatusDetails200Response>
 rescue EmassClient::ApiError => e
   puts "Error when calling SystemAssociationsDashboardApi->get_system_associations_details_with_http_info: #{e}"
 end
@@ -84,7 +84,7 @@ end
 
 ### Return type
 
-**Object**
+[**GetSystemStatusDetails200Response**](GetSystemStatusDetails200Response.md)
 
 ### Authorization
 

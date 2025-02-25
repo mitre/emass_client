@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **system_id** | **int** | [Required] Unique eMASS system identifier. | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of CacGet from a JSON string
 cac_get_instance = CacGet.from_json(json)
 # print the JSON string representation of the object
-print CacGet.to_json()
+print(CacGet.to_json())
 
 # convert the object into a dict
 cac_get_dict = cac_get_instance.to_dict()
 # create an instance of CacGet from a dict
-cac_get_form_dict = cac_get.from_dict(cac_get_dict)
+cac_get_from_dict = CacGet.from_dict(cac_get_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

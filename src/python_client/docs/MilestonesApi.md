@@ -16,16 +16,19 @@ Method | HTTP request | Description
 
 Add milestones to one or many POA&M items in a system
 
-Adds a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `description` - `scheduledCompletionDate`
+Adds a milestone for given `systemId` and `poamId` path parameters
+
+**Request Body Required Fields**
+- `description`
+- `scheduledCompletionDate`
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.milestone_response_post import MilestoneResponsePost
 from emass_client.models.object import object
@@ -67,7 +70,7 @@ with emass_client.ApiClient(configuration) as api_client:
     api_instance = emass_client.MilestonesApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
     poam_id = 45 # int | **POA&M Id**: The unique POA&M record identifier.
-    request_body = None # List[object] | Add milestones to an existing system poam
+    request_body = None # List[object] | Example request body for adding milestones to an existing System (systemId) POA&M (poamId)
 
     try:
         # Add milestones to one or many POA&M items in a system
@@ -82,11 +85,12 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
  **poam_id** | **int**| **POA&amp;M Id**: The unique POA&amp;M record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add milestones to an existing system poam | 
+ **request_body** | [**List[object]**](object.md)| Example request body for adding milestones to an existing System (systemId) POA&amp;M (poamId) | 
 
 ### Return type
 
@@ -102,9 +106,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -121,16 +126,18 @@ Name | Type | Description  | Notes
 
 Remove milestones in a system for one or many POA&M items
 
-Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Requst Body  **Notes**<br> To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).
+Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Request Body
+
+**NOTE**<br>
+To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.milestone_response_delete import MilestoneResponseDelete
 from emass_client.models.milestones_request_delete_body_inner import MilestonesRequestDeleteBodyInner
@@ -187,6 +194,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -207,9 +215,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful operation |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -230,9 +239,8 @@ Returns system containing milestones for matching parameters.
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.milestone_response_get import MilestoneResponseGet
 from emass_client.rest import ApiException
@@ -289,6 +297,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -310,9 +319,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -335,9 +345,8 @@ Returns systems containing milestones for matching parameters.
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.milestone_response_get_milestone import MilestoneResponseGetMilestone
 from emass_client.rest import ApiException
@@ -393,6 +402,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -413,9 +423,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -431,16 +442,20 @@ Name | Type | Description  | Notes
 
 Update one or many POA&M items in a system
 
-Updates a milestone for given `systemId` and `poamId` path parameters  **Request Body Required Fields** - `milestoneId` - `description` - `scheduledCompletionDate`
+Updates a milestone for given `systemId` and `poamId` path parameters
+
+**Request Body Required Fields**
+- `milestoneId`
+- `description`
+- `scheduledCompletionDate`
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.milestone_response_put import MilestoneResponsePut
 from emass_client.models.object import object
@@ -482,7 +497,7 @@ with emass_client.ApiClient(configuration) as api_client:
     api_instance = emass_client.MilestonesApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
     poam_id = 45 # int | **POA&M Id**: The unique POA&M record identifier.
-    request_body = None # List[object] | Update milestones for an existing system poam
+    request_body = None # List[object] | Example request body for updating milestones (milestoneId) of an existing System (systemId) POA&M (poamId)
 
     try:
         # Update one or many POA&M items in a system
@@ -497,11 +512,12 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
  **poam_id** | **int**| **POA&amp;M Id**: The unique POA&amp;M record identifier. | 
- **request_body** | [**List[object]**](object.md)| Update milestones for an existing system poam | 
+ **request_body** | [**List[object]**](object.md)| Example request body for updating milestones (milestoneId) of an existing System (systemId) POA&amp;M (poamId) | 
 
 ### Return type
 
@@ -517,9 +533,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful operation |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
