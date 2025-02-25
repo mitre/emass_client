@@ -16,7 +16,7 @@ name: Generate OpenAPI Clients
 # -----------------------------------------------------------------------------
 on:
   push:
-    branches: [ main ]
+    branches: [ UpdateTov3.22Spec ]
   pull_request:
     branches: [ UpdateTov3.22Spec ]
 
