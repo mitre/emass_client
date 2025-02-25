@@ -2,7 +2,7 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [ main ]
+    branches: [ UpdateTov3.22Spec ]
   # pull_request:
   #   branches: [ main ]
     
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Build Deploment Folder 🔧
+      - name: Build Deployment Folder 🔧
         run: |
           sudo mkdir -p /publish
           sudo mkdir -p /publish/docs
