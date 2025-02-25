@@ -27,9 +27,10 @@ application’s API account may be setup to require taking action on behalf of a
 account. In this configuration, Users can grant permissions for the client from their eMASS 
 User Profile in the API Data Access card by selecting a checkbox for the applicable client 
 and clicking [Save].
+
 <div align="center">
 
-![eMASS Data Access Card](/images/emass_data_access_card.jpg)
+  ![eMASS Data Access Card](/images/emass_data_access_card.jpg)
 
 </div>
 

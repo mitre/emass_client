@@ -22,7 +22,7 @@ jobs:
         with:
           args: 'bundle docs/eMASSRestOpenApi.yaml -o docs/redoc/index.html'
 
-      - name: check result
+      - name: Check Result
         run: |
           ls -al
           test -f docs/redoc/index.html || (echo "Fail to generate docs/redoc/index.html from previous step." && exit 1)
