@@ -13,7 +13,7 @@ The eMASS client repository (```emass_client```) maintains the Enterprise Missio
 ## [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/)
 The eMASS API specification provides a broad understanding of how the API behaves and how the API links with an eMASS application instances. It explains how the API functions and the results to expect when using the API.
 
-## [eMASS API Getting Started](https://mitre.github.io/emass_client/docs/eMASSGettingStarted.md)
+## [eMASS API Getting Started](/docs/eMASSGettingStarted.md)
 Provides information on how to register the eMASS API with any eMASS application.
     .
 
