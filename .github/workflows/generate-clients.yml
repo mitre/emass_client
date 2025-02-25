@@ -4,7 +4,7 @@ name: Generate OpenAPI Clients
 # The clients are only generated if the eMASS specification file 
 # (eMASSRestOpenApi.yaml) has been modified. 
 #
-# Client generated are: Ruby, TypeScript, and Python
+# Clients generated are: Ruby, TypeScript, and Python
 # Publish the newly generated eMASS client API packages to the current repo
 #
 # Action is automatically trigger when: someone pushes to main

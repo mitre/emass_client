@@ -7,7 +7,7 @@
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) [Application Programming Interface (API) specifications](/docs/eMASS_API_Documentation.pdf) and executables. The executables packages currently provided are: RubyGem, TypeScript Node, and Python.
 
-***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem. Additionally, the [SAF CLI](https://github.com/mitre/saf#emass-api-cli) implements the `emass_client` npm package.
+***NOTE***: A CLI tool called [eMASSer](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem. Additionally, the [SAF CLI](https://github.com/mitre/saf#emass-api-cli) implements the `emass_client` npm package.
 
 # Highlights
 ## [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/)
@@ -70,17 +70,17 @@ The ``emass_client`` executable packages can be included in other projects, or u
   <img src="images/emass_client_applications.jpg" alt="Alt text" title="Client Architecture">
 </div>
 
-### NOTICE
+## NOTICE
 
-© 2020 The MITRE Corporation.
+© 2020-2025 The MITRE Corporation.
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
 
-### NOTICE
+## NOTICE
 
 MITRE hereby grants express written permission to use, reproduce, distribute, modify, and otherwise leverage this software to the extent permitted by the licensed terms provided in the LICENSE.md file included with this project.
 
-### NOTICE
+## NOTICE
 
 This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.
 

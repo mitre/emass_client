@@ -1,9 +1,11 @@
     # Call an API with given options.
     #
     # @return [Array<(Object, Integer, Hash)>] an array of 3 elements:
-    #   the data deserialized from response body (could be nil), response status code and response headers.
+    #   the data deserialized from response body (may be a Tempfile or nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
       request = build_request(http_method, path, opts)
+      exportFilename = opts[:query_params][:filename].to_s || ''
+      tempfile = download_file(request, exportFilename) if opts[:return_type] == 'File'
       response = request.run
 
       if @config.debugging
@@ -25,7 +27,9 @@
         end
       end
 
-      if opts[:return_type]
+      if opts[:return_type] == 'File'
+        data = tempfile
+      elsif opts[:return_type]
         data = deserialize(response, opts[:return_type])
       else
         data = nil
@@ -49,6 +53,7 @@
       header_params = @default_headers.merge(opts[:header_params] || {})
       query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
+      follow_location = opts[:follow_location] || true
 
       {{#hasAuthMethods}}
       update_params_for_auth! header_params, query_params, opts[:auth_names]
@@ -68,7 +73,8 @@
         :sslcert => @config.cert_file,
         :sslkey => @config.key_file,
         :verbose => @config.debugging,
-        :keypasswd => @config.key_password
+        :keypasswd => @config.key_password,
+        :followlocation => follow_location
       }
 
       # set custom cert, if provided
@@ -82,9 +88,7 @@
         end
       end
 
-      request = Typhoeus::Request.new(url, req_opts)
-      download_file(request) if opts[:return_type] == 'File'
-      request
+      Typhoeus::Request.new(url, req_opts)
     end
 
     # Builds the HTTP request body
@@ -116,39 +120,53 @@
     end
 
     # Save response body into a file in (the defined) temporary folder, using the filename
-    # from the "Content-Disposition" header if provided, otherwise a random filename.
+    # from the "Content-Disposition" header if provided, otherwise use the request filename.
     # The response body is written to the file in chunks in order to handle files which
     # size is larger than maximum Ruby String or even larger than the maximum memory a Ruby
     # process can use.
     #
     # @see Configuration#temp_folder_path
-    def download_file(request)
+    #
+    # @return [Tempfile] the tempfile generated
+    def download_file(request, exportFilename)
       tempfile = nil
       encoding = nil
+      tempfilename = nil
       request.on_headers do |response|
         content_disposition = response.headers['Content-Disposition']
         if content_disposition && content_disposition =~ /filename=/i
           filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
           prefix = sanitize_filename(filename)
         else
-          prefix = 'download-'
+          prefix = 'download-' + exportFilename
         end
-        prefix = prefix + '-' unless prefix.end_with?('-')
+        prefix = '/' + prefix unless @config.temp_folder_path.end_with?('/')
         encoding = response.body.encoding
-        tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
-        @tempfile = tempfile
+        # If temp folder provided use it, otherwise use the OS temp directory
+        if @config.temp_folder_path.empty?
+          tempfilename = Dir.tmpdir() + prefix
+        else
+          tempfilename = @config.temp_folder_path + prefix
+        end
+        tempfile = File.new(tempfilename, 'w+')
       end
       request.on_body do |chunk|
         chunk.force_encoding(encoding)
         tempfile.write(chunk)
       end
-      request.on_complete do |response|
-        if tempfile
-          tempfile.close
-          @config.logger.info "Temp file written to #{tempfile.path}, please copy the file to a proper folder "\
-                              "with e.g. `FileUtils.cp(tempfile.path, '/new/file/path')` otherwise the temp file "\
-                              "will be deleted automatically with GC. It's also recommended to delete the temp file "\
-                              "explicitly with `tempfile.delete`"
-        end
+      # run the request to ensure the tempfile is created successfully before returning it
+      request.run
+      if tempfile
+        tempfile.close
+        if @config.temp_folder_path.empty?
+          @config.logger.info "Temp file downloaded (written) to #{tempfile.path}, please copy the file to a proper folder. "\
+                              "otherwise the temp file will be deleted automatically with GC."
+        else
+          @config.logger.info "File downloaded (written) to #{tempfile.path}"
+        end        
+      else
+        fail ApiError.new("Failed to create the tempfile based on the HTTP response from the server: #{request.inspect}") 
       end
+
+      tempfile
     end
