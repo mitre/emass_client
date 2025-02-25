@@ -7,15 +7,19 @@
 # eMASS Client
 The eMASS client repository (```emass_client```) maintains the Enterprise Mission Assurance Support Service (eMASS) Representational State Transfer (REST) [Application Programming Interface (API) specifications](/docs/eMASS_API_Documentation.pdf) and executables. The executables packages currently provided are: RubyGem, TypeScript Node, and Python.
 
-***NOTE***: A CLI tool called [emasser](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem. Additionally, the [SAF CLI](https://github.com/mitre/saf#emass-api-cli) implements the `emass_client` npm package.
+***NOTE***: A CLI tool called [eMASSer](https://github.com/mitre/emasser), has been developed that makes use of the ```emass_client``` RubyGem. Additionally, the [SAF CLI](https://github.com/mitre/saf#emass-api-cli) implements the `emass_client` npm package.
 
 # Highlights
 ## [eMASS API Specification](https://mitre.github.io/emass_client/docs/redoc/)
-The eMASS API is documented in YAML and can be viewed utilizing a multitude of visualization tools. Included is a dependency-free (and nice looking) rendering tool for viewing the API specification. The documentation is automatically generated using a Continuos Integration (CI) action [redoc-cli](https://www.npmjs.com/package/redoc-cli) command line tool.
+The eMASS API specification provides a broad understanding of how the API behaves and how the API links with an eMASS application instances. It explains how the API functions and the results to expect when using the API.
 
+## [eMASS API Getting Started](https://mitre.github.io/emass_client/docs/eMASSGettingStarted.md)
+Provides information on how to register the eMASS API with any eMASS application.
+    .
 
 ## [eMASS API Viewer](https://mitre.github.io/emass_client/docs/renderer/)
-This repository allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place, via [hosted](https://mitre.stoplight.io/docs/emasser/c48309f365cf1-enterprise-mission-assurance-support-service-e-mass) or local mock servers. Please reference [Developers Instruction](docs/developers.md) on how to setup a local mock server
+Allows interaction with the API’s resources without having any of the implementation logic in place. A local mock servers cn also be used, please reference [Developers Instruction](docs/developers.md) on how to setup a local mock server.
+
 
 # eMASS API Clients Generation Process
 The executable packages (APIs) generated are used to access eMASS data and functionality by external third-party developers, business partners, or internal departments.
@@ -66,17 +70,17 @@ The ``emass_client`` executable packages can be included in other projects, or u
   <img src="images/emass_client_applications.jpg" alt="Alt text" title="Client Architecture">
 </div>
 
-### NOTICE
+## NOTICE
 
-© 2020 The MITRE Corporation.
+© 2020-2025 The MITRE Corporation.
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
 
-### NOTICE
+## NOTICE
 
 MITRE hereby grants express written permission to use, reproduce, distribute, modify, and otherwise leverage this software to the extent permitted by the licensed terms provided in the LICENSE.md file included with this project.
 
-### NOTICE
+## NOTICE
 
 This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.
 
