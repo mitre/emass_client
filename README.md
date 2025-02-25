@@ -61,13 +61,13 @@ For detail information on how-to generating eMASS clients for other programming 
 ## Repository Architecture
 The process provided by this repository is depicted by the architecture diagram below. In a nutshell, it hosts the eMAASS API specification, documentation, interactive visualization tools, and generates clients for the following languages: `ruby`,  `typescript`, and `python`. 
 <div align="center">
-  <img src="images/emass_client_architecture.jpg" alt="Alt text" title="Repository Architecture">
+  <img src="images/emass_client_architecture.jpg" alt="Repository Architecture" title="Repository Architecture">
 </div>
 
 ### Client Application
 The ``emass_client`` executable packages can be included in other projects, or used to generate  CLI tools that require access to an eMASS instance as  demonstrated by the diagram below.
 <div align="center">
-  <img src="images/emass_client_applications.jpg" alt="Alt text" title="Client Architecture">
+  <img src="images/emass_client_applications.jpg" alt="Client Architecture" title="Client Architecture">
 </div>
 
 ## NOTICE
