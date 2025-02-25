@@ -13,10 +13,10 @@ jobs:
       matrix:
        platform: [ ubuntu-latest, macos-latest ]
        # platform: [ ubuntu-latest, macos-latest, windows-latest ]
-       ruby-version: ['2.6', '2.7']
+       ruby-version: ['2.7', '3.4']
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Setup Ruby ${{matrix.ruby}}
+      - name: Setup Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
@@ -25,7 +25,7 @@ jobs:
         with:
           args: install curl -y
         if: matrix.platform == 'windows-latest'
-      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
+      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
         if: matrix.platform == 'windows-latest'
         env: 
           CI_LIB_PATH: D:\a\emass_client\emass_client/src/ruby_client/lib
@@ -38,7 +38,7 @@ jobs:
           bundle install
           bundle info emass_client
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
-      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
+      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
         if: matrix.platform == 'ubuntu-latest'
         env: 
           CI_LIB_PATH: /home/runner/work/emass_client/emass_client/src/ruby_client/lib
@@ -48,7 +48,7 @@ jobs:
           bundle install
           bundle info emass_client 
           rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
-      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby }}
+      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
         if: matrix.platform == 'macos-latest'
         env: 
           CI_LIB_PATH: /Users/runner/work/emass_client/emass_client/src/ruby_client/lib
