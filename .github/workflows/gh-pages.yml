@@ -1,10 +1,11 @@
 # For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
+# Uncomment the pull_requests and set branches to the PR name
 name: Deploy to GitHub Pages
 on:
   push:
     branches: [ UpdateTov3.22Spec ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ UpdateTov3.22Spec ]
     
 jobs:
   build-deploy:
