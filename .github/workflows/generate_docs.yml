@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       # Use redoc-cli-github-action to generate the HTML bundle
-      - name: Generate the HTML bumdle (redoc-cli)
+      - name: Generate the HTML bundle (redoc-cli)
         uses: seeebiii/redoc-cli-github-action@v10
         with:
           args: 'bundle docs/eMASSRestOpenApi.yaml -o docs/redoc/index.html'

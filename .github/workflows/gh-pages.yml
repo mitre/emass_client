@@ -25,6 +25,7 @@ jobs:
           sudo cp -R ./docs/redoc /publish/docs/redoc
           sudo cp -R ./docs/renderer /publish/docs/renderer
           sudo cp ./docs/developers.md /publish/docs/developers.md 
+          sudo cp ./docs/eMASSGettingStarted.md /publish/docs/eMASSGettingStarted.md 
           sudo cp ./docs/eMASSRestOpenApi.yaml /publish/docs/eMASSRestOpenApi.yaml
           sudo cp ./docs/eMASS_API_Documentation.pdf /publish/docs/eMASS_API_Documentation.pdf
 
