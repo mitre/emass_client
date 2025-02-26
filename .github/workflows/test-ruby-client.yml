@@ -1,4 +1,6 @@
-# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
+# Run on each push to main and to any PR that is created from main
+#------------------------------------------------------------------------------
+# Verify the Ruby versions if they have changed (ruby-version: ['2.7', '3.4'])
 name: Test Ruby Client 
 
 on:

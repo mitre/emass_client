@@ -1,8 +1,17 @@
+# Run on each push to main and to any PR that is created from main
+#------------------------------------------------------------------------------
+# To verify that the documentation was generated, verify that the published
+# content (in mitre.github.io/emass_client/) contains the newly generated
+# documentation (updates) - this requires pg-pages to run on the current PR
+# (see gh-pages workflow comments)
+#
+# For testing using a specific PR change the pull_request branches to
+# the PR name, example:
+#  pull_request:
+#    branches: [ the-pr-name ]
+#------------------------------------------------------------------------------
 name: Generate eMASS Documentation
 
-# Run on each push to main
-# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
-# Uncomment the pull_requests and set branches to the PR name
 on:
   push:
     branches: [ main ]
