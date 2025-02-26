@@ -5,7 +5,7 @@ associated with system records.
 
 The eMASS API provides an interface for application to communicate eMASS Services.
 For information on how to register and use the eMASS API reference the
-[eMASS API Getting Started](https://mitre.github.io/emass_client/docs/eMASSGettingStarted.md).
+[eMASS API Getting Started](eMASSGettingStarted.md).
 
 Additional information about eMASS can be obtain by contacting the
 National Industrial Security Program (NISP). Points of Contact are:
