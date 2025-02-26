@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **end_stage** | **str** | [Read-Only] The landing stage that is active after performing a transition. | [optional] 
@@ -18,12 +19,12 @@ json = "{}"
 # create an instance of DefinitionTransitions from a JSON string
 definition_transitions_instance = DefinitionTransitions.from_json(json)
 # print the JSON string representation of the object
-print DefinitionTransitions.to_json()
+print(DefinitionTransitions.to_json())
 
 # convert the object into a dict
 definition_transitions_dict = definition_transitions_instance.to_dict()
 # create an instance of DefinitionTransitions from a dict
-definition_transitions_form_dict = definition_transitions.from_dict(definition_transitions_dict)
+definition_transitions_from_dict = DefinitionTransitions.from_dict(definition_transitions_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

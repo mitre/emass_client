@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost:4010*
 
 Get workflow definitions in a site
 
-View all workflow schemas available on the eMASS instance filtered by  status `includeInactive` and registration type `registrationType`.
+View all workflow schemas available on the eMASS instance filtered by status `includeInactive` and registration type `registrationType`.
 
 ### Examples
 
@@ -23,25 +23,25 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::WorkflowDefinitionsApi.new
 opts = {
   include_inactive: true, # Boolean | **Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions.
-  registration_type: 'registration_type_example' # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
+  registration_type: 'registration_type_example' # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc 
 }
 
 begin
@@ -76,7 +76,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **include_inactive** | **Boolean** | **Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions. | [optional][default to true] |
-| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional][default to &#39;regular&#39;] |
+| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc  | [optional][default to &#39;regular&#39;] |
 
 ### Return type
 

@@ -13,8 +13,8 @@
 require 'emass_client'
 
 instance = EmassClient::ConnectivityCcsd.new(
-  ccsd_number: CCSD Number,
-  connectivity: Test Connectivity
+  ccsd_number: CCSD-579,
+  connectivity: Not Yet Authorized
 )
 ```
 

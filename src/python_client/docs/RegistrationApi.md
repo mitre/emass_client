@@ -19,9 +19,8 @@ Returns the API Key (api-key) that must be provided in the request header for al
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.register import Register
 from emass_client.rest import ApiException
@@ -73,6 +72,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -89,9 +89,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Request has succeeded |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

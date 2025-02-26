@@ -20,9 +20,8 @@ Returns all available roles
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.system_roles_response import SystemRolesResponse
 from emass_client.rest import ApiException
@@ -74,6 +73,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -90,9 +90,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -115,9 +116,8 @@ Returns the role(s) data matching parameters.
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.system_roles_category_response import SystemRolesCategoryResponse
 from emass_client.rest import ApiException
@@ -156,9 +156,9 @@ configuration.api_key['userId'] = os.environ["API_KEY"]
 with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.SystemRolesApi(api_client)
-    role_category = 'PAC' # str | **Role Category**: The system role category been queried (default to 'PAC')
+    role_category = PAC # str | **Role Category**: The system role category been queried (default to PAC)
     role = 'IAO' # str | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. (default to 'IAO')
-    policy = 'rmf' # str | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. (optional) (default to 'rmf')
+    policy = rmf # str | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems. (optional) (default to rmf)
 
     try:
         # Get system roles
@@ -173,11 +173,12 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_category** | **str**| **Role Category**: The system role category been queried | [default to &#39;PAC&#39;]
+ **role_category** | **str**| **Role Category**: The system role category been queried | [default to PAC]
  **role** | **str**| **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. | [default to &#39;IAO&#39;]
- **policy** | **str**| **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional] [default to &#39;rmf&#39;]
+ **policy** | **str**| **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional] [default to rmf]
 
 ### Return type
 
@@ -193,9 +194,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

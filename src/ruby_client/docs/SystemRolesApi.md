@@ -24,19 +24,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::SystemRolesApi.new
@@ -102,26 +102,26 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::SystemRolesApi.new
 role_category = 'CAC' # String | **Role Category**: The system role category been queried
 role = 'role_example' # String | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA.
 opts = {
-  policy: 'diacap' # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
+  policy: 'diacap' # String | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems.
 }
 
 begin
@@ -157,7 +157,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **role_category** | **String** | **Role Category**: The system role category been queried | [default to &#39;PAC&#39;] |
 | **role** | **String** | **Role**: Accepts single value from options available at base system-roles endpoint e.g., SCA. | [default to &#39;IAO&#39;] |
-| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
+| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
 
 ### Return type
 

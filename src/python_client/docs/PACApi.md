@@ -13,16 +13,20 @@ Method | HTTP request | Description
 
 Initiate system workflow for review
 
-Adds a Package Approval Chain (PAC) for given `systemId` path parameter  **Request Body Required Fields** - `workflow` - `name` - `comments`
+Adds a Package Approval Chain (PAC) for given `systemId` path parameter
+
+**Request Body Required Fields**
+- `workflow`
+- `name`
+- `comments`
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.pac_response_post import PacResponsePost
 from emass_client.models.object import object
@@ -63,7 +67,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.PACApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    request_body = None # List[object] | Add system package to PAC for review
+    request_body = None # List[object] | Example request body for adding system package to PAC for review
 
     try:
         # Initiate system workflow for review
@@ -78,10 +82,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add system package to PAC for review | 
+ **request_body** | [**List[object]**](object.md)| Example request body for adding system package to PAC for review | 
 
 ### Return type
 
@@ -97,9 +102,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -116,16 +122,21 @@ Name | Type | Description  | Notes
 
 Get status of active workflows in a system
 
-Returns the location of a system's package in the Package Approval Chain (PAC) for matching `systemId` path parameter  **Notes:** - If the indicated system has any active workflows, the response will include information   such as the workflow type and the current stage of each workflow.  - If there are no active workflows, then a null data member will be returned.
+Returns the location of a system's package in the Package Approval Chain (PAC)
+for matching `systemId` path parameter
+
+**NOTES:**
+- If the indicated system has any active workflows, the response will include information
+  such as the workflow type and the current stage of each workflow.
+- If there are no active workflows, then a null data member will be returned.
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.pac_response_get import PacResponseGet
 from emass_client.rest import ApiException
@@ -179,6 +190,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -197,9 +209,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

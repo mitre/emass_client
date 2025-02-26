@@ -12,16 +12,41 @@ Method | HTTP request | Description
 
 Upload static code scans or Clear static code scans
 
-Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
+Upload or clear application scan findings into a system's `systemId` assets module.
+
+**Request Body Required Fields**
+- `application` (Object)
+  - `applicationName`
+  - `version`
+- `applicationFindings` (Object Array)
+  - `codeCheckName`
+  - `count`
+  - `scanDate`
+  - `cweId`
+
+**NOTE:** To clear an application's findings, use only the field `clearFindings` as
+the Request body and set it to true. Example:
+```
+[
+  {
+    "application": {
+      "applicationName": "application name",
+      "version": "application version"
+    },
+    "applicationFindings": [
+      { "clearFindings": true }
+    ]
+  }
+]
+```
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.static_code_request_post_body import StaticCodeRequestPostBody
 from emass_client.models.static_code_response_post import StaticCodeResponsePost
@@ -62,7 +87,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.StaticCodeScansApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    static_code_request_post_body = emass_client.StaticCodeRequestPostBody() # StaticCodeRequestPostBody | Add static code scans or Clear static code scans
+    static_code_request_post_body = emass_client.StaticCodeRequestPostBody() # StaticCodeRequestPostBody | Example request body for adding static code scans or Clear static code scans
 
     try:
         # Upload static code scans or Clear static code scans
@@ -77,10 +102,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **static_code_request_post_body** | [**StaticCodeRequestPostBody**](StaticCodeRequestPostBody.md)| Add static code scans or Clear static code scans | 
+ **static_code_request_post_body** | [**StaticCodeRequestPostBody**](StaticCodeRequestPostBody.md)| Example request body for adding static code scans or Clear static code scans | 
 
 ### Return type
 
@@ -96,9 +122,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |

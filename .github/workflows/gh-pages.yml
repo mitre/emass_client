@@ -1,10 +1,19 @@
-# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
+# Run on each push to main and to any PR that is created from main
+#------------------------------------------------------------------------------
+# For testing perform the following steps:
+# 1 - Update the GitHub Settings and set the Pages->Branch to be generated from
+#     the PR name being used. 
+# 2 - Specific set the pull_request branches to the PR name, example:
+#     pull_request:
+#       branches: [ the-pr-name ]
+#------------------------------------------------------------------------------
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
     
 jobs:
   build-deploy:
@@ -14,7 +23,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Build Deploment Folder 🔧
+      - name: Build Deployment Folder 🔧
         run: |
           sudo mkdir -p /publish
           sudo mkdir -p /publish/docs
@@ -25,6 +34,7 @@ jobs:
           sudo cp -R ./docs/redoc /publish/docs/redoc
           sudo cp -R ./docs/renderer /publish/docs/renderer
           sudo cp ./docs/developers.md /publish/docs/developers.md 
+          sudo cp ./docs/eMASSGettingStarted.md /publish/docs/eMASSGettingStarted.md 
           sudo cp ./docs/eMASSRestOpenApi.yaml /publish/docs/eMASSRestOpenApi.yaml
           sudo cp ./docs/eMASS_API_Documentation.pdf /publish/docs/eMASS_API_Documentation.pdf
 

@@ -27,25 +27,25 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::MilestonesApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 poam_id = 45 # Integer | **POA&M Id**: The unique POA&M record identifier.
-request_body = [3.56] # Array<Object> | Add milestones to an existing system poam
+request_body = [3.56] # Array<Object> | Example request body for adding milestones to an existing System (systemId) POA&M (poamId)
 
 begin
   # Add milestones to one or many POA&M items in a system
@@ -80,7 +80,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
 | **poam_id** | **Integer** | **POA&amp;M Id**: The unique POA&amp;M record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Add milestones to an existing system poam |  |
+| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Example request body for adding milestones to an existing System (systemId) POA&amp;M (poamId) |  |
 
 ### Return type
 
@@ -102,7 +102,7 @@ end
 
 Remove milestones in a system for one or many POA&M items
 
-Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Requst Body  **Notes**<br> To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).
+Remove the POA&M matching `systemId` and `poamId` for path parameters and `milstoneId` provide in the Request Body  **NOTE**<br> To delete a milestone the record must be inactive by having the field isActive set to false (`isActive=false`).
 
 ### Examples
 
@@ -112,19 +112,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::MilestonesApi.new
@@ -197,19 +197,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::MilestonesApi.new
@@ -286,19 +286,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::MilestonesApi.new
@@ -371,25 +371,25 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::MilestonesApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 poam_id = 45 # Integer | **POA&M Id**: The unique POA&M record identifier.
-request_body = [3.56] # Array<Object> | Update milestones for an existing system poam
+request_body = [3.56] # Array<Object> | Example request body for updating milestones (milestoneId) of an existing System (systemId) POA&M (poamId)
 
 begin
   # Update one or many POA&M items in a system
@@ -424,7 +424,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
 | **poam_id** | **Integer** | **POA&amp;M Id**: The unique POA&amp;M record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Update milestones for an existing system poam |  |
+| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Example request body for updating milestones (milestoneId) of an existing System (systemId) POA&amp;M (poamId) |  |
 
 ### Return type
 

@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost:4010*
 
 Upload static code scans or Clear static code scans
 
-Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - Application Object (`application`)   - `applicationName`   - `version` - Application Findings Object Array (`applicationFindings`)   - `codeCheckName`   - `count`   - `scanDate`             - `cweId`  **Note:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example:  ``` [    {      \"application\": {        \"applicationName\": \"application name\",        \"version\": \"application version\"      },      \"applicationFindings\": [        { \"clearFindings\": true }      ]    }  ] ```
+Upload or clear application scan findings into a system's `systemId` assets module.  **Request Body Required Fields** - `application` (Object)   - `applicationName`   - `version` - `applicationFindings` (Object Array)   - `codeCheckName`   - `count`   - `scanDate`   - `cweId`  **NOTE:** To clear an application's findings, use only the field `clearFindings` as the Request body and set it to true. Example: ``` [   {     \"application\": {       \"applicationName\": \"application name\",       \"version\": \"application version\"     },     \"applicationFindings\": [       { \"clearFindings\": true }     ]   } ] ```
 
 ### Examples
 
@@ -23,24 +23,24 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::StaticCodeScansApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-static_code_request_post_body = EmassClient::StaticCodeRequestPostBody.new # StaticCodeRequestPostBody | Add static code scans or Clear static code scans
+static_code_request_post_body = EmassClient::StaticCodeRequestPostBody.new # StaticCodeRequestPostBody | Example request body for adding static code scans or Clear static code scans
 
 begin
   # Upload static code scans or Clear static code scans
@@ -74,7 +74,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **static_code_request_post_body** | [**StaticCodeRequestPostBody**](StaticCodeRequestPostBody.md) | Add static code scans or Clear static code scans |  |
+| **static_code_request_post_body** | [**StaticCodeRequestPostBody**](StaticCodeRequestPostBody.md) | Example request body for adding static code scans or Clear static code scans |  |
 
 ### Return type
 

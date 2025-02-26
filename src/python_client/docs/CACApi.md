@@ -13,16 +13,24 @@ Method | HTTP request | Description
 
 Submit control to second role of CAC
 
- **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
+**Request Body Required Fields**
+- `controlAcronym`
+- `comments`
+
+**NOTES:**
+- Comments `comments` are not required at the first role of the CAC but are required at the second role of
+the CAC. Comments cannot exceed 10,000 characters.
+- POST requests will only yield successful results if the control is currently sitting at the first
+role of the CAC. If the control is not currently sitting at the first role, then an error will be
+returned.
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.cac_response_post import CacResponsePost
 from emass_client.models.object import object
@@ -63,7 +71,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.CACApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    request_body = None # List[object] | Add control(s) to second role of CAC
+    request_body = None # List[object] | Example request body for adding control(s) to second role of CAC
 
     try:
         # Submit control to second role of CAC
@@ -78,10 +86,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add control(s) to second role of CAC | 
+ **request_body** | [**List[object]**](object.md)| Example request body for adding control(s) to second role of CAC | 
 
 ### Return type
 
@@ -97,9 +106,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -123,9 +133,8 @@ Returns the location of a system's package in the Control Approval Chain (CAC) f
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.cac_response_get import CacResponseGet
 from emass_client.rest import ApiException
@@ -180,6 +189,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -199,9 +209,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

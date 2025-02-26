@@ -13,16 +13,22 @@ Method | HTTP request | Description
 
 Add one or many test results in a system
 
-Adds test results for given `systemId`  **Request Body Required Fields** - `testedBy` - `testDate` - `description` - `complianceStatus` - `assessmentProcedure`       
+Adds test results for given `systemId`
+
+**Request Body Required Fields**
+- `testedBy`
+- `testDate`
+- `description`
+- `complianceStatus`
+- `assessmentProcedure`
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.test_results_response_post import TestResultsResponsePost
 from emass_client.models.object import object
@@ -63,7 +69,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.TestResultsApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    request_body = None # List[object] | Add test results to a system (systemId)
+    request_body = None # List[object] | Example request body to add test results to a system (systemId)
 
     try:
         # Add one or many test results in a system
@@ -78,10 +84,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add test results to a system (systemId) | 
+ **request_body** | [**List[object]**](object.md)| Example request body to add test results to a system (systemId) | 
 
 ### Return type
 
@@ -97,9 +104,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -123,9 +131,8 @@ Returns system test results information for matching parameters.<br>
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.test_results_response_get import TestResultsResponseGet
 from emass_client.rest import ApiException
@@ -183,6 +190,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -205,9 +213,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

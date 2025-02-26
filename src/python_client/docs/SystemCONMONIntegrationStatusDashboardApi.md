@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_system_common_integration_status_summary**
-> object get_system_common_integration_status_summary(org_id, excludeinherited=excludeinherited, page_index=page_index, page_size=page_size)
+> GetSystemStatusDetails200Response get_system_common_integration_status_summary(org_id, excludeinherited=excludeinherited, page_index=page_index, page_size=page_size)
 
 System CONMON Integration Status
 
@@ -19,10 +19,10 @@ Get system CONMON integration status dashboard information.
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
+from emass_client.models.get_system_status_details200_response import GetSystemStatusDetails200Response
 from emass_client.rest import ApiException
 from pprint import pprint
 
@@ -77,6 +77,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **int**| **Organization Id**: The unique organization identifier. | 
@@ -86,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**GetSystemStatusDetails200Response**](GetSystemStatusDetails200Response.md)
 
 ### Authorization
 
@@ -98,9 +99,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | Pagination response schema |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

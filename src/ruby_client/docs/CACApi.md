@@ -14,7 +14,7 @@ All URIs are relative to *http://localhost:4010*
 
 Submit control to second role of CAC
 
- **Request Body Required Fields** - `controlAcronym` - `comments`  **Notes:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters.  - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
+**Request Body Required Fields** - `controlAcronym` - `comments`  **NOTES:** - Comments `comments` are not required at the first role of the CAC but are required at the second role of the CAC. Comments cannot exceed 10,000 characters. - POST requests will only yield successful results if the control is currently sitting at the first role of the CAC. If the control is not currently sitting at the first role, then an error will be returned.
 
 ### Examples
 
@@ -24,24 +24,24 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::CACApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Add control(s) to second role of CAC
+request_body = [3.56] # Array<Object> | Example request body for adding control(s) to second role of CAC
 
 begin
   # Submit control to second role of CAC
@@ -75,7 +75,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Add control(s) to second role of CAC |  |
+| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Example request body for adding control(s) to second role of CAC |  |
 
 ### Return type
 
@@ -107,19 +107,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::CACApi.new

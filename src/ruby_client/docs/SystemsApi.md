@@ -24,26 +24,25 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::SystemsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
 opts = {
-  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information
-  policy: 'diacap' # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
+  policy: 'diacap' # String | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems.
 }
 
 begin
@@ -78,8 +77,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional][default to false] |
-| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
+| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
 
 ### Return type
 
@@ -111,30 +109,29 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::SystemsApi.new
 opts = {
   coams_id: 'coams_id_example', # String | **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS).
   ditpr_id: 'ditpr_id_example', # String | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR).
-  include_decommissioned: true, # Boolean | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems.
-  include_ditpr_metrics: true, # Boolean | **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.
-  include_package: true, # Boolean | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information
-  policy: 'diacap', # String | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems.
-  registration_type: 'registration_type_example', # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider  
+  include_decommissioned: true, # Boolean | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems.
+  include_ditpr_metrics: true, # Boolean | **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter cannot be used in conjunction with the following parameters:   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics.
+  policy: 'diacap', # String | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems.
+  registration_type: 'registration_type_example', # String | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc 
   reports_for_scorecard: true # Boolean | **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard.
 }
 
@@ -171,11 +168,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **coams_id** | **String** | **COAMS ID**: Filter query by Cyber Operational Attributes Management System (COAMS). | [optional] |
 | **ditpr_id** | **String** | **DITPR ID**: Filter query by DoD Information Technology (IT) Portfolio Repository (DITPR). | [optional] |
-| **include_decommissioned** | **Boolean** | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved.  If no value is specified, the default returns true to include decommissioned systems. | [optional][default to true] |
-| **include_ditpr_metrics** | **Boolean** | **Include DITPR**: Indicates if DITPR metrics are retrieved.  This query string parameter cannot be used in conjunction with the following parameters:   - includePackage   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics. | [optional][default to false] |
-| **include_package** | **Boolean** | **Include Package**:  Indicates if additional packages information are retrieved for queried system.  If no value is specified, the default returns false to not include package information | [optional][default to false] |
-| **policy** | **String** | **System Policy**: Filter query by system policy.  If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
-| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional][default to &#39;regular&#39;] |
+| **include_decommissioned** | **Boolean** | **Include Decommissioned Systems**: Indicates if decommissioned systems are retrieved. If no value is specified, the default returns true to include decommissioned systems. | [optional][default to true] |
+| **include_ditpr_metrics** | **Boolean** | **Include DITPR**: Indicates if DITPR metrics are retrieved. This query string parameter cannot be used in conjunction with the following parameters:   - ditprId   - coamsId  If no value is specified, the default returns false to not include DITPR Metrics. | [optional][default to false] |
+| **policy** | **String** | **System Policy**: Filter query by system policy. If no value is specified, the default returns RMF policy information for dual-policy systems. | [optional][default to &#39;rmf&#39;] |
+| **registration_type** | **String** | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc  | [optional][default to &#39;regular&#39;] |
 | **reports_for_scorecard** | **Boolean** | **DoD Cyber Hygiene Scorecard**: Used to filter results to only return systems that report to the DoD Cyber Hygiene Scorecard. | [optional][default to true] |
 
 ### Return type

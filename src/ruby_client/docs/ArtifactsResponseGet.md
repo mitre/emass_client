@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **meta** | [**Response200**](Response200.md) |  | [optional] |
-| **data** | [**Array&lt;ArtifactsGet&gt;**](ArtifactsGet.md) |  | [optional] |
+| **data** | [**Array&lt;ArtifactsResponseGetDataInner&gt;**](ArtifactsResponseGetDataInner.md) |  | [optional] |
 
 ## Example
 

@@ -24,19 +24,19 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::ControlsApi.new
@@ -95,11 +95,11 @@ end
 
 ## update_control_by_system_id
 
-> <ControlsResponsePut> update_control_by_system_id(system_id, request_body)
+> <ControlsResponsePut> update_control_by_system_id(system_id, controls_required_fields)
 
 Update control information in a system for one or many controls
 
- Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  The following optional fields (plus the **Request Body Required Fields**) are required based on the Implementation Status `implementationStatus` value<br> | Value                    | Required Fields |--------------------------|--------------------------------------------------- | Planned  or Implemented  | `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments` | Not Applicable           | `naJustification` | Manually Inherited       | `commonControlProvider`, `slcmCriticality`, `slcmFrequency`, `slcmMethod`, `slcmReporting`, `slcmTracking`, `slcmComments`  If the Implementation Status `implementationStatus` value is `Inherited`, only the following fields can be updated:   - `controlDesignation`   - `commonnControlProvider`  **NOTES:** - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:   - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`   - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments` - Implementation Plan information cannot be updated if Security Control does not exist in the system record.
+Update a Control for given `systemId`<br>  **Request Body Required Fields** - `acronym` - `responsibleEntities` - `controlDesignation` - `estimatedCompletionDate` - `implementationNarrative`  <br> **Business Rules**  The following **optional fields** (plus the **Request Body Required Fields**) are required based on the Implementation Status (`implementationStatus`) field value:<br>  <table>   <thead>     <tr><th><b>Status</b></th><th><b>Required Fields</b></th></tr>   </thead>   <tbody>     <tr><td><b>Planned</b> or <b>Implemented</b></td><td><code>slcmCriticality, slcmFrequency, slcmMethod, slcmReporting, slcmTracking, slcmComments</code></td></tr>     <tr><td><b>Not Applicable</b></td><td><code>naJustification</code></td></tr>     <tr><td><b>Manually Inherited</b></td><td><code>commonControlProvider, slcmCriticality, slcmFrequency, slcmMethod, slcmReporting, slcmTracking, slcmComments</code></td></tr>   </tbody> </table>   **NOTES:** - Risk Assessment information cannot be updated if a Security Control is `Inherited`. - Risk Assessment information cannot be updated for a DIACAP system record. - Implementation Plan information cannot be saved if the these fields exceed 2,000 character limits:   - `naJustification`,`responsibleEntities`,`implementationNarrative`,`slcmCriticality`   - `slcmFrequency`,`slcmMethod`,`slcmReporting`,`slcmTracking`,`slcmComments` - Implementation Plan or Risk Assessment information cannot be updated if Security Control does not exist in the system record.
 
 ### Examples
 
@@ -109,28 +109,28 @@ require 'emass_client'
 # setup authorization
 EmassClient.configure do |config|
   # Configure API key authorization: apiKey
-  config.api_key['apiKey'] = 'YOUR API KEY'
+  config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['apiKey'] = 'Bearer'
+  # config.api_key_prefix['api-key'] = 'Bearer'
 
   # Configure API key authorization: mockType
-  config.api_key['mockType'] = 'YOUR API KEY'
+  config.api_key['Prefer'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['mockType'] = 'Bearer'
+  # config.api_key_prefix['Prefer'] = 'Bearer'
 
   # Configure API key authorization: userId
-  config.api_key['userId'] = 'YOUR API KEY'
+  config.api_key['user-uid'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['userId'] = 'Bearer'
+  # config.api_key_prefix['user-uid'] = 'Bearer'
 end
 
 api_instance = EmassClient::ControlsApi.new
 system_id = 35 # Integer | **System Id**: The unique system record identifier.
-request_body = [3.56] # Array<Object> | Update an existing control by Id
+controls_required_fields = [EmassClient::ControlsRequiredFields.new] # Array<ControlsRequiredFields> | Example request body for updating an existing control for a given system.
 
 begin
   # Update control information in a system for one or many controls
-  result = api_instance.update_control_by_system_id(system_id, request_body)
+  result = api_instance.update_control_by_system_id(system_id, controls_required_fields)
   p result
 rescue EmassClient::ApiError => e
   puts "Error when calling ControlsApi->update_control_by_system_id: #{e}"
@@ -141,12 +141,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ControlsResponsePut>, Integer, Hash)> update_control_by_system_id_with_http_info(system_id, request_body)
+> <Array(<ControlsResponsePut>, Integer, Hash)> update_control_by_system_id_with_http_info(system_id, controls_required_fields)
 
 ```ruby
 begin
   # Update control information in a system for one or many controls
-  data, status_code, headers = api_instance.update_control_by_system_id_with_http_info(system_id, request_body)
+  data, status_code, headers = api_instance.update_control_by_system_id_with_http_info(system_id, controls_required_fields)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ControlsResponsePut>
@@ -160,7 +160,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **system_id** | **Integer** | **System Id**: The unique system record identifier. |  |
-| **request_body** | [**Array&lt;Object&gt;**](Object.md) | Update an existing control by Id |  |
+| **controls_required_fields** | [**Array&lt;ControlsRequiredFields&gt;**](ControlsRequiredFields.md) | Example request body for updating an existing control for a given system. |  |
 
 ### Return type
 

@@ -12,16 +12,16 @@ Method | HTTP request | Description
 
 Get workflow definitions in a site
 
-View all workflow schemas available on the eMASS instance filtered by  status `includeInactive` and registration type `registrationType`.
+View all workflow schemas available on the eMASS instance filtered by
+status `includeInactive` and registration type `registrationType`.
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.workflow_definition_response_get import WorkflowDefinitionResponseGet
 from emass_client.rest import ApiException
@@ -61,7 +61,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.WorkflowDefinitionsApi(api_client)
     include_inactive = True # bool | **Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions. (optional) (default to True)
-    registration_type = 'regular' # str | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   (optional) (default to 'regular')
+    registration_type = 'regular' # str | **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc  (optional) (default to 'regular')
 
     try:
         # Get workflow definitions in a site
@@ -76,10 +76,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **include_inactive** | **bool**| **Include Inactive**: If no value is specified, the default returns false to not include outdated workflow definitions. | [optional] [default to True]
- **registration_type** | **str**| **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  *Available values:* assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider   | [optional] [default to &#39;regular&#39;]
+ **registration_type** | **str**| **Registration Type**: Filter record by selected registration type (single value or comma delimited values).  **Valid Options Are:** assessAndAuthorize, assessOnly, guest, regular, functional, cloudServiceProvider, commonControlProvider, authorizationToUse, reciprocityAcceptanc  | [optional] [default to &#39;regular&#39;]
 
 ### Return type
 
@@ -95,9 +96,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

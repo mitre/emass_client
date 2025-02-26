@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **acronym** | **str** | Acronym of the system record. | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of ControlsPut from a JSON string
 controls_put_instance = ControlsPut.from_json(json)
 # print the JSON string representation of the object
-print ControlsPut.to_json()
+print(ControlsPut.to_json())
 
 # convert the object into a dict
 controls_put_dict = controls_put_instance.to_dict()
 # create an instance of ControlsPut from a dict
-controls_put_form_dict = controls_put.from_dict(controls_put_dict)
+controls_put_from_dict = ControlsPut.from_dict(controls_put_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

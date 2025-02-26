@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **system_id** | **int** | [Required] Unique eMASS identifier. Will need to provide correct number | [optional] 
@@ -25,12 +26,12 @@ json = "{}"
 # create an instance of TestResultsGet from a JSON string
 test_results_get_instance = TestResultsGet.from_json(json)
 # print the JSON string representation of the object
-print TestResultsGet.to_json()
+print(TestResultsGet.to_json())
 
 # convert the object into a dict
 test_results_get_dict = test_results_get_instance.to_dict()
 # create an instance of TestResultsGet from a dict
-test_results_get_form_dict = test_results_get.from_dict(test_results_get_dict)
+test_results_get_from_dict = TestResultsGet.from_dict(test_results_get_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

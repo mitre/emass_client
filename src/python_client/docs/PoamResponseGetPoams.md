@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**Response200**](Response200.md) |  | [optional] 
-**data** | [**PoamGet**](PoamGet.md) |  | [optional] 
+**data** | [**PoamResponseGetPoamsData**](PoamResponseGetPoamsData.md) |  | [optional] 
 
 ## Example
 
@@ -17,12 +18,12 @@ json = "{}"
 # create an instance of PoamResponseGetPoams from a JSON string
 poam_response_get_poams_instance = PoamResponseGetPoams.from_json(json)
 # print the JSON string representation of the object
-print PoamResponseGetPoams.to_json()
+print(PoamResponseGetPoams.to_json())
 
 # convert the object into a dict
 poam_response_get_poams_dict = poam_response_get_poams_instance.to_dict()
 # create an instance of PoamResponseGetPoams from a dict
-poam_response_get_poams_form_dict = poam_response_get_poams.from_dict(poam_response_get_poams_dict)
+poam_response_get_poams_from_dict = PoamResponseGetPoams.from_dict(poam_response_get_poams_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

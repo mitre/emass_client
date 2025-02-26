@@ -1,10 +1,11 @@
-## eMASS API {{version}} Specification
+## eMASS API {{npmName}}@{{npmVersion}} Specification
 
 The `{{npmName}}@{{npmVersion}}` is a TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios)
-that implements the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
+to implement the [Enterprise Mission Assurance Support Service (eMASS)](https://disa.mil/~/media/Files/DISA/Fact-Sheets/eMASS.pdf)
 Representational State Transfer (REST) Application Programming Interface (API) specifications
 
-The `{{npmName}}@{{npmVersion}} npm package` can be used in the following environments:
+The generated Node module can be used in the following environments:
+Environment
 * Node.js
 * Webpack
 * Browserify
@@ -17,9 +18,7 @@ Module system
 * CommonJS
 * ES6 module system
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference - archive](https://web.archive.org/web/20160412204540/https://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
-
-The latest publishing instruction can be found in the Typescript [handbook](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html) 
+It can be used in both TypeScript and JavaScript. In TypeScript, the definition will be automatically resolved via `package.json`. ([Reference](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html))
 
 ### Building
 
@@ -30,29 +29,8 @@ npm run build
 ```
 
 ### Publishing
-After building the package (above step) login into the NPM registry ( [account required](https://www.npmjs.com/signup) ) 
 
-Login with the following command:
-```
-npm login
-``` 
-
-To test that the login was successful, use command ```npm whoami```, the  username for the account is displayed.
-
-Publishing the NPM package is accomplished by executing the following command:
-```
-npm publish
-```
-
-After the publish is done without any error, visit the account used to published in the NPM registry, and verify that the package is there.
-
-### Unpublish NPM
-For detailed information on unpublishing an NPM packages visit the [npm-unpuplish docs](https://docs.npmjs.com/cli/v8/commands/npm-unpublish)
-
-```
-npm unpublish [<@scope>/]<pkg>[@<version>]
-```
-References the [npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish) for detail information and restrictions related to unpublishing npm pakages.
+First build the package then run `npm publish`
 
 ### Consuming
 
@@ -115,13 +93,13 @@ axiosInstances.defaults.headers.common = {
 // Load the TestApi module
 import { TestApi } from '{{npmName}}/dist/api';
 
-// Create and initialize a TestApi instances (references Axios Configuration for proper parameters configurations)
+// Create and initialize a TestApi instances (references code snippet above for proper parameters configurations)
 const testApi = new TestApi(configuration, configuration.basePath, axiosInstances);
 
 // Invoke the endpoint 
-testApi.testConnection().then((response:any) => {
-  console.log("API called successfully. Returned data: " + JSON.stringify(response.data, null,2));
-}).catch((error:any) => console.error(JSON.stringify(error.response.data,null,2)));
+testApi.testConnection().then((data:any) => {
+  console.log("API called successfully. Returned data: " + JSON.stringify(data.data, null,2));
+}).catch((error:any) => console.error(error));
 
 ```
 ### Artifacts Export endpoint

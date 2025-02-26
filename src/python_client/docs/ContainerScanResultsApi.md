@@ -13,16 +13,53 @@ Method | HTTP request | Description
 
 Add one or many containers and their scan results
 
-Add containers and their scan results in the assets module for a system `systemId`.  **Request Body Required Fields** - `containerId` - `containerName` - `time` - Bench Marks Object Array `benchmarks`   - `benchmark`   - Results Object Array `results`     - `ruleId`     - `status`     - `lastSeen`  **Example Request Body Required Fields** ``` [   {     \"containerId\": \"container identification\",     \"containerName\": \"container name\",     \"time\": Datetime of scan/result (1648217219),     \"benchmarks\": [       {          \"benchmark\": \"RHEL_8_STIG\",         \"results\": [            {              \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }, {             \"ruleId\": \"rule identification\",             \"status\": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],             \"lastSeen\": Unix date format (1648217219)           }         ]       }     ]   } ] ````
+Add containers and their scan results in the assets module for a system `systemId`.
+
+**Request Body Required Fields**
+- `containerId`
+- `containerName`
+- `time`
+- `benchmarks` (Object Array)
+  - `benchmark`
+  - `results` (Object Array)
+    - `ruleId`
+    - `status`
+    - `lastSeen`
+
+**Example Request Body Required Fields**
+```
+[
+  {
+    "containerId": "container identification",
+    "containerName": "container name",
+    "time": Datetime of scan/result (1648217219),
+    "benchmarks": [
+      {
+        "benchmark": "RHEL_8_STIG",
+        "results": [
+          {
+            "ruleId": "rule identification",
+            "status": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],
+            "lastSeen": Unix date format (1648217219)
+          }, {
+            "ruleId": "rule identification",
+            "status": [Pass,Fail,Other,Not Reviewed,Not Checked,Not Applicable],
+            "lastSeen": Unix date format (1648217219)
+          }
+        ]
+      }
+    ]
+  }
+]
+````
 
 ### Example
 
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.containers_response_post import ContainersResponsePost
 from emass_client.models.object import object
@@ -63,7 +100,7 @@ with emass_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = emass_client.ContainerScanResultsApi(api_client)
     system_id = 35 # int | **System Id**: The unique system record identifier.
-    request_body = None # List[object] | Add containers and their scan results
+    request_body = None # List[object] | Example request body for adding containers and their scan results
 
     try:
         # Add one or many containers and their scan results
@@ -78,10 +115,11 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
- **request_body** | [**List[object]**](object.md)| Add containers and their scan results | 
+ **request_body** | [**List[object]**](object.md)| Example request body for adding containers and their scan results | 
 
 ### Return type
 
@@ -97,9 +135,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** | OK |  -  |
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
@@ -123,9 +162,8 @@ Removes container scan resources and their scan results in the assets module for
 * Api Key Authentication (apiKey):
 * Api Key Authentication (mockType):
 * Api Key Authentication (userId):
+
 ```python
-import time
-import os
 import emass_client
 from emass_client.models.container_resources_delete_body_inner import ContainerResourcesDeleteBodyInner
 from emass_client.models.containers_response_delete import ContainersResponseDelete
@@ -181,6 +219,7 @@ with emass_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_id** | **int**| **System Id**: The unique system record identifier. | 
@@ -200,9 +239,10 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful operation |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
