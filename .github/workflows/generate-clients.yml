@@ -17,8 +17,8 @@ name: Generate OpenAPI Clients
 on:
   push:
     branches: [ main ]
-  # pull_request:
-    # branches: [ UpdateTov3.22Spec ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   generate-eMASS-clients:

@@ -1,10 +1,11 @@
+# For testing use the PR name for 'branches:' - once done testing revert the 'branches:' name to main
 name: Test Ruby Client 
 
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
