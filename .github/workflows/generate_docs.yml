@@ -5,9 +5,9 @@ name: Generate eMASS Documentation
 # Uncomment the pull_requests and set branches to the PR name
 on:
   push:
-    branches: [ UpdateTov3.22Spec ]
-  pull_request:
-    branches: [ UpdateTov3.22Spec ]
+    branches: [ main ]
+  # pull_request:
+    # branches: [ UpdateTov3.22Spec ]
 jobs:
   test_job:
     runs-on: ubuntu-latest

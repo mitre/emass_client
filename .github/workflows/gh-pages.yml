@@ -3,9 +3,9 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [ UpdateTov3.22Spec ]
-  pull_request:
-    branches: [ UpdateTov3.22Spec ]
+    branches: [ main ]
+  # pull_request:
+    # branches: [ UpdateTov3.22Spec ]
     
 jobs:
   build-deploy:
