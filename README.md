@@ -37,20 +37,27 @@ Generation of the API clients are accomplished by updating or modifying the eMAS
 
 The preferable way to update the specification file is by forking this repository or creating a new branch in this repository followed by a Pull Request (PR), than making the necessary updates and [merged](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request) PR into the main branch.
 
-The proper process for making client code updates are as follows:
+<span style="color:yellow">
+<div>
+  <h3><svg fill="currentColor" height="22" viewBox="0 0 22 22" width="22">
+    <path d="M12 4V0h-2v4h2z"></path>
+    <path clip-rule="evenodd" d="M9 21h4a2 2 0 012-2h5V7h-4a5.994 5.994 0 00-5 2.682A5.994 5.994 0 006 7H2v12h5a2 2 0 012 2zm-2-4a3.99 3.99 0 013 1.354V13a4 4 0 00-4-4H4v8h3zm8 0a3.99 3.99 0 00-3 1.354V13a4 4 0 014-4h2v8h-3z" fill-rule="evenodd"></path>
+    <path d="M6.006 1.543L8.834 4.37 7.42 5.786 4.592 2.957l1.414-1.414zM14.58 5.786l2.828-2.829-1.414-1.414-2.828 2.828 1.414 1.415z">
+    </path>
+  </svg> The proper process for making client code updates are as follows:</h3>
+</div>
+</span>
 
-- **Step 1** Update the eMASS API specification file `eMASSRestOpenApi.yaml`
+<span style="color:cyan">**Step 1**</span> Update the eMASS API specification file `eMASSRestOpenApi.yaml`
 
-- **Step 2** Make the necessary changes (update the version field) to the clients generation configuration files:
+<span style="color:cyan">**Step 2**</span> Make the necessary changes (update the version field) to the clients generation configuration files:
   - Ruby (src/openapi/templates/ruby/ruby-generator-config.json)
   - Typescript(src/openapi/templates/typescript/typescript-generator-config.json)
   - Python (src/openapi/templates/python/python-generator-config.json)
   
-- **Step 3**
-  Push the content to the repository
-  
-- **Step 4**
-  Once all github actions finish and pass merge the pull request
+<span style="color:cyan">**Step 3**</span> Push the content to the repository
+ 
+<span style="color:cyan">**Step 4**</span> Once all github actions finish and pass merge the pull request
 
 
 ### Generate Clients for Other Programming Languages
