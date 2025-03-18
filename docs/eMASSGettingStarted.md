@@ -29,9 +29,7 @@ User Profile in the API Data Access card by selecting a checkbox for the applica
 and clicking [Save].
 
 <div align="center">
-
-  ![eMASS Data Access Card](/images/emass_data_access_card.jpg)
-
+  <img src="../images/emass_data_access_card.jpg" alt="eMASS API Data Access Permissions" title="eMASS API Data Access Permissions">
 </div>
 
 ### VERSIONING
