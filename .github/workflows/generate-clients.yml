@@ -11,8 +11,11 @@
 # 
 # For testing using a specific PR use the pull_request branches and specify 
 # the PR name, example:
-#  pull_request:
-#    branches: [ the-pr-name ]
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ the-pr-name ]
 # -----------------------------------------------------------------------------
 name: Generate OpenAPI Clients
 
@@ -20,7 +23,7 @@ on:
   push:
     branches: [ main ]
   # pull_request:
-    # branches: [ the-pr-name ]
+  #   branches: [ the-pr-name ]
 
 jobs:
   generate-eMASS-clients:
@@ -32,20 +35,19 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 2  # Fetch the last two commits to compare changes.
 
-      # Check for changed files (looking for changes to the docs/eMASSRestOpenApi.yaml file)
-      - name: Get changed file (eMASSRestOpenApi.yaml)  🔧
-        id: changed-files
-        uses: tj-actions/changed-files@v39
-
-      - name: Run step if eMASSRestOpenApi.yaml was modified
-        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+      # Check if eMASSRestOpenApi.yaml was modified
+      - name: Check for changes in eMASSRestOpenApi.yaml 🔧
+        id: check-changes
         run: |
-          echo "eMASSRestOpenApi.yaml file has been modified."
+          if git diff --name-only HEAD^ HEAD | grep -q "docs/eMASSRestOpenApi.yaml"; then
+            echo "modified=true" >> $GITHUB_OUTPUT
+          else
+            echo "modified=false" >> $GITHUB_OUTPUT
+          fi
 
-      # Use the action to generate a client package
-      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      # Generate clients only if the file was modified
       - name: Generate Ruby Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
         with:
@@ -53,7 +55,7 @@ jobs:
           config-file: src/openapi/templates/ruby/ruby-generator-config.json
           template-dir: src/openapi/templates/ruby
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+        if: steps.check-changes.outputs.modified == 'true'
 
       - name: Generate Typescript Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
@@ -62,7 +64,7 @@ jobs:
           config-file: src/openapi/templates/typescript/typescript-generator-config.json
           template-dir: src/openapi/templates/typescript
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+        if: steps.check-changes.outputs.modified == 'true'
 
       - name: Generate Python Client 🏭
         uses: openapi-generators/openapitools-generator-action@v1
@@ -71,32 +73,22 @@ jobs:
           config-file: src/openapi/templates/python/python-generator-config.json
           template-dir: src/openapi/templates/python/mustache
           openapi-file: docs/eMASSRestOpenApi.yaml
-        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+        if: steps.check-changes.outputs.modified == 'true'
 
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Generated Clients to GitHub 🚀
-        if: contains(steps.changed-files.outputs.modified_files, 'eMASSRestOpenApi.yaml')
+        if: steps.check-changes.outputs.modified == 'true'
         env: 
-          CI_COMMIT_MESSAGE: CI Build Client Artifacts (eMASS Clients)
-          CI_COMMIT_AUTHOR: CI Pipeline
-          # Use previous user who made the last commit (from logs)
-          # CI_COMMIT_AUTHOR: "$(git log -n 1 --pretty=format:%an)"
+          CI_COMMIT_MESSAGE: "CI Build Client Artifacts (eMASS Clients)"
+          CI_COMMIT_AUTHOR: "CI Pipeline"
           CI_COMMIT_EMAIL: "$(git log -n 1 --pretty=format:%ae)"
         run: |
-
-          # echo "Renaming generated directory from ruby-client to ruby_client..."
-          rm -R src/ruby_client
-          mv ruby-client src/ruby_client
-
-          # echo "Renaming generated directory from typescript-axios-client to typescript_client..."
-          rm -R src/typescript_client
-          mv typescript-axios-client src/typescript_client
-
-          # echo "Renaming generated directory from python-client to python_client..."
-          rm -R src/python_client
-          mv python-client src/python_client
-
-          # echo "GIT commit and push eMASS clients..."
+          # Remove the src directory and rename the generated clients
+          rm -R src/ruby_client && mv ruby-client src/ruby_client
+          rm -R src/typescript_client && mv typescript-axios-client src/typescript_client
+          rm -R src/python_client && mv python-client src/python_client
+          
+          # Commit and push to the repository
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
           git add src/ruby_client src/typescript_client src/python_client
