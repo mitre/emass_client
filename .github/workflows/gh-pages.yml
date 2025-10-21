@@ -14,6 +14,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+permissions:
+  contents: write
     
 jobs:
   build-deploy:
@@ -21,7 +24,7 @@ jobs:
     name: Copy Markdown Files to gh_pages
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build Deployment Folder 🔧
         run: |
@@ -39,7 +42,7 @@ jobs:
           sudo cp ./docs/eMASS_API_Documentation.pdf /publish/docs/eMASS_API_Documentation.pdf
 
       - name: Deploy Markdown Files 🚀
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /publish

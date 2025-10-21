@@ -25,7 +25,9 @@ on:
     workflows: [Generate OpenAPI Clients]
     types:
       - completed
-# on: push
+
+permissions:
+  contents: read
 
 jobs:
   build-n-publish:
@@ -35,7 +37,7 @@ jobs:
     steps:
       # Checkout your code
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Check if src/python_client/README.md has changed using git diff
       - name: Check for changes in src/python_client/README.md
@@ -50,7 +52,7 @@ jobs:
       # Set up Python only if the file has changed
       - name: Set up Python
         if: steps.check-changes.outputs.modified == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.x"
 

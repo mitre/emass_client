@@ -1,19 +1,27 @@
 name: Build and Release to NPM
+
 on:
   release:
     types: [published]
+
+permissions:
+  id-token: write # required for trusted publishing's use of OIDC
+  contents: read
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v5
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: "18.x"
+          node-version: "22"
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Manually update npm to 11.5.1 or later which is the required version for trusted publishing to work # this step can be removed after the ubuntu runner has the correct minimum version of npm installed
+        run: npm install -g npm@latest
 
       - name: Build the NPM Package
         run: |
@@ -32,5 +40,3 @@ jobs:
         run: |
           cd src/typescript_client
           npm publish --access public mitre-emass_client-*.tgz
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

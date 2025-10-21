@@ -1,19 +1,24 @@
 name: Build and Release NPM to GPR
+
 on:
   release:
     types: [published]
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: "18.x"
-          registry-url: https://npm.pkg.github.com/
+          node-version: "22"
+          registry-url: 'https://npm.pkg.github.com/'
           scope: '@mitre'
 
       - name: Build the NPM Package
@@ -26,12 +31,6 @@ jobs:
         run: |
           cd src/typescript_client
           npm pack
-
-      # Setup .npmrc file to publish to GitHub Package Registry
-      - uses: actions/setup-node@v3
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@mitre'
 
       # Publish emass_client to GitHub Package Registry
       - name: Publish emass_client to GPR

@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   test:
     strategy:
@@ -16,31 +19,31 @@ jobs:
       matrix:
        platform: [ ubuntu-latest, macos-latest ]
        # platform: [ ubuntu-latest, macos-latest, windows-latest ]
-       ruby-version: ['2.7', '3.4']
+       ruby-version: ['3.4']
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Setup Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
-      - uses: actions/checkout@v4
-      - uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install curl -y
-        if: matrix.platform == 'windows-latest'
-      - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
-        if: matrix.platform == 'windows-latest'
-        env: 
-          CI_LIB_PATH: D:\a\emass_client\emass_client/src/ruby_client/lib
-          CI_SPEC_PATH: D:\a\emass_client\emass_client/src/ruby_client/spec        
-        run: |
-          # Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\curl\tools"
-          # set PATH=C:\ProgramData\chocolatey\lib\curl\tools;%PATH%
-          echo "C:\ProgramData\chocolatey\lib\curl\tools" >> $GITHUB_PATH
-          cd src/ruby_client
-          bundle install
-          bundle info emass_client
-          rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
+      - uses: actions/checkout@v5
+      # - uses: crazy-max/ghaction-chocolatey@v1
+      #   with:
+      #     args: install curl -y
+      #   if: matrix.platform == 'windows-latest'
+      # - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
+      #   if: matrix.platform == 'windows-latest'
+      #   env: 
+      #     CI_LIB_PATH: D:\a\emass_client\emass_client/src/ruby_client/lib
+      #     CI_SPEC_PATH: D:\a\emass_client\emass_client/src/ruby_client/spec        
+      #   run: |
+      #     # Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\curl\tools"
+      #     # set PATH=C:\ProgramData\chocolatey\lib\curl\tools;%PATH%
+      #     echo "C:\ProgramData\chocolatey\lib\curl\tools" >> $GITHUB_PATH
+      #     cd src/ruby_client
+      #     bundle install
+      #     bundle info emass_client
+      #     rspec -I "${{ env.CI_LIB_PATH }}" -I "${{ env.CI_SPEC_PATH }}" "${{ env.CI_SPEC_PATH }}" --format progress
       - name: Testing on ${{ matrix.platform }} for Ruby ${{ matrix.ruby-version }}
         if: matrix.platform == 'ubuntu-latest'
         env: 
