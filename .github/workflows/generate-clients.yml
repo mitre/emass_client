@@ -22,8 +22,9 @@ name: Generate OpenAPI Clients
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ the-pr-name ]
+
+permissions:
+  contents: write
 
 jobs:
   generate-eMASS-clients:
@@ -33,7 +34,7 @@ jobs:
 
       # Checkout your code
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2  # Fetch the last two commits to compare changes.
 

@@ -1,7 +1,11 @@
 name: Build and Release gem
+
 on:
   release:
     types: [published]
+
+permissions:
+  contents: read
 
 jobs:
   release:
@@ -10,7 +14,7 @@ jobs:
     steps:
       - name: Setup ruby
         uses: actions/setup-ruby@v1
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - run: git fetch origin +refs/tags/*:refs/tags/*
