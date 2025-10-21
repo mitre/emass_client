@@ -5,6 +5,7 @@ on:
     types: [published]
 
 permissions:
+  id-token: write # required for trusted publishing's use of OIDC
   contents: read
 
 jobs:
@@ -18,6 +19,9 @@ jobs:
         with:
           node-version: "22"
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Manually update npm to 11.5.1 or later which is the required version for trusted publishing to work # this step can be removed after the ubuntu runner has the correct minimum version of npm installed
+        run: npm install -g npm@latest
 
       - name: Build the NPM Package
         run: |
@@ -36,5 +40,3 @@ jobs:
         run: |
           cd src/typescript_client
           npm publish --access public mitre-emass_client-*.tgz
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
