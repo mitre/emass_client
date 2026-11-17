@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "emass_client",
+  "project_id": "b8685ad7-9123-4144-8846-a83e21476743"
+}
