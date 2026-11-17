@@ -66,7 +66,12 @@ curl -X GET "http://localhost:4010/api/systems?policy=rmf" -H  "accept: applicat
 ## Building an eMASS Client SDK
 The API clients are generated utilizing the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) CLI.
 
-**Note:** Currently there are three (3) client SDKs (ruby, typscript-axios, and python) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
+**Note:** Currently there are four (4) client SDKs (ruby, typscript-axios, python, and go) that are automatically generated utilizing GitHub action implemented within this repository. They are generated when a push to the main branch occurs and the API specification file has been modified.
+
+The Go client differs from the other three in two ways worth knowing:
+
+- **It is consumed directly from this repository, not from a package registry.** There is no publish workflow for it, because a Go release is a tag. Consumers import `github.com/mitre/emass_client/src/go_client/v3` and resolve a version from tags of the form `src/go_client/v3.22.0`.
+- **Its module path is set through `gitRepoId`, not a template.** The Go generator exposes no `moduleName` option; the module path written into `go.mod` is composed from `gitHost/gitUserId/gitRepoId`. Setting `gitRepoId` to `emass_client/src/go_client/v3` therefore produces the correct module path with no mustache override, which is why `src/openapi/templates/go/` contains only a config file. The `/v3` suffix is required by Go for any major version at or above 2, and it tracks the specification's major version as the other clients' package versions do.
 
 ### Generate an eMASS Client
 
@@ -141,6 +146,24 @@ Available options are:
     docker run -d -e GENERATOR_HOST=http://12.34.56.78 -p 80:8080 openapitools/openapi-generator-online
     ```
       (where 12.34.56.78 is your server IP address)
+
+To generate a client this way, run the following from the repository root, substituting the language:
+
+```script
+docker run --rm -v "$PWD:/local" openapitools/openapi-generator-cli:v7.27.0 \
+  generate -i /local/docs/eMASSRestOpenApi.yaml \
+           -g [language] \
+           -c /local/src/openapi/templates/[language]/[language]-generator-config.json \
+           -o /local/[language]-client
+```
+
+Then move the result into place as `generate-clients.yml` does, for example for Go:
+
+```script
+rm -R src/go_client && mv go-client src/go_client
+```
+
+Pin the image tag so a local run is reproducible. Note that the GitHub action used by `generate-clients.yml` does not pin a generator version, so a client regenerated in CI may differ from one generated locally against a pinned tag.
 
 
 ---

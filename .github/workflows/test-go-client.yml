@@ -1,0 +1,51 @@
+# Run on each push to main and to any PR that is created from main
+#------------------------------------------------------------------------------
+# Verify the Go versions if they have changed (go-version: ['1.23', 'stable'])
+# '1.23' is the floor the generated go.mod declares; 'stable' is current Go.
+#
+# Actions are pinned to a full commit SHA rather than a tag, so a moved tag
+# cannot change what runs. The other workflows in this repository still use
+# tags; bringing them in line is a separate maintenance pass.
+name: Test Go Client
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A newer run of the same ref supersedes the older ones.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# Granted per job, so a job added later inherits nothing.
+permissions: {}
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ ubuntu-latest, macos-latest ]
+        go-version: [ '1.23', 'stable' ]
+    runs-on: ${{ matrix.platform }}
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          # Keeps GITHUB_TOKEN out of the workspace git config; nothing here pushes.
+          persist-credentials: false
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache-dependency-path: src/go_client/go.sum
+      - name: Testing on ${{ matrix.platform }} for Go ${{ matrix.go-version }}
+        run: |
+          cd src/go_client
+          go build ./...
+          go vet ./...
+          go test ./... -count=1
