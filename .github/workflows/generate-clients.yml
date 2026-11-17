@@ -4,7 +4,7 @@
 # The clients are only generated if the eMASS specification file 
 # (eMASSRestOpenApi.yaml) has been modified. 
 #
-# Clients generated are: Ruby, TypeScript, and Python
+# Clients generated are: Ruby, TypeScript, Python, and Go
 # Publish the newly generated eMASS client API packages to main
 #
 # Action is automatically triggered when: someone pushes to main
@@ -76,6 +76,14 @@ jobs:
           openapi-file: docs/eMASSRestOpenApi.yaml
         if: steps.check-changes.outputs.modified == 'true'
 
+      - name: Generate Go Client 🏭
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: go
+          config-file: src/openapi/templates/go/go-generator-config.json
+          openapi-file: docs/eMASSRestOpenApi.yaml
+        if: steps.check-changes.outputs.modified == 'true'
+
       # Publish the newly generated eMASS client to the current repo
       - name: Publish Generated Clients to GitHub 🚀
         if: steps.check-changes.outputs.modified == 'true'
@@ -88,11 +96,12 @@ jobs:
           rm -R src/ruby_client && mv ruby-client src/ruby_client
           rm -R src/typescript_client && mv typescript-axios-client src/typescript_client
           rm -R src/python_client && mv python-client src/python_client
+          rm -R src/go_client && mv go-client src/go_client
           
           # Commit and push to the repository
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          git add src/ruby_client src/typescript_client src/python_client
+          git add src/ruby_client src/typescript_client src/python_client src/go_client
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push -f
           echo "All done now."

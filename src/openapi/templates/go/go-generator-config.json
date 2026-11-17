@@ -1,0 +1,10 @@
+{
+  "packageName": "emass_client",
+  "packageVersion": "3.22.0",
+  "gitHost": "github.com",
+  "gitUserId": "mitre",
+  "gitRepoId": "emass_client/src/go_client/v3",
+  "enumUnknownDefaultCase": true,
+  "withGoMod": true,
+  "isGoSubmodule": false
+}
